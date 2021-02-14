@@ -7,13 +7,20 @@
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
 
-#ifndef _GAME_STDIO_H_
-#define _GAME_STDIO_H_
+#ifndef _LIBDL_STDIO_H_
+#define _LIBDL_STDIO_H_
+
+#include "common.h"
+
+#ifdef DEBUG
+    #define DPRINTF(fmt, ...)       \
+        printf(fmt, __VA_ARGS__);
+#else
+    #define DPRINTF(fmt, ...) 
+#endif
 
 //--------------------------------------------------------
-extern int (*sprintf)(char * buffer, const char * format, ...);
+__LIBDL_INLINE__ int sprintf(char * buffer, const char * format, ...);
+__LIBDL_INLINE__ int printf(const char * format, ...);
 
-//--------------------------------------------------------
-extern int (*printf)(const char * format, ...);
-
-#endif // _GAME_STDIO_H_
+#endif // _LIBDL_STDIO_H_

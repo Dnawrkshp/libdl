@@ -8,21 +8,6 @@
 #define OMNI_DAMAGE_V2_PATCH                (0x003FFE10)
 
 
-/*
- * NAME :		weaponSlotToId
- * 
- * DESCRIPTION :
- * 			Converts a WEAPON_SLOT_INDEX to the respective WEAPON_IDS
- * 
- * NOTES :
- * 
- * ARGS : 
- *      slotId      :           Slot index.
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
 int weaponSlotToId(int slotId)
 {
     switch (slotId)
@@ -40,25 +25,7 @@ int weaponSlotToId(int slotId)
     }
 }
 
-
-/*
- * NAME :		setWeaponDamage
- * 
- * DESCRIPTION :
- * 			Sets the damage of the given weapon at the given level.
- * 
- * NOTES :
- * 
- * ARGS : 
- *      weaponId        :           Target weapon.
- *      level           :           Target weapon level.
- *      damage          :           Target damage.
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-void setWeaponDamage(int weaponId, int level, float damage)
+void weaponSetDamage(int weaponId, int level, float damage)
 {
     switch (weaponId)
     {

@@ -1,16 +1,12 @@
 #include "graphics.h"
 #include "game.h"
 
-/*
- * 
- */
-#define TEXT_DRAW_SS_INGAME_FUNC                (0x004D8420)
-#define TEXT_DRAW_SS_MENU_FUNC                  (0x005BE058)
-#define TEXT_GETWIDTH_INGAME_FUNC               (0x004D8130)
-#define TEXT_GETWIDTH_MENU_FUNC                 (0x005BDC90)
-
-#define BOX_DRAW_SS_INGAME_FUNC                 (0x005BE610)
-#define BOX_DRAW_SS_MENU_FUNC                   (0x00699C08)
+int internal_drawFunc_inGame(u32,const char*,long,u64,u64,u64,float,float,float,float,float,float);
+int internal_drawFunc_inLobby(u32,const char*,long,u64,u64,u64,float,float,float,float,float,float);
+int internal_widthFunc_inGame(const char*,long,float);
+int internal_widthFunc_inLobby(const char*,long,float);
+void internal_drawBox_inGame(void *, void *);
+void internal_drawBox_inLobby(void *, void *);
 
 //--------------------------------------------------------
 int gfxWorldSpaceToScreenSpace(VECTOR position, int * x, int * y)
@@ -81,27 +77,23 @@ int gfxWorldSpaceToScreenSpace(VECTOR position, int * x, int * y)
 //--------------------------------------------------------
 int gfxScreenSpaceText(int x, int y, float scaleX, float scaleY, u32 color, const char * string, int length)
 {
-    int inGame = isInGame();
-    u32 drawFunc = inGame ? TEXT_DRAW_SS_INGAME_FUNC : TEXT_DRAW_SS_MENU_FUNC;
-    u32 widthFunc = inGame ? TEXT_GETWIDTH_INGAME_FUNC : TEXT_GETWIDTH_MENU_FUNC;
-    
     // draw
-    ((int (*)(u32,const char*,long,u64,u64,u64,float,float,float,float,float,float))drawFunc)(color, string, length, 1, 0, 0x80000000, (float)x, (float)y, scaleX, scaleY, 0, 0);
-
-    // return x + width
-    return x + ((int (*)(const char*,long,float))widthFunc)(string, length, scaleX);
-
-    return x;
+    if (gameIsIn())
+    {
+        internal_drawFunc_inGame(color, string, length, 1, 0, 0x80000000, (float)x, (float)y, scaleX, scaleY, 0, 0);
+        return x + internal_widthFunc_inGame(string, length, scaleX);
+    }
+    else
+    {
+        internal_drawFunc_inLobby(color, string, length, 1, 0, 0x80000000, (float)x, (float)y, scaleX, scaleY, 0, 0);
+        return x + internal_widthFunc_inLobby(string, length, scaleX);
+    }
 }
 
 //--------------------------------------------------------
 void gfxScreenSpaceBox(RECT * rect, u32 colorTL, u32 colorTR, u32 colorBL, u32 colorBR)
 {
     u32 buffer[11];
-    int inGame = isInGame();
-
-    u32 drawFunc = inGame ? BOX_DRAW_SS_INGAME_FUNC : BOX_DRAW_SS_MENU_FUNC;
-
     buffer[0] = 8;
     buffer[1] = 0;
     buffer[2] = 0x005C97AC;
@@ -114,15 +106,20 @@ void gfxScreenSpaceBox(RECT * rect, u32 colorTL, u32 colorTR, u32 colorBL, u32 c
     buffer[9] = colorBR;
     buffer[10] = 2;
 
-    ((void (*)(void *, void *))drawFunc)(rect, buffer);
+    if (gameIsIn())
+    {
+        internal_drawBox_inGame(rect, buffer);
+    }
+    else
+    {
+        internal_drawBox_inLobby(rect, buffer);
+    }
 }
 
 void gfxScreenSpacePIF(RECT * rect)
 {
-
     u32 buffer[11];
-    int inGame = isInGame();
-    u32 drawFunc = inGame ? BOX_DRAW_SS_INGAME_FUNC : BOX_DRAW_SS_MENU_FUNC;
+    int inGame = gameIsIn();
     u32 pifAddr = inGame ? 0x01E72C00 : 0x0036DED0;
     
     buffer[0] = 0x8;
@@ -137,7 +134,10 @@ void gfxScreenSpacePIF(RECT * rect)
     buffer[9] = 0x33010101;
     buffer[10] = 0x8;
 
-    ((void (*)(void *, void *))drawFunc)(rect, buffer);
+    if (inGame)
+        internal_drawBox_inGame(rect, buffer);
+    else
+        internal_drawBox_inLobby(rect, buffer);
 
     buffer[0] = 0x9;
     buffer[1] = 0;
@@ -151,5 +151,8 @@ void gfxScreenSpacePIF(RECT * rect)
     buffer[9] = 0x80808080;
     buffer[10] = 0xE;
 
-    ((void (*)(void *, void *))drawFunc)(rect, buffer);
+    if (inGame)
+        internal_drawBox_inGame(rect, buffer);
+    else
+        internal_drawBox_inLobby(rect, buffer);
 }

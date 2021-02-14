@@ -1,10 +1,7 @@
 #include "game.h"
 
 
-//--------------------------------------------------------
-#define GAME_END_FUNC                       (0x006228C8)
-#define GAME_SHOWPOPUP_FUNC                 (0x00540170)
-#define GAME_SHOWHELP_FUNC                  (0x00540140)
+void internal_gameEnd(int);
 
 /*
  * 
@@ -85,50 +82,6 @@
  */
 #define GAME_SCOREBOARD_ITEM_COUNT          (*(u32*)0x002F9FCC)
 
-
-/*
- * NAME :		showPopup
- * 
- * DESCRIPTION :
- * 			Shows a popup with the given text to the given local player.
- * 
- * NOTES :
- * 
- * ARGS : 
- *      localPlayerIndex    :               Local player to show popup for.
- *      message             :               Message to show.
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-void showPopup(int localPlayerIndex, const char * message)
-{
-    ((void(*)(int, const char *))GAME_SHOWPOPUP_FUNC)(localPlayerIndex, message);
-}
-
-/*
- * NAME :		showHelpPopup
- * 
- * DESCRIPTION :
- * 			Shows a help popup with the given text to the given local player.
- * 
- * NOTES :
- * 
- * ARGS : 
- *      localPlayerIndex    :               Local player to show popup for.
- *      message             :               Message to show.
- *      seconds             :               How many seconds to show the popup for.
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-void showHelpPopup(int localPlayerIndex, const char * message, int seconds)
-{
-    ((void(*)(int, const char *, int))GAME_SHOWHELP_FUNC)(localPlayerIndex, message, seconds * 30);
-}
-
 /*
  * NAME :		setWinner
  * 
@@ -151,223 +104,66 @@ void setWinner(int teamOrPlayerId, int isTeam)
     GAME_WINNER_PLAYER_ID = isTeam ? -1 : teamOrPlayerId;
 }
 
-/*
- * NAME :		endGame
- * 
- * DESCRIPTION :
- * 			End game.
- * 
- * NOTES :
- * 
- * ARGS : 
- *      reason :      Why the game ended.
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-void endGame(int reason)
+void gameEnd(int reason)
 {
-    if (!hasGameEnded())
-        ((void(*)(int))GAME_END_FUNC)(reason);
+    if (!gameHasEnded())
+        internal_gameEnd(reason);
 }
 
-/*
- * NAME :		isInGame
- * 
- * DESCRIPTION :
- * 			Whether the client is currently in a game.
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-int isInGame(void)
+int gameIsIn(void)
 {
     return GAME_ACTIVE && SCENE_LOADED == 1;
     
     if (!GAME_ACTIVE || SCENE_LOADED != 1)
         return 0;
 
-    GameSettings * gs = getGameSettings();
+    GameSettings * gs = gameGetSettings();
     if (!gs)
         return 0;
 
-    return getGameTime() >= gs->GameStartTime;
+    return gameGetTime() >= gs->GameStartTime;
 }
 
-/*
- * NAME :		hasGameEnded
- * 
- * DESCRIPTION :
- * 			Whether the game has ended and/or is ending.
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-int hasGameEnded(void)
+int gameHasEnded(void)
 {
     return GAME_HAS_ENDED;
 }
 
-/*
- * NAME :		getGameTime
- * 
- * DESCRIPTION :
- * 			Gets the current game time in milliseconds.
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-int getGameTime(void)
+int gameGetTime(void)
 {
     return GAME_TIME;
 }
 
-/*
- * NAME :		getGameFinishedExitTime
- * 
- * DESCRIPTION :
- * 			Gets the time when to leave after the game has ended.
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- *          Returns 0 if the game has not ended.
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-int getGameFinishedExitTime(void)
+int gameGetFinishedExitTime(void)
 {
     return GAME_TIME_ENDGAME;
 }
 
-/*
- * NAME :		getDeathHeight
- * 
- * DESCRIPTION :
- * 			Gets the level's death height.
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-float getDeathHeight(void)
+float gameGetDeathHeight(void)
 {
     return GAME_DEATH_BARRIER_Y;
 }
 
-/*
- * NAME :		setDeathHeight
- * 
- * DESCRIPTION :
- * 			Sets the level's death height.
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-void setDeathHeight(float height)
+void gameSetDeathHeight(float height)
 {
     GAME_DEATH_BARRIER_Y = height;
 }
 
-/*
- * NAME :		getPlayerGameStats
- * 
- * DESCRIPTION :
- * 			Gets all the player stats relevant to the current game.
- * 
- * NOTES :
- *          This includes kills, deaths, suicides, hill time, flags capped, wrench kills, etc.
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-PlayerGameStats * getPlayerGameStats(void)
+PlayerGameStats * gameGetPlayerStats(void)
 {
     return GAME_PLAYER_STATS_ARRAY;
 }
 
-/*
- * NAME :		getTeamStatCaps
- * 
- * DESCRIPTION :
- * 			Returns the collection of team flag captures.
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-u8 * getTeamStatCaps(void)
+u8 * gameGetTeamStatCaps(void)
 {
     return GAME_TEAM_CAPS_ARRAY;
 }
 
-/*
- * NAME :		getPlayerWeaponStats
- * 
- * DESCRIPTION :
- * 			Gets all the player weapon stats.
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-PlayerWeaponStats * getPlayerWeaponStats(void)
+PlayerWeaponStats * gameGetPlayerWeaponStats(void)
 {
     return PLAYER_WEAPON_STATS_ARRAY;
 }
 
-/*
- * NAME :		gameGetRawTimeLimit
- * 
- * DESCRIPTION :
- * 			Gets the actual time limit in milliseconds.
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
 int gameGetRawTimeLimit(void)
 {
     return GAME_TIME_LIMIT;

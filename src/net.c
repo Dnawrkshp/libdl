@@ -7,6 +7,8 @@
 #define GET_MEDIUS_APP_HANDLER_HOOK         (*(u32*)0x01EAAB10)
 #define NET_LOBBY_CONNECTION                ((void*)(*(u32*)0x001AF91C))
 
+int internal_netSendMediusAppMessage(int transport, void * connection, u64 a2, int msgClass, int msgId, int msgSize, void * payload);
+
 NET_CALLBACK_DELEGATE callbacks[256] = {};
 
 int customMsgHandler(void * connection, u64 a1, u64 a2, u8 * data)
@@ -38,7 +40,7 @@ void installCustomMsgHook(void)
     GET_MEDIUS_APP_HANDLER_HOOK = 0x08000000 | ((u32)&mediusMsgHandler / 4);
 }
 
-void InstallCustomMsgHandler(u8 id, NET_CALLBACK_DELEGATE callback)
+void netInstallCustomMsgHandler(u8 id, NET_CALLBACK_DELEGATE callback)
 {
     // install hook
     installCustomMsgHook();
@@ -47,12 +49,12 @@ void InstallCustomMsgHandler(u8 id, NET_CALLBACK_DELEGATE callback)
     callbacks[id] = callback;
 }
 
-int SendMediusAppMessage(void * connection, int msgClass, int msgId, int msgSize, void * payload)
+int netSendMediusAppMessage(void * connection, int msgClass, int msgId, int msgSize, void * payload)
 {
-    return ((int (*)(int transport, void * connection, u64 a2, int msgClass, int msgId, int msgSize, void * payload))0x01E9E198)(0x40, connection, 0xFFFF, msgClass, msgId, msgSize, payload);
+    return internal_netSendMediusAppMessage(0x40, connection, 0xFFFF, msgClass, msgId, msgSize, payload);
 }
 
-int SendCustomAppMessage(void * connection, u8 customMsgId, int msgSize, void * payload)
+int netSendCustomAppMessage(void * connection, u8 customMsgId, int msgSize, void * payload)
 {
     u8 buffer[512];
 
@@ -60,7 +62,7 @@ int SendCustomAppMessage(void * connection, u8 customMsgId, int msgSize, void * 
         memcpy(buffer + 4, payload, msgSize);
         
     buffer[0] = customMsgId;
-    return SendMediusAppMessage(connection, NET_CUSTOM_MESSAGE_CLASS, NET_CUSTOM_MESSAGE_ID, msgSize + 4, buffer);
+    return netSendMediusAppMessage(connection, NET_CUSTOM_MESSAGE_CLASS, NET_CUSTOM_MESSAGE_ID, msgSize + 4, buffer);
 }
 
 void* netGetLobbyServerConnection(void)

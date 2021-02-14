@@ -92,7 +92,7 @@ enum DialogIds
     
 };
 
-void playDialogSound(int dialogId, int arg2);
+void dialogPlaySound(int dialogId, int arg2);
 
 
 #endif // _LIBDL_DIALOG_H_

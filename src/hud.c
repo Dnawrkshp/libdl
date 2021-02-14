@@ -10,23 +10,7 @@
  */
 #define HUD_P2			((PlayerHUDFlags*)0x0030D8F4)
 
-/*
- * NAME :		getPlayerHUDFlags
- * 
- * DESCRIPTION :
- * 			Gets the respective local player's HUD flags object.
- * 
- * NOTES :
- * 
- * ARGS : 
- *          localPlayerIndex:           Local index.
- * 
- * RETURN :
- *          Will return NULL if the localPlayerIndex is invalid.
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-PlayerHUDFlags * getPlayerHUDFlags(int localPlayerIndex)
+PlayerHUDFlags * hudGetPlayerFlags(int localPlayerIndex)
 {
     if (localPlayerIndex == 0)
         return HUD_P1;

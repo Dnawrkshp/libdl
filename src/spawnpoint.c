@@ -17,40 +17,12 @@
  */
 #define SP_HILL_PTR	        (*(u32*)0x00222698)
 
-/*
- * NAME :		getSpawnPointCount
- * 
- * DESCRIPTION :
- * 			
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-int getSpawnPointCount()
+int spawnPointGetCount()
 {
     return SP_COUNT;
 }
 
-/*
- * NAME :		getHillPointCount
- * 
- * DESCRIPTION :
- * 			
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-short getHillPointCount()
+short hillPointGetCount()
 {
     u32 * hillInfo = (u32*)SP_HILL_PTR;
     if (!hillInfo)
@@ -59,21 +31,7 @@ short getHillPointCount()
     return *((short*)(hillInfo + 12) + 1);
 }
 
-/*
- * NAME :		setHillPointCount
- * 
- * DESCRIPTION :
- * 			
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-void setHillPointCount(short count)
+void hillPointSetCount(short count)
 {
     u32 * hillInfo = (u32*)SP_HILL_PTR;
     if (!hillInfo)
@@ -82,21 +40,7 @@ void setHillPointCount(short count)
     *(short*)(hillInfo + 0x30) = count;
 }
 
-/*
- * NAME :		getHillPointIndex
- * 
- * DESCRIPTION :
- * 			
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-int getHillPointIndex(int id)
+int hillPointGetIndex(int id)
 {
     u32 * hillInfo = (u32*)SP_HILL_PTR;
     if (!hillInfo)
@@ -105,21 +49,7 @@ int getHillPointIndex(int id)
     return (hillInfo + 0x50)[id];
 }
 
-/*
- * NAME :		setHillPointIndex
- * 
- * DESCRIPTION :
- * 			
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-void setHillPointIndex(int id, int value)
+void hillPointSetIndex(int id, int value)
 {
     u32 * hillInfo = (u32*)SP_HILL_PTR;
     if (!hillInfo)
@@ -128,21 +58,7 @@ void setHillPointIndex(int id, int value)
     (hillInfo + 0x50)[id] = value;
 }
 
-/*
- * NAME :		getSpawnPoint
- * 
- * DESCRIPTION :
- * 			
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-SpawnPoint * getSpawnPoint(int index)
+SpawnPoint * spawnPointGet(int index)
 {
     SpawnPoint * spawnPoints = SPAWNPOINTS;
     if (!spawnPoints)
@@ -151,21 +67,7 @@ SpawnPoint * getSpawnPoint(int index)
     return &spawnPoints[index];
 }
 
-/*
- * NAME :		setSpawnPoint
- * 
- * DESCRIPTION :
- * 			
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-void setSpawnPoint(SpawnPoint * sp, int index)
+void spawnPointSet(SpawnPoint * sp, int index)
 {
     SpawnPoint * spawnPoints = SPAWNPOINTS;
     if (!spawnPoints)

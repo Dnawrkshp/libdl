@@ -10,12 +10,6 @@
 #define MATH_FMOD_FUNC                  (0x00135C18)
 
 //--------------------------------------------------------
-float cosf(float theta)
-{
-    return ((float (*)(float))MATH_COSF_FUNC)(theta);
-}
-
-//--------------------------------------------------------
 float sinf(float theta)
 {
     return ((float (*)(float))MATH_COSF_FUNC)(clampAngle(theta - (MATH_PI / 2)));
@@ -25,30 +19,6 @@ float sinf(float theta)
 float acosf(float v)
 {
     return (MATH_PI / 2) - asinf(v);
-}
-
-//--------------------------------------------------------
-float asinf(float v)
-{
-    return ((float (*)(float))MATH_ASINF_FUNC)(v);
-}
-
-//--------------------------------------------------------
-float sqrtf(float f)
-{
-    return ((float (*)(float))MATH_SQRTF_FUNC)(f);
-}
-
-//--------------------------------------------------------
-float powf(float base, float exp)
-{
-    return ((float (*)(float, float))MATH_POWF_FUNC)(base, exp);
-}
-
-//--------------------------------------------------------
-float fabsf(float f)
-{
-    return ((float (*)(float))MATH_FABSF_FUNC)(f);
 }
 
 //--------------------------------------------------------
@@ -129,6 +99,4 @@ float atan2f(float y, float x)
 		return( -angle );     // negate if in quad III or IV
 	else
 		return( angle );
-
-
 }

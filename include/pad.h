@@ -25,6 +25,7 @@
 #define _PAD_H
 
 #include <tamtypes.h>
+#include "common.h"
 
 #define PAD_PORT_MAX        2
 
@@ -97,7 +98,7 @@ typedef struct PadHistory
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-int padGetButton(int port, u16 buttonMask);
+__LIBDL_GETTER__ int padGetButton(int port, u16 buttonMask);
 
 /*
  * NAME :		padGetButtonDown
@@ -116,7 +117,7 @@ int padGetButton(int port, u16 buttonMask);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-int padGetButtonDown(int port, u16 buttonMask);
+__LIBDL_GETTER__ int padGetButtonDown(int port, u16 buttonMask);
 
 /*
  * NAME :		padGetButtonUp
@@ -135,7 +136,7 @@ int padGetButtonDown(int port, u16 buttonMask);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-int padGetButtonUp(int port, u16 buttonMask);
+__LIBDL_GETTER__ int padGetButtonUp(int port, u16 buttonMask);
 
 /*
  * NAME :		padResetInput
@@ -152,6 +153,6 @@ int padGetButtonUp(int port, u16 buttonMask);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-void padResetInput(int port);
+__LIBDL_SETTER__ void padResetInput(int port);
 
 #endif // _PAD_H

@@ -11,7 +11,7 @@
 #define _LIBDL_NET_H_
 
 #include <tamtypes.h>
-
+#include "common.h"
 
 #define NET_CUSTOM_MESSAGE_CLASS                    (0)
 #define NET_CUSTOM_MESSAGE_ID                       (7)
@@ -19,12 +19,11 @@
 typedef int (*NET_CALLBACK_DELEGATE)(void * connection, void * data);
 
 
-void InstallCustomMsgHandler(u8 id, NET_CALLBACK_DELEGATE callback);
+void netInstallCustomMsgHandler(u8 id, NET_CALLBACK_DELEGATE callback);
+int netSendMediusAppMessage(void * connection, int msgClass, int msgId, int msgSize, void * payload);
+int netSendCustomAppMessage(void * connection, u8 customMsgId, int msgSize, void * payload);
 
-int SendMediusAppMessage(void * connection, int msgClass, int msgId, int msgSize, void * payload);
-int SendCustomAppMessage(void * connection, u8 customMsgId, int msgSize, void * payload);
 
-
-void* netGetLobbyServerConnection(void);
+__LIBDL_GETTER__ void* netGetLobbyServerConnection(void);
 
 #endif // _LIBDL_NET_H_

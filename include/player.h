@@ -21,6 +21,7 @@
 #include "team.h"
 #include "math3d.h"
 #include "vehicle.h"
+#include "common.h"
 
 /*
  * Maximum health of player.
@@ -263,7 +264,7 @@ typedef struct Player
 
 
 /*
- * NAME :		getPlayers
+ * NAME :		playerGetAll
  * 
  * DESCRIPTION :
  * 			Returns a pointer to an array of Player object pointers.
@@ -276,10 +277,10 @@ typedef struct Player
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-Player ** getPlayers(void);
+__LIBDL_GETTER__ Player ** playerGetAll(void);
 
 /*
- * NAME :		changeWeapon
+ * NAME :		playerSetWeapon
  * 
  * DESCRIPTION :
  * 			Change player's equipped weapon.
@@ -294,10 +295,10 @@ Player ** getPlayers(void);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-void changeWeapon(Player * player, int weaponId);
+__LIBDL_SETTER__ void playerSetWeapon(Player * player, int weaponId);
 
 /*
- * NAME :		GetPlayerWeaponData
+ * NAME :		playerGetWeaponData
  * 
  * DESCRIPTION :
  * 			Gets a pointer to the given player's weapon data struct.
@@ -311,10 +312,10 @@ void changeWeapon(Player * player, int weaponId);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-PlayerWeaponData * getPlayerWeaponData(int playerId);
+__LIBDL_GETTER__ PlayerWeaponData * playerGetWeaponData(int playerId);
 
 /*
- * NAME :		setLocalPlayerEquipslot
+ * NAME :		playerSetLocalEquipslot
  * 
  * DESCRIPTION :
  * 			Set's the given local player's equip slot with the given weapon id.
@@ -329,10 +330,10 @@ PlayerWeaponData * getPlayerWeaponData(int playerId);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-void setLocalPlayerEquipslot(int localPlayerId, int slot, int weaponId);
+__LIBDL_SETTER__ void playerSetLocalEquipslot(int localPlayerId, int slot, int weaponId);
 
 /*
- * NAME :		changeTeam
+ * NAME :		playerSetTeam
  * 
  * DESCRIPTION :
  * 			Change player's equipped weapon.
@@ -347,10 +348,10 @@ void setLocalPlayerEquipslot(int localPlayerId, int slot, int weaponId);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-void changeTeam(Player * player, int teamId);
+__LIBDL_SETTER__ void playerSetTeam(Player * player, int teamId);
 
 /*
- * NAME :		isLocal
+ * NAME :		playerIsLocal
  * 
  * DESCRIPTION :
  * 			Whether or not the given player is local or remote.
@@ -364,10 +365,10 @@ void changeTeam(Player * player, int teamId);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-int isLocal(Player * player);
+__LIBDL_GETTER__ int playerIsLocal(Player * player);
 
 /*
- * NAME :		giveWeapon
+ * NAME :		playerGiveWeapon
  * 
  * DESCRIPTION :
  * 			Converts a WEAPON_SLOT_INDEX to the respective WEAPON_IDS
@@ -383,7 +384,7 @@ int isLocal(Player * player);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-void giveWeapon(Player * player, int weaponId, int weaponLevel);
+void playerGiveWeapon(Player * player, int weaponId, int weaponLevel);
 
 /*
  * NAME :		playerRespawn
@@ -421,7 +422,7 @@ void playerRespawn(Player * player);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-void playerSetPosRot(Player * player, VECTOR p, VECTOR r);
+__LIBDL_GETTER__ void playerSetPosRot(Player * player, VECTOR p, VECTOR r);
 
 /*
  * NAME :		playerGetPad
@@ -438,7 +439,7 @@ void playerSetPosRot(Player * player, VECTOR p, VECTOR r);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-PadButtonStatus * playerGetPad(Player * player);
+__LIBDL_GETTER__ PadButtonStatus * playerGetPad(Player * player);
 
 /*
  * NAME :		playerPadGetButton
@@ -457,7 +458,7 @@ PadButtonStatus * playerGetPad(Player * player);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-int playerPadGetButton(Player * player, u16 buttonMask);
+__LIBDL_GETTER__ int playerPadGetButton(Player * player, u16 buttonMask);
 
 /*
  * NAME :		playerPadGetButtonDown
@@ -476,7 +477,7 @@ int playerPadGetButton(Player * player, u16 buttonMask);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-int playerPadGetButtonDown(Player * player, u16 buttonMask);
+__LIBDL_GETTER__ int playerPadGetButtonDown(Player * player, u16 buttonMask);
 
 /*
  * NAME :		playerPadGetButtonUp
@@ -495,6 +496,6 @@ int playerPadGetButtonDown(Player * player, u16 buttonMask);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-int playerPadGetButtonUp(Player * player, u16 buttonMask);
+__LIBDL_GETTER__ int playerPadGetButtonUp(Player * player, u16 buttonMask);
 
 #endif // _LIBDL_PLAYER_H_

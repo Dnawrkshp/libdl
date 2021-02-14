@@ -11,11 +11,12 @@
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
 
-#ifndef _GAME_H_
-#define _GAME_H_
+#ifndef _LIBDL_GAME_H_
+#define _LIBDL_GAME_H_
 
 #include <tamtypes.h>
 #include "gamesettings.h"
+#include "common.h"
 
 
 //--------------------------------------------------------
@@ -55,42 +56,6 @@ typedef struct ScoreboardItem
 } ScoreboardItem;
 
 
-/*
- * NAME :		showPopup
- * 
- * DESCRIPTION :
- * 			Shows a popup with the given text to the given local player.
- * 
- * NOTES :
- * 
- * ARGS : 
- *      localPlayerIndex    :               Local player to show popup for.
- *      message             :               Message to show.
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-void showPopup(int localPlayerIndex, const char * message);
-
-/*
- * NAME :		showHelpPopup
- * 
- * DESCRIPTION :
- * 			Shows a help popup with the given text to the given local player.
- * 
- * NOTES :
- * 
- * ARGS : 
- *      localPlayerIndex    :               Local player to show popup for.
- *      message             :               Message to show.
- *      seconds             :               How many seconds to show the popup for.
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-void showHelpPopup(int localPlayerIndex, const char * message, int seconds);
 
 /*
  * NAME :		setWinner
@@ -108,10 +73,10 @@ void showHelpPopup(int localPlayerIndex, const char * message, int seconds);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-void setWinner(int teamOrPlayerId, int isTeam);
+__LIBDL_SETTER__ void gameSetWinner(int teamOrPlayerId, int isTeam);
 
 /*
- * NAME :		endGame
+ * NAME :		gameEnd
  * 
  * DESCRIPTION :
  * 			End game.
@@ -125,10 +90,10 @@ void setWinner(int teamOrPlayerId, int isTeam);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-void endGame(int reason);
+void gameEnd(int reason);
 
 /*
- * NAME :		isInGame
+ * NAME :		gameIsIn
  * 
  * DESCRIPTION :
  * 			Whether the client is currently in a game.
@@ -141,10 +106,10 @@ void endGame(int reason);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-int isInGame(void);
+__LIBDL_GETTER__ int gameIsIn(void);
 
 /*
- * NAME :		hasGameEnded
+ * NAME :		gameHasEnded
  * 
  * DESCRIPTION :
  * 			Whether the game has ended and/or is ending.
@@ -157,10 +122,10 @@ int isInGame(void);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-int hasGameEnded(void);
+__LIBDL_GETTER__ int gameHasEnded(void);
 
 /*
- * NAME :		getGameTime
+ * NAME :		gameGetTime
  * 
  * DESCRIPTION :
  * 			Gets the current game time in milliseconds.
@@ -173,10 +138,10 @@ int hasGameEnded(void);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-int getGameTime(void);
+__LIBDL_GETTER__ int gameGetTime(void);
 
 /*
- * NAME :		getGameFinishedExitTime
+ * NAME :		gameGetFinishedExitTime
  * 
  * DESCRIPTION :
  * 			Gets the time when to leave after the game has ended.
@@ -190,10 +155,10 @@ int getGameTime(void);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-int getGameFinishedExitTime(void);
+__LIBDL_GETTER__ int gameGetFinishedExitTime(void);
 
 /*
- * NAME :		getDeathHeight
+ * NAME :		gameGetDeathHeight
  * 
  * DESCRIPTION :
  * 			Gets the level's death height.
@@ -206,10 +171,10 @@ int getGameFinishedExitTime(void);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-float getDeathHeight(void);
+__LIBDL_GETTER__ float gameGetDeathHeight(void);
 
 /*
- * NAME :		setDeathHeight
+ * NAME :		gameSetDeathHeight
  * 
  * DESCRIPTION :
  * 			Sets the level's death height.
@@ -222,10 +187,10 @@ float getDeathHeight(void);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-void setDeathHeight(float height);
+__LIBDL_SETTER__ void gameSetDeathHeight(float height);
 
 /*
- * NAME :		getPlayerGameStats
+ * NAME :		gameGetPlayerStats
  * 
  * DESCRIPTION :
  * 			Gets all the player stats relevant to the current game.
@@ -239,10 +204,10 @@ void setDeathHeight(float height);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-PlayerGameStats * getPlayerGameStats(void);
+__LIBDL_GETTER__ PlayerGameStats * gameGetPlayerStats(void);
 
 /*
- * NAME :		getTeamStatCaps
+ * NAME :		gameGetTeamStatCaps
  * 
  * DESCRIPTION :
  * 			Returns the collection of team flag captures.
@@ -255,10 +220,10 @@ PlayerGameStats * getPlayerGameStats(void);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-u8 * getTeamStatCaps(void);
+__LIBDL_GETTER__ u8 * gameGetTeamStatCaps(void);
 
 /*
- * NAME :		getPlayerWeaponStats
+ * NAME :		gameGetPlayerWeaponStats
  * 
  * DESCRIPTION :
  * 			Gets all the player weapon stats.
@@ -271,7 +236,7 @@ u8 * getTeamStatCaps(void);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-PlayerWeaponStats * getPlayerWeaponStats(void);
+__LIBDL_GETTER__ PlayerWeaponStats * gameGetPlayerWeaponStats(void);
 
 /*
  * NAME :		gameGetRawTimeLimit
@@ -287,6 +252,6 @@ PlayerWeaponStats * getPlayerWeaponStats(void);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-int gameGetRawTimeLimit(void);
+__LIBDL_GETTER__ int gameGetRawTimeLimit(void);
 
-#endif // _GAME_H_
+#endif // _LIBDL_GAME_H_

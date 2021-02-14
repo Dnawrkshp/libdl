@@ -14,6 +14,8 @@
 #ifndef _HUD_H_
 #define _HUD_H_
 
+#include "common.h"
+
 /*
  * NAME :		PlayerHUDFlags
  * 
@@ -46,7 +48,7 @@ typedef union PlayerHUDFlags
 
 
 /*
- * NAME :		getPlayerHUDFlags
+ * NAME :		hudGetPlayerFlags
  * 
  * DESCRIPTION :
  * 			Gets the respective local player's HUD flags object.
@@ -61,6 +63,6 @@ typedef union PlayerHUDFlags
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-PlayerHUDFlags * getPlayerHUDFlags(int localPlayerIndex);
+__LIBDL_GETTER__ PlayerHUDFlags * hudGetPlayerFlags(int localPlayerIndex);
 
 #endif // _HUD_H_

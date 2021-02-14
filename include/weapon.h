@@ -14,6 +14,8 @@
 #ifndef _WEAPON_H_
 #define _WEAPON_H_
 
+#include "common.h"
+
 /*
  *
  */
@@ -184,7 +186,7 @@ int weaponSlotToId(int slotId);
 
 
 /*
- * NAME :		setWeaponDamage
+ * NAME :		weaponSetDamage
  * 
  * DESCRIPTION :
  * 			Sets the damage of the given weapon at the given level.
@@ -200,7 +202,7 @@ int weaponSlotToId(int slotId);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-void setWeaponDamage(int weaponId, int level, float damage);
+void weaponSetDamage(int weaponId, int level, float damage);
 
 
 #endif // _WEAPON_H_

@@ -11,6 +11,7 @@
 #define _LIBDL_SPAWNPOINT_H_
 
 #include "math3d.h"
+#include "common.h"
 
 /*
  * NAME :		SpawnPoint
@@ -30,7 +31,7 @@ typedef struct SpawnPoint
 } SpawnPoint;
 
 /*
- * NAME :		getSpawnPointCount
+ * NAME :		spawnPointGetCount
  * 
  * DESCRIPTION :
  * 			
@@ -43,10 +44,10 @@ typedef struct SpawnPoint
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-int getSpawnPointCount();
+__LIBDL_GETTER__ int spawnPointGetCount();
 
 /*
- * NAME :		getHillPointCount
+ * NAME :		hillPointGetCount
  * 
  * DESCRIPTION :
  * 			
@@ -59,10 +60,10 @@ int getSpawnPointCount();
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-short getHillPointCount();
+__LIBDL_GETTER__ short hillPointGetCount();
 
 /*
- * NAME :		setHillPointCount
+ * NAME :		hillPointSetCount
  * 
  * DESCRIPTION :
  * 			
@@ -75,10 +76,10 @@ short getHillPointCount();
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-void setHillPointCount(short count);
+__LIBDL_SETTER__ void hillPointSetCount(short count);
 
 /*
- * NAME :		getHillPointIndex
+ * NAME :		hillPointGetIndex
  * 
  * DESCRIPTION :
  * 			
@@ -91,10 +92,10 @@ void setHillPointCount(short count);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-int getHillPointIndex(int id);
+__LIBDL_GETTER__ int hillPointGetIndex(int id);
 
 /*
- * NAME :		setHillPointIndex
+ * NAME :		hillPointSetIndex
  * 
  * DESCRIPTION :
  * 			
@@ -107,10 +108,10 @@ int getHillPointIndex(int id);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-void setHillPointIndex(int id, int value);
+__LIBDL_SETTER__ void hillPointSetIndex(int id, int value);
 
 /*
- * NAME :		getSpawnPoint
+ * NAME :		spawnPointGet
  * 
  * DESCRIPTION :
  * 			
@@ -123,10 +124,10 @@ void setHillPointIndex(int id, int value);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-SpawnPoint * getSpawnPoint(int index);
+__LIBDL_GETTER__ SpawnPoint * spawnPointGet(int index);
 
 /*
- * NAME :		setSpawnPoint
+ * NAME :		spawnPointSet
  * 
  * DESCRIPTION :
  * 			
@@ -139,6 +140,6 @@ SpawnPoint * getSpawnPoint(int index);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-void setSpawnPoint(SpawnPoint * sp, int index);
+__LIBDL_SETTER__ void spawnPointSet(SpawnPoint * sp, int index);
 
 #endif // _LIBDL_SPAWNPOINT_H_

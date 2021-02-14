@@ -15,6 +15,7 @@
 #define _GAMESETTINGS_H_
 
 #include <tamtypes.h>
+#include "common.h"
 
 /*
  * Maximum number of players in a game.
@@ -118,7 +119,7 @@ typedef struct GameSettings
 } GameSettings;
 
 /*
- * NAME :		getGameSettings
+ * NAME :		gameGetSettings
  * 
  * DESCRIPTION :
  * 			Returns a pointer to the active tNW_GameSettings object.
@@ -132,10 +133,10 @@ typedef struct GameSettings
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-GameSettings * getGameSettings(void);
+__LIBDL_GETTER__ GameSettings * gameGetSettings(void);
 
 /*
- * NAME :		getGameRespawnTime
+ * NAME :		gameGetRespawnTime
  * 
  * DESCRIPTION :
  * 			Gets the game's respawn timer setting.
@@ -148,10 +149,10 @@ GameSettings * getGameSettings(void);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-u8 getGameRespawnTime(void);
+__LIBDL_GETTER__ u8 gameGetRespawnTime(void);
 
 /*
- * NAME :		setGameRespawnTime
+ * NAME :		gameSetRespawnTime
  * 
  * DESCRIPTION :
  * 			Sets the game's respawn timer setting.
@@ -164,10 +165,10 @@ u8 getGameRespawnTime(void);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-void setGameRespawnTime(u8 seconds);
+__LIBDL_SETTER__ void gameSetRespawnTime(u8 seconds);
 
 /*
- * NAME :		getGameTimeLimit
+ * NAME :		gameGetTimeLimit
  * 
  * DESCRIPTION :
  * 			Gets the game's time limit in minutes.
@@ -180,10 +181,10 @@ void setGameRespawnTime(u8 seconds);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-u8 getGameTimeLimit(void);
+__LIBDL_GETTER__ u8 gameGetTimeLimit(void);
 
 /*
- * NAME :		setGameTimeLimit
+ * NAME :		gameSetTimeLimit
  * 
  * DESCRIPTION :
  * 			Sets the game's time limit in minutes.
@@ -196,10 +197,10 @@ u8 getGameTimeLimit(void);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-void setGameTimeLimit(u8 minutes);
+__LIBDL_SETTER__ void gameSetTimeLimit(u8 minutes);
 
 /*
- * NAME :		getGameSurvivor
+ * NAME :		gameGetSurvivor
  * 
  * DESCRIPTION :
  * 			Gets the game's survivor flag (no respawning)
@@ -212,10 +213,10 @@ void setGameTimeLimit(u8 minutes);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-u8 getGameSurvivor(void);
+__LIBDL_GETTER__ u8 gameGetSurvivor(void);
 
 /*
- * NAME :		setGameSurvivor
+ * NAME :		gameSetSurvivor
  * 
  * DESCRIPTION :
  * 			Sets the game's survivor flag (no respawning)
@@ -228,10 +229,10 @@ u8 getGameSurvivor(void);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-void setGameSurvivor(u8 survivor);
+__LIBDL_SETTER__ void gameSetSurvivor(u8 survivor);
 
 /*
- * NAME :		getGameKillsToWin
+ * NAME :		gameGetKillsToWin
  * 
  * DESCRIPTION :
  * 			Gets the game's kills to win target.
@@ -244,10 +245,10 @@ void setGameSurvivor(u8 survivor);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-u8 getGameKillsToWin(void);
+__LIBDL_GETTER__ u8 gameGetKillsToWin(void);
 
 /*
- * NAME :		setGameKillsToWin
+ * NAME :		gameSetKillsToWin
  * 
  * DESCRIPTION :
  * 			Sets the game's kills to win target.
@@ -260,10 +261,10 @@ u8 getGameKillsToWin(void);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-void setGameKillsToWin(u8 kills);
+__LIBDL_SETTER__ void gameSetKillsToWin(u8 kills);
 
 /*
- * NAME :		flagSetPickupDistance
+ * NAME :		gameFlagSetPickupDistance
  * 
  * DESCRIPTION :
  * 			Sets the distance from a flag a player can pick up or save it.
@@ -276,6 +277,6 @@ void setGameKillsToWin(u8 kills);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-void flagSetPickupDistance(float distance);
+__LIBDL_SETTER__ void gameFlagSetPickupDistance(float distance);
 
 #endif // _GAMESETTINGS_H_

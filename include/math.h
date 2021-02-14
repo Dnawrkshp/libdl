@@ -14,6 +14,8 @@
 #ifndef _MATH_H_
 #define _MATH_H_
 
+#include "common.h"
+
 //--------------------------------------------------------
 #define MATH_PI                         ((float)3.141596)
 #define MATH_TAU                        (MATH_PI * (float)2.0)
@@ -23,20 +25,20 @@
 #define MATH_DEG2RAD                    (MATH_PI / (float)180)
 
 //--------------------------------------------------------
-float cosf(float theta);
-float sinf(float theta);
-float acosf(float v);
-float asinf(float v);
-float sqrtf(float f);
-float powf(float base, float exp);
-float fabsf(float f);
-float lerpf(float a, float b, float t);
-float signf(float a);
-float maxf(float a, float b);
-float lerpfAngle(float a, float b, float t);
-float clamp(float v, float min, float max);
-float clampAngle(float theta);
-double fmod(double x, double y);
-float atan2f(float y, float x);
+__LIBDL_INLINE__ float cosf(float theta);
+__LIBDL_INLINE__ float sinf(float theta);
+__LIBDL_INLINE__ float acosf(float v);
+__LIBDL_INLINE__ float asinf(float v);
+__LIBDL_INLINE__ float sqrtf(float f);
+__LIBDL_INLINE__ float powf(float base, float exp);
+__LIBDL_INLINE__ float fabsf(float f);
+__LIBDL_INLINE__ float lerpf(float a, float b, float t);
+__LIBDL_INLINE__ float signf(float a);
+__LIBDL_INLINE__ float maxf(float a, float b);
+__LIBDL_INLINE__ float lerpfAngle(float a, float b, float t);
+__LIBDL_INLINE__ float clamp(float v, float min, float max);
+__LIBDL_INLINE__ float clampAngle(float theta);
+__LIBDL_INLINE__ double fmod(double x, double y);
+__LIBDL_INLINE__ float atan2f(float y, float x);
 
 #endif // _MATH_H_

@@ -3,6 +3,10 @@
 #include "team.h"
 #include "game.h"
 
+void internal_playerRespawn1(Player *);
+void internal_playerRespawn2(Player *);
+void internal_playerSetPosRot(Player *, VECTOR, VECTOR, int);
+
 /*
  * 
  */
@@ -24,14 +28,6 @@
 #define WEAPON_DATA_START                           (0x001D49C0)
 #define WEAPON_DATA_SIZE                            (0x12B0)
 #define WEAPON_EQUIPSLOT                            ((int*)0x0020C690)
-#define PLAYER_GIVEWEP_FUNC                         (0x00628018)
-
-/*
- * 
- */
-#define PLAYER_SET_POS_ROT_FUNC                     (0x005EB448)
-#define PLAYER_RESPAWN_FUNC                         (0x005E2940)
-#define PLAYER_RESPAWN_FUNC2                        (0x005F72E0)
 
 // 
 extern const PadHistory DefaultPadHistory;
@@ -40,39 +36,33 @@ extern const PadHistory DefaultPadHistory;
 PadHistory PlayerPadHistory[GAME_MAX_PLAYERS];
 
 //--------------------------------------------------------------------------------
-Player ** getPlayers(void)
+Player ** playerGetAll(void)
 {
     return PLAYER_STRUCT_ARRAY;
 }
 
 //--------------------------------------------------------------------------------
-PlayerWeaponData * getPlayerWeaponData(int playerId)
+PlayerWeaponData * playerGetWeaponData(int playerId)
 {
     return (PlayerWeaponData *)(WEAPON_DATA_START + (WEAPON_DATA_SIZE * playerId));
 }
 
 //--------------------------------------------------------------------------------
-void setLocalPlayerEquipslot(int localPlayerId, int slot, int weaponId)
+void playerSetLocalEquipslot(int localPlayerId, int slot, int weaponId)
 {
     int * equipslots = WEAPON_EQUIPSLOT;
     equipslots[slot + (localPlayerId * 3)] = weaponId;
 }
 
 //--------------------------------------------------------------------------------
-void giveWeapon(Player * player, int weaponId, int weaponLevel)
-{
-    ((void (*)(u32, int, int, int))PLAYER_GIVEWEP_FUNC)(player->WeaponHeldDataPointer, weaponId, weaponLevel, 1);
-}
-
-//--------------------------------------------------------------------------------
 void playerRespawn(Player * player)
 {
-    ((void (*)(Player *))PLAYER_RESPAWN_FUNC2)(player);
-    ((void (*)(Player *))PLAYER_RESPAWN_FUNC)(player);
+    internal_playerRespawn2(player);
+    internal_playerRespawn1(player);
 }
 
 //--------------------------------------------------------------------------------
-void changeWeapon(Player * player, int weaponId)
+void playerSetWeapon(Player * player, int weaponId)
 {
     if (!player)
         return;
@@ -81,7 +71,7 @@ void changeWeapon(Player * player, int weaponId)
 }
 
 //--------------------------------------------------------------------------------
-void changeTeam(Player * player, int teamId)
+void playerSetTeam(Player * player, int teamId)
 {
     if (!player)
         return;
@@ -94,7 +84,7 @@ void changeTeam(Player * player, int teamId)
 }
 
 //--------------------------------------------------------------------------------
-int isLocal(Player * player)
+int playerIsLocal(Player * player)
 {
     return (int)player >= 0x00300000 && (int)player <= 0x00400000;
 }
@@ -102,7 +92,7 @@ int isLocal(Player * player)
 //--------------------------------------------------------------------------------
 void playerSetPosRot(Player * player, VECTOR p, VECTOR r)
 {
-    ((void (*)(Player *, VECTOR, VECTOR, int))PLAYER_SET_POS_ROT_FUNC)(player, p, r, 0);
+    internal_playerSetPosRot(player, p, r, 0);
 }
 
 //--------------------------------------------------------------------------------
@@ -111,7 +101,7 @@ PadButtonStatus * playerGetPad(Player * player)
     if (!player)
         return 0;
 
-    if (isLocal(player))
+    if (playerIsLocal(player))
     {
         return player->Paddata;
     }
@@ -131,11 +121,11 @@ void playerPadUpdate(void)
     int i;
     PadButtonStatus * playerPad;
     struct PadHistory * padHistory;
-    Player ** players = getPlayers();
+    Player ** players = playerGetAll();
     Player * player;
 
     // Update player pad in game
-    if (isInGame())
+    if (gameIsIn())
     {
         for (i = 0; i < GAME_MAX_PLAYERS; ++i)
         {

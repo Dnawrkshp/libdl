@@ -11,10 +11,11 @@
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
 
-#ifndef _CHEATS_H_
-#define _CHEATS_H_
+#ifndef _LIBDL_CHEATS_H_
+#define _LIBDL_CHEATS_H_
 
 #include <tamtypes.h>
+#include "common.h"
 
 /*
  * Weather ids
@@ -52,12 +53,12 @@ enum ColorblindModes
 /*
  *
  */
-void cheatsApplyNoPacks(void);
+__LIBDL_SETTER__ void cheatsApplyNoPacks(void);
 
 /*
  *
  */
-void cheatsApplyNoV2s(void);
+__LIBDL_SETTER__ void cheatsApplyNoV2s(void);
 
 /*
  *
@@ -73,7 +74,7 @@ void cheatsApplyMirrorWorld(int isOn);
 /*
  *
  */
-void cheatsApplyColorblindMode(u8 mode);
+__LIBDL_SETTER__ void cheatsApplyColorblindMode(u8 mode);
 
 /*
  *
@@ -81,4 +82,4 @@ void cheatsApplyColorblindMode(u8 mode);
 void cheatsApplyWeather(u8 weatherId);
 
 
-#endif // _CHEATS_H_
+#endif // _LIBDL_CHEATS_H_

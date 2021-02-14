@@ -63,7 +63,7 @@ int cheatsDisableHealthboxes(void)
     int count = 0;
 
     // Iterate through mobys and disable healthboxes
-	Moby ** mobiesArray = getLoadedMobies();
+	Moby ** mobiesArray = mobyGetLoaded();
 	Moby * currentMoby;
 	while ((currentMoby = *mobiesArray))
 	{
@@ -104,7 +104,7 @@ void cheatsApplyMirrorWorld(int isOn)
     // Apply
     CHEAT_MIRROR_WORLD = isOn ? 1 : 0;
     
-    if (isInGame())
+    if (gameIsIn())
     {
         // Update
         CHEAT_UPDATE_FUNC(0);

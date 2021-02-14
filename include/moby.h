@@ -16,6 +16,7 @@
 
 #include <tamtypes.h>
 #include "math3d.h"
+#include "common.h"
 
 //--------------------------------------------------------
 enum MobyId
@@ -463,17 +464,17 @@ typedef struct Moby
 /*
  * Returns the collection of pointers to each loaded moby.
  */
-Moby ** getLoadedMobies(void);
+__LIBDL_GETTER__ Moby ** mobyGetLoaded(void);
 
 /*
  * Spawns a moby with the given id and properties size.
  */
-Moby * spawnMoby(int id, int propSize);
+Moby * mobySpawn(int id, int propSize);
 
 /*
  * Returns pointer to water moby if it exists.
  */
-Moby * getWaterMoby(void);
+__LIBDL_GETTER__ Moby * mobyGetWater(void);
 
 /*
  * Destroys the given moby.

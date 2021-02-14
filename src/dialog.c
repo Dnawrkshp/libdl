@@ -1,8 +1,11 @@
 #include "game.h"
 #include "dialog.h"
 
+void internal_dialogPlaySound_inGame(u64, u64, u64, u64, float, float, float, float);
+void internal_dialogPlaySound_inLobby(u64, u64);
+
 /*
- * NAME :		playDialogSound
+ * NAME :		dialogPlaySound
  * 
  * DESCRIPTION :
  * 			Plays the given dialog sound.
@@ -17,14 +20,14 @@
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-void playDialogSound(int dialogId, int arg2)
+void dialogPlaySound(int dialogId, int arg2)
 {
-    if (isInGame())
+    if (gameIsIn())
     {
-        ((void (*)(u64, u64, u64, u64, float, float, float, float))0x004E3688)(dialogId, arg2, 2, 0, 0, 1, 0, 64);
+        internal_dialogPlaySound_inGame(dialogId, arg2, 2, 0, 0, 1, 0, 64);
     }
     else
     {
-        ((void (*)(u64, u64))0x5C97D8)(dialogId, arg2);
+        internal_dialogPlaySound_inLobby(dialogId, arg2);
     }
 }

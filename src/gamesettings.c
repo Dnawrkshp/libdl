@@ -37,194 +37,52 @@
  */
 #define GAME_FLAG_PICKUP_SQRDISTANCE            (0x00418A84)
 
-/*
- * NAME :		getGameSettings
- * 
- * DESCRIPTION :
- * 			Returns a pointer to the active tNW_GameSettings object.
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- *          Returns NULL if no lobby.
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-GameSettings * getGameSettings(void)
+GameSettings * gameGetSettings(void)
 {
     return GLOBAL_GAMESETTINGS;
 }
 
-/*
- * NAME :		getGameRespawnTime
- * 
- * DESCRIPTION :
- * 			Gets the game's respawn timer setting.
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-u8 getGameRespawnTime(void)
+u8 gameGetRespawnTime(void)
 {
     return GAME_RESPAWN_TIME;
 }
 
-/*
- * NAME :		setGameRespawnTime
- * 
- * DESCRIPTION :
- * 			Sets the game's respawn timer setting.
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-void setGameRespawnTime(u8 seconds)
+void gameSetRespawnTime(u8 seconds)
 {
     GAME_RESPAWN_TIME = seconds;
 }
 
-/*
- * NAME :		getGameTimeLimit
- * 
- * DESCRIPTION :
- * 			Gets the game's time limit in minutes.
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-u8 getGameTimeLimit(void)
+u8 gameGetTimeLimit(void)
 {
     return GAME_TIMELIMT_MINUTES;
 }
 
-/*
- * NAME :		setGameTimeLimit
- * 
- * DESCRIPTION :
- * 			Sets the game's time limit in minutes.
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-void setGameTimeLimit(u8 minutes)
+void gameSetTimeLimit(u8 minutes)
 {
     GAME_TIMELIMT_MINUTES = minutes;
 }
 
-/*
- * NAME :		getGameSurvivor
- * 
- * DESCRIPTION :
- * 			Gets the game's survivor flag (no respawning)
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
 u8 getGameSurvivor(void)
 {
     return GAME_SURVIVOR;
 }
 
-/*
- * NAME :		setGameSurvivor
- * 
- * DESCRIPTION :
- * 			Sets the game's survivor flag (no respawning)
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-void setGameSurvivor(u8 survivor)
+void gameSetSurvivor(u8 survivor)
 {
     GAME_SURVIVOR = survivor;
 }
 
-
-/*
- * NAME :		getGameKillsToWin
- * 
- * DESCRIPTION :
- * 			Gets the game's kills to win target.
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-u8 getGameKillsToWin(void)
+u8 gameGetKillsToWin(void)
 {
     return GAME_KILLS_TO_WIN;
 }
 
-/*
- * NAME :		setGameKillsToWin
- * 
- * DESCRIPTION :
- * 			Sets the game's kills to win target.
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-void setGameKillsToWin(u8 kills)
+void gameSetKillsToWin(u8 kills)
 {
     GAME_KILLS_TO_WIN = kills;
 }
 
-/*
- * NAME :		flagSetPickupDistance
- * 
- * DESCRIPTION :
- * 			Sets the distance from a flag a player can pick up or save it.
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-void flagSetPickupDistance(float distance)
+void gameFlagSetPickupDistance(float distance)
 {
     // We're actually setting the square distance
     asm __volatile(
