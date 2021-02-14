@@ -60,3 +60,8 @@ dkms.conf
 *.id2
 *.nam
 *.til
+
+# Test
+bin/
+obj/
+lib/
