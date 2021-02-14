@@ -27,10 +27,10 @@ $(EE_OBJS_DIR)%.o : $(EE_SRC_DIR)%.S
 	$(EE_C_COMPILE) -c $< -o $@
 
 install: all
-	mkdir -p $(DESTDIR)$(PS2SDK)/ports/libdl/include
+	mkdir -p $(DESTDIR)$(PS2SDK)/ports/include/libdl
 	mkdir -p $(DESTDIR)$(PS2SDK)/ports/lib
 	cp -f $(EE_LIB) $(DESTDIR)$(PS2SDK)/ports/lib
-	cp -f include/*.h $(DESTDIR)$(PS2SDK)/ports/libdl/include
+	cp -f include/*.h $(DESTDIR)$(PS2SDK)/ports/include/libdl
 
 clean:
 	rm -f -r $(EE_OBJS_DIR)
