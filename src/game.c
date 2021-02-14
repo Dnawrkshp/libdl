@@ -82,23 +82,7 @@ void internal_gameEnd(int);
  */
 #define GAME_SCOREBOARD_ITEM_COUNT          (*(u32*)0x002F9FCC)
 
-/*
- * NAME :		setWinner
- * 
- * DESCRIPTION :
- * 			Set the winning team/player
- * 
- * NOTES :
- * 
- * ARGS : 
- *      teamOrPlayerId      :               Team/player id to set
- *      isTeam              :               Indicates if the given the winner is a team or player.
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-void setWinner(int teamOrPlayerId, int isTeam)
+void gameSetWinner(int teamOrPlayerId, int isTeam)
 {
     GAME_WINNER_TEAM_ID = teamOrPlayerId;
     GAME_WINNER_PLAYER_ID = isTeam ? -1 : teamOrPlayerId;
