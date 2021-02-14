@@ -11,8 +11,8 @@
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
 
-#ifndef _MOBY_H_
-#define _MOBY_H_
+#ifndef _LIBDL_MOBY_H_
+#define _LIBDL_MOBY_H_
 
 #include <tamtypes.h>
 #include "math3d.h"
@@ -486,4 +486,4 @@ void mobyDestroy(Moby * moby);
  */
 void mobyUpdateTransform(Moby * moby);
 
-#endif // _MOBY_H_
+#endif // _LIBDL_MOBY_H_

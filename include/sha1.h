@@ -21,13 +21,13 @@
 # Review ps2sdk README & LICENSE files for further details.
 */
 
-#ifndef _SHA1_H_
-#define _SHA1_H_
+#ifndef _LIBDL_SHA1_H_
+#define _LIBDL_SHA1_H_
 
 /*
  * Computes the SHA1 hash of the input and stores outSize number of bytes of the hash in the output.
  */
 int sha1(const void * inBuffer, int inSize, void * outBuffer, int outSize);
 
-#endif // _SHA1_H_
+#endif // _LIBDL_SHA1_H_
 

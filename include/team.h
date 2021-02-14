@@ -11,8 +11,8 @@
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
 
-#ifndef _TEAM_H_
-#define _TEAM_H_
+#ifndef _LIBDL_TEAM_H_
+#define _LIBDL_TEAM_H_
 
 #include <tamtypes.h>
 #include "gamesettings.h"
@@ -37,4 +37,4 @@ enum TEAM_IDS
 
 const u32 TEAM_COLORS[11];
 
-#endif // _TEAM_H_
+#endif // _LIBDL_TEAM_H_

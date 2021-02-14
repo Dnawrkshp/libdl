@@ -11,8 +11,8 @@
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
 
-#ifndef _WEAPON_H_
-#define _WEAPON_H_
+#ifndef _LIBDL_WEAPON_H_
+#define _LIBDL_WEAPON_H_
 
 #include "common.h"
 
@@ -205,4 +205,4 @@ int weaponSlotToId(int slotId);
 void weaponSetDamage(int weaponId, int level, float damage);
 
 
-#endif // _WEAPON_H_
+#endif // _LIBDL_WEAPON_H_

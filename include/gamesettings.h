@@ -11,8 +11,8 @@
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
 
-#ifndef _GAMESETTINGS_H_
-#define _GAMESETTINGS_H_
+#ifndef _LIBDL_GAMESETTINGS_H_
+#define _LIBDL_GAMESETTINGS_H_
 
 #include <tamtypes.h>
 #include "common.h"
@@ -279,4 +279,4 @@ __LIBDL_SETTER__ void gameSetKillsToWin(u8 kills);
  */
 __LIBDL_SETTER__ void gameFlagSetPickupDistance(float distance);
 
-#endif // _GAMESETTINGS_H_
+#endif // _LIBDL_GAMESETTINGS_H_

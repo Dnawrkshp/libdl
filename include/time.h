@@ -11,10 +11,10 @@
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
 
-#ifndef _TIME_H_
-#define _TIME_H_
+#ifndef _LIBDL_TIME_H_
+#define _LIBDL_TIME_H_
 
 #define TIME_SECOND             (1000)
 #define TIME_MINUTE             (TIME_SECOND * 60)
 
-#endif // _TIME_H_
+#endif // _LIBDL_TIME_H_

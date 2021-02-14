@@ -21,8 +21,8 @@
 # Review ps2sdk README & LICENSE files for further details.
 */
 
-#ifndef _PAD_H
-#define _PAD_H
+#ifndef _LIBDL_PAD_H
+#define _LIBDL_PAD_H
 
 #include <tamtypes.h>
 #include "common.h"
@@ -155,4 +155,4 @@ __LIBDL_GETTER__ int padGetButtonUp(int port, u16 buttonMask);
  */
 __LIBDL_SETTER__ void padResetInput(int port);
 
-#endif // _PAD_H
+#endif // _LIBDL_PAD_H

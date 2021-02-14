@@ -11,8 +11,8 @@
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
 
-#ifndef _HUD_H_
-#define _HUD_H_
+#ifndef _LIBDL_HUD_H_
+#define _LIBDL_HUD_H_
 
 #include "common.h"
 
@@ -65,4 +65,4 @@ typedef union PlayerHUDFlags
  */
 __LIBDL_GETTER__ PlayerHUDFlags * hudGetPlayerFlags(int localPlayerIndex);
 
-#endif // _HUD_H_
+#endif // _LIBDL_HUD_H_

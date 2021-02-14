@@ -11,8 +11,8 @@
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
 
-#ifndef _MATH_H_
-#define _MATH_H_
+#ifndef _LIBDL_MATH_H_
+#define _LIBDL_MATH_H_
 
 #include "common.h"
 
@@ -41,4 +41,4 @@ __LIBDL_INLINE__ float clampAngle(float theta);
 __LIBDL_INLINE__ double fmod(double x, double y);
 __LIBDL_INLINE__ float atan2f(float y, float x);
 
-#endif // _MATH_H_
+#endif // _LIBDL_MATH_H_
