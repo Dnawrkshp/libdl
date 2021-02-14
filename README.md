@@ -32,7 +32,7 @@ Building libdl requires an installation of the open source PS2SDK. I recommend u
 
 ## Installing
 
-You can run ```make release``` to install the library into your local PS2SDK lib folder.
+You can run ```make install``` to install the library into your local PS2SDK lib folder.
 
 ## Testing
 
