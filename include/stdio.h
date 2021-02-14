@@ -12,15 +12,19 @@
 
 #include "common.h"
 
-#ifdef DEBUG
-    #define DPRINTF(fmt, ...)       \
-        printf(fmt, __VA_ARGS__);
-#else
-    #define DPRINTF(fmt, ...) 
-#endif
 
 //--------------------------------------------------------
 __LIBDL_INLINE__ int sprintf(char * buffer, const char * format, ...);
 __LIBDL_INLINE__ int printf(const char * format, ...);
+
+
+//--------------------------------------------------------
+#ifdef DEBUG
+    #define DPRINTF(fmt, ...)       \
+        printf("%s"fmt, "", ##__VA_ARGS__);
+#else
+    #define DPRINTF(fmt, ...) 
+#endif
+
 
 #endif // _LIBDL_STDIO_H_
