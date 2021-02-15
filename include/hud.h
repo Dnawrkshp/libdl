@@ -36,7 +36,7 @@ typedef union PlayerHUDFlags
         int BoltCounter : 1;
         int DpadSelect : 1;
         int Minimap : 1;
-        int : 1;
+        int Popup: 1;
         int ConquestScoreboard : 1;
         int ConquestUpgradeSelect : 1;
         int : 1;
