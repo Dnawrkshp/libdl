@@ -12,7 +12,7 @@ EE_INCS := -I../../include
 EE_LDFLAGS = -fno-builtin -nostdlib -nostartfiles -L. -L../../lib
 EE_CFLAGS := -D_PROGRAM_ENTRY=0x$(ADDRESS) -DDEBUG
 
-all: linker $(EE_OBJS_DIR) $(EE_BIN_DIR) $(EE_BIN) code
+all: linker $(EE_OBJS_DIR) $(EE_BIN_DIR) $(EE_BIN)
 
 $(EE_OBJS_DIR):
 	mkdir -p $(EE_OBJS_DIR)
