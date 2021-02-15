@@ -10,9 +10,21 @@
 #define MATH_FMOD_FUNC                  (0x00135C18)
 
 //--------------------------------------------------------
+// -- https://stackoverflow.com/a/28050328
+float cosf(float x)
+{
+    const float tp = 1./(2.*MATH_PI);
+    x *= tp;
+    x -= .25 + floorf(x + .25);
+    x *= 16. * (fabsf(x) - .5);
+    x += .225 * x * (fabsf(x) - 1.);
+    return x;
+}
+
+//--------------------------------------------------------
 float sinf(float theta)
 {
-    return ((float (*)(float))MATH_COSF_FUNC)(clampAngle(theta - (MATH_PI / 2)));
+    return cosf(clampAngle(theta - (MATH_PI / 2)));
 }
 
 //--------------------------------------------------------
