@@ -44,6 +44,7 @@ void quaternion_fromeuler(VECTOR output, VECTOR input0);
 void quaternion_toeuler(VECTOR output, VECTOR input0);
 void quaternion_lookrotation(VECTOR output, VECTOR input0, VECTOR input1);
 void quaternion_multiply(VECTOR output, VECTOR input0, VECTOR input1);
+void quaternion_multiplyvector(VECTOR output, VECTOR q, VECTOR v);
 void quaternion_frommatrix(VECTOR output, MATRIX input0);
 
 void matrix_fromquaternion(MATRIX output, VECTOR input0);

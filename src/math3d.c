@@ -359,6 +359,27 @@ void quaternion_multiply(VECTOR output, VECTOR input1, VECTOR input0)
 }
 
 //--------------------------------------------------------
+void quaternion_multiplyvector(VECTOR output, VECTOR q, VECTOR v)
+{
+    VECTOR u, temp;
+
+    // Extract the vector part of the quaternion
+    vector_copy(u, q);
+    u[3] = 0;
+
+    // Extract the scalar part of the quaternion
+    float s = q[3];
+
+    // Do the math
+    vector_scale(output, u, vector_innerproduct(u, v) * 2.0);
+    vector_scale(temp, v, s*s - vector_innerproduct(u, u));
+    vector_add(output, output, temp);
+    vector_outerproduct(temp, u, v);
+    vector_scale(temp, temp, s * 2.0);
+    vector_add(output, output, temp);
+}
+
+//--------------------------------------------------------
 void quaternion_frommatrix(VECTOR output, MATRIX input0)
 {
     float t = input0[0] + input0[5] + input0[10];
