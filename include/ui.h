@@ -15,6 +15,7 @@
 enum UiIds
 {
     UI_ID_ONLINE_MAIN_MENU = 0x12C,
+    UI_ID_EDIT_PROFILE = 0x123
 };
 
 /*
