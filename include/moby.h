@@ -479,7 +479,6 @@ typedef struct MobyFunctions
     void * FUNC_1C;
 
 } MobyFunctions;
-// 004F7150 004F7158 00000000 004F7160 00000000 00000000 004F7168 004F9538
 
 /*
  * Spawns a moby with the given id and properties size.
@@ -504,6 +503,6 @@ void mobyUpdateTransform(Moby * moby);
 /*
  * Gets a pointer to the moby functions
  */
-void * mobyGetFunctions(Moby * moby);
+MobyFunctions * mobyGetFunctions(Moby * moby);
 
 #endif // _LIBDL_MOBY_H_
