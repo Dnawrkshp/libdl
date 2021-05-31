@@ -53,17 +53,7 @@ typedef struct Guber
 
 typedef struct GuberMoby
 {
-    union
-    {
-        Gid GID;
-        u32 UID;
-    } Id;
-    int UNK_4;
-    int UNK_8;
-    struct GuberMoby * LastGuber;
-    struct GuberMoby * NextGuber;
-    void * UNK_14;
-
+    Guber Guber;
     Moby * Moby;
     short ModeBits;
     u8 PADDING_0[2];
