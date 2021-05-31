@@ -106,6 +106,6 @@ void guberEventRead(GuberEvent * event, void * dest, int size);
 
 void guberEventWrite(GuberEvent * event, void * src, int size);
 
-u32 guberMobyCreateSpawned(short mobyId, short pvarSize, GuberEvent ** event, Guber * parent);
+GuberMoby * guberMobyCreateSpawned(short mobyId, short pvarSize, GuberEvent ** event, Guber * parent);
 
 #endif // _LIBDL_GUBER_H_
