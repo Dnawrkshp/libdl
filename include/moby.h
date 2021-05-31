@@ -392,7 +392,8 @@ typedef struct Moby
 
     void * ModelPointer;
 
-    char UNK_28[0x08];
+    struct Moby * nextMoby;
+    char UNK_2C[0x04];
     char UNK_30;
     char UNK_31;
 
@@ -460,21 +461,15 @@ typedef struct Moby
 
 } Moby;
 
-
-/*
- * Returns the collection of pointers to each loaded moby.
- */
-__LIBDL_GETTER__ Moby ** mobyGetLoaded(void);
-
 /*
  * Spawns a moby with the given id and properties size.
  */
 Moby * mobySpawn(int id, int propSize);
 
 /*
- * Returns pointer to water moby if it exists.
+ * Returns pointer to the first moby if it exists.
  */
-__LIBDL_GETTER__ Moby * mobyGetWater(void);
+__LIBDL_GETTER__ Moby * mobyGetFirst(void);
 
 /*
  * Destroys the given moby.
