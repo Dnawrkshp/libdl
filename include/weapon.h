@@ -91,6 +91,8 @@ enum WEAPON_IDS
     WEAPON_ID_MINE_LAUNCHER =       6,
     WEAPON_ID_B6 =                  7,
     WEAPON_ID_OMNI_SHIELD =         8,
+    WEAPON_ID_EMP =                 12,
+    WEAPON_ID_HACKER_RAY =          13,
     WEAPON_ID_SWINGSHOT =           14,
     WEAPON_ID_FLAIL =               15
 };
