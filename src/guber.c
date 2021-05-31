@@ -1,12 +1,12 @@
 #include "guber.h"
 
 //--------------------------------------------------------
-#define FIRST_GUBER_PTR                         ((GuberDef**)0x00220710)
+#define FIRST_GUBER_MOBY_PTR                         ((GuberMoby**)0x00220710)
 
 /*
- * Returns the first guber def.
+ * Returns the first guber moby.
  */
-GuberDef * guberGetFirst(void)
+GuberMoby * guberMobyGetFirst(void)
 {
-    return *FIRST_GUBER_PTR;
+    return *FIRST_GUBER_MOBY_PTR;
 }

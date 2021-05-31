@@ -18,6 +18,7 @@
 #include "math3d.h"
 #include "common.h"
 #include "moby.h"
+#include "gid.h"
 
 /*
  * NAME :		GuberDef
@@ -31,60 +32,80 @@
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-typedef struct GuberDef
+
+
+
+typedef struct Guber 
 {
-    /*
-    F6000000 FFFFFFFE 00000001 00000000
-    0035DFFC 0038D648 00000000 00000000
-    00000000 FFFFFFFF FFFFFFFF 00000000
-    00000000 FFFFFFFF FFFFFFFF FFFFFFFF
-    FFFFFFFF FFFFFFFF FFFFFFFF FFFFFFFF
-    00000100
+    union
+    {
+        Gid GID;
+        u32 UID;
+    } Id;
 
-    F6000001 00000000 00000001 0035DFA8
-    0035E050 0038D648 01661180 00000054
-    003CFC00 FFFFFFFF FFFFFFFF 00000001
-    00002867 00000000 FFFFFFFF FFFFFFFF
-    FFFFFFFF 00000000 00000000 FFFFFFFF
-    00000201
+    int MasterHostId;
+    int State;
+    struct Guber * Next;
+    struct Guber * Prev;
+    void * Vtable;
 
-    F6000002 00000000 00000001 0035DFFC
-    0035E0A4 0038D648 01661280 00000054
-    003CFC00 FFFFFFFF FFFFFFFF 00000001
-    00002867 00000000 FFFFFFFF FFFFFFFF
-    FFFFFFFF 00000000 00000000 FFFFFFFF
-    00000201
-    */
+} Guber;
 
-    u32 Id;
+typedef struct GuberMoby
+{
+    union
+    {
+        Gid GID;
+        u32 UID;
+    } Id;
     int UNK_4;
     int UNK_8;
-
-    struct GuberDef * LastGuber;
-    struct GuberDef * NextGuber;
-
+    struct GuberMoby * LastGuber;
+    struct GuberMoby * NextGuber;
     void * UNK_14;
-    Moby * MobyPointer;
 
-    int UNK_1C;
+    Moby * Moby;
+    short ModeBits;
+    u8 PADDING_0[2];
     void * UpdateFunc;
-    int UNK_24;
-    int UNK_28;
-    int UNK_2C;
-    int UNK_30;
-    int UNK_34;
-    int UNK_38;
-    int UNK_3C;
-    int UNK_40;
-    int UNK_44;
-    int UNK_48;
-    int UNK_4C;
-    int UNK_50;
-} GuberDef;
+    int ClientUpdateTime;
+    int TeamNum;
+    int EnableAutoMigrateMaster;
+    int LastMasterMigrateTime;
+    int CurrentMaster;
+    int NextMaster;
+    int MasterTransferTime;
+    int LastMasterMessageTime;
+    int MasterHandler;
+    int AssignedMaster;
+    int LastAssignedTransferMaster;
+    char LastMessageNum;
+    char MessageNum;
+    u8 PADDING_1[2];
+} GuberMoby;
+
+typedef struct GuberEvent
+{
+    u8 NetEvent[0x4C];
+    int NetSendTime;
+    int NetSendTo;
+    u8 NetDataOffset;
+    char MsgSendPending;
+    u8 PADDING[2];
+    void * NextEvent;
+} GuberEvent;
+
+
 
 /*
- * Returns pointer to the first moby if it exists.
+ * Returns pointer to the first GuberMoby if it exists.
  */
-__LIBDL_GETTER__ GuberDef * guberGetFirst(void);
+__LIBDL_GETTER__ GuberMoby * guberMobyGetFirst(void);
+
+void guberEventRead(GuberEvent * event, void * dest, int size);
+
+void guberEventWrite(GuberEvent * event, void * src, int size);
+
+u32 guberMobyCreateSpawned(short mobyId, short pvarSize, GuberEvent ** event, Guber * parent);
 
 #endif // _LIBDL_GUBER_H_

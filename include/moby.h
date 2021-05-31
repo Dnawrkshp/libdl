@@ -18,6 +18,8 @@
 #include "math3d.h"
 #include "common.h"
 
+struct GuberDef;
+
 //--------------------------------------------------------
 enum MobyId
 {
@@ -433,7 +435,7 @@ typedef struct Moby
     char UNK_7C[0x04];
     float UNK_80[4];
 
-    void * ExtraPropertiesPointer;
+    struct GuberDef * GuberDef;
 
     short UNK_94;
     short UNK_96;
@@ -461,6 +463,24 @@ typedef struct Moby
 
 } Moby;
 
+typedef void (*MobyGetInterface_func)(int mobyId, int arg2, int arg3);
+typedef void (*MobyGetGuberObject_func)(Moby * moby);
+typedef void (*MobyEventHandler_func)(Moby * moby, void * eventData);
+
+typedef struct MobyFunctions
+{
+    void * FUNC_00;
+    MobyGetGuberObject_func * GetGuberObject;
+    void * FUNC_08;
+    void * FUNC_0C;
+    MobyGetInterface_func * GetMobyInterface;
+    MobyEventHandler_func * MobyEventHandler;
+    void * GetDamager;
+    void * FUNC_1C;
+
+} MobyFunctions;
+// 004F7150 004F7158 00000000 004F7160 00000000 00000000 004F7168 004F9538
+
 /*
  * Spawns a moby with the given id and properties size.
  */
@@ -480,5 +500,10 @@ void mobyDestroy(Moby * moby);
  * Updates the moby's transform
  */
 void mobyUpdateTransform(Moby * moby);
+
+/*
+ * Gets a pointer to the moby functions
+ */
+void * mobyGetFunctions(Moby * moby);
 
 #endif // _LIBDL_MOBY_H_

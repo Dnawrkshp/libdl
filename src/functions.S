@@ -69,6 +69,7 @@ FUNCTION(McWrite, 0x0013A628)
 FUNCTION(mobySpawn, 0x004F7200)
 FUNCTION(mobyDestroy, 0x004F76A0)
 FUNCTION(mobyUpdateTransform, 0x004FE720)
+FUNCTION(mobyGetFunctions, 0x0051F358)
 
 #--------------------------------------------------------
 #-------------------------- NET -------------------------
@@ -100,3 +101,10 @@ FUNCTION(uiMsgString,  0x004E4180)
 #------------------------ VEHICLE -----------------------
 #--------------------------------------------------------
 FUNCTION(vehicleRemovePlayer, 0x00619140)
+
+#--------------------------------------------------------
+#------------------------ GUBER -------------------------
+#--------------------------------------------------------
+FUNCTION(guberEventRead, 0x00611880)
+FUNCTION(guberEventWrite, 0x00611808)
+FUNCTION(guberMobyCreateSpawned, 0x0061C2B0)
