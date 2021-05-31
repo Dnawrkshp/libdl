@@ -392,7 +392,7 @@ typedef struct Moby
 
     void * ModelPointer;
 
-    struct Moby * nextMoby;
+    struct Moby * NextMoby;
     char UNK_2C[0x04];
     char UNK_30;
     char UNK_31;
