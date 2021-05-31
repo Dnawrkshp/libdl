@@ -82,6 +82,11 @@ void internal_gameEnd(int);
  */
 #define GAME_SCOREBOARD_ITEM_COUNT          (*(u32*)0x002F9FCC)
 
+/*
+ * Id of the game host.
+ */
+#define GAME_HOST_ID                        (*(u8*)0x001723B4)
+
 void gameSetWinner(int teamOrPlayerId, int isTeam)
 {
     GAME_WINNER_TEAM_ID = teamOrPlayerId;
@@ -92,6 +97,11 @@ void gameEnd(int reason)
 {
     if (!gameHasEnded())
         internal_gameEnd(reason);
+}
+
+int gameIsHost(int hostId)
+{
+    return hostId == GAME_HOST_ID;
 }
 
 int gameIsIn(void)

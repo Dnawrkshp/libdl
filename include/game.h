@@ -109,6 +109,22 @@ void gameEnd(int reason);
 __LIBDL_GETTER__ int gameIsIn(void);
 
 /*
+ * NAME :		gameIsHost
+ * 
+ * DESCRIPTION :
+ * 			Whether the given host id is the host of the game.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+int gameIsHost(int hostId);
+
+/*
  * NAME :		gameHasEnded
  * 
  * DESCRIPTION :

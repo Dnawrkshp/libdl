@@ -22,6 +22,7 @@
 #include "math3d.h"
 #include "vehicle.h"
 #include "common.h"
+#include "guber.h"
 
 /*
  * Maximum health of player.
@@ -80,7 +81,8 @@ typedef struct CameraAngle
  */
 typedef struct Player
 {
-    char UNK0[0xA0];                                                // 0x00
+    struct Guber Guber;                                             // 0x00
+    char UNK0[0x88];                                                // 0x18
 
     VECTOR PlayerPosition;                                          // 0xA0
     
