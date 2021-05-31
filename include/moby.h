@@ -18,7 +18,8 @@
 #include "math3d.h"
 #include "common.h"
 
-struct GuberDef;
+struct GuberMoby;
+struct GuberEvent;
 
 //--------------------------------------------------------
 enum MobyId
@@ -435,7 +436,7 @@ typedef struct Moby
     char UNK_7C[0x04];
     float UNK_80[4];
 
-    struct GuberDef * GuberDef;
+    struct GuberMoby * GuberMoby;
 
     short UNK_94;
     short UNK_96;
@@ -465,7 +466,7 @@ typedef struct Moby
 
 typedef void (*MobyGetInterface_func)(int mobyId, int arg2, int arg3);
 typedef void (*MobyGetGuberObject_func)(Moby * moby);
-typedef void (*MobyEventHandler_func)(Moby * moby, void * eventData);
+typedef void (*MobyEventHandler_func)(Moby * moby, struct GuberEvent * event);
 
 typedef struct MobyFunctions
 {
