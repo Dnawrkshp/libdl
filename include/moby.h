@@ -471,11 +471,11 @@ typedef void (*MobyEventHandler_func)(Moby * moby, struct GuberEvent * event);
 typedef struct MobyFunctions
 {
     void * FUNC_00;
-    MobyGetGuberObject_func * GetGuberObject;
+    MobyGetGuberObject_func GetGuberObject;
     void * FUNC_08;
     void * FUNC_0C;
-    MobyGetInterface_func * GetMobyInterface;
-    MobyEventHandler_func * MobyEventHandler;
+    MobyGetInterface_func GetMobyInterface;
+    MobyEventHandler_func MobyEventHandler;
     void * GetDamager;
     void * FUNC_1C;
 
