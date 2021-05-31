@@ -105,4 +105,21 @@ void uiShowPopup(int localPlayerIndex, const char * message);
  */
 void uiShowHelpPopup(int localPlayerIndex, const char * message, int seconds);
 
+/*
+ * NAME :		uiMsgString
+ * 
+ * DESCRIPTION :
+ * 			Returns the string associated with the given text id.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ *      textId              :               Id of the string to return.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+char * uiMsgString(int textId);
+
 #endif // _LIBDL_UI_H_
