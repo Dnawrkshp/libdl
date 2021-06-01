@@ -87,6 +87,11 @@ void internal_gameEnd(int);
  */
 #define GAME_HOST_ID                        (*(u8*)0x001723B4)
 
+/*
+ *
+ */
+#define GAME_DATA                           ((GameData*)0x0036D600)
+
 void gameSetWinner(int teamOrPlayerId, int isTeam)
 {
     GAME_WINNER_TEAM_ID = teamOrPlayerId;
@@ -161,4 +166,9 @@ PlayerWeaponStats * gameGetPlayerWeaponStats(void)
 int gameGetRawTimeLimit(void)
 {
     return GAME_TIME_LIMIT;
+}
+
+GameData* gameGetData(void)
+{
+    return GAME_DATA;
 }

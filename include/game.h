@@ -55,6 +55,35 @@ typedef struct ScoreboardItem
     int Value;
 } ScoreboardItem;
 
+//--------------------------------------------------------
+typedef struct GameData
+{
+    int TimeEnd;
+    int TimeStart;
+    int GameState;
+    int NumTeams;
+    int WinningTeam;
+    int WinningPlayer;
+    int BaseHoldTime;
+    int FragDisplayCount;
+    char FragMsg[0x3C];
+    int GameEndReceived;
+    int GameEndReason;
+    int GameIsOver;
+    int NumNodes;
+    int NumStartPlayers;
+    int NumStartTeams;
+    int MyTotalSquats;
+    int MyTotalTimeSquatted;
+    int MyTotalGangSquats;
+    int TeamCaptain[GAME_MAX_PLAYERS];
+    char PlayerStats[0x4D8];
+    char TeamStats[0xD8];
+    char AllYourBaseGameData[4];
+    char CtfGameData[4];
+    char DeathmatchGameData[4];
+} GameData;
+
 
 
 /*
@@ -269,5 +298,21 @@ __LIBDL_GETTER__ PlayerWeaponStats * gameGetPlayerWeaponStats(void);
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ int gameGetRawTimeLimit(void);
+
+/*
+ * NAME :		gameGetData
+ * 
+ * DESCRIPTION :
+ * 			Gets the game data.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+__LIBDL_GETTER__ GameData* gameGetData(void);
 
 #endif // _LIBDL_GAME_H_
