@@ -3,8 +3,6 @@
 #include "team.h"
 #include "game.h"
 
-void internal_playerRespawn1(Player *);
-void internal_playerRespawn2(Player *);
 void internal_playerSetPosRot(Player *, VECTOR, VECTOR, int);
 
 /*
@@ -52,13 +50,6 @@ void playerSetLocalEquipslot(int localPlayerId, int slot, int weaponId)
 {
     int * equipslots = WEAPON_EQUIPSLOT;
     equipslots[slot + (localPlayerId * 3)] = weaponId;
-}
-
-//--------------------------------------------------------------------------------
-void playerRespawn(Player * player)
-{
-    internal_playerRespawn2(player);
-    internal_playerRespawn1(player);
 }
 
 //--------------------------------------------------------------------------------

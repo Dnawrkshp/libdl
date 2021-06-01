@@ -80,8 +80,7 @@ FUNCTION(internal_netSendMediusAppMessage, 0x01E9E198)
 #------------------------ PLAYER ------------------------
 #--------------------------------------------------------
 FUNCTION(playerGiveWeapon, 0x00628018)
-FUNCTION(internal_playerRespawn1, 0x005F72E0)
-FUNCTION(internal_playerRespawn2, 0x005F72E0)
+FUNCTION(playerRespawn, 0x005E2940)
 FUNCTION(internal_playerSetPosRot, 0x005EB448)
 
 #--------------------------------------------------------
