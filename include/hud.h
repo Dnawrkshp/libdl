@@ -29,21 +29,24 @@
  */
 typedef union PlayerHUDFlags
 {
-    struct 
-    {
-        int Weapons : 1;
-        int Healthbar : 1;
-        int BoltCounter : 1;
-        int DpadSelect : 1;
-        int Minimap : 1;
-        int Popup: 1;
-        int ConquestScoreboard : 1;
-        int ConquestUpgradeSelect : 1;
-        int : 1;
-        int NormalScoreboard : 1;
-        int Meter : 1;
-    };
-    int raw;
+    char UNK_00[4];
+    union {
+        struct 
+        {
+            int Weapons : 1;
+            int Healthbar : 1;
+            int BoltCounter : 1;
+            int DpadSelect : 1;
+            int Minimap : 1;
+            int Popup: 1;
+            int ConquestScoreboard : 1;
+            int ConquestUpgradeSelect : 1;
+            int : 1;
+            int NormalScoreboard : 1;
+            int Meter : 1;
+        };
+        int Raw;
+    } Flags;
 } PlayerHUDFlags;
 
 
