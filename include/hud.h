@@ -27,7 +27,7 @@
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-typedef union PlayerHUDFlags
+typedef struct PlayerHUDFlags
 {
     char UNK_00[4];
     union {
