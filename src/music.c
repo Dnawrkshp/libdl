@@ -1,4 +1,3 @@
-#include "game.h"
 #include "music.h"
 
 void internal_musicPlayTrack_inGame(u64, u64, u64);
@@ -19,6 +18,16 @@ void internal_musicUnpauseTrack_inLobby(void);
  * This is what is used to figure out where to load the tracks from.
  */
 #define MUSIC_LOCATION (*(u32*)0x001CF85C)
+
+/*
+ * Defines which track to start on.
+ */
+#define TRACK_RANGE_MIN (*(u8*)0x0021EC08)
+
+/*
+ * How many tracks to play, starting at TRACK_RANGE_MIN
+ */
+#define TRACK_RANGE_MAX (*(u8*)0x0021EC0C)
 
 #define CURRENT_TRACK (*(u16*)0x00206990)
 
