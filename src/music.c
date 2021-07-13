@@ -11,6 +11,25 @@ void internal_musicUnpauseTrack_inGame(void);
 void internal_musicUnpauseTrack_inLobby(void);
 
 /*
+ * Games music volume setting.
+ */
+#define MUSIC_VOLUME (*(u32*)0x00171D44)
+
+/*
+ * This is what is used to figure out where to load the tracks from.
+ */
+#define MUSIC_LOCATION (*(u32*)0x001CF85C)
+
+#define CURRENT_TRACK (*(u16*)0x00206990)
+
+/*
+ * how long the track is.
+ * Counts down to 0.  If 0, track is done playing.
+ * if 0xBB80, game is loading next track.
+ */
+#define TRACK_DURATION (*(u32*)0x002069A4)
+
+/*
  * NAME :		             musicPlayTrack
  * 
  * DESCRIPTION :
@@ -29,7 +48,7 @@ void internal_musicUnpauseTrack_inLobby(void);
  * 
  * AUTHOR :			         Troy "Agent Moose" Pruitt
  */
-void dialogPlaySound(int TrackNumber, int KeepPlaying)
+void musicPlaySound(int TrackNumber, int KeepPlaying)
 {
     if (gameIsIn())
     {
@@ -55,7 +74,7 @@ void dialogPlaySound(int TrackNumber, int KeepPlaying)
  * 
  * AUTHOR :			         Troy "Agent Moose" Pruitt
  */
-void dialogStopSound(void)
+void musicStopSound(void)
 {
     if (gameIsIn())
     {
@@ -81,7 +100,7 @@ void dialogStopSound(void)
  * 
  * AUTHOR :			         Troy "Agent Moose" Pruitt
  */
-void dialogPauseSound(int arg1)
+void musicPauseSound(int arg1)
 {
     if (gameIsIn())
     {
@@ -107,7 +126,7 @@ void dialogPauseSound(int arg1)
  * 
  * AUTHOR :			         Troy "Agent Moose" Pruitt
  */
-void dialogUnpauseSound(void)
+void musicUnpauseSound(void)
 {
     if (gameIsIn())
     {
@@ -116,5 +135,17 @@ void dialogUnpauseSound(void)
     else
     {
         internal_musicUnpauseTrack_inLobby();
+    }
+}
+
+void musicIsLoaded(void)
+{
+    if (MUSIC_LOCATION != 0)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
     }
 }
