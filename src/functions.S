@@ -58,6 +58,7 @@ FUNCTION(internal_widthFunc_inGame, 0x004D8130)
 FUNCTION(internal_widthFunc_inLobby, 0x005BDC90)
 FUNCTION(internal_drawBox_inGame, 0x005BE610)
 FUNCTION(internal_drawBox_inLobby, 0x00699C08)
+FUNCTION(gfxGetFontWidth, 0x004D8130)
 
 #--------------------------------------------------------
 #---------------------- MEMORY CARD ---------------------
