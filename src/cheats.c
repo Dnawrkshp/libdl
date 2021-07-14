@@ -63,9 +63,8 @@ int cheatsDisableHealthboxes(void)
     int count = 0;
 
     // Iterate through mobys and disable healthboxes
-	Moby ** mobiesArray = mobyGetLoaded();
-	Moby * currentMoby;
-	while ((currentMoby = *mobiesArray))
+	Moby * currentMoby = mobyGetFirst();
+	while (currentMoby)
 	{
 		if (currentMoby->MobyId == MOBY_ID_HEALTH_BOX_MULT)
 		{
@@ -88,7 +87,7 @@ int cheatsDisableHealthboxes(void)
 			}
 		}
 
-		++mobiesArray;
+        currentMoby = currentMoby->NextMoby;
 	}
 
     return count;
