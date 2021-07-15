@@ -114,3 +114,8 @@ FUNCTION(guberEventRead, 0x00611880)
 FUNCTION(guberEventWrite, 0x00611808)
 FUNCTION(guberEventCreateEvent, 0x00611338)
 FUNCTION(guberMobyCreateSpawned, 0x0061C2B0)
+
+#--------------------------------------------------------
+#------------------------ RADAR -------------------------
+#--------------------------------------------------------
+FUNCTION(radarGetBlipIndex, 0x00553b00)
