@@ -55,7 +55,7 @@ void netInstallCustomMsgHandler(u8 id, NET_CALLBACK_DELEGATE callback)
 
 int netSendMediusAppMessage(void * connection, int msgClass, int msgId, int msgSize, void * payload)
 {
-    return internal_netSendMediusAppMessage(0x40, connection, -1, msgClass, msgId, msgSize, payload);
+    return internal_netSendMediusAppMessage(0x40, connection, 0xFFFF, msgClass, msgId, msgSize, payload);
 }
 
 int netBroadcastMediusAppMessage(void * connection, int msgId, int msgSize, void * payload)
