@@ -7,7 +7,8 @@
 #define GET_MEDIUS_APP_HANDLER_HOOK         (*(u32*)0x01EAAB10)
 #define DME_CALLBACK_TABLE                  ((u32*)0x00212148)
 #define NET_LOBBY_CONNECTION                ((void*)(*(u32*)0x001AF91C))
-#define NET_DME_CONNECTION                ((void*)(*(u32*)0x001AF920))
+#define NET_DME_CONNECTION                  ((void*)(*(u32*)0x001AF920))
+#define NET_GLOBAL_CALLBACKS_PTR            ((NET_CALLBACK_DELEGATE*)(*(u32*)0x00211E64))
 
 int internal_netSendMediusAppMessage(int transport, void * connection, long a2, int msgClass, int msgId, int msgSize, void * payload);
 int internal_netBroadcastMediusAppMessage(int transport, void * connection, long a2, int msgId, int msgSize, void * payload);
@@ -18,7 +19,8 @@ int customMsgHandler(void * connection, u64 a1, u64 a2, u8 * data)
 {
     u8 id = data[0];
 
-    NET_CALLBACK_DELEGATE callback = callbacks[id];
+
+    NET_CALLBACK_DELEGATE callback = NET_GLOBAL_CALLBACKS_PTR[id];
     if (callback)
         return 4 + callback(connection, (void*)(data + 4));
     else
@@ -40,8 +42,16 @@ int mediusMsgHandler(u64 a0, u64 a1, u32 * callback, u64 a3, u64 t0)
 
 void installCustomMsgHook(void)
 {
-    GET_MEDIUS_APP_HANDLER_HOOK = 0x08000000 | ((u32)&mediusMsgHandler / 4);
-    *(DME_CALLBACK_TABLE + NET_CUSTOM_MESSAGE_ID) = (u32)&customMsgHandler;
+    // set static global callbacks ptr to ours if empty
+    if (NET_GLOBAL_CALLBACKS_PTR == 0)
+        NET_GLOBAL_CALLBACKS_PTR = (NET_CALLBACK_DELEGATE*)callbacks;
+    
+    // only update handlers if we're the callback handler
+    if (NET_GLOBAL_CALLBACKS_PTR == (NET_CALLBACK_DELEGATE*)callbacks)
+    {
+        GET_MEDIUS_APP_HANDLER_HOOK = 0x08000000 | ((u32)&mediusMsgHandler / 4);
+        *(DME_CALLBACK_TABLE + NET_CUSTOM_MESSAGE_ID) = (u32)&customMsgHandler;
+    }
 }
 
 void netInstallCustomMsgHandler(u8 id, NET_CALLBACK_DELEGATE callback)
@@ -50,7 +60,7 @@ void netInstallCustomMsgHandler(u8 id, NET_CALLBACK_DELEGATE callback)
     installCustomMsgHook();
 
     // install callback
-    callbacks[id] = callback;
+    NET_GLOBAL_CALLBACKS_PTR[id] = callback;
 }
 
 int netSendMediusAppMessage(void * connection, int msgClass, int msgId, int msgSize, void * payload)
