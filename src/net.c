@@ -5,7 +5,7 @@
 
 
 #define GET_MEDIUS_APP_HANDLER_HOOK         (*(u32*)0x01EAAB10)
-#define DME_CALLBACK_TABLE                  ((u32*)0x00212164)
+#define DME_CALLBACK_TABLE                  ((u32*)0x00212148)
 #define NET_LOBBY_CONNECTION                ((void*)(*(u32*)0x001AF91C))
 #define NET_DME_CONNECTION                ((void*)(*(u32*)0x001AF920))
 
