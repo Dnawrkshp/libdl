@@ -5,6 +5,7 @@
 
 
 #define GET_MEDIUS_APP_HANDLER_HOOK         (*(u32*)0x01EAAB10)
+#define DME_CALLBACK_TABLE                  ((u32*)0x00212164)
 #define NET_LOBBY_CONNECTION                ((void*)(*(u32*)0x001AF91C))
 #define NET_DME_CONNECTION                ((void*)(*(u32*)0x001AF920))
 
@@ -40,6 +41,7 @@ int mediusMsgHandler(u64 a0, u64 a1, u32 * callback, u64 a3, u64 t0)
 void installCustomMsgHook(void)
 {
     GET_MEDIUS_APP_HANDLER_HOOK = 0x08000000 | ((u32)&mediusMsgHandler / 4);
+    *(DME_CALLBACK_TABLE + NET_CUSTOM_MESSAGE_ID) = (u32)&customMsgHandler;
 }
 
 void netInstallCustomMsgHandler(u8 id, NET_CALLBACK_DELEGATE callback)
