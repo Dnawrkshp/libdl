@@ -25,5 +25,6 @@ int netSendCustomAppMessage(void * connection, u8 customMsgId, int msgSize, void
 
 
 __LIBDL_GETTER__ void* netGetLobbyServerConnection(void);
+__LIBDL_GETTER__ void* netGetDmeServerConnection(void);
 
 #endif // _LIBDL_NET_H_

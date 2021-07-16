@@ -81,6 +81,7 @@ FUNCTION(mobyGetFunctions, 0x0051F358)
 #-------------------------- NET -------------------------
 #--------------------------------------------------------
 FUNCTION(internal_netSendMediusAppMessage, 0x01E9E198)
+FUNCTION(internal_netBroadcastMediusAppMessage, 0x01E9E270)
 
 #--------------------------------------------------------
 #------------------------ PLAYER ------------------------
