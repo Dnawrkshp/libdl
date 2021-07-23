@@ -10,8 +10,11 @@
 #ifndef _LIBDL_MC_H_
 #define _LIBDL_MC_H_
 
+#define MC_TYPE_MC	0
+
 #include "common.h"
 
+int McInit(int type);
 int McOpen(int port, int slot, const char *name, int mode);
 int McClose(int fd);
 int McSeek(int fd, int offset, int origin);
