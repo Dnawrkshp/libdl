@@ -84,4 +84,6 @@ int gfxWorldSpaceToScreenSpace(VECTOR position, int * x, int * y);
 
 void gfxScreenSpacePIF(RECT * rect);
 
+int gfxGetFontWidth(const char * string, int length, float scale);
+
 #endif // _LIBDL_GRAPHICS_H_

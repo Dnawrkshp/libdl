@@ -71,6 +71,7 @@ FUNCTION(internal_widthFunc_inGame, 0x004D8130)
 FUNCTION(internal_widthFunc_inLobby, 0x005BDC90)
 FUNCTION(internal_drawBox_inGame, 0x005BE610)
 FUNCTION(internal_drawBox_inLobby, 0x00699C08)
+FUNCTION(gfxGetFontWidth, 0x004D8130)
 
 #--------------------------------------------------------
 #---------------------- MEMORY CARD ---------------------
@@ -103,6 +104,7 @@ FUNCTION(mobyGetFunctions, 0x0051F358)
 #-------------------------- NET -------------------------
 #--------------------------------------------------------
 FUNCTION(internal_netSendMediusAppMessage, 0x01E9E198)
+FUNCTION(internal_netBroadcastMediusAppMessage, 0x01E9E270)
 
 #--------------------------------------------------------
 #------------------------ PLAYER ------------------------
@@ -136,3 +138,13 @@ FUNCTION(guberEventRead, 0x00611880)
 FUNCTION(guberEventWrite, 0x00611808)
 FUNCTION(guberEventCreateEvent, 0x00611338)
 FUNCTION(guberMobyCreateSpawned, 0x0061C2B0)
+
+#--------------------------------------------------------
+#------------------------ RADAR -------------------------
+#--------------------------------------------------------
+FUNCTION(radarGetBlipIndex, 0x00553b00)
+
+#--------------------------------------------------------
+#------------------------ SOUND -------------------------
+#--------------------------------------------------------
+FUNCTION(soundPlay, 0x0058f340)

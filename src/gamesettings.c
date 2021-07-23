@@ -9,6 +9,10 @@
 #define GLOBAL_GAMESETTINGS			            ((GameSettings*)(*(u32*)0x0021DFE8))
 
 
+/*
+ * Points to the active game options.
+ */
+#define GLOBAL_GAMEOPTIONS			            ((GameOptions*)(*(u32*)0x0021DFF0))
 
 /*
  *
@@ -42,44 +46,9 @@ GameSettings * gameGetSettings(void)
     return GLOBAL_GAMESETTINGS;
 }
 
-u8 gameGetRespawnTime(void)
+GameOptions * gameGetOptions(void)
 {
-    return GAME_RESPAWN_TIME;
-}
-
-void gameSetRespawnTime(u8 seconds)
-{
-    GAME_RESPAWN_TIME = seconds;
-}
-
-u8 gameGetTimeLimit(void)
-{
-    return GAME_TIMELIMT_MINUTES;
-}
-
-void gameSetTimeLimit(u8 minutes)
-{
-    GAME_TIMELIMT_MINUTES = minutes;
-}
-
-u8 getGameSurvivor(void)
-{
-    return GAME_SURVIVOR;
-}
-
-void gameSetSurvivor(u8 survivor)
-{
-    GAME_SURVIVOR = survivor;
-}
-
-u8 gameGetKillsToWin(void)
-{
-    return GAME_KILLS_TO_WIN;
-}
-
-void gameSetKillsToWin(u8 kills)
-{
-    GAME_KILLS_TO_WIN = kills;
+    return GLOBAL_GAMEOPTIONS;
 }
 
 void gameFlagSetPickupDistance(float distance)
