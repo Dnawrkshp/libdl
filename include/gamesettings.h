@@ -119,6 +119,88 @@ typedef struct GameSettings
 } GameSettings;
 
 /*
+ * NAME :		GameOptions
+ * 
+ * DESCRIPTION :
+ * 			Contains the game options.
+ * 
+ * NOTES :
+ * 
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+typedef struct GameOptions
+{
+    union {
+        struct {
+            char Puma : 8;
+            char Hovership : 8;
+            char Hoverbike : 8;
+            char Landstalker : 8;
+            char Vehicles2 : 8;     // idk what this does but it always matches Vehicles
+            char Vehicles : 8;
+            char UNK_06 : 8;
+            char UNK_07 : 8;
+            char UNK_08 : 8;
+            char UNK_09 : 8;
+            char Homenodes : 8;
+            char UNK_0B : 8;
+            char UNK_0C : 8;
+            char UNK_0D : 8;
+            char UNK_0E : 8;
+            char UNK_0F : 8;
+            char UNK_10 : 8;
+            char UNK_11 : 8;
+            char UNK_12 : 8;
+            char UNK_13 : 8;
+            char UNK_14 : 8;
+            char UNK_15 : 8;
+            char UNK_16 : 8;
+            char UNK_17 : 8;
+            char Timelimit : 8;
+            char KillsToWin : 8;
+            char CapsToWin : 8;
+            char BoltsToWin : 8;
+            char UNK_1C : 8;
+            char HillTimeToWin : 8;
+            char Survivor : 8;
+            char SpawnWithChargeboots : 8;
+            char UnlimitedAmmo : 8;
+            char AutospawnWeapons : 8;
+            char Teamplay : 8;
+            char Lockdown : 8;
+            char RespawnTime : 8;
+            char UNK_25 : 8;
+            char UpgradeTimer : 8;
+            char UNK_27 : 8;
+            char UNK_28 : 8;
+            char VoteTime : 8;
+            char NodeType : 8;
+            char UNK_2B : 8;
+            char HillMovingTime : 8;
+            char HillSharing : 8;
+            char HillArmor : 8;
+            char SpecialPickups : 8;
+            char SpecialPickupsRandom : 8;
+            char RadarBlips : 8;
+            char Juggernaut : 8;
+            char JuggernautHealing : 8;
+            char JuggernautCanInvisible : 8;        // defaults to move
+            char JuggernautVisibleOnlyOnHit : 8;    // when set with JuggernautCanInvisible, visible only on hit
+            char UNK_36 : 8;
+            char CrazyMode : 8;
+            char UNK_38 : 8;
+            char FlagReturn : 8;
+            char FlagVehicleCarry : 8;
+        } MultiplayerGameFlags;
+        char Raw[59];
+    } GameFlags;
+    u32 WeaponFlags;
+    char PointValues[11];
+    u8 UpgradeTimerMultipliers[11];
+} GameOptions;
+
+/*
  * NAME :		gameGetSettings
  * 
  * DESCRIPTION :
@@ -136,132 +218,21 @@ typedef struct GameSettings
 __LIBDL_GETTER__ GameSettings * gameGetSettings(void);
 
 /*
- * NAME :		gameGetRespawnTime
+ * NAME :		gameGetOptions
  * 
  * DESCRIPTION :
- * 			Gets the game's respawn timer setting.
+ * 			Returns a pointer to the active tNW_GameOptions object.
  * 
  * NOTES :
  * 
  * ARGS : 
  * 
  * RETURN :
+ *          Returns NULL if no lobby/game.
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-__LIBDL_GETTER__ u8 gameGetRespawnTime(void);
-
-/*
- * NAME :		gameSetRespawnTime
- * 
- * DESCRIPTION :
- * 			Sets the game's respawn timer setting.
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-__LIBDL_SETTER__ void gameSetRespawnTime(u8 seconds);
-
-/*
- * NAME :		gameGetTimeLimit
- * 
- * DESCRIPTION :
- * 			Gets the game's time limit in minutes.
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-__LIBDL_GETTER__ u8 gameGetTimeLimit(void);
-
-/*
- * NAME :		gameSetTimeLimit
- * 
- * DESCRIPTION :
- * 			Sets the game's time limit in minutes.
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-__LIBDL_SETTER__ void gameSetTimeLimit(u8 minutes);
-
-/*
- * NAME :		gameGetSurvivor
- * 
- * DESCRIPTION :
- * 			Gets the game's survivor flag (no respawning)
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-__LIBDL_GETTER__ u8 gameGetSurvivor(void);
-
-/*
- * NAME :		gameSetSurvivor
- * 
- * DESCRIPTION :
- * 			Sets the game's survivor flag (no respawning)
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-__LIBDL_SETTER__ void gameSetSurvivor(u8 survivor);
-
-/*
- * NAME :		gameGetKillsToWin
- * 
- * DESCRIPTION :
- * 			Gets the game's kills to win target.
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-__LIBDL_GETTER__ u8 gameGetKillsToWin(void);
-
-/*
- * NAME :		gameSetKillsToWin
- * 
- * DESCRIPTION :
- * 			Sets the game's kills to win target.
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-__LIBDL_SETTER__ void gameSetKillsToWin(u8 kills);
+__LIBDL_GETTER__ GameOptions * gameGetOptions(void);
 
 /*
  * NAME :		gameFlagSetPickupDistance
