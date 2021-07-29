@@ -8,6 +8,8 @@ void internal_musicPauseTrack_inGame(u64);
 void internal_musicPauseTrack_inLobby(u64);
 void internal_musicUnpauseTrack_inGame(void);
 void internal_musicUnpauseTrack_inLobby(void);
+void internal_musicTransitionTrack_inGame(u64, u64, u64, u64);
+void internal_musicTransitionTrack_inLobby(u64, u64, u64, u64);
 
 /*
  * Games music volume setting.
@@ -144,6 +146,39 @@ void musicUnpauseSound(void)
     else
     {
         internal_musicUnpauseTrack_inLobby();
+    }
+}
+
+/*
+ * NAME :		             musicTransitionTrack
+ * 
+ * DESCRIPTION :
+ * 			                 Transitions to another track.
+ * 
+ * NOTES :                   This function is better used to fade-out the current track, so it
+ *                           can transition to the next track without doing a hacky job of
+ *                           manually changing the music volume.
+ * 
+ * ARGS : 
+ *          arg1     :       No Idea.
+ *          CudeTrack:       Transition to this track.
+ *                           This will cue the track duration and other things.
+ *          arg3     :       No Idea, but if set to 0x400, cued track will play.  If set to 0, cued track will will but have no sound.
+ *          arg4     :       No Idea, but if set to 0x400, cued track will play.  If set to 0, cued track will will but have no sound.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			         Troy "Agent Moose" Pruitt
+ */
+void musicTransitionTrack(short arg1, short CueTrack, short arg3, short arg4)
+{
+    if (gameIsIn())
+    {
+        internal_musicTransitionTrack_inGame(arg1, CueTrack, arg3, arg4);
+    }
+    else
+    {
+        internal_musicTransitionTrack_inLobby(arg1, CueTrack, arg3, arg4);
     }
 }
 
