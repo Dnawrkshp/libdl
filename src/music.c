@@ -183,7 +183,7 @@ void musicTransitionTrack(short arg1, short CueTrack, short arg3, short arg4)
     }
 }
 
-__LIBDL_GETTER__ int musicIsLoaded(void)
+int musicIsLoaded(void)
 {
     if (MUSIC_LOCATION != 0)
         return 1;
