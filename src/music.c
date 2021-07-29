@@ -182,7 +182,7 @@ void musicTransitionTrack(short arg1, short CueTrack, short arg3, short arg4)
     }
 }
 
-void musicIsLoaded(void)
+int musicIsLoaded(void)
 {
     if (MUSIC_LOCATION != 0)
     {
