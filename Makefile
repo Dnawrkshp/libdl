@@ -8,7 +8,7 @@ EE_LIB = $(EE_LIB_DIR)libdl.a
 EE_OBJS = functions.o math.o pad.o cheats.o moby.o game.o gamesettings.o \
 			weapon.o hud.o player.o team.o math3d.o dl.o \
 			spawnpoint.o dialog.o map.o graphics.o \
-			net.o patch.o mc.o ui.o guber.o radar.o
+			net.o patch.o mc.o ui.o guber.o radar.o music.o
 
 EE_OBJS := $(EE_OBJS:%=$(EE_OBJS_DIR)%)
 
