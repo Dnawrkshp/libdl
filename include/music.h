@@ -39,6 +39,6 @@ void musicStopSound(void);
 void musicPauseSound(int arg1);
 void musicUnpauseSound(void);
 void musicTransitionTrack(short arg1, short CueTrack, short arg3, short arg4);
-__LIBDL_GETTER__ int musicIsLoaded(void);
+int musicIsLoaded(void);
 
 #endif // _LIBDL_MUSIC_H_
