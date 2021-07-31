@@ -35,9 +35,9 @@ enum TrackNumbers
 };
 
 void musicPlayTrack(int TrackNumber, int KeepPlaying);
-void musicStopSound(void);
-void musicPauseSound(int arg1);
-void musicUnpauseSound(void);
+void musicStopTrack(void);
+void musicPauseTrack(int arg1);
+void musicUnpauseTrack(void);
 void musicTransitionTrack(short arg1, short CueTrack, short arg3, short arg4);
 int musicIsLoaded(void);
 

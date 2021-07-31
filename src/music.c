@@ -60,7 +60,7 @@ void internal_musicTransitionTrack_inLobby(u64, u64, u64, u64);
  * 
  * AUTHOR :			         Troy "Agent Moose" Pruitt
  */
-void musicPlaySound(int TrackNumber, int KeepPlaying)
+void musicPlayTrack(int TrackNumber, int KeepPlaying)
 {
     if (gameIsIn())
     {
@@ -86,7 +86,7 @@ void musicPlaySound(int TrackNumber, int KeepPlaying)
  * 
  * AUTHOR :			         Troy "Agent Moose" Pruitt
  */
-void musicStopSound(void)
+void musicStopTrack(void)
 {
     if (gameIsIn())
     {
@@ -112,7 +112,7 @@ void musicStopSound(void)
  * 
  * AUTHOR :			         Troy "Agent Moose" Pruitt
  */
-void musicPauseSound(int arg1)
+void musicPauseTrack(int arg1)
 {
     if (gameIsIn())
     {
@@ -138,7 +138,7 @@ void musicPauseSound(int arg1)
  * 
  * AUTHOR :			         Troy "Agent Moose" Pruitt
  */
-void musicUnpauseSound(void)
+void musicUnpauseTrack(void)
 {
     if (gameIsIn())
     {
