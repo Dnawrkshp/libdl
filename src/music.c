@@ -62,6 +62,7 @@ void internal_musicTransitionTrack_inLobby(u64, u64, u64, u64);
  */
 void musicPlayTrack(int TrackNumber, int KeepPlaying)
 {
+    musicStopTrack();
     if (gameIsIn())
     {
         internal_musicPlayTrack_inGame(TrackNumber, KeepPlaying, 0x400);
@@ -86,7 +87,7 @@ void musicPlayTrack(int TrackNumber, int KeepPlaying)
  * 
  * AUTHOR :			         Troy "Agent Moose" Pruitt
  */
-int musicStopTrack(void)
+void musicStopTrack(void)
 {
     if (gameIsIn())
     {
@@ -96,7 +97,6 @@ int musicStopTrack(void)
     {
         internal_musicStopTrack_inLobby();
     }
-    return 1;
 }
 
 /*
@@ -194,10 +194,4 @@ int musicIsLoaded(void)
     {
         return 0;
     }
-}
-
-void musicPlayTrack(int TrackNumber, int KeepPlaying)
-{
-    if (musicStopTrack())
-        musicPlayTrack(TrackNumber, KeepPlaying);
 }
