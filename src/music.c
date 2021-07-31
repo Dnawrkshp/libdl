@@ -54,7 +54,7 @@ void internal_musicTransitionTrack_inLobby(u64, u64, u64, u64);
  *          TrackNumber:     Music track
  *          KeepPlaying:     0 = don't play another track when current is finished.
  *                           1 = play random track when current is finished.
- *          arg3       :     No Idea.  Default is 0x400.
+ *          Volume     :     Default is 0x400.
  * 
  * RETURN :
  * 
@@ -86,7 +86,7 @@ void musicPlayTrack(int TrackNumber, int KeepPlaying)
  * 
  * AUTHOR :			         Troy "Agent Moose" Pruitt
  */
-void musicStopTrack(void)
+int musicStopTrack(void)
 {
     if (gameIsIn())
     {
@@ -96,6 +96,7 @@ void musicStopTrack(void)
     {
         internal_musicStopTrack_inLobby();
     }
+    return 1;
 }
 
 /*
@@ -193,4 +194,10 @@ int musicIsLoaded(void)
     {
         return 0;
     }
+}
+
+void musicPlayTrack(int TrackNumber, int KeepPlaying)
+{
+    if (musicStopTrack())
+        musicPlayTrack(TrackNumber, KeepPlaying);
 }
