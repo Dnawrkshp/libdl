@@ -75,6 +75,19 @@ int gfxWorldSpaceToScreenSpace(VECTOR position, int * x, int * y)
 }
 
 //--------------------------------------------------------
+int gfxGetFontWidth(const char * string, int length, float scale)
+{
+    if (gameIsIn())
+    {
+        return internal_widthFunc_inGame(string, length, scale);
+    }
+    else
+    {
+        return internal_widthFunc_inLobby(string, length, scale);
+    }
+}
+
+//--------------------------------------------------------
 int gfxScreenSpaceText(int x, int y, float scaleX, float scaleY, u32 color, const char * string, int length)
 {
     // draw
