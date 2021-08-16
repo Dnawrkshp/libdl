@@ -125,3 +125,25 @@ FUNCTION(radarGetBlipIndex, 0x00553b00)
 #------------------------ SOUND -------------------------
 #--------------------------------------------------------
 FUNCTION(soundPlay, 0x0058f340)
+
+#--------------------------------------------------------
+#------------------------- SIF --------------------------
+#--------------------------------------------------------
+FUNCTION(SifInitRpc, 0x00129d90)
+FUNCTION(SifExitRpc, 0x00129f30)
+FUNCTION(SifRpcGetOtherData, 0x0012a270)
+FUNCTION(SifBindRpc, 0x0012a538)
+FUNCTION(SifCallRpc, 0x0012a718)
+
+FUNCTION(SifCheckStatRpc, 0x0012a918)
+FUNCTION(SifSetRpcQueue, 0x0)
+FUNCTION(SifInitIopHeap, 0x0012c1b8)
+FUNCTION(SifAllocIopHeap, 0x0012c240)
+FUNCTION(SifFreeIopHeap, 0x0061e6c0)
+FUNCTION(SifIopReset, 0x0012cc30)
+FUNCTION(SifIopSync, 0x0012cdb0)
+FUNCTION(_SifLoadModuleBuffer, 0x0012c680)
+
+FUNCTION(SifWriteBackDCache, 0x00129ce0)
+FUNCTION(SifSetDma, 0x000839a0)
+FUNCTION(SifDmaStat, 0x00126f40)
