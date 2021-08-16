@@ -167,7 +167,8 @@ void padResetInput(int port)
  */
 void padDisableInput(void)
 {
-    PAD_PROCESS_ADDR = 0;
+    if (PAD_PROCESS_ADDR == PAD_PROCESS_VALUE)
+        PAD_PROCESS_ADDR = 0;
 }
 
 /*
