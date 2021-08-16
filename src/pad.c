@@ -7,6 +7,8 @@
 #define P1_PAD                              ((PadButtonStatus*)0x001EE600)
 #define P2_PAD                              ((PadButtonStatus*)0x001EFD00)
 #define P3_PAD                              ((PadButtonStatus*)0x001F1400)
+#define PAD_PROCESS_ADDR                    (*(u32*)0x00718930)
+#define PAD_PROCESS_VALUE                   (0x0C1C61DA)
 
 // Default value for pad history
 const PadHistory DefaultPadHistory = {
@@ -165,7 +167,7 @@ void padResetInput(int port)
  */
 void padDisableInput(void)
 {
-    *(u32*)PAD_POINTER = (u32)P1_PAD + 0x5C0;
+    PAD_PROCESS_ADDR = 0;
 }
 
 /*
@@ -184,5 +186,5 @@ void padDisableInput(void)
  */
 void padEnableInput(void)
 {
-    *(u32*)PAD_POINTER = P1_PAD;
+    PAD_PROCESS_ADDR = PAD_PROCESS_VALUE;
 }
