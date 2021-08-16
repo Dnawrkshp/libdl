@@ -6,7 +6,7 @@
 #define PAD_POINTER                         ((PadButtonStatus**)0x0021DDCC)
 #define P1_PAD                              ((PadButtonStatus*)0x001EE600)
 #define P2_PAD                              ((PadButtonStatus*)0x001EFD00)
-#define PAD_FAKE                            ((PadButtonStatus*)0x000B0000)
+#define P3_PAD                              ((PadButtonStatus*)0x001F1400)
 
 // Default value for pad history
 const PadHistory DefaultPadHistory = {
@@ -165,7 +165,7 @@ void padResetInput(int port)
  */
 void padDisableInput(void)
 {
-    *(u32*)PAD_POINTER = PAD_FAKE;
+    *(u32*)PAD_POINTER = P3_PAD;
 }
 
 /*
