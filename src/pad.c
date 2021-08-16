@@ -3,8 +3,10 @@
 #include "game.h"
 #include "player.h"
 
+#define PAD_POINTER                         ((PadButtonStatus**)0x0021DDCC)
 #define P1_PAD                              ((PadButtonStatus*)0x001EE600)
 #define P2_PAD                              ((PadButtonStatus*)0x001EFD00)
+#define PAD_FAKE                            ((PadButtonStatus*)0x000B0000)
 
 // Default value for pad history
 const PadHistory DefaultPadHistory = {
@@ -145,4 +147,42 @@ void padResetInput(int port)
     u64 defaultValue = 0x7F7F7F7FFFFF7900;
     *(u64*)((u32)pad + 0x00) = defaultValue;
     *(u64*)((u32)pad + 0x80) = defaultValue;
+}
+
+/*
+ * NAME :		padDisableInput
+ * 
+ * DESCRIPTION :
+ * 			Disables the pad input.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+void padDisableInput(void)
+{
+    *(u32*)PAD_POINTER = PAD_FAKE;
+}
+
+/*
+ * NAME :		padEnableInput
+ * 
+ * DESCRIPTION :
+ * 			Enables the pad input.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+void padEnableInput(void)
+{
+    *(u32*)PAD_POINTER = P1_PAD;
 }

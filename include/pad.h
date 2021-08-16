@@ -155,4 +155,36 @@ __LIBDL_GETTER__ int padGetButtonUp(int port, u16 buttonMask);
  */
 __LIBDL_SETTER__ void padResetInput(int port);
 
+/*
+ * NAME :		padDisableInput
+ * 
+ * DESCRIPTION :
+ * 			Disables the pad input.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+void padDisableInput(void);
+
+/*
+ * NAME :		padEnableInput
+ * 
+ * DESCRIPTION :
+ * 			Enables the pad input.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+void padEnableInput(void);
+
 #endif // _LIBDL_PAD_H
