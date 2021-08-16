@@ -165,7 +165,7 @@ void padResetInput(int port)
  */
 void padDisableInput(void)
 {
-    *(u32*)PAD_POINTER = P3_PAD;
+    *(u32*)PAD_POINTER = (u32)P1_PAD + 0x5C0;
 }
 
 /*
