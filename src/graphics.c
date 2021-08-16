@@ -93,7 +93,7 @@ int gfxScreenSpaceText(float x, float y, float scaleX, float scaleY, u32 color, 
     // draw
     if (gameIsIn())
     {
-        internal_drawFunc_inGame(color, string, length, alignment, 0, 0x80000000, )x, y, scaleX, scaleY, 0, 0);
+        internal_drawFunc_inGame(color, string, length, alignment, 0, 0x80000000, x, y, scaleX, scaleY, 0, 0);
         return x + internal_widthFunc_inGame(string, length, scaleX);
     }
     else
