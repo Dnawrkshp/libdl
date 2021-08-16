@@ -45,7 +45,7 @@ typedef struct RECT
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-int gfxScreenSpaceText(int x, int y, float scaleX, float scaleY, u32 color, const char * string, int length);
+int gfxScreenSpaceText(int x, int y, float scaleX, float scaleY, u32 color, const char * string, int length, int alignment);
 
 /*
  * NAME :		gfxScreenSpaceBox

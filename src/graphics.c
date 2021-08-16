@@ -88,17 +88,17 @@ int gfxGetFontWidth(const char * string, int length, float scale)
 }
 
 //--------------------------------------------------------
-int gfxScreenSpaceText(int x, int y, float scaleX, float scaleY, u32 color, const char * string, int length)
+int gfxScreenSpaceText(int x, int y, float scaleX, float scaleY, u32 color, const char * string, int length, int alignment)
 {
     // draw
     if (gameIsIn())
     {
-        internal_drawFunc_inGame(color, string, length, 1, 0, 0x80000000, (float)x, (float)y, scaleX, scaleY, 0, 0);
+        internal_drawFunc_inGame(color, string, length, alignment, 0, 0x80000000, (float)x, (float)y, scaleX, scaleY, 0, 0);
         return x + internal_widthFunc_inGame(string, length, scaleX);
     }
     else
     {
-        internal_drawFunc_inLobby(color, string, length, 1, 0, 0x80000000, (float)x, (float)y, scaleX, scaleY, 0, 0);
+        internal_drawFunc_inLobby(color, string, length, alignment, 0, 0x80000000, (float)x, (float)y, scaleX, scaleY, 0, 0);
         return x + internal_widthFunc_inLobby(string, length, scaleX);
     }
 }
