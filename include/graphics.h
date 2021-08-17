@@ -16,7 +16,7 @@
 
 //--------------------------------------------------------
 #define SCREEN_WIDTH           (512)
-#define SCREEN_HEIGHT          (448)
+#define SCREEN_HEIGHT          (416)
 
 //--------------------------------------------------------
 typedef float POINT[2] __attribute__((__aligned__(8)));
