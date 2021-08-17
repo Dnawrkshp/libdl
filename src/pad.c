@@ -121,7 +121,7 @@ int padGetButtonUp(int port, u16 buttonMask)
         return -1;
 
     return !padGetButton(port, buttonMask) &&
-        (LocalPadHistory[port].btns & buttonMask) != 0;
+        (LocalPadHistory[port].btns & buttonMask) == 0;
 }
 
 /*
