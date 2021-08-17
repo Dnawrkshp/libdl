@@ -104,7 +104,7 @@ int gfxScreenSpaceText(float x, float y, float scaleX, float scaleY, u32 color, 
 }
 
 //--------------------------------------------------------
-void gfxScreenSpaceBox(RECT * rect, u32 colorTL, u32 colorTR, u32 colorBL, u32 colorBR)
+void gfxScreenSpaceQuad(RECT * rect, u32 colorTL, u32 colorTR, u32 colorBL, u32 colorBR)
 {
     u32 buffer[11];
     buffer[0] = 8;
@@ -127,6 +127,19 @@ void gfxScreenSpaceBox(RECT * rect, u32 colorTL, u32 colorTR, u32 colorBL, u32 c
     {
         internal_drawBox_inLobby(rect, buffer);
     }
+}
+
+//--------------------------------------------------------
+void gfxScreenSpaceBox(float x, float y, float w, float h, u32 color)
+{
+    RECT r = {
+        { x, y },
+        { x + w, y },
+        { x, y + h },
+        { x + w, y + h}
+    };
+
+    gfxScreenSpaceQuad(&r, color, color, color, color);
 }
 
 void gfxScreenSpacePIF(RECT * rect)
