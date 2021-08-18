@@ -452,7 +452,7 @@ typedef struct Moby
 
     char UNK_B0[0x08];
 
-    float UNK_B8;
+    Moby* ParentMoby;
 
     short MobyId;
     short UNK_BE;
