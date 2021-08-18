@@ -17,9 +17,11 @@
 #include <tamtypes.h>
 #include "math3d.h"
 #include "common.h"
+#include "gid.h"
 
 struct GuberMoby;
 struct GuberEvent;
+struct Gid;
 
 //--------------------------------------------------------
 enum MobyId
