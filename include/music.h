@@ -14,7 +14,7 @@
 #define _LIBDL_MUSIC_H_
 
 #include <tamtypes.h>
-#include <libdl/common.h>
+#include "common.h"
 
 enum TrackNumbers
 {
