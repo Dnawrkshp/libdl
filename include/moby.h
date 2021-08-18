@@ -436,7 +436,12 @@ typedef struct Moby
     char UNK_7C[0x04];
     float UNK_80[4];
 
-    struct GuberMoby * GuberMoby;
+    union
+    {
+        struct GuberMoby * GuberMoby;
+        void * NetObject;
+        u32 RawValue;
+    } OFF_90;
 
     short UNK_94;
     short UNK_96;
