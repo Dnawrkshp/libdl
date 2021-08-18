@@ -76,6 +76,10 @@ FUNCTION(mobySpawn, 0x004F7200)
 FUNCTION(mobyDestroy, 0x004F76A0)
 FUNCTION(mobyUpdateTransform, 0x004FE720)
 FUNCTION(mobyGetFunctions, 0x0051F358)
+FUNCTION(mobySetState, 0x00502250)
+FUNCTION(mobyGetDamage, 0x00504248)
+FUNCTION(mobyPlaySound, 0x0058f6d0)
+FUNCTION(mobyBlowCorn, 0x0050e318)
 
 #--------------------------------------------------------
 #-------------------------- NET -------------------------

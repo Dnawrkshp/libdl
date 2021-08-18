@@ -464,6 +464,10 @@ typedef struct Moby
 
 } Moby;
 
+typedef struct MobyColDamage {
+    
+} MobyColDamage;
+
 typedef void (*MobyGetInterface_func)(int mobyId, int arg2, int arg3);
 typedef void (*MobyGetGuberObject_func)(Moby * moby);
 typedef void (*MobyEventHandler_func)(Moby * moby, struct GuberEvent * event);
@@ -505,5 +509,20 @@ void mobyUpdateTransform(Moby * moby);
  * Gets a pointer to the moby functions
  */
 MobyFunctions * mobyGetFunctions(Moby * moby);
+
+/*
+ * 
+ */
+void mobySetState(Moby* moby, char a1, long a2);
+
+/*
+ * 
+ */
+MobyColDamage* mobyGetDamage(Moby* moby, u32 a1, int a2);
+
+/*
+ * 
+ */
+int mobyPlaySound(short a0, u8 a1, Moby* moby);
 
 #endif // _LIBDL_MOBY_H_
