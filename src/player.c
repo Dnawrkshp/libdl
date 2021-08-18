@@ -81,6 +81,12 @@ int playerIsLocal(Player * player)
 }
 
 //--------------------------------------------------------------------------------
+int playerIdIsLocal(int playerId)
+{
+    return PLAYER_1_ID == playerId || PLAYER_2_ID == playerId;
+}
+
+//--------------------------------------------------------------------------------
 void playerSetPosRot(Player * player, VECTOR p, VECTOR r)
 {
     internal_playerSetPosRot(player, p, r, 0);

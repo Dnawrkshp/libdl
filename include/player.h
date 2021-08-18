@@ -370,6 +370,23 @@ __LIBDL_SETTER__ void playerSetTeam(Player * player, int teamId);
 __LIBDL_GETTER__ int playerIsLocal(Player * player);
 
 /*
+ * NAME :		playerIdIsLocal
+ * 
+ * DESCRIPTION :
+ * 			Whether or not the given player id is local or remote.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ *      player      :           Target player id.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+__LIBDL_GETTER__ int playerIdIsLocal(int playerId);
+
+/*
  * NAME :		playerGiveWeapon
  * 
  * DESCRIPTION :
