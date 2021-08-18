@@ -440,8 +440,8 @@ typedef struct Moby
     {
         struct GuberMoby * GuberMoby;
         void * NetObject;
-        u32 RawValue;
-    } OFF_90;
+        Gid NetObjectGid;
+    };
 
     short UNK_94;
     short UNK_96;
