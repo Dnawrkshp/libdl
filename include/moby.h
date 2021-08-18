@@ -465,7 +465,18 @@ typedef struct Moby
 } Moby;
 
 typedef struct MobyColDamage {
-    
+    VECTOR Ip;
+    VECTOR Momentum;
+    Moby* Damager;
+    int DamageFlags;
+    u8 DamageClass;
+    u8 DamageStrength;
+    u16 DamageIndex;
+    float DamageHp;
+    int Flags;
+    float DamageHeroHp;
+    int ShotUID;
+    Moby* Moby;
 } MobyColDamage;
 
 typedef void (*MobyGetInterface_func)(int mobyId, int arg2, int arg3);
