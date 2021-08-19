@@ -145,7 +145,7 @@ FUNCTION(SifAllocIopHeap, 0x0012c240)
 FUNCTION(SifFreeIopHeap, 0x0061e6c0)
 FUNCTION(SifIopReset, 0x0012cc30)
 FUNCTION(SifIopSync, 0x0012cdb0)
-FUNCTION(_SifLoadModuleBuffer, 0x0012c680)
+FUNCTION(_SifLoadModuleBuffer, 0x0012CBC0)
 
 FUNCTION(SifWriteBackDCache, 0x00129ce0)
 FUNCTION(SifSetDma, 0x00126f60)
