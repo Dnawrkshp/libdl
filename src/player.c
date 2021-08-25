@@ -184,3 +184,12 @@ int playerPadGetButtonUp(Player * player, u16 buttonMask)
     return !playerPadGetButton(player, buttonMask) &&
         (PlayerPadHistory[player->PlayerId].btns & buttonMask) != 0;
 }
+
+//--------------------------------------------------------------------------------
+PlayerVTable* playerGetVTable(Player * player)
+{
+    if (!player)
+        return NULL;
+
+    return (PlayerVTable*)player->Guber.Vtable;
+}

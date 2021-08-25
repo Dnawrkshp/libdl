@@ -265,6 +265,43 @@ typedef struct Player
 } Player;
 
 
+typedef void (*PlayerUpdateState_func)(Player * player, int stateId, int a2, int a3, int t0);
+
+/*
+ * NAME :		PlayerVTable
+ * 
+ * DESCRIPTION :
+ * 
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+typedef struct PlayerVTable
+{
+    void * FUNC_00;
+    void * FUNC_04;
+    void * FUNC_08;
+    void * FUNC_0C;
+    void * FUNC_10;
+    void * FUNC_14;
+    void * FUNC_18;
+    void * FUNC_1C;
+    void * FUNC_20;
+    void * FUNC_24;
+    void * FUNC_28;
+    void * FUNC_2C;
+    void * FUNC_30;
+    void * FUNC_34;
+    void * FUNC_38;
+    PlayerUpdateState_func UpdateState;
+} PlayerVTable;
+
+
 /*
  * NAME :		playerGetAll
  * 
@@ -516,5 +553,22 @@ __LIBDL_GETTER__ int playerPadGetButtonDown(Player * player, u16 buttonMask);
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ int playerPadGetButtonUp(Player * player, u16 buttonMask);
+
+/*
+ * NAME :		playerGetVTable
+ * 
+ * DESCRIPTION :
+ * 			Returns pointer to the given player's vtable.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ *          player:                     Pointer to player's player object.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+__LIBDL_GETTER__ PlayerVTable* playerGetVTable(Player * player);
 
 #endif // _LIBDL_PLAYER_H_
