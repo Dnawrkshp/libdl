@@ -132,6 +132,13 @@ FUNCTION(radarGetBlipIndex, 0x00553b00)
 FUNCTION(soundPlay, 0x0058f340)
 
 #--------------------------------------------------------
+#------------------------- HELP -------------------------
+#--------------------------------------------------------
+FUNCTION(internal_helpGetMapName_inLobby, 0x00707680)
+FUNCTION(internal_helpGetString_inLobby, 0x005c9f50)
+FUNCTION(internal_helpGetString_inGame, 0x004e4180)
+
+#--------------------------------------------------------
 #------------------------- SIF --------------------------
 #--------------------------------------------------------
 FUNCTION(SifInitRpc, 0x00129d90)

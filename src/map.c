@@ -1,4 +1,5 @@
 #include "map.h"
+#include "help.h"
 
 //--------------------------------------------------------
 int mapMaskHasMask(int value, int maskValue)
@@ -44,4 +45,24 @@ int mapMaskToId(int mapMask)
         case MAP_MASK_GS: return MAP_ID_GS;
         default: return 0;
     }
+}
+
+//--------------------------------------------------------
+char * mapGetName(int mapId)
+{
+  switch (mapId)
+  {
+      case MAP_ID_BATTLEDOME: return helpGetString(HELP_STRING_ID_BATTLEDOME_TOWER);
+      case MAP_ID_CATACROM: return helpGetString(HELP_STRING_ID_CATACROM_GRAVEYARD);
+      case MAP_ID_SARATHOS: return helpGetString(HELP_STRING_ID_SARATHOS_SWAMP);
+      case MAP_ID_DC: return helpGetString(HELP_STRING_ID_DARK_CATHEDRAL);
+      case MAP_ID_SHAAR: return helpGetString(HELP_STRING_ID_TEMPLE_OF_SHAAR);
+      case MAP_ID_TORVAL: return helpGetString(HELP_STRING_ID_TORVAL_RUINS);
+      case MAP_ID_VALIX: return helpGetString(HELP_STRING_ID_VALIX_LIGHTHOUSE);
+      case MAP_ID_TEMPUS: return helpGetString(HELP_STRING_ID_TEMPUS_STATION);
+      case MAP_ID_MF: return helpGetString(HELP_STRING_ID_MINING_FACILITY);
+      case MAP_ID_MARAXUS: return helpGetString(HELP_STRING_ID_MARAXUS_PRISON);
+      case MAP_ID_GS: return helpGetString(HELP_STRING_ID_GHOST_STATION);
+      default: return helpGetString(-1);
+  }
 }

@@ -41,7 +41,7 @@
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-u64 colorLerp(u32 a, u32 b, float t);
+u32 colorLerp(u32 a, u32 b, float t);
 
 #endif // _LIBDL_COLOR_H_
 

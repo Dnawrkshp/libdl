@@ -53,5 +53,6 @@ enum MAP_MASK_IDS
 int mapMaskHasMask(int value, int maskValue);
 int mapIdToMask(int mapId);
 int mapMaskToId(int mapMask);
+char * mapGetName(int mapId);
 
 #endif // _LIBDL_MAP_H_
