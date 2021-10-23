@@ -73,7 +73,7 @@ char * gameGetGameModeName(int modeId)
   switch (modeId)
   {
       case GAMERULE_CQ: return helpGetString(HELP_STRING_ID_CONQUEST);
-      case GAMERULE_CTF: return helpGetString(HELP_STRING_ID_CAPTURE_THE_FLAG);
+      case GAMERULE_CTF: return helpGetString(HELP_STRING_ID_CTF);
       case GAMERULE_DM: return helpGetString(HELP_STRING_ID_DEATHMATCH);
       case GAMERULE_JUGGY: return helpGetString(HELP_STRING_ID_JUGGERNAUT);
       case GAMERULE_KOTH: return helpGetString(HELP_STRING_ID_KING_OF_THE_HILL);
