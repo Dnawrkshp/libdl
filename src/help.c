@@ -1,4 +1,5 @@
 #include "help.h"
+#include "game.h"
 
 // 
 char * internal_helpGetString_inGame(int);
