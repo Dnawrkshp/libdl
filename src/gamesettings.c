@@ -1,6 +1,7 @@
 #include <tamtypes.h>
 #include "gamesettings.h"
 #include "math.h"
+#include "help.h"
 
 
 /*
@@ -41,16 +42,19 @@
  */
 #define GAME_FLAG_PICKUP_SQRDISTANCE            (0x00418A84)
 
+//--------------------------------------------------------
 GameSettings * gameGetSettings(void)
 {
     return GLOBAL_GAMESETTINGS;
 }
 
+//--------------------------------------------------------
 GameOptions * gameGetOptions(void)
 {
     return GLOBAL_GAMEOPTIONS;
 }
 
+//--------------------------------------------------------
 void gameFlagSetPickupDistance(float distance)
 {
     // We're actually setting the square distance
@@ -61,4 +65,18 @@ void gameFlagSetPickupDistance(float distance)
         "sh $v0, %0"
         : : "i" (GAME_FLAG_PICKUP_SQRDISTANCE)
     );
+}
+
+//--------------------------------------------------------
+char * gameGetGameModeName(int modeId)
+{
+  switch (modeId)
+  {
+      case GAMERULE_CQ: return helpGetString(HELP_STRING_ID_CONQUEST);
+      case GAMERULE_CTF: return helpGetString(HELP_STRING_ID_CAPTURE_THE_FLAG);
+      case GAMERULE_DM: return helpGetString(HELP_STRING_ID_DEATHMATCH);
+      case GAMERULE_JUGGY: return helpGetString(HELP_STRING_ID_JUGGERNAUT);
+      case GAMERULE_KOTH: return helpGetString(HELP_STRING_ID_KING_OF_THE_HILL);
+      default: return helpGetString(-1);
+  }
 }
