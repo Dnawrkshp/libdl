@@ -315,4 +315,20 @@ __LIBDL_GETTER__ int gameGetRawTimeLimit(void);
  */
 __LIBDL_GETTER__ GameData* gameGetData(void);
 
+/*
+ * NAME :		gameGetPing
+ * 
+ * DESCRIPTION :
+ * 			Gets the client's current ping.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+__LIBDL_GETTER__ int gameGetPing(void);
+
 #endif // _LIBDL_GAME_H_
