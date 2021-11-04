@@ -181,5 +181,8 @@ GameData* gameGetData(void)
 
 int gameGetPing(void)
 {
-    return GAME_PING_ARRAY[GAME_PING_CURRENT_INDEX - 1] * 2;
+    int lastIndex = GAME_PING_CURRENT_INDEX - 1;
+    if (lastIndex < 0)
+        lastIndex = 0x63;
+    return GAME_PING_ARRAY[lastIndex] * 2;
 }
