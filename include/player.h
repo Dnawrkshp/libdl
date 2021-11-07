@@ -253,7 +253,7 @@ typedef struct Player
 
     char Explode;                                                   // 0x2ED6
 
-    char UNK28[0x11];                                               // 0x2ED7
+    char UNK38[0x11];                                               // 0x2ED7
 
     Moby * HeldMoby;                                                // 0x2EE8
 
