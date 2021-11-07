@@ -209,7 +209,31 @@ typedef struct Player
     // 0x0C: 1 = Equips swingshot
     // 0x0D: Toggles respawn popup if dead, otherwise just fucks camera
     // 0x12: 1 = Disables moving
-    char UNKFlags[0x14];                                            // 0x2660
+    // 0x2660
+    union {
+        struct {
+            char RaisedGunArm;
+            char InShallowWater;
+            char Invisible;
+            char HideWeapon;
+            char GadgetsOff;
+            char GadgetNotReady;
+            char WrenchOnly;
+            char HoldingDeathAnim;
+            char HideWrench;
+            char SpawnBoltsToMe;
+            char AiFollowingMe;
+            char ForceWrenchSwitch;
+            char ForceSwingSwitch;
+            char IsLocal;
+            char InBaseHack;
+            char ShieldTrigger;
+            char CurSeg;
+            char HandGadgetType;
+            char ExternalUpdate;
+        };
+        char UNKFlags[0x14];                                            
+    };
 
     int ChangeWeaponHeldId;                                         // 0x2674
 
@@ -225,7 +249,11 @@ typedef struct Player
     
     float Health;                                                   // 0x2E20
     
-    char UNK22[0xC4];                                               // 0x2E24
+    char UNK22[0xB2];                                               // 0x2E24
+
+    char Explode;                                                   // 0x2ED6
+
+    char UNK28[0x11];                                               // 0x2ED7
 
     Moby * HeldMoby;                                                // 0x2EE8
 
