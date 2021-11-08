@@ -18,6 +18,7 @@ name:	j address;              \
 #--------------------------------------------------------
 FUNCTION(printf, 0x0011D5D8)
 FUNCTION(sprintf, 0x0011D920)
+FUNCTION(snprintf, 0x0011D878)
 FUNCTION(memset, 0x0011A518)
 FUNCTION(memcpy, 0x0011A370)
 FUNCTION(strncpy, 0x0011AFC8)

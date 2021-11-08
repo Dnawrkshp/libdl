@@ -15,6 +15,7 @@
 
 //--------------------------------------------------------
 __LIBDL_INLINE__ int sprintf(char * buffer, const char * format, ...);
+__LIBDL_INLINE__ int snprintf(char * buffer, size_t n, const char * format, ...);
 __LIBDL_INLINE__ int printf(const char * format, ...);
 
 
