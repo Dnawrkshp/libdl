@@ -16,7 +16,7 @@
 
 //--------------------------------------------------------
 #define SCREEN_WIDTH           (512)
-#define SCREEN_HEIGHT          (448)
+#define SCREEN_HEIGHT          (416)
 
 //--------------------------------------------------------
 typedef float POINT[2] __attribute__((__aligned__(8)));
@@ -45,7 +45,24 @@ typedef struct RECT
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-int gfxScreenSpaceText(int x, int y, float scaleX, float scaleY, u32 color, const char * string, int length);
+int gfxScreenSpaceText(float x, float y, float scaleX, float scaleY, u32 color, const char * string, int length, int alignment);
+
+/*
+ * NAME :		gfxScreenSpaceBox
+ * 
+ * DESCRIPTION :
+ * 			Draws a quad on the screen.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ *      rect:           All four corners of quad. Use values 0-1 for x and y position.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+void gfxScreenSpaceQuad(RECT * rect, u32 colorTL, u32 colorTR, u32 colorBL, u32 colorBR);
 
 /*
  * NAME :		gfxScreenSpaceBox
@@ -56,13 +73,17 @@ int gfxScreenSpaceText(int x, int y, float scaleX, float scaleY, u32 color, cons
  * NOTES :
  * 
  * ARGS : 
- *      rect:           All four corners of box. Use values 0-1 for x and y position.
+ *      x:              Screen X position (0-1).
+ *      y:              Screen Y position (0-1).
+ *      w:              width (0-1).
+ *      h:              height (0-1).
+ *      color:          color of box.
  * 
  * RETURN :
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-void gfxScreenSpaceBox(RECT * rect, u32 colorTL, u32 colorTR, u32 colorBL, u32 colorBR);
+void gfxScreenSpaceBox(float x, float y, float w, float h, u32 color);
 
 /*
  * NAME :		gfxWorldSpaceToScreenSpace
@@ -80,7 +101,6 @@ void gfxScreenSpaceBox(RECT * rect, u32 colorTL, u32 colorTR, u32 colorBL, u32 c
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
 int gfxWorldSpaceToScreenSpace(VECTOR position, int * x, int * y);
-
 
 void gfxScreenSpacePIF(RECT * rect);
 

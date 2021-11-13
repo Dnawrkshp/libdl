@@ -92,6 +92,12 @@ void internal_gameEnd(int);
  */
 #define GAME_DATA                           ((GameData*)0x0036D600)
 
+/*
+ * Array of round trip time divided by 2.
+ */
+#define GAME_PING_ARRAY                     ((int*)0x001B2420)
+#define GAME_PING_CURRENT_INDEX             (*(int*)0x001B25B4)
+
 void gameSetWinner(int teamOrPlayerId, int isTeam)
 {
     GAME_WINNER_TEAM_ID = teamOrPlayerId;
@@ -171,4 +177,12 @@ int gameGetRawTimeLimit(void)
 GameData* gameGetData(void)
 {
     return GAME_DATA;
+}
+
+int gameGetPing(void)
+{
+    int lastIndex = GAME_PING_CURRENT_INDEX - 1;
+    if (lastIndex < 0)
+        lastIndex = 0x63;
+    return GAME_PING_ARRAY[lastIndex] * 2;
 }

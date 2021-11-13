@@ -209,7 +209,31 @@ typedef struct Player
     // 0x0C: 1 = Equips swingshot
     // 0x0D: Toggles respawn popup if dead, otherwise just fucks camera
     // 0x12: 1 = Disables moving
-    char UNKFlags[0x14];                                            // 0x2660
+    // 0x2660
+    union {
+        struct {
+            char RaisedGunArm;
+            char InShallowWater;
+            char Invisible;
+            char HideWeapon;
+            char GadgetsOff;
+            char GadgetNotReady;
+            char WrenchOnly;
+            char HoldingDeathAnim;
+            char HideWrench;
+            char SpawnBoltsToMe;
+            char AiFollowingMe;
+            char ForceWrenchSwitch;
+            char ForceSwingSwitch;
+            char IsLocal;
+            char InBaseHack;
+            char ShieldTrigger;
+            char CurSeg;
+            char HandGadgetType;
+            char ExternalUpdate;
+        };
+        char UNKFlags[0x14];                                            
+    };
 
     int ChangeWeaponHeldId;                                         // 0x2674
 
@@ -225,7 +249,11 @@ typedef struct Player
     
     float Health;                                                   // 0x2E20
     
-    char UNK22[0xC4];                                               // 0x2E24
+    char UNK22[0xB2];                                               // 0x2E24
+
+    char Explode;                                                   // 0x2ED6
+
+    char UNK38[0x11];                                               // 0x2ED7
 
     Moby * HeldMoby;                                                // 0x2EE8
 
@@ -263,6 +291,43 @@ typedef struct Player
     float Speed;                                                    // 0x2FC0
 
 } Player;
+
+
+typedef void (*PlayerUpdateState_func)(Player * player, int stateId, int a2, int a3, int t0);
+
+/*
+ * NAME :		PlayerVTable
+ * 
+ * DESCRIPTION :
+ * 
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+typedef struct PlayerVTable
+{
+    void * FUNC_00;
+    void * FUNC_04;
+    void * FUNC_08;
+    void * FUNC_0C;
+    void * FUNC_10;
+    void * FUNC_14;
+    void * FUNC_18;
+    void * FUNC_1C;
+    void * FUNC_20;
+    void * FUNC_24;
+    void * FUNC_28;
+    void * FUNC_2C;
+    void * FUNC_30;
+    void * FUNC_34;
+    void * FUNC_38;
+    PlayerUpdateState_func UpdateState;
+} PlayerVTable;
 
 
 /*
@@ -368,6 +433,23 @@ __LIBDL_SETTER__ void playerSetTeam(Player * player, int teamId);
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ int playerIsLocal(Player * player);
+
+/*
+ * NAME :		playerIdIsLocal
+ * 
+ * DESCRIPTION :
+ * 			Whether or not the given player id is local or remote.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ *      player      :           Target player id.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+__LIBDL_GETTER__ int playerIdIsLocal(int playerId);
 
 /*
  * NAME :		playerGiveWeapon
@@ -499,5 +581,22 @@ __LIBDL_GETTER__ int playerPadGetButtonDown(Player * player, u16 buttonMask);
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ int playerPadGetButtonUp(Player * player, u16 buttonMask);
+
+/*
+ * NAME :		playerGetVTable
+ * 
+ * DESCRIPTION :
+ * 			Returns pointer to the given player's vtable.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ *          player:                     Pointer to player's player object.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+__LIBDL_GETTER__ PlayerVTable* playerGetVTable(Player * player);
 
 #endif // _LIBDL_PLAYER_H_

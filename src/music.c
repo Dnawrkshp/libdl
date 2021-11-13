@@ -1,6 +1,10 @@
 #include "game.h"
 #include "music.h"
 
+<<<<<<< HEAD
+=======
+//--------------------------------------------------------
+>>>>>>> upstream/main
 void internal_musicPlayTrack_inGame(u64, u64, u64);
 void internal_musicPlayTrack_inLobby(u64, u64, u64);
 void internal_musicStopTrack_inGame(void);
@@ -42,6 +46,7 @@ void internal_wadGetSectors(u64, u64, u64);
  */
 #define TRACK_DURATION (*(u32*)0x002069A4)
 
+<<<<<<< HEAD
 /*
  * NAME :		             musicPlayTrack
  * 
@@ -61,6 +66,9 @@ void internal_wadGetSectors(u64, u64, u64);
  * 
  * AUTHOR :			         Troy "Agent Moose" Pruitt
  */
+=======
+//--------------------------------------------------------------------------------
+>>>>>>> upstream/main
 void musicPlayTrack(int TrackNumber, int KeepPlaying)
 {
     musicStopTrack();
@@ -74,6 +82,7 @@ void musicPlayTrack(int TrackNumber, int KeepPlaying)
     }
 }
 
+<<<<<<< HEAD
 /*
  * NAME :		             musicStopTrack
  * 
@@ -88,6 +97,9 @@ void musicPlayTrack(int TrackNumber, int KeepPlaying)
  * 
  * AUTHOR :			         Troy "Agent Moose" Pruitt
  */
+=======
+//--------------------------------------------------------------------------------
+>>>>>>> upstream/main
 void musicStopTrack(void)
 {
     if (gameIsIn())
@@ -100,6 +112,7 @@ void musicStopTrack(void)
     }
 }
 
+<<<<<<< HEAD
 /*
  * NAME :		             musicPauseTrack
  * 
@@ -114,6 +127,9 @@ void musicStopTrack(void)
  * 
  * AUTHOR :			         Troy "Agent Moose" Pruitt
  */
+=======
+//--------------------------------------------------------------------------------
+>>>>>>> upstream/main
 void musicPauseTrack(int arg1)
 {
     if (gameIsIn())
@@ -126,6 +142,7 @@ void musicPauseTrack(int arg1)
     }
 }
 
+<<<<<<< HEAD
 /*
  * NAME :		             musicUnpauseTrack
  * 
@@ -140,6 +157,9 @@ void musicPauseTrack(int arg1)
  * 
  * AUTHOR :			         Troy "Agent Moose" Pruitt
  */
+=======
+//--------------------------------------------------------------------------------
+>>>>>>> upstream/main
 void musicUnpauseTrack(void)
 {
     if (gameIsIn())
@@ -152,6 +172,7 @@ void musicUnpauseTrack(void)
     }
 }
 
+<<<<<<< HEAD
 /*
  * NAME :		             musicTransitionTrack
  * 
@@ -173,6 +194,9 @@ void musicUnpauseTrack(void)
  * 
  * AUTHOR :			         Troy "Agent Moose" Pruitt
  */
+=======
+//--------------------------------------------------------------------------------
+>>>>>>> upstream/main
 void musicTransitionTrack(short arg1, short CueTrack, short arg3, short arg4)
 {
     if (gameIsIn())
@@ -185,6 +209,7 @@ void musicTransitionTrack(short arg1, short CueTrack, short arg3, short arg4)
     }
 }
 
+<<<<<<< HEAD
 int musicIsLoaded(void)
 {
     if (MUSIC_LOCATION == 0xF8D29)
@@ -195,4 +220,10 @@ int musicIsLoaded(void)
     {
         return 0;
     }
+=======
+//--------------------------------------------------------------------------------
+int musicIsLoaded(void)
+{
+  return MUSIC_LOCATION == 0xF8D29;
+>>>>>>> upstream/main
 }

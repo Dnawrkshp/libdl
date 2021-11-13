@@ -18,9 +18,11 @@ name:	j address;              \
 #--------------------------------------------------------
 FUNCTION(printf, 0x0011D5D8)
 FUNCTION(sprintf, 0x0011D920)
+FUNCTION(snprintf, 0x0011D878)
 FUNCTION(memset, 0x0011A518)
 FUNCTION(memcpy, 0x0011A370)
 FUNCTION(strncpy, 0x0011AFC8)
+FUNCTION(strlen, 0x0011AB04)
 
 #--------------------------------------------------------
 #------------------------- MATH -------------------------
@@ -36,7 +38,8 @@ FUNCTION(floorf, 0x001359A8)
 #--------------------------------------------------------
 #------------------------ COLOR -------------------------
 #--------------------------------------------------------
-FUNCTION(lerpColor, 0x004d75e0)
+FUNCTION(internal_colorLerp_inGame, 0x004d75e0)
+FUNCTION(internal_colorLerp_inLobby, 0x005bd140)
 
 #--------------------------------------------------------
 #------------------------ DIALOG ------------------------
@@ -74,7 +77,6 @@ FUNCTION(internal_widthFunc_inGame, 0x004D8130)
 FUNCTION(internal_widthFunc_inLobby, 0x005BDC90)
 FUNCTION(internal_drawBox_inGame, 0x005BE610)
 FUNCTION(internal_drawBox_inLobby, 0x00699C08)
-FUNCTION(gfxGetFontWidth, 0x004D8130)
 
 #--------------------------------------------------------
 #---------------------- MEMORY CARD ---------------------
@@ -102,6 +104,10 @@ FUNCTION(mobySpawn, 0x004F7200)
 FUNCTION(mobyDestroy, 0x004F76A0)
 FUNCTION(mobyUpdateTransform, 0x004FE720)
 FUNCTION(mobyGetFunctions, 0x0051F358)
+FUNCTION(mobySetState, 0x00502250)
+FUNCTION(mobyGetDamage, 0x00504248)
+FUNCTION(mobyPlaySound, 0x0058f6d0)
+FUNCTION(mobyBlowCorn, 0x0050e318)
 
 #--------------------------------------------------------
 #-------------------------- NET -------------------------
@@ -151,3 +157,50 @@ FUNCTION(radarGetBlipIndex, 0x00553b00)
 #------------------------ SOUND -------------------------
 #--------------------------------------------------------
 FUNCTION(soundPlay, 0x0058f340)
+
+#--------------------------------------------------------
+#------------------------- HELP -------------------------
+#--------------------------------------------------------
+FUNCTION(internal_helpGetMapName_inLobby, 0x00707680)
+FUNCTION(internal_helpGetString_inLobby, 0x005c9f50)
+FUNCTION(internal_helpGetString_inGame, 0x004e4180)
+
+#--------------------------------------------------------
+#------------------------- SIF --------------------------
+#--------------------------------------------------------
+FUNCTION(SifInitRpc, 0x00129d90)
+FUNCTION(SifExitRpc, 0x00129f30)
+FUNCTION(SifRpcGetOtherData, 0x0012a270)
+FUNCTION(SifBindRpc, 0x0012a538)
+FUNCTION(SifCallRpc, 0x0012a718)
+
+FUNCTION(SifCheckStatRpc, 0x0012a918)
+FUNCTION(SifInitIopHeap, 0x0012c1b8)
+FUNCTION(SifAllocIopHeap, 0x0012c240)
+FUNCTION(SifFreeIopHeap, 0x0012C3A8)
+FUNCTION(SifIopReset, 0x0012cc30)
+FUNCTION(SifIopSync, 0x0012cdb0)
+FUNCTION(_SifLoadModuleBuffer, 0x0012CBC0)
+
+FUNCTION(SifWriteBackDCache, 0x00129ce0)
+FUNCTION(SifSetDma, 0x00126f60)
+FUNCTION(SifDmaStat, 0x00126f40)
+
+#--------------------------------------------------------
+#------------------------- MUSIC ------------------------
+#--------------------------------------------------------
+FUNCTION(internal_musicPlayTrack_inGame, 0x0051F980)
+FUNCTION(internal_musicPlayTrack_inLobby, 0x005FEDE8)
+FUNCTION(internal_musicStopTrack_inGame, 0x0051FD28)
+FUNCTION(internal_musicStopTrack_inLobby, 0x005FF190)
+FUNCTION(internal_musicPauseTrack_inGame, 0x0051FE18)
+FUNCTION(internal_musicPauseTrack_inLobby, 0x005FF280)
+FUNCTION(internal_musicUnpauseTrack_inGame, 0x0051FE38)
+FUNCTION(internal_musicUnpauseTrack_inLobby, 0x005FF2A0)
+FUNCTION(internal_musicTransitionTrack_inGame, 0x0051FBC8)
+FUNCTION(internal_musicTransitionTrack_inLobby, 0x005FF030)
+
+#--------------------------------------------------------
+#------------------------- WAD --------------------------
+#--------------------------------------------------------
+FUNCTION(internal_wadGetSectors, 0x00159A00)

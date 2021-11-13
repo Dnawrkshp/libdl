@@ -81,6 +81,12 @@ int playerIsLocal(Player * player)
 }
 
 //--------------------------------------------------------------------------------
+int playerIdIsLocal(int playerId)
+{
+    return PLAYER_1_ID == playerId || PLAYER_2_ID == playerId;
+}
+
+//--------------------------------------------------------------------------------
 void playerSetPosRot(Player * player, VECTOR p, VECTOR r)
 {
     internal_playerSetPosRot(player, p, r, 0);
@@ -177,4 +183,13 @@ int playerPadGetButtonUp(Player * player, u16 buttonMask)
 
     return !playerPadGetButton(player, buttonMask) &&
         (PlayerPadHistory[player->PlayerId].btns & buttonMask) != 0;
+}
+
+//--------------------------------------------------------------------------------
+PlayerVTable* playerGetVTable(Player * player)
+{
+    if (!player)
+        return NULL;
+
+    return (PlayerVTable*)player->Guber.Vtable;
 }

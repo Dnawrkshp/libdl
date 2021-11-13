@@ -250,4 +250,20 @@ __LIBDL_GETTER__ GameOptions * gameGetOptions(void);
  */
 __LIBDL_SETTER__ void gameFlagSetPickupDistance(float distance);
 
+/*
+ * NAME :		gameGetGameModeName
+ * 
+ * DESCRIPTION :
+ * 			Returns the name of the given game mode (GameRuleId)
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+__LIBDL_GETTER__ char* gameGetGameModeName(int modeId);
+
 #endif // _LIBDL_GAMESETTINGS_H_

@@ -3,8 +3,12 @@
 #include "game.h"
 #include "player.h"
 
+#define PAD_POINTER                         ((PadButtonStatus**)0x0021DDCC)
 #define P1_PAD                              ((PadButtonStatus*)0x001EE600)
 #define P2_PAD                              ((PadButtonStatus*)0x001EFD00)
+#define P3_PAD                              ((PadButtonStatus*)0x001F1400)
+#define PAD_PROCESS_ADDR                    (*(u32*)0x00718930)
+#define PAD_PROCESS_VALUE                   (0x0C1C61DA)
 
 // Default value for pad history
 const PadHistory DefaultPadHistory = {
@@ -117,7 +121,7 @@ int padGetButtonUp(int port, u16 buttonMask)
         return -1;
 
     return !padGetButton(port, buttonMask) &&
-        (LocalPadHistory[port].btns & buttonMask) != 0;
+        (LocalPadHistory[port].btns & buttonMask) == 0;
 }
 
 /*
@@ -145,4 +149,43 @@ void padResetInput(int port)
     u64 defaultValue = 0x7F7F7F7FFFFF7900;
     *(u64*)((u32)pad + 0x00) = defaultValue;
     *(u64*)((u32)pad + 0x80) = defaultValue;
+}
+
+/*
+ * NAME :		padDisableInput
+ * 
+ * DESCRIPTION :
+ * 			Disables the pad input.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+void padDisableInput(void)
+{
+    if (PAD_PROCESS_ADDR == PAD_PROCESS_VALUE)
+        PAD_PROCESS_ADDR = 0;
+}
+
+/*
+ * NAME :		padEnableInput
+ * 
+ * DESCRIPTION :
+ * 			Enables the pad input.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+void padEnableInput(void)
+{
+    PAD_PROCESS_ADDR = PAD_PROCESS_VALUE;
 }

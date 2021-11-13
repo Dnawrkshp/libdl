@@ -75,23 +75,36 @@ int gfxWorldSpaceToScreenSpace(VECTOR position, int * x, int * y)
 }
 
 //--------------------------------------------------------
-int gfxScreenSpaceText(int x, int y, float scaleX, float scaleY, u32 color, const char * string, int length)
+int gfxGetFontWidth(const char * string, int length, float scale)
+{
+    if (gameIsIn())
+    {
+        return internal_widthFunc_inGame(string, length, scale);
+    }
+    else
+    {
+        return internal_widthFunc_inLobby(string, length, scale);
+    }
+}
+
+//--------------------------------------------------------
+int gfxScreenSpaceText(float x, float y, float scaleX, float scaleY, u32 color, const char * string, int length, int alignment)
 {
     // draw
     if (gameIsIn())
     {
-        internal_drawFunc_inGame(color, string, length, 1, 0, 0x80000000, (float)x, (float)y, scaleX, scaleY, 0, 0);
+        internal_drawFunc_inGame(color, string, length, alignment, 0, 0x80000000, x, y, scaleX, scaleY, 0, 0);
         return x + internal_widthFunc_inGame(string, length, scaleX);
     }
     else
     {
-        internal_drawFunc_inLobby(color, string, length, 1, 0, 0x80000000, (float)x, (float)y, scaleX, scaleY, 0, 0);
+        internal_drawFunc_inLobby(color, string, length, alignment, 0, 0x80000000, x, y, scaleX, scaleY, 0, 0);
         return x + internal_widthFunc_inLobby(string, length, scaleX);
     }
 }
 
 //--------------------------------------------------------
-void gfxScreenSpaceBox(RECT * rect, u32 colorTL, u32 colorTR, u32 colorBL, u32 colorBR)
+void gfxScreenSpaceQuad(RECT * rect, u32 colorTL, u32 colorTR, u32 colorBL, u32 colorBR)
 {
     u32 buffer[11];
     buffer[0] = 8;
@@ -114,6 +127,19 @@ void gfxScreenSpaceBox(RECT * rect, u32 colorTL, u32 colorTR, u32 colorBL, u32 c
     {
         internal_drawBox_inLobby(rect, buffer);
     }
+}
+
+//--------------------------------------------------------
+void gfxScreenSpaceBox(float x, float y, float w, float h, u32 color)
+{
+    RECT r = {
+        { x, y },
+        { x + w, y },
+        { x, y + h },
+        { x + w, y + h}
+    };
+
+    gfxScreenSpaceQuad(&r, color, color, color, color);
 }
 
 void gfxScreenSpacePIF(RECT * rect)

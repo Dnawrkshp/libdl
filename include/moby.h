@@ -17,9 +17,11 @@
 #include <tamtypes.h>
 #include "math3d.h"
 #include "common.h"
+#include "gid.h"
 
 struct GuberMoby;
 struct GuberEvent;
+struct Gid;
 
 //--------------------------------------------------------
 enum MobyId
@@ -436,7 +438,12 @@ typedef struct Moby
     char UNK_7C[0x04];
     float UNK_80[4];
 
-    struct GuberMoby * GuberMoby;
+    union
+    {
+        struct GuberMoby * GuberMoby;
+        void * NetObject;
+        Gid NetObjectGid;
+    };
 
     short UNK_94;
     short UNK_96;
@@ -452,7 +459,7 @@ typedef struct Moby
 
     char UNK_B0[0x08];
 
-    float UNK_B8;
+    struct Moby* ParentMoby;
 
     short MobyId;
     short UNK_BE;
@@ -463,6 +470,35 @@ typedef struct Moby
     VECTOR Rotation;
 
 } Moby;
+
+typedef struct MobyColDamageIn {
+    VECTOR Momentum;
+    Moby * Damager;
+    int DamageFlags;
+    u8 DamageClass;
+    u8 DamageStrength;
+    u16 DamageIndex;
+    float DamageHp;
+    int Flags;
+    float DamageHeroHp;
+    int ShotUID;
+    int UNK_2C;
+} MobyColDamageIn;
+
+typedef struct MobyColDamage {
+    VECTOR Ip;
+    VECTOR Momentum;
+    Moby* Damager;
+    int DamageFlags;
+    u8 DamageClass;
+    u8 DamageStrength;
+    u16 DamageIndex;
+    float DamageHp;
+    int Flags;
+    float DamageHeroHp;
+    int ShotUID;
+    Moby* Moby;
+} MobyColDamage;
 
 typedef void (*MobyGetInterface_func)(int mobyId, int arg2, int arg3);
 typedef void (*MobyGetGuberObject_func)(Moby * moby);
@@ -505,5 +541,20 @@ void mobyUpdateTransform(Moby * moby);
  * Gets a pointer to the moby functions
  */
 MobyFunctions * mobyGetFunctions(Moby * moby);
+
+/*
+ * 
+ */
+void mobySetState(Moby* moby, char a1, long a2);
+
+/*
+ * 
+ */
+MobyColDamage* mobyGetDamage(Moby* moby, u32 a1, int a2);
+
+/*
+ * 
+ */
+int mobyPlaySound(short a0, u8 a1, Moby* moby);
 
 #endif // _LIBDL_MOBY_H_

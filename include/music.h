@@ -82,11 +82,120 @@ enum TrackNumbers
     MUSIC_TRACK_DREADZONE_DEFEAT_GLEEMON_VOX = 0x78
 };
 
+<<<<<<< HEAD
 void musicPlayTrack(int TrackNumber, int KeepPlaying);
 void musicStopTrack(void);
 void musicPauseTrack(int arg1);
 void musicUnpauseTrack(void);
 void musicTransitionTrack(short arg1, short CueTrack, short arg3, short arg4);
+=======
+/*
+ * NAME :		             musicPlayTrack
+ * 
+ * DESCRIPTION :
+ * 			                 Plays the given Music Track
+ * 
+ * NOTES :                   In order to play a new track, the current track must finish
+ *                           or be stopped with musicStopTrack.
+ * 
+ * ARGS : 
+ *          TrackNumber:     Music track
+ *          KeepPlaying:     0 = don't play another track when current is finished.
+ *                           1 = play random track when current is finished.
+ *          arg3       :     No Idea.  Default is 0x400.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			         Troy "Agent Moose" Pruitt
+ */
+void musicPlayTrack(int TrackNumber, int KeepPlaying);
+
+/*
+ * NAME :		             musicStopTrack
+ * 
+ * DESCRIPTION :
+ * 			                 Stops the current Music Track
+ * 
+ * NOTES :
+ * 
+ * ARGS :                    None
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			         Troy "Agent Moose" Pruitt
+ */
+void musicStopTrack(void);
+
+/*
+ * NAME :		             musicPauseTrack
+ * 
+ * DESCRIPTION :
+ * 			                 Pauses the current Music Track
+ * 
+ * NOTES :
+ * 
+ * ARGS :                    arg1: No clue.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			         Troy "Agent Moose" Pruitt
+ */
+void musicPauseTrack(int arg1);
+
+/*
+ * NAME :		             musicUnpauseTrack
+ * 
+ * DESCRIPTION :
+ * 			                 Unpauses the currently paused Music Track
+ * 
+ * NOTES :
+ * 
+ * ARGS :                    None.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			         Troy "Agent Moose" Pruitt
+ */
+void musicUnpauseTrack(void);
+
+/*
+ * NAME :		             musicTransitionTrack
+ * 
+ * DESCRIPTION :
+ * 			                 Transitions to another track.
+ * 
+ * NOTES :                   This function is better used to fade-out the current track, so it
+ *                           can transition to the next track without doing a hacky job of
+ *                           manually changing the music volume.
+ * 
+ * ARGS : 
+ *          arg1     :       No Idea.
+ *          CudeTrack:       Transition to this track.
+ *                           This will cue the track duration and other things.
+ *          arg3     :       No Idea, but if set to 0x400, cued track will play.  If set to 0, cued track will will but have no sound.
+ *          arg4     :       No Idea, but if set to 0x400, cued track will play.  If set to 0, cued track will will but have no sound.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			         Troy "Agent Moose" Pruitt
+ */
+void musicTransitionTrack(short arg1, short CueTrack, short arg3, short arg4);
+
+/*
+ * NAME :		             musicIsLoaded
+ * 
+ * DESCRIPTION :
+ * 			                 Returns non-zero if the game has loaded the music data.
+ * 
+ * NOTES :                   
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			         Troy "Agent Moose" Pruitt
+ */
+>>>>>>> upstream/main
 int musicIsLoaded(void);
 
 #endif // _LIBDL_MUSIC_H_
