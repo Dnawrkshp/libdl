@@ -1,10 +1,7 @@
 #include "game.h"
 #include "music.h"
 
-<<<<<<< HEAD
-=======
 //--------------------------------------------------------
->>>>>>> upstream/main
 void internal_musicPlayTrack_inGame(u64, u64, u64);
 void internal_musicPlayTrack_inLobby(u64, u64, u64);
 void internal_musicStopTrack_inGame(void);
@@ -46,58 +43,20 @@ void internal_wadGetSectors(u64, u64, u64);
  */
 #define TRACK_DURATION (*(u32*)0x002069A4)
 
-<<<<<<< HEAD
-/*
- * NAME :		             musicPlayTrack
- * 
- * DESCRIPTION :
- * 			                 Plays the given Music Track
- * 
- * NOTES :                   In order to play a new track, the current track must finish
- *                           or be stopped with musicStopTrack.
- * 
- * ARGS : 
- *          TrackNumber:     Music track
- *          KeepPlaying:     0 = don't play another track when current is finished.
- *                           1 = play random track when current is finished.
- *          Volume     :     Default is 0x400.
- * 
- * RETURN :
- * 
- * AUTHOR :			         Troy "Agent Moose" Pruitt
- */
-=======
 //--------------------------------------------------------------------------------
->>>>>>> upstream/main
 void musicPlayTrack(int TrackNumber, int KeepPlaying)
 {
     musicStopTrack();
     if (gameIsIn())
     {
-        internal_musicPlayTrack_inGame(TrackNumber, KeepPlaying, 0x400);
+        internal_musicPlayTrack_inGame(TrackNumber * 2, KeepPlaying, 0x400);
     }
     else
     {
-        internal_musicPlayTrack_inLobby(TrackNumber, KeepPlaying, 0x400);
+        internal_musicPlayTrack_inLobby(TrackNumber * 2, KeepPlaying, 0x400);
     }
 }
 
-<<<<<<< HEAD
-/*
- * NAME :		             musicStopTrack
- * 
- * DESCRIPTION :
- * 			                 Stops the current Music Track
- * 
- * NOTES :
- * 
- * ARGS :                    None
- * 
- * RETURN :
- * 
- * AUTHOR :			         Troy "Agent Moose" Pruitt
- */
-=======
 //--------------------------------------------------------------------------------
 >>>>>>> upstream/main
 void musicStopTrack(void)
@@ -112,24 +71,7 @@ void musicStopTrack(void)
     }
 }
 
-<<<<<<< HEAD
-/*
- * NAME :		             musicPauseTrack
- * 
- * DESCRIPTION :
- * 			                 Pauses the current Music Track
- * 
- * NOTES :
- * 
- * ARGS :                    arg1: No clue.
- * 
- * RETURN :
- * 
- * AUTHOR :			         Troy "Agent Moose" Pruitt
- */
-=======
 //--------------------------------------------------------------------------------
->>>>>>> upstream/main
 void musicPauseTrack(int arg1)
 {
     if (gameIsIn())
@@ -142,24 +84,7 @@ void musicPauseTrack(int arg1)
     }
 }
 
-<<<<<<< HEAD
-/*
- * NAME :		             musicUnpauseTrack
- * 
- * DESCRIPTION :
- * 			                 Unpauses the currently paused Music Track
- * 
- * NOTES :
- * 
- * ARGS :                    None.
- * 
- * RETURN :
- * 
- * AUTHOR :			         Troy "Agent Moose" Pruitt
- */
-=======
 //--------------------------------------------------------------------------------
->>>>>>> upstream/main
 void musicUnpauseTrack(void)
 {
     if (gameIsIn())
@@ -172,58 +97,21 @@ void musicUnpauseTrack(void)
     }
 }
 
-<<<<<<< HEAD
-/*
- * NAME :		             musicTransitionTrack
- * 
- * DESCRIPTION :
- * 			                 Transitions to another track.
- * 
- * NOTES :                   This function is better used to fade-out the current track, so it
- *                           can transition to the next track without doing a hacky job of
- *                           manually changing the music volume.
- * 
- * ARGS : 
- *          arg1     :       No Idea.
- *          CudeTrack:       Transition to this track.
- *                           This will cue the track duration and other things.
- *          arg3     :       No Idea, but if set to 0x400, cued track will play.  If set to 0, cued track will will but have no sound.
- *          arg4     :       No Idea, but if set to 0x400, cued track will play.  If set to 0, cued track will will but have no sound.
- * 
- * RETURN :
- * 
- * AUTHOR :			         Troy "Agent Moose" Pruitt
- */
-=======
 //--------------------------------------------------------------------------------
->>>>>>> upstream/main
 void musicTransitionTrack(short arg1, short CueTrack, short arg3, short arg4)
 {
     if (gameIsIn())
     {
-        internal_musicTransitionTrack_inGame(arg1, CueTrack, arg3, arg4);
+        internal_musicTransitionTrack_inGame(arg1, CueTrack * 2, arg3, arg4);
     }
     else
     {
-        internal_musicTransitionTrack_inLobby(arg1, CueTrack, arg3, arg4);
+        internal_musicTransitionTrack_inLobby(arg1, CueTrack * 2, arg3, arg4);
     }
 }
 
-<<<<<<< HEAD
-int musicIsLoaded(void)
-{
-    if (MUSIC_LOCATION == 0xF8D29)
-    {
-        return 1;
-    }
-    else
-    {
-        return 0;
-    }
-=======
 //--------------------------------------------------------------------------------
 int musicIsLoaded(void)
 {
   return MUSIC_LOCATION == 0xF8D29;
->>>>>>> upstream/main
 }
