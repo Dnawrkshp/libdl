@@ -48,22 +48,6 @@ FUNCTION(internal_dialogPlaySound_inGame, 0x004E3688)
 FUNCTION(internal_dialogPlaySound_inLobby, 0x005C97D8)
 
 #--------------------------------------------------------
-#------------------------- MUSIC ------------------------
-#--------------------------------------------------------
-
-FUNCTION(internal_musicPlayTrack_inGame, 0x0051F980)
-FUNCTION(internal_musicPlayTrack_inLobby, 0x005FEDE8)
-FUNCTION(internal_musicStopTrack_inGame, 0x0051FD28)
-FUNCTION(internal_musicStopTrack_inLobby, 0x005FF190)
-FUNCTION(internal_musicPauseTrack_inGame, 0x0051FE18)
-FUNCTION(internal_musicPauseTrack_inLobby, 0x005FF280)
-FUNCTION(internal_musicUnpauseTrack_inGame, 0x0051FE38)
-FUNCTION(internal_musicUnpauseTrack_inLobby, 0x005FF2A0)
-FUNCTION(internal_musicTransitionTrack_inGame, 0x0051FBC8)
-FUNCTION(internal_musicTransitionTrack_inLobby, 0x005FF030)
-FUNCTION(internal_wadGetSectors, 0x00159A00)
-
-#--------------------------------------------------------
 #------------------------- GAME -------------------------
 #--------------------------------------------------------
 FUNCTION(internal_gameEnd, 0x006228C8)
