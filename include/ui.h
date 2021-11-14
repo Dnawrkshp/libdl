@@ -104,6 +104,22 @@ enum UIPointers
 __LIBDL_GETTER__ int uiGetActive(void);
 
 /*
+ * NAME :		uiGetActive
+ * 
+ * DESCRIPTION :
+ * 			Gets the current active UI Pointer
+ * 
+ * NOTES :
+ * 
+ * ARGS :   Look at enums for pointers.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Troy "Agent Moose" Pruitt
+ */
+__LIBDL_GETTER__ int GetActiveUIPointer(u8 UI);
+
+/*
  * NAME :		uiShowYesNoDialog
  * 
  * DESCRIPTION :
