@@ -618,6 +618,24 @@ void playerGiveWeapon(Player * player, int weaponId, int weaponLevel);
 void playerRespawn(Player * player);
 
 /*
+ * NAME :		playerDropFlag
+ * 
+ * DESCRIPTION :
+ * 			Causes the player to drop the flag.
+ * 
+ * NOTES :
+ * 
+ * 
+ * ARGS : 
+ *      player      :           Target player.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+void playerDropFlag(Player * player, int a1);
+
+/*
  * NAME :		playerSetPosRot
  * 
  * DESCRIPTION :
