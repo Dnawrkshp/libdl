@@ -15,7 +15,7 @@ int uiGetActive(void)
 ================      if true: returns Pointer
 ========              if false: returns zero
 \*========================================================*/
-int GetActiveUIPointer(u8 UI)
+int GetActiveUIPointer(char UI)
 {
 	int UI_POINTER_LIST = 0x011C7064;
 	int Pointer = (*(u32*)((u32)UI_POINTER_LIST + (UI * 0x4)));
