@@ -58,7 +58,6 @@ void musicPlayTrack(int TrackNumber, int KeepPlaying)
 }
 
 //--------------------------------------------------------------------------------
->>>>>>> upstream/main
 void musicStopTrack(void)
 {
     if (gameIsIn())
