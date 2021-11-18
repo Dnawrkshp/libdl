@@ -117,7 +117,7 @@ __LIBDL_GETTER__ int uiGetActive(void);
  * 
  * AUTHOR :			Troy "Agent Moose" Pruitt
  */
-__LIBDL_GETTER__ int GetActiveUIPointer(u8 UI);
+__LIBDL_GETTER__ int GetActiveUIPointer(char UI);
 
 /*
  * NAME :		uiShowYesNoDialog
