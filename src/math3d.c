@@ -239,11 +239,11 @@ void vector_scale(VECTOR output, VECTOR input0, float scalar)
 //--------------------------------------------------------
 void vector_print(VECTOR input0)
 {
-	printf("(%s%d.%05d, %s%d.%05d, %s%d.%05d, %s%d.%05d)",
-		(input0[0] < 0 ? "-" : "+"), (int)fabsf(input0[0]), ((int)(fabsf(input0[0]) * 100000)) % 100000,
-		(input0[1] < 0 ? "-" : "+"), (int)fabsf(input0[0]), ((int)(fabsf(input0[1]) * 100000)) % 100000,
-		(input0[2] < 0 ? "-" : "+"), (int)fabsf(input0[0]), ((int)(fabsf(input0[2]) * 100000)) % 100000,
-		(input0[3] < 0 ? "-" : "+"), (int)fabsf(input0[0]), ((int)(fabsf(input0[3]) * 100000)) % 100000);
+	printf("(%f, %f, %f, %f)",
+		input0[0],
+        input0[1],
+        input0[2],
+        input0[3]);
 }
 
 //--------------------------------------------------------
