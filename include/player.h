@@ -219,11 +219,11 @@ typedef struct Player
     float PlayerPitch;                                              // 0xB4
     float PlayerYaw;                                                // 0xB8
 
-    char UNK2[0xA4];                                                // 0xBC
+    char UNK2[0xD4];                                                // 0xBC
 
-    VECTOR Velocity;                                                // 0x160
+    VECTOR Velocity;                                                // 0x130
 
-    char UNK164[0x18C];                                             // 0x170
+    char UNK164[0x15C];                                             // 0x170
 
     int Airwalk;                                                    // 0x2FC
 
