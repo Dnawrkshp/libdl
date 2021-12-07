@@ -271,7 +271,7 @@ typedef struct Player
 
     VECTOR CameraPos;                                               // 0x1950
     VECTOR CameraDir;                                               // 0x1960
-    char UNK99[0x40];                                               // 0x1970
+    MATRIX CameraMatrix;                                            // 0x1970
 
     CameraAngle CameraYaw;                                          // 0x19B0
     CameraAngle CameraPitch;                                        // 0x19D0
