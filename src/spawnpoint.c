@@ -46,7 +46,7 @@ int hillPointGetIndex(int id)
     if (!hillInfo)
         return -1;
 
-    return (hillInfo + 0x50)[id];
+    return ((u32*)(hillInfo + 0x50))[id];
 }
 
 void hillPointSetIndex(int id, int value)
@@ -55,7 +55,7 @@ void hillPointSetIndex(int id, int value)
     if (!hillInfo)
         return;
 
-    (hillInfo + 0x50)[id] = value;
+    ((u32*)(hillInfo + 0x50))[id] = value;
 }
 
 SpawnPoint * spawnPointGet(int index)
