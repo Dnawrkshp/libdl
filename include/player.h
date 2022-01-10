@@ -48,6 +48,134 @@ enum PlayerCameraType
 };
 
 /*
+ * NAME :		PlayerState
+ * 
+ * DESCRIPTION :
+ * 			Defines the player states.
+ * 
+ * NOTES :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+enum PlayerState {
+	PLAYER_STATE_IDLE = 0,
+	PLAYER_STATE_LOOK = 1,
+	PLAYER_STATE_WALK = 2,
+	PLAYER_STATE_SKID = 3,
+	PLAYER_STATE_CROUCH = 4,
+	PLAYER_STATE_QUICK_TURN = 5,
+	PLAYER_STATE_FALL = 6,
+	PLAYER_STATE_JUMP = 7,
+	PLAYER_STATE_GLIDE = 8,
+	PLAYER_STATE_RUN_JUMP = 9,
+	PLAYER_STATE_LONG_JUMP = 10,
+	PLAYER_STATE_FLIP_JUMP = 11,
+	PLAYER_STATE_JINK_JUMP = 12,
+	PLAYER_STATE_ROCKET_JUMP = 13,
+	PLAYER_STATE_DOUBLE_JUMP = 14,
+	PLAYER_STATE_HELI_JUMP = 15,
+	PLAYER_STATE_CHARGE_JUMP = 16,
+	PLAYER_STATE_WALL_JUMP = 17,
+	PLAYER_STATE_WATER_JUMP = 18,
+	PLAYER_STATE_COMBO_ATTACK = 19,
+	PLAYER_STATE_JUMP_ATTACK = 20,
+	PLAYER_STATE_THROW_ATTACK = 21,
+	PLAYER_STATE_GET_HIT = 22,
+	PLAYER_STATE_LEDGE_GRAB = 23,
+	PLAYER_STATE_LEDGE_IDLE = 24,
+	PLAYER_STATE_LEDGE_TRAVERSE_LEFT = 25,
+	PLAYER_STATE_LEDGE_TRAVERSE_RIGHT = 26,
+	PLAYER_STATE_LEDGE_JUMP = 27,
+	PLAYER_STATE_VISIBOMB = 28,
+	PLAYER_STATE_TARGETING = 29,
+	PLAYER_STATE_GUN_WAITING = 30,
+	PLAYER_STATE_WALLOPER_ATTACK = 31,
+	PLAYER_STATE_ATTACK_BOUNCE = 32,
+	PLAYER_STATE_ROCKET_STOMP = 33,
+	PLAYER_STATE_GLOVE_ATTACK = 34,
+	PLAYER_STATE_GRAPPLE_SHOOT = 35,
+	PLAYER_STATE_GRAPPLE_PULL = 36,
+	PLAYER_STATE_GRAPPLE_PULL_VEHICLE = 37,
+	PLAYER_STATE_SUCK_CANNON = 38,
+	PLAYER_STATE_GRIND = 39,
+	PLAYER_STATE_GRIND_JUMP = 40,
+	PLAYER_STATE_GRIND_SWITCH_JUMP = 41,
+	PLAYER_STATE_GRIND_ATTACK = 42,
+	PLAYER_STATE_SWING = 43,
+	PLAYER_STATE_SWING_FALL = 44,
+	PLAYER_STATE_RECOIL = 45,
+	PLAYER_STATE_ICE_WALK = 46,
+	PLAYER_STATE_DEVASTATOR = 47,
+	PLAYER_STATE_SLIDE = 48,
+	PLAYER_STATE_VEHICLE = 49,
+	PLAYER_STATE_SWIMUNDER = 50,
+	PLAYER_STATE_IDLEUNDER = 51,
+	PLAYER_STATE_CHARGEUNDER = 52,
+	PLAYER_STATE_SWIMSURF = 53,
+	PLAYER_STATE_IDLESURF = 54,
+	PLAYER_STATE_BOLT_CRANK = 55,
+	PLAYER_STATE_LAVA_JUMP = 56,
+	PLAYER_STATE_DEATH = 57,
+	PLAYER_STATE_BOARD = 58,
+	PLAYER_STATE_MAGNE_WALK = 59,
+	PLAYER_STATE_GRIND_HIT = 62,
+	PLAYER_STATE_GRIND_JUMP_TURN = 63,
+	PLAYER_STATE_VENDOR_BOOTH = 98,
+	PLAYER_STATE_NPC = 99,
+	PLAYER_STATE_WALK_TO_POS = 100,
+	PLAYER_STATE_SKID_TO_POS = 101,
+	PLAYER_STATE_IDLE_TO_POS = 102,
+	PLAYER_STATE_JUMP_TO_POS = 103,
+	PLAYER_STATE_QUICKSAND_SINK = 104,
+	PLAYER_STATE_QUICKSAND_JUMP = 105,
+	PLAYER_STATE_DROWN = 106,
+	PLAYER_STATE_MAGNE_ATTACK = 111,
+	PLAYER_STATE_MAGNE_JUMP = 112,
+	PLAYER_STATE_CUT_SCENE = 113,
+	PLAYER_STATE_WADE = 114,
+	PLAYER_STATE_ZIP = 115,
+	PLAYER_STATE_GET_HIT_SURF = 116,
+	PLAYER_STATE_GET_HIT_UNDER = 117,
+	PLAYER_STATE_DEATH_FALL = 118,
+	PLAYER_STATE_SLOPESLIDE = 120,
+	PLAYER_STATE_JUMP_BOUNCE = 121,
+	PLAYER_STATE_DEATHSAND_SINK = 122,
+	PLAYER_STATE_LAVA_DEATH = 123,
+	PLAYER_STATE_CHARGE = 125,
+	PLAYER_STATE_ICEWATER_FREEZE = 126,
+	PLAYER_STATE_ELECTRIC_DEATH = 127,
+	PLAYER_STATE_ROCKET_HOVER = 128,
+	PLAYER_STATE_ELECTRIC_DEATH_UNDER = 129,
+	PLAYER_STATE_SKATE = 130,
+	PLAYER_STATE_MOON_JUMP = 131,
+	PLAYER_STATE_JET = 132,
+	PLAYER_STATE_THROW_SHURIKEN = 133,
+	PLAYER_STATE_RACEBIKE = 134,
+	PLAYER_STATE_SPEEDBOAT = 135,
+	PLAYER_STATE_HOVERPLANE = 136,
+	PLAYER_STATE_LATCH_GRAB = 137,
+	PLAYER_STATE_LATCH_IDLE = 138,
+	PLAYER_STATE_LATCH_JUMP = 139,
+	PLAYER_STATE_PULLSHOT_ATTACH = 140,
+	PLAYER_STATE_PULLSHOT_PULL = 141,
+	PLAYER_STATE_GET_FLATTENED = 142,
+	PLAYER_STATE_SKYDIVE = 143,
+	PLAYER_STATE_ELECTRIC_GET_HIT = 144,
+	PLAYER_STATE_FLAIL_ATTACK = 145,
+	PLAYER_STATE_MAGIC_TELEPORT = 146,
+	PLAYER_STATE_TELEPORT_IN = 147,
+	PLAYER_STATE_DEATH_NO_FALL = 148,
+	PLAYER_STATE_TAUNT_SQUAT = 149,
+	PLAYER_STATE_TAUNT_ASSPOINT = 150,
+	PLAYER_STATE_TAUNT_ASSRUB = 151,
+	PLAYER_STATE_TURRET_DRIVER = 152,
+	PLAYER_STATE_WAIT_FOR_RESURRECT = 153,
+	PLAYER_STATE_WAIT_FOR_JOIN = 154,
+	PLAYER_STATE_DROPPED = 155,
+	PLAYER_STATE_CNT = 156
+};
+
+/*
  * NAME :		CameraAngle
  * 
  * DESCRIPTION :
@@ -66,6 +194,91 @@ typedef struct CameraAngle
     float Acceleration;
     float UNK1[3];
 } CameraAngle;
+
+
+/*
+ * NAME :		HeroTimers
+ * 
+ * DESCRIPTION :
+ * 			
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+typedef struct HeroTimers {
+	/*   0 */ int state;
+	/*   4 */ int stateType;
+	/*   8 */ int subState;
+	/*   c */ int animState;
+	/*  10 */ int stickOn;
+	/*  14 */ int stickOff;
+	/*  18 */ short int noLedge;
+	/*  1a */ short int allowQuickSelect;
+	/*  1c */ int firing;
+	/*  20 */ int moveModifierTimer;
+	/*  24 */ int boltMultTimer;
+	/*  28 */ int wallJumpOk;
+	/*  2c */ short int postHitInvinc;
+	/*  2e */ short int ignoreHeroColl;
+	/*  30 */ short int collOff;
+	/*  32 */ short int invisible;
+	/*  34 */ short int slide;
+	/*  36 */ short int bezerker;
+	/*  38 */ short int noWallJump;
+	/*  3a */ short int noJumps;
+	/*  3c */ short int boxBreaking;
+	/*  3e */ short int noMag;
+	/*  40 */ short int noChargeJump;
+	/*  42 */ short int resurrectWait;
+	/*  44 */ int timeSinceStrafe;
+	/*  48 */ short int noHackerSwitch;
+	/*  4a */ short int noInput;
+	/*  4c */ short int noJumpLookBack;
+	/*  4e */ short int noShockAbort;
+	/*  50 */ short int stuck;
+	/*  52 */ short int noSwing;
+	/*  54 */ short int noWaterJump;
+	/*  56 */ short int noWaterDive;
+	/*  58 */ short int facialExpression;
+	/*  5a */ short int idle;
+	/*  5c */ short int bumpPushing;
+	/*  5e */ short int lookButton;
+	/*  60 */ short int edgeStop;
+	/*  62 */ short int clankRedEye;
+	/*  64 */ short int edgePath;
+	/*  66 */ short int magSlope;
+	/*  68 */ short int ledgeCamAdj;
+	/*  6a */ short int screenFlashRed;
+	/*  6c */ short int holdDeathPose;
+	/*  6e */ short int strafeMove;
+	/*  70 */ short int noRaisedGunArm;
+	/*  72 */ short int noExternalRot;
+	/*  74 */ short int screenFlashOn;
+	/*  76 */ short int screenFadeOn;
+	/*  78 */ int lastVehicleTimer;
+	/*  7c */ float gadgetRefire;
+	/*  80 */ int timeAlive;
+	/*  84 */ int noFpsCamTimer;
+	/*  88 */ int endDeathEarly;
+	/*  8c */ short int forceGlide;
+	/*  8e */ short int noGrind;
+	/*  90 */ short int instaGrind;
+	/*  92 */ short int noCamInputTimer;
+	/*  94 */ short int postTeleportTimer;
+	/*  96 */ short int multiKillTimer;
+	/*  98 */ short int armorLevelTimer;
+	/*  9a */ short int damageMuliplierTimer;
+	/*  9c */ int powerupEffectTimer;
+	/*  a0 */ short int juggernautFadeTimer;
+	/*  a2 */ short int onFireTimer;
+	/*  a4 */ short int acidTimer;
+	/*  a6 */ short int freezeTimer;
+	/*  a8 */ short int noHelmTimer;
+	/*  aa */ short int elecTimer;
+	/*  ac */ short int boltDistMulTimer;
+	/*  ae */ short int explodeTimer;
+	/*  b0 */ short int noDeathTimer;
+	/*  b2 */ short int invincibilityTimer;
+} HeroTimers;
 
 /*
  * NAME :		Player
@@ -91,44 +304,19 @@ typedef struct Player
     float PlayerPitch;                                              // 0xB4
     float PlayerYaw;                                                // 0xB8
 
-    char UNK2[0x240];                                               // 0xBC
+    char UNK2[0x74];                                                // 0xBC
+
+    VECTOR Velocity;                                                // 0x130
+
+    char UNK164[0x1BC];                                             // 0x140
 
     int Airwalk;                                                    // 0x2FC
 
     char UNK3[0x70];                                                // 0x300
 
-    // This resets whenever you jump/cboot/land
-    // Appears to count how long since you've entered a state
-    // Setting it to 0 when cbooting gives infinite cbooting
-    int TicksSinceStateChanged;                                     // 0x370
-    
-    // More state related ticks
-    int StateTicks[5];                                              // 0x374
+    HeroTimers timers;                                              // 0x370
 
-    char UNK4[0x28];                                                // 0x388
-
-
-    int RespawnTimer;                                               // 0x3B0
-
-    char UNK30[0x38];                                               // 0x3B4
-
-    float WeaponCooldownTimer;                                      // 0x3EC
-
-    char UNK5[0x18];                                                // 0x3F0
-
-    short ShieldTimer;                                              // 0x408
-    short QuadTimer;                                                // 0x40A
-    int UNK6;                                                       // 0x40C
-    short UNK7;                                                     // 0x410
-    short FireTimer;                                                // 0x412
-    short AcidTimer;                                                // 0x414
-    short FreezeTimer;                                              // 0x416
-    short UNK8;                                                     // 0x418
-    short JuggyElectricityTimer;                                    // 0x41A
-    short UNK9;                                                     // 0x41C
-    short BlowupTimer;                                              // 0x41E
-
-    char UNK10[0x3DC];                                              // 0x420
+    char UNK10[0x3CC];                                              // 0x430
 
     // First instance of weapon held id
     // This one is zero for any item that isn't a gun
@@ -138,7 +326,8 @@ typedef struct Player
     char UNK11[0x1150];                                             // 0x800
 
     VECTOR CameraPos;                                               // 0x1950
-    char UNK99[0x50];                                               // 0x1960
+    VECTOR CameraDir;                                               // 0x1960
+    MATRIX CameraMatrix;                                            // 0x1970
 
     CameraAngle CameraYaw;                                          // 0x19B0
     CameraAngle CameraPitch;                                        // 0x19D0
@@ -488,6 +677,24 @@ void playerGiveWeapon(Player * player, int weaponId, int weaponLevel);
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
 void playerRespawn(Player * player);
+
+/*
+ * NAME :		playerDropFlag
+ * 
+ * DESCRIPTION :
+ * 			Causes the player to drop the flag.
+ * 
+ * NOTES :
+ * 
+ * 
+ * ARGS : 
+ *      player      :           Target player.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+void playerDropFlag(Player * player, int a1);
 
 /*
  * NAME :		playerSetPosRot

@@ -104,6 +104,7 @@ FUNCTION(internal_netBroadcastMediusAppMessage, 0x01E9E270)
 #--------------------------------------------------------
 FUNCTION(playerGiveWeapon, 0x00628018)
 FUNCTION(playerRespawn, 0x005E2940)
+FUNCTION(playerDropFlag, 0x005F05E8)
 FUNCTION(internal_playerSetPosRot, 0x005EB448)
 
 #--------------------------------------------------------

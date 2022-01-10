@@ -33,29 +33,29 @@ short hillPointGetCount()
 
 void hillPointSetCount(short count)
 {
-    u32 * hillInfo = (u32*)SP_HILL_PTR;
+    u32 hillInfo = (u32)SP_HILL_PTR;
     if (!hillInfo)
         return;
 
-    *(short*)(hillInfo + 0x30) = count;
+    *(short*)(hillInfo + 0x32) = count;
 }
 
 int hillPointGetIndex(int id)
 {
-    u32 * hillInfo = (u32*)SP_HILL_PTR;
+    u32 hillInfo = (u32)SP_HILL_PTR;
     if (!hillInfo)
         return -1;
 
-    return (hillInfo + 0x50)[id];
+    return ((u32*)(hillInfo + 0x50))[id];
 }
 
 void hillPointSetIndex(int id, int value)
 {
-    u32 * hillInfo = (u32*)SP_HILL_PTR;
+    u32 hillInfo = (u32)SP_HILL_PTR;
     if (!hillInfo)
         return;
 
-    (hillInfo + 0x50)[id] = value;
+    ((u32*)(hillInfo + 0x50))[id] = value;
 }
 
 SpawnPoint * spawnPointGet(int index)
