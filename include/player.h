@@ -195,6 +195,91 @@ typedef struct CameraAngle
     float UNK1[3];
 } CameraAngle;
 
+
+/*
+ * NAME :		HeroTimers
+ * 
+ * DESCRIPTION :
+ * 			
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+typedef struct HeroTimers {
+	/*   0 */ int state;
+	/*   4 */ int stateType;
+	/*   8 */ int subState;
+	/*   c */ int animState;
+	/*  10 */ int stickOn;
+	/*  14 */ int stickOff;
+	/*  18 */ short int noLedge;
+	/*  1a */ short int allowQuickSelect;
+	/*  1c */ int firing;
+	/*  20 */ int moveModifierTimer;
+	/*  24 */ int boltMultTimer;
+	/*  28 */ int wallJumpOk;
+	/*  2c */ short int postHitInvinc;
+	/*  2e */ short int ignoreHeroColl;
+	/*  30 */ short int collOff;
+	/*  32 */ short int invisible;
+	/*  34 */ short int slide;
+	/*  36 */ short int bezerker;
+	/*  38 */ short int noWallJump;
+	/*  3a */ short int noJumps;
+	/*  3c */ short int boxBreaking;
+	/*  3e */ short int noMag;
+	/*  40 */ short int noChargeJump;
+	/*  42 */ short int resurrectWait;
+	/*  44 */ int timeSinceStrafe;
+	/*  48 */ short int noHackerSwitch;
+	/*  4a */ short int noInput;
+	/*  4c */ short int noJumpLookBack;
+	/*  4e */ short int noShockAbort;
+	/*  50 */ short int stuck;
+	/*  52 */ short int noSwing;
+	/*  54 */ short int noWaterJump;
+	/*  56 */ short int noWaterDive;
+	/*  58 */ short int facialExpression;
+	/*  5a */ short int idle;
+	/*  5c */ short int bumpPushing;
+	/*  5e */ short int lookButton;
+	/*  60 */ short int edgeStop;
+	/*  62 */ short int clankRedEye;
+	/*  64 */ short int edgePath;
+	/*  66 */ short int magSlope;
+	/*  68 */ short int ledgeCamAdj;
+	/*  6a */ short int screenFlashRed;
+	/*  6c */ short int holdDeathPose;
+	/*  6e */ short int strafeMove;
+	/*  70 */ short int noRaisedGunArm;
+	/*  72 */ short int noExternalRot;
+	/*  74 */ short int screenFlashOn;
+	/*  76 */ short int screenFadeOn;
+	/*  78 */ int lastVehicleTimer;
+	/*  7c */ float gadgetRefire;
+	/*  80 */ int timeAlive;
+	/*  84 */ int noFpsCamTimer;
+	/*  88 */ int endDeathEarly;
+	/*  8c */ short int forceGlide;
+	/*  8e */ short int noGrind;
+	/*  90 */ short int instaGrind;
+	/*  92 */ short int noCamInputTimer;
+	/*  94 */ short int postTeleportTimer;
+	/*  96 */ short int multiKillTimer;
+	/*  98 */ short int armorLevelTimer;
+	/*  9a */ short int damageMuliplierTimer;
+	/*  9c */ int powerupEffectTimer;
+	/*  a0 */ short int juggernautFadeTimer;
+	/*  a2 */ short int onFireTimer;
+	/*  a4 */ short int acidTimer;
+	/*  a6 */ short int freezeTimer;
+	/*  a8 */ short int noHelmTimer;
+	/*  aa */ short int elecTimer;
+	/*  ac */ short int boltDistMulTimer;
+	/*  ae */ short int explodeTimer;
+	/*  b0 */ short int noDeathTimer;
+	/*  b2 */ short int invincibilityTimer;
+} HeroTimers;
+
 /*
  * NAME :		Player
  * 
@@ -229,38 +314,9 @@ typedef struct Player
 
     char UNK3[0x70];                                                // 0x300
 
-    // This resets whenever you jump/cboot/land
-    // Appears to count how long since you've entered a state
-    // Setting it to 0 when cbooting gives infinite cbooting
-    int TicksSinceStateChanged;                                     // 0x370
-    
-    // More state related ticks
-    int StateTicks[5];                                              // 0x374
+    HeroTimers timers;                                              // 0x370
 
-    char UNK4[0x28];                                                // 0x388
-
-
-    int RespawnTimer;                                               // 0x3B0
-
-    char UNK30[0x38];                                               // 0x3B4
-
-    float WeaponCooldownTimer;                                      // 0x3EC
-
-    char UNK5[0x18];                                                // 0x3F0
-
-    short ShieldTimer;                                              // 0x408
-    short QuadTimer;                                                // 0x40A
-    int UNK6;                                                       // 0x40C
-    short UNK7;                                                     // 0x410
-    short FireTimer;                                                // 0x412
-    short AcidTimer;                                                // 0x414
-    short FreezeTimer;                                              // 0x416
-    short UNK8;                                                     // 0x418
-    short JuggyElectricityTimer;                                    // 0x41A
-    short UNK9;                                                     // 0x41C
-    short BlowupTimer;                                              // 0x41E
-
-    char UNK10[0x3DC];                                              // 0x420
+    char UNK10[0x3CC];                                              // 0x430
 
     // First instance of weapon held id
     // This one is zero for any item that isn't a gun
