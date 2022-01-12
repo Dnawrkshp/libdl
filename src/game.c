@@ -88,6 +88,11 @@ void internal_gameEnd(int);
 #define GAME_HOST_ID                        (*(u8*)0x001723B4)
 
 /*
+ * Id of the current client.
+ */
+#define GAME_CLIENT_ID                        (*(u8*)0x00172170)
+
+/*
  *
  */
 #define GAME_DATA                           ((GameData*)0x0036D600)
@@ -113,6 +118,16 @@ void gameEnd(int reason)
 int gameIsHost(int hostId)
 {
     return hostId == GAME_HOST_ID;
+}
+
+int gameAmIHost(void)
+{
+    return GAME_CLIENT_ID == GAME_HOST_ID;
+}
+
+int gameGetMyClientId(void)
+{
+    return GAME_CLIENT_ID;
 }
 
 int gameIsIn(void)

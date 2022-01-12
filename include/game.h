@@ -154,6 +154,38 @@ __LIBDL_GETTER__ int gameIsIn(void);
 int gameIsHost(int hostId);
 
 /*
+ * NAME :		gameAmIHost
+ * 
+ * DESCRIPTION :
+ * 			Whether the current client is also the game host.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+int gameAmIHost(void);
+
+/*
+ * NAME :		gameGetMyClientId
+ * 
+ * DESCRIPTION :
+ * 			Returns the current client's game/dme id.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+int gameGetMyClientId(void);
+
+/*
  * NAME :		gameHasEnded
  * 
  * DESCRIPTION :
