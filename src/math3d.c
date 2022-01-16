@@ -122,7 +122,35 @@ void vector_normalize(VECTOR output, VECTOR input0)
 //--------------------------------------------------------
 float vector_length(VECTOR input0)
 {
-    return sqrtf((input0[0] * input0[0]) + (input0[1] * input0[1]) + (input0[2] * input0[2]));
+    return sqrtf(vector_sqrmag(input0));
+}
+
+//--------------------------------------------------------
+float vector_sqrmag(VECTOR input0)
+{
+    VECTOR t;
+
+    asm __volatile__ (
+#if __GNUC__ > 3
+    "vmaxw.xyzw     $vf3, $vf0, $vf0w   \n"
+    "lqc2		    $vf1, 0x00(%1)	    \n"
+    "vmul.xyzw		$vf1, $vf1, $vf1    \n"
+    "vadday.x       $ACC, $vf1, $vf1y   \n"
+    "vmaddz.x		$vf1, $vf3, $vf1z   \n"
+    "sqc2		    $vf1, 0x00(%0)	    \n"
+#else
+    "vmaxw.xyzw     vf3, vf0, vf0w      \n"
+    "lqc2		    vf1, 0x00(%1)	    \n"
+    "vmul.xyzw		vf1, vf1, vf1       \n"
+    "vadday.x       ACC, vf1, vf1y      \n"
+    "vmaddz.x		vf1, vf3, vf1z      \n"
+    "sqc2		    vf1, 0x00(%0)	    \n"
+#endif
+    : : "r" (t), "r" (input0)
+    : "memory"
+    );
+
+    return t[0];
 }
 
 //--------------------------------------------------------
@@ -146,7 +174,7 @@ float vector_innerproduct(VECTOR input0, VECTOR input1)
 
 
     // Return the inner product.
-    return (work0[0] * work1[0]) + (work0[1] * work1[1]) + (work0[2] * work1[2]);
+    return  (work0[0] * work1[0]) + (work0[1] * work1[1]) + (work0[2] * work1[2]);
 }
 
 //--------------------------------------------------------
