@@ -82,6 +82,12 @@ FUNCTION(mobySetState, 0x00502250)
 FUNCTION(mobyGetDamage, 0x00504248)
 FUNCTION(mobyPlaySound, 0x0058f6d0)
 FUNCTION(mobyBlowCorn, 0x0050e318)
+FUNCTION(mobyAnimTransition, 0x00502030)
+FUNCTION(mobyCollDamageDirect, 0x00503408)
+FUNCTION(mobyIsHero, 0x005cd578)
+FUNCTION(mobyMoveSystemUpdate, 0x0051d528)
+FUNCTION(mobyGetDamage, 0x00475b38)
+FUNCTION(mobyProcessDamage, 0x005184d0)
 
 #--------------------------------------------------------
 #-------------------------- NET -------------------------
@@ -179,3 +185,14 @@ FUNCTION(internal_musicTransitionTrack_inLobby, 0x005FF030)
 #------------------------- WAD --------------------------
 #--------------------------------------------------------
 FUNCTION(internal_wadGetSectors, 0x00159A00)
+
+#--------------------------------------------------------
+#------------------------ VECTOR ------------------------
+#--------------------------------------------------------
+FUNCTION(internal_vectorReflect, 0x005b9ae8)
+
+#--------------------------------------------------------
+#----------------------- COLLISION ----------------------
+#--------------------------------------------------------
+FUNCTION(CollMobysSphere_Fix, 0x004bb788)
+FUNCTION(CollLine_Fix, 0x004b7e50)

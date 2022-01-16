@@ -66,13 +66,13 @@ int cheatsDisableHealthboxes(void)
 	Moby * currentMoby = mobyGetFirst();
 	while (currentMoby)
 	{
-		if (currentMoby->MobyId == MOBY_ID_HEALTH_BOX_MULT)
+		if (currentMoby->OClass == MOBY_ID_HEALTH_BOX_MULT)
 		{
 			memset(currentMoby->Position, 0, sizeof(currentMoby->Position));
 
-			if (currentMoby->PropertiesPointer)
+			if (currentMoby->PVar)
 			{
-				void * subPtr = (void*)(*(u32*)(currentMoby->PropertiesPointer));
+				void * subPtr = (void*)(*(u32*)(currentMoby->PVar));
 				if (subPtr)
 				{
 					Moby * orb = (Moby*)(*(u32*)(subPtr + 0x98));
@@ -87,7 +87,7 @@ int cheatsDisableHealthboxes(void)
 			}
 		}
 
-        currentMoby = currentMoby->NextMoby;
+        currentMoby = currentMoby->PChain;
 	}
 
     return count;

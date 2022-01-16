@@ -387,88 +387,84 @@ enum MobyId
  */
 typedef struct Moby
 {
-    
-    char UNK_00[0x10];
-
+    VECTOR BSphere;
     VECTOR Position;
-
-    char UNK_20[0x03];
-    char Opacity;
-
-    void * ModelPointer;
-
-    struct Moby * NextMoby;
-    char UNK_2C[0x04];
-    char UNK_30;
-    char UNK_31;
-
-    short RenderDistance;
-
-    char UNK_34[0x03];
-    char TextureId;
-    // Does something with shadows
-    char UNK_38[0x04];
-
+    char State;
+    u8 Group;
+    char MClass;
+    u8 Opacity;
+    void * PClass;
+    struct Moby * PChain;
+    char CollDamage;
+    char DeathCnt;
+    u16 OcclIndex;
+    char UpdateDist;
+    char Drawn;
+    short DrawDist;
+    u16 ModeBits;
+    u16 ModeBits2;
+    u32 Lights;
     u32 PrimaryColor;
-
-    void * AnimationPointer;
-    float AnimationTime;
-
-    float UNK_48;
-    char UNK_4C[0x04];
-
-    // This is for transitioning between animations
-    void * LastAnimationPointer;
-
-    // Has something to do with animation interpolation
-    char UNK_54[0x04];
-    char UNK_58[0x04];
-    char UNK_5C[0x04];
-
-    u32 SecondaryColor;
-
-    char UNK_64[0x04];
-    char UNK_68[0x04];
-    char UNK_6C[0x04];
-
+    void * AnimSeq;
+    float AnimSeqT;
+    float AnimSpeed;
+    short AnimIScale;
+    short PoseCacheEntryIndex;
+    void * AnimLayers;
+    char AnimSeqId;
+    char AnimFlags;
+    char LSeq;
+    char JointCnt;
+    void * JointCache;
+    void * PManipulator;
+    u32 GlowRGBA;
+    char LodTrans;
+    char LodTrans2;
+    char Metal;
+    char SubState;
+    char PrevState;
+    char StateType;
+    u16 StateTimer;
+    char SoundTrigger;
+    char SoundDesired;
+    short SoundChannel;
     float Scale;
-
-    char UNK_74[0x04];
-    char UNK_78[0x04];
-    char UNK_7C[0x04];
-    float UNK_80[4];
-
+    u16 Bangles;
+    char Shadow;
+    char ShadowIndex;
+    float ShadowPlane;
+    float ShadowRange;
+    VECTOR LSphere;
     union
     {
         struct GuberMoby * GuberMoby;
         void * NetObject;
         Gid NetObjectGid;
     };
-
-    short UNK_94;
-    short UNK_96;
-
-    void * CollisionPointer;
-
-    char UNK_9C[0x04];
-    int UNK_A0;
-    char UNK_A4[0x04];
-    void * UNK_A8;
-
-    void * PropertiesPointer;
-
-    char UNK_B0[0x08];
-
-    struct Moby* ParentMoby;
-
-    short MobyId;
-    short UNK_BE;
-
+    short UpdateId;
+    short Spad0;
+    int * CollData;
+    int CollActive;
+    u32 CollCnt;
+    char GridMinX;
+    char GridMinY;
+    char GridMaxX;
+    char GridMaxY;
+    void * PUpdate;
+    void * PVar;
+    char Mission;
+    char Pad;
+    short UID;
+    short Bolts;
+    u16 Xp;
+    struct Moby* PParent;
+    short OClass;
+    char Triggers;
+    char StandardDeathCalled;
     VECTOR M0_03;
     VECTOR M1_03;
     VECTOR M2_03;
     VECTOR Rotation;
-
 } Moby;
 
 typedef struct MobyColDamageIn {
@@ -556,5 +552,38 @@ MobyColDamage* mobyGetDamage(Moby* moby, u32 a1, int a2);
  * 
  */
 int mobyPlaySound(short a0, u8 a1, Moby* moby);
+
+/*
+ * 
+ */
+void mobyAnimTransition(Moby* moby, int animId, int a2, int a3);
+
+/*
+ * 
+ */
+void mobyCollDamageDirect(Moby* target, MobyColDamageIn * in);
+
+/*
+ * If a2 is zero and the filter doesn't match an existing damage entry,
+ * the moby's damage index will be reset to -1.
+ * Otherwise it will be left.
+ */
+MobyColDamage* mobyGetDamage(Moby* moby, int damageFlagsFilter, int a2);
+
+/*
+ * 
+ */
+void mobyProcessDamage(Moby* moby, float* damageOut, MobyColDamage* colDamageIn);
+
+/*
+ * 
+ */
+int mobyIsHero(Moby* moby);
+
+/*
+ * 
+ */
+void mobyMoveSystemUpdate(Moby* moby);
+
 
 #endif // _LIBDL_MOBY_H_

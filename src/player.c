@@ -69,9 +69,9 @@ void playerSetTeam(Player * player, int teamId)
 
     
     player->Team = teamId;
-    player->PlayerMoby->SecondaryColor = TEAM_COLORS[teamId];
-    player->SkinMoby->TextureId = 0x80 + (8 * teamId);
-    player->SkinMoby->UNK_BE = 0;
+    player->PlayerMoby->GlowRGBA = TEAM_COLORS[teamId];
+    player->SkinMoby->ModeBits = (0x80 + (8 * teamId)) < 8;
+    player->SkinMoby->Triggers = 0;
 }
 
 //--------------------------------------------------------------------------------

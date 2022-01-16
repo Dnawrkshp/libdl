@@ -183,7 +183,7 @@ int gameAmIHost(void);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-int gameGetMyClientId(void);
+__LIBDL_GETTER__ int gameGetMyClientId(void);
 
 /*
  * NAME :		gameHasEnded

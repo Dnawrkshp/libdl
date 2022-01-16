@@ -9,7 +9,7 @@ EE_OBJS = functions.o math.o pad.o cheats.o moby.o game.o gamesettings.o \
 			weapon.o hud.o player.o team.o math3d.o dl.o \
 			spawnpoint.o dialog.o map.o graphics.o \
 			net.o sifrpc.o mc.o ui.o guber.o radar.o color.o \
-			help.o music.o
+			help.o music.o collision.o
 
 EE_OBJS := $(EE_OBJS:%=$(EE_OBJS_DIR)%)
 

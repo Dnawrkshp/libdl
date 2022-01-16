@@ -2,6 +2,7 @@
 #include "math.h"
 #include "math3d.h"
 #include "stdio.h"
+#include <tamtypes.h>
   
 /*
 # _____     ___ ____     ___ ____
@@ -12,6 +13,25 @@
 # Licenced under Academic Free License version 2.0
 # Review ps2sdk README & LICENSE files for further details.
 */
+
+
+//--------------------------------------------------------
+void vector_write(VECTOR output, u128 input0)
+{
+    *(u128*)output = input0;
+}
+
+//--------------------------------------------------------
+u128 vector_read(VECTOR input0)
+{
+    return *(u128*)input0;
+}
+
+//--------------------------------------------------------
+void vector_reflect(VECTOR output, VECTOR input0, VECTOR normal)
+{
+    vector_write(output, internal_vectorReflect(vector_read(input0), vector_read(normal)));
+}
 
 //--------------------------------------------------------
 void vector_apply(VECTOR output, VECTOR input0, MATRIX input1)

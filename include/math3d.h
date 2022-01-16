@@ -22,11 +22,17 @@
 #ifndef _LIBDL_MATH3D_H_
 #define _LIBDL_MATH3D_H_
 
+#include <tamtypes.h>
+
 //--------------------------------------------------------
 typedef float VECTOR[4] __attribute__((__aligned__(16)));
 typedef float MATRIX[16] __attribute__((__aligned__(16)));
 
 //--------------------------------------------------------
+//--------------------------------------------------------
+void vector_write(VECTOR output, u128 input0);
+u128 vector_read(VECTOR input0);
+void vector_reflect(VECTOR output, VECTOR input0, VECTOR normal);
 void vector_apply(VECTOR output, VECTOR input0, MATRIX input1);
 void vector_copy(VECTOR output, VECTOR input0);
 void vector_normalize(VECTOR output, VECTOR input0);
