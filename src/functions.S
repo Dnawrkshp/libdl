@@ -87,6 +87,8 @@ FUNCTION(mobyCollDamageDirect, 0x00503408)
 FUNCTION(mobyIsHero, 0x005cd578)
 FUNCTION(mobyMoveSystemUpdate, 0x0051d528)
 FUNCTION(mobyProcessDamage, 0x005184d0)
+FUNCTION(mobyMove, 0x005169F8)
+FUNCTION(mobyStand, 0x00516a70)
 
 #--------------------------------------------------------
 #-------------------------- NET -------------------------

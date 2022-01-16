@@ -580,5 +580,15 @@ int mobyIsHero(Moby* moby);
  */
 void mobyMoveSystemUpdate(Moby* moby);
 
+/*
+ * 
+ */
+void mobyMove(Moby* moby, u128 vectorTo, float dt);
+
+/*
+ * 
+ */
+void mobyStand(Moby* moby);
+
 
 #endif // _LIBDL_MOBY_H_
