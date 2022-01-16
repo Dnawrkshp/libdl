@@ -497,6 +497,24 @@ typedef struct MobyColDamage {
 } MobyColDamage;
 
 
+enum FlashTypes {
+	FT_NONE = 0,
+	FT_HIT = 1,
+	FT_SELECT = 2,
+	FT_PULSE = 3,
+	FT_BLINK = 4,
+	FT_SOLID = 5,
+	FT_SLOWFADE = 6
+};
+
+struct FlashVars {
+	/*   0 */ short int timer;
+	/*   2 */ short int type;
+	/*   4 */ int destColor;
+	/*   8 */ int srcColor;
+	/*   c */ int flags;
+};
+
 struct TargetVars {
 	/*   0 */ float hitPoints;
 	/*   4 */ int maxHitPoints;
@@ -744,6 +762,16 @@ void mobyMove(Moby* moby, u128 vectorTo, float dt);
  * 
  */
 void mobyStand(Moby* moby);
+
+/*
+ * 
+ */
+void mobyUpdateFlash(Moby* moby, struct FlashVars* flashVars);
+
+/*
+ * 
+ */
+void mobyStartFlash(Moby* moby, int flashType, u32 color, struct FlashVars* flashVars);
 
 
 #endif // _LIBDL_MOBY_H_

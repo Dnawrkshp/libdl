@@ -88,6 +88,8 @@ FUNCTION(mobyMoveSystemUpdate, 0x0051d528)
 FUNCTION(mobyProcessDamage, 0x005184d0)
 FUNCTION(mobyMove, 0x005169F8)
 FUNCTION(mobyStand, 0x00516a70)
+FUNCTION(mobyStartFlash, 0x00506960)
+FUNCTION(mobyUpdateFlash, 0x00506b88)
 
 #--------------------------------------------------------
 #-------------------------- NET -------------------------
