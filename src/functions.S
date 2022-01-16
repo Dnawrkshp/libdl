@@ -86,7 +86,6 @@ FUNCTION(mobyAnimTransition, 0x00502030)
 FUNCTION(mobyCollDamageDirect, 0x00503408)
 FUNCTION(mobyIsHero, 0x005cd578)
 FUNCTION(mobyMoveSystemUpdate, 0x0051d528)
-FUNCTION(mobyGetDamage, 0x00475b38)
 FUNCTION(mobyProcessDamage, 0x005184d0)
 
 #--------------------------------------------------------

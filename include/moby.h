@@ -546,11 +546,6 @@ void mobySetState(Moby* moby, char a1, long a2);
 /*
  * 
  */
-MobyColDamage* mobyGetDamage(Moby* moby, u32 a1, int a2);
-
-/*
- * 
- */
 int mobyPlaySound(short a0, u8 a1, Moby* moby);
 
 /*
