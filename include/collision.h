@@ -11,7 +11,7 @@
 #define _LIBDL_COLLISION_H_
 
 #include <tamtypes.h>
-#include "Moby.h"
+#include "moby.h"
 
 
 /*
