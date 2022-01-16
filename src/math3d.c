@@ -34,6 +34,15 @@ void vector_reflect(VECTOR output, VECTOR input0, VECTOR normal)
 }
 
 //--------------------------------------------------------
+void vector_fromyaw(VECTOR out, float radians)
+{
+	out[0] = cosf(radians),
+	out[1] = sinf(radians),
+	out[2] = 0;
+	out[3] = 0;
+}
+
+//--------------------------------------------------------
 void vector_apply(VECTOR output, VECTOR input0, MATRIX input1)
 {
     asm __volatile__ (

@@ -33,6 +33,7 @@ typedef float MATRIX[16] __attribute__((__aligned__(16)));
 void vector_write(VECTOR output, u128 input0);
 u128 vector_read(VECTOR input0);
 void vector_reflect(VECTOR output, VECTOR input0, VECTOR normal);
+void vector_fromyaw(VECTOR out, float radians);
 void vector_apply(VECTOR output, VECTOR input0, MATRIX input1);
 void vector_copy(VECTOR output, VECTOR input0);
 void vector_normalize(VECTOR output, VECTOR input0);
