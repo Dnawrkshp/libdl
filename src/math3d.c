@@ -14,6 +14,7 @@
 # Review ps2sdk README & LICENSE files for further details.
 */
 
+u128 internal_vectorReflect(u128 input, u128 normal);
 
 //--------------------------------------------------------
 void vector_write(VECTOR output, u128 input0)
@@ -120,12 +121,6 @@ void vector_normalize(VECTOR output, VECTOR input0)
 }
 
 //--------------------------------------------------------
-float vector_length(VECTOR input0)
-{
-    return sqrtf(vector_sqrmag(input0));
-}
-
-//--------------------------------------------------------
 float vector_sqrmag(VECTOR input0)
 {
     VECTOR t;
@@ -151,6 +146,12 @@ float vector_sqrmag(VECTOR input0)
     );
 
     return t[0];
+}
+
+//--------------------------------------------------------
+float vector_length(VECTOR input0)
+{
+    return sqrtf(vector_sqrmag(input0));
 }
 
 //--------------------------------------------------------

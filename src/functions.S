@@ -29,7 +29,6 @@ FUNCTION(strlen, 0x0011AB04)
 #--------------------------------------------------------
 # FUNCTION(cosf, 0x00135878)
 FUNCTION(asinf, 0x00136278)
-FUNCTION(sqrtf, 0x00136C90)
 FUNCTION(powf, 0x00136788)
 FUNCTION(fabsf, 0x00135960)
 FUNCTION(fptodp, 0x00131918)

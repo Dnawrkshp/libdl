@@ -112,3 +112,30 @@ float atan2f(float y, float x)
 	else
 		return( angle );
 }
+
+//--------------------------------------------------------
+float sqrtf(float f)
+{
+    float t[4];
+    t[0] = f;
+
+    asm __volatile__ (
+#if __GNUC__ > 3
+    "lqc2		    $vf1, 0x00(%0)	    \n"
+    "vsqrt          $Q, $vf1x           \n"
+    "vwaitq	                            \n"
+    "vaddq.x        $vf1, $vf0, $Q      \n"
+    "sqc2		    $vf1, 0x00(%0)	    \n"
+#else
+    "lqc2		    vf1, 0x00(%0)	    \n"
+    "vsqrt          Q, vf1x             \n"
+    "vwaitq	                            \n"
+    "vaddq.x        vf1, vf0, Q         \n"
+    "sqc2		    vf1, 0x00(%0)	    \n"
+#endif
+    : : "r" (t)
+    : "memory"
+    );
+
+    return t[0];
+}
