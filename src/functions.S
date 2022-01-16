@@ -196,3 +196,15 @@ FUNCTION(internal_vectorReflect, 0x005b9ae8)
 #--------------------------------------------------------
 FUNCTION(CollMobysSphere_Fix, 0x004bb788)
 FUNCTION(CollLine_Fix, 0x004b7e50)
+
+#--------------------------------------------------------
+#------------------------ RANDOM ------------------------
+#--------------------------------------------------------
+FUNCTION(rand, 0x005006d0)
+FUNCTION(randVector, 0x004b7e50)
+FUNCTION(randVectorRangeNeg, 0x005083c8)
+FUNCTION(randVectorRange, 0x00508448)
+FUNCTION(randRange, 0x00500748)
+FUNCTION(randRangeNeg, 0x005007a0)
+FUNCTION(randRangeInt, 0x00500700)
+FUNCTION(randRadian, 0x00500800)
