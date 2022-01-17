@@ -106,4 +106,6 @@ GuberEvent * guberEventCreateEvent(Guber * guber, int eventId, int arg3, int arg
 
 GuberMoby * guberMobyCreateSpawned(short mobyId, short pvarSize, GuberEvent ** event, Guber * parent);
 
+GuberMoby * guberMobyGetDamager(Moby* moby);
+
 #endif // _LIBDL_GUBER_H_

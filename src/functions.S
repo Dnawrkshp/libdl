@@ -133,6 +133,7 @@ FUNCTION(guberMobyCreateSpawned, 0x0061C2B0)
 FUNCTION(guberGetObjectByUID, 0x005ce6e0)
 FUNCTION(guberGetObjectByMoby, 0x005cec98)
 FUNCTION(guberGetUID, 0x005cec68)
+FUNCTION(guberMobyGetDamager, 0x005ce5c8)
 
 #--------------------------------------------------------
 #------------------------ RADAR -------------------------
