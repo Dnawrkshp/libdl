@@ -130,6 +130,8 @@ FUNCTION(guberEventRead, 0x00611880)
 FUNCTION(guberEventWrite, 0x00611808)
 FUNCTION(guberEventCreateEvent, 0x00611338)
 FUNCTION(guberMobyCreateSpawned, 0x0061C2B0)
+FUNCTION(guberGetObjectByUID, 0x005ce6e0)
+FUNCTION(guberGetObjectByMoby, 0x005cec98)
 
 #--------------------------------------------------------
 #------------------------ RADAR -------------------------

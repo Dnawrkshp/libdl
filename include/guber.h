@@ -92,6 +92,10 @@ typedef struct GuberEvent
  */
 __LIBDL_GETTER__ GuberMoby * guberMobyGetFirst(void);
 
+Guber * guberGetObjectByUID(u32 uid);
+
+Guber * guberGetObjectByMoby(Moby* moby);
+
 void guberEventRead(GuberEvent * event, void * dest, int size);
 
 void guberEventWrite(GuberEvent * event, void * src, int size);
