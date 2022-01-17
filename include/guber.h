@@ -96,6 +96,8 @@ Guber * guberGetObjectByUID(u32 uid);
 
 Guber * guberGetObjectByMoby(Moby* moby);
 
+u32 guberGetUID(Moby* moby);
+
 void guberEventRead(GuberEvent * event, void * dest, int size);
 
 void guberEventWrite(GuberEvent * event, void * src, int size);
