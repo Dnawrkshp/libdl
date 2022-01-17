@@ -697,6 +697,24 @@ void playerRespawn(Player * player);
 void playerDropFlag(Player * player, int a1);
 
 /*
+ * NAME :		playerIsDead
+ * 
+ * DESCRIPTION :
+ * 			Returns non-zero if the given player is dead.
+ * 
+ * NOTES :
+ * 
+ * 
+ * ARGS : 
+ *      player      :           Target player.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+int playerIsDead(Player * player);
+
+/*
  * NAME :		playerSetPosRot
  * 
  * DESCRIPTION :

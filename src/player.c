@@ -193,3 +193,16 @@ PlayerVTable* playerGetVTable(Player * player)
 
     return (PlayerVTable*)player->Guber.Vtable;
 }
+
+//--------------------------------------------------------------------------------
+int playerIsDead(Player * player)
+{
+	return player->PlayerState == PLAYER_STATE_DEATH
+        || player->PlayerState == PLAYER_STATE_DROWN
+        || player->PlayerState == PLAYER_STATE_DEATH_FALL
+        || player->PlayerState == PLAYER_STATE_DEATHSAND_SINK
+        || player->PlayerState == PLAYER_STATE_LAVA_DEATH
+        || player->PlayerState == PLAYER_STATE_DEATH_NO_FALL
+        || player->PlayerState == PLAYER_STATE_WAIT_FOR_RESURRECT
+        ;
+}
