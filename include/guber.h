@@ -20,6 +20,8 @@
 #include "moby.h"
 #include "gid.h"
 
+extern struct Player;
+
 /*
  * NAME :		GuberDef
  * 
@@ -106,6 +108,6 @@ GuberEvent * guberEventCreateEvent(Guber * guber, int eventId, int arg3, int arg
 
 GuberMoby * guberMobyCreateSpawned(short mobyId, short pvarSize, GuberEvent ** event, Guber * parent);
 
-GuberMoby * guberMobyGetDamager(Moby* moby);
+struct Player * guberMobyGetPlayerDamager(Moby* moby);
 
 #endif // _LIBDL_GUBER_H_
