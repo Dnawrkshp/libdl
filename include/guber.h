@@ -20,7 +20,6 @@
 #include "moby.h"
 #include "gid.h"
 
-extern struct Player;
 
 /*
  * NAME :		GuberDef
