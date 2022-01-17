@@ -77,7 +77,7 @@ typedef struct GuberMoby
 
 typedef struct NetEvent
 {
-    union {
+    struct {
         unsigned int EventID : 4;
         unsigned int NetDataSize : 6;
         unsigned int OriginClientIdx : 4;
