@@ -170,6 +170,22 @@ int gameIsHost(int hostId);
 int gameAmIHost(void);
 
 /*
+ * NAME :		gameGetHostId
+ * 
+ * DESCRIPTION :
+ * 			Returns the current game's host's client/dme id.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+__LIBDL_GETTER__ int gameGetHostId(void);
+
+/*
  * NAME :		gameGetMyClientId
  * 
  * DESCRIPTION :

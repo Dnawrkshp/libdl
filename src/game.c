@@ -125,6 +125,11 @@ int gameAmIHost(void)
     return GAME_CLIENT_ID == GAME_HOST_ID;
 }
 
+int gameGetHostId(void)
+{
+    return GAME_HOST_ID;
+}
+
 int gameGetMyClientId(void)
 {
     return GAME_CLIENT_ID;
