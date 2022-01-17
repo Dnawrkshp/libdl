@@ -75,9 +75,20 @@ typedef struct GuberMoby
     u8 PADDING_1[2];
 } GuberMoby;
 
+typedef struct NetEvent
+{
+	unsigned int EventID;
+	unsigned int NetDataSize;
+	unsigned int OriginClientIdx;
+	unsigned int RelDispatchTime;
+	int CreateTime;
+	unsigned int ObjUID;
+	char NetData[64];
+} NetEvent;
+
 typedef struct GuberEvent
 {
-    u8 NetEvent[0x4C];
+    NetEvent NetEvent;
     int NetSendTime;
     int NetSendTo;
     u8 NetDataOffset;
