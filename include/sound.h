@@ -43,6 +43,22 @@ typedef struct SoundDef
  * NAME :		soundPlay
  * 
  * DESCRIPTION :
+ * 			Returns the respective sound id.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+short soundPlay(SoundDef *, int arg2, Moby * moby, VECTOR arg3, int arg4);
+
+/*
+ * NAME :		soundCreateHandle
+ * 
+ * DESCRIPTION :
  * 			
  * 
  * NOTES :
@@ -53,6 +69,22 @@ typedef struct SoundDef
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-int soundPlay(SoundDef *, int arg2, Moby * moby, VECTOR arg3, int arg4);
+short soundCreateHandle(short soundId);
+
+/*
+ * NAME :		soundKillByHandle
+ * 
+ * DESCRIPTION :
+ * 			
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+short soundKillByHandle(short handle);
 
 #endif // _LIBDL_SOUND_H_
