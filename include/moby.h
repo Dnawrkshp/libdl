@@ -773,5 +773,11 @@ void mobyUpdateFlash(Moby* moby, struct FlashVars* flashVars);
  */
 void mobyStartFlash(Moby* moby, int flashType, u32 color, struct FlashVars* flashVars);
 
+/*
+ * 
+ */
+void mobyBlowCorn(Moby* moby, int a1, u128 position, float arg4, float arg5, float arg6, float arg7, char arg8, float arg9, float arg10, int arg11, int arg12, int arg13, int arg14, float arg15, int arg16, int arg17, float arg18, Moby* arg19, int arg20);
+
+
 
 #endif // _LIBDL_MOBY_H_
