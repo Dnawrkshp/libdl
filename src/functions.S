@@ -135,6 +135,7 @@ FUNCTION(guberGetObjectByUID, 0x005ce6e0)
 FUNCTION(guberGetObjectByMoby, 0x005cec98)
 FUNCTION(guberGetUID, 0x005cec68)
 FUNCTION(guberMobyGetPlayerDamager, 0x005ce5c8)
+FUNCTION(guberMobyDestroy, 0x0061c450)
 
 #--------------------------------------------------------
 #------------------------ RADAR -------------------------

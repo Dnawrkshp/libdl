@@ -122,4 +122,6 @@ GuberMoby * guberMobyCreateSpawned(short mobyId, short pvarSize, GuberEvent ** e
 
 struct Player * guberMobyGetPlayerDamager(Moby* moby);
 
+void guberMobyDestroy(Moby* moby);
+
 #endif // _LIBDL_GUBER_H_

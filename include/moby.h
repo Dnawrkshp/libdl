@@ -776,7 +776,7 @@ void mobyStartFlash(Moby* moby, int flashType, u32 color, struct FlashVars* flas
 /*
  * 
  */
-void mobyBlowCorn(Moby* moby, int arg2, u128 baseVelocity
+void mobyBlowCorn(Moby* moby, int bangle, u128 baseVelocity
                 , float minEmitHorizontalSpeed, float maxEmitHorizontalSpeed, float minEmitVerticalSpeed, float maxEmitVerticalSpeed
                 , char arg8
                 , float gravity, float rotationalVelocity
