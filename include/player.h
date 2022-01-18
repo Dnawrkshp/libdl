@@ -824,4 +824,22 @@ __LIBDL_GETTER__ int playerPadGetButtonUp(Player * player, u16 buttonMask);
  */
 __LIBDL_GETTER__ PlayerVTable* playerGetVTable(Player * player);
 
+/*
+ * NAME :		playerGetFromUID
+ * 
+ * DESCRIPTION :
+ * 			Returns pointer to the player with the given UID.
+ * 			Returns NULL if not found.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ *          uid:                     	Player UID.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+Player * playerGetFromUID(int uid);
+
 #endif // _LIBDL_PLAYER_H_
