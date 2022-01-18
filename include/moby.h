@@ -776,7 +776,13 @@ void mobyStartFlash(Moby* moby, int flashType, u32 color, struct FlashVars* flas
 /*
  * 
  */
-void mobyBlowCorn(Moby* moby, int a1, u128 position, float arg4, float arg5, float arg6, float arg7, char arg8, float arg9, float arg10, int arg11, int arg12, int arg13, int arg14, float arg15, int arg16, int arg17, float arg18, Moby* arg19, int arg20);
+void mobyBlowCorn(Moby* moby, int arg2, u128 baseVelocity
+                , float minEmitHorizontalSpeed, float maxEmitHorizontalSpeed, float minEmitVerticalSpeed, float maxEmitVerticalSpeed
+                , char arg8
+                , float gravity, float rotationalVelocity
+                , int lifetime, int arg12
+                , int arg13, int bArg14, float arg15, int arg16
+                , int arg17, float arg18, Moby* arg19, int arg20);
 
 
 
