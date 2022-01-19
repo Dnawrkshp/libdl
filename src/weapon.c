@@ -1,12 +1,22 @@
 #include <tamtypes.h>
 #include "weapon.h"
 
-#define WRENCH_DAMAGE_TABLE                 ((WrenchDamageData*)0x00398AA0)
-#define WEAPON_DAMAGE_TABLE                 ((WeaponDamageData*)0x00398BA0)
-#define FLAIL_DAMAGE_TABLE                  ((WeaponDamageData*)0x00399770)
+#define WRENCH_DEFS_TABLE                   ((WrenchDefsData*)0x00398A98)
+#define WEAPON_DEFS_TABLE                   ((WeaponDefsData*)0x00398B98)
+#define FLAIL_DEFS_TABLE                    ((WeaponDefsData*)0x00399768)
 #define OMNI_DAMAGE_V1_PATCH                (0x003FFE00)
 #define OMNI_DAMAGE_V2_PATCH                (0x003FFE10)
 
+
+WeaponDefsData* weaponGetGunLevelDefs(void)
+{
+    return WEAPON_DEFS_TABLE;
+}
+
+WrenchDefsData* weaponGetWrenchLevelDefs(void)
+{
+    return WRENCH_DEFS_TABLE;
+}
 
 int weaponSlotToId(int slotId)
 {
@@ -31,7 +41,7 @@ void weaponSetDamage(int weaponId, int level, float damage)
     {
         case WEAPON_ID_WRENCH:
         {
-            WRENCH_DAMAGE_TABLE->Entries[level].NearDamage = damage;
+            WRENCH_DEFS_TABLE->Entries[level].Damage[2] = damage;
             break;
         }
         case WEAPON_ID_OMNI_SHIELD:
@@ -44,13 +54,14 @@ void weaponSetDamage(int weaponId, int level, float damage)
         }
         case WEAPON_ID_FLAIL:
         {
-            FLAIL_DAMAGE_TABLE->Entries[level].NearDamage = damage;
+            FLAIL_DEFS_TABLE->Entries[level].Damage[2] = damage;
             break;
         }
         default:
         {
-            WEAPON_DAMAGE_TABLE[weaponId - WEAPON_ID_VIPERS].Entries[level].NearDamage = damage;
+            WEAPON_DEFS_TABLE[weaponId - WEAPON_ID_VIPERS].Entries[level].Damage[2] = damage;
             break;
         }
     }
 }
+

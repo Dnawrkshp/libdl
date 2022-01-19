@@ -41,33 +41,30 @@ typedef struct PlayerWeaponData
 /*
  *
  */
-typedef struct WeaponDamageEntry
+typedef struct GadgetDefsEntry
 {
-    int UNK_10;
-    int UNK_14;
-    float UNK_18;
-    float UNK_1C;
-    float NearDamage;
-    float FarDamage;
     int LevelId;
-    int Experience;
-} WeaponDamageEntry;
+    int LevelUpExperience;
+    int MpLevelUpExperience;
+    int padding;
+    float Damage[4];
+} GadgetDefsEntry;
 
 /*
  *
  */
-typedef struct WeaponDamageData
+typedef struct WeaponDefsData
 {
-    WeaponDamageEntry Entries[10];
-} WeaponDamageData;
+    GadgetDefsEntry Entries[10];
+} WeaponDefsData;
 
 /*
  *
  */
-typedef struct WrenchDamageData
+typedef struct WrenchDefsData
 {
-    WeaponDamageEntry Entries[8];
-} WrenchDamageData;
+    GadgetDefsEntry Entries[8];
+} WrenchDefsData;
 
 /*
  * NAME :		WEAPON_IDS
@@ -184,6 +181,40 @@ enum OMEGA_MOD_IDS
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
+WeaponDefsData* weaponGetGunLevelDefs(void);
+
+/*
+ * NAME :		weaponSlotToId
+ * 
+ * DESCRIPTION :
+ * 			Converts a WEAPON_SLOT_INDEX to the respective WEAPON_IDS
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ *      slotId      :           Slot index.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+WrenchDefsData* weaponGetWrenchLevelDefs(void);
+
+/*
+ * NAME :		weaponSlotToId
+ * 
+ * DESCRIPTION :
+ * 			Converts a WEAPON_SLOT_INDEX to the respective WEAPON_IDS
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ *      slotId      :           Slot index.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
 int weaponSlotToId(int slotId);
 
 
@@ -206,5 +237,40 @@ int weaponSlotToId(int slotId);
  */
 void weaponSetDamage(int weaponId, int level, float damage);
 
+/*
+ * NAME :		weaponTurnOnHoloshields
+ * 
+ * DESCRIPTION :
+ * 			Enables holoshields for use in collision detection.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+void weaponTurnOnHoloshields(int team);
+
+/*
+ * NAME :		weaponTurnOffHoloshields
+ * 
+ * DESCRIPTION :
+ * 			Disables holoshields for use in collision detection.
+ * 
+ * NOTES :
+ *          Always call this after you are done using weaponTurnOnHoloshields().
+ * 
+ * ARGS : 
+ *      weaponId        :           Target weapon.
+ *      level           :           Target weapon level.
+ *      damage          :           Target damage.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+void weaponTurnOffHoloshields(void);
 
 #endif // _LIBDL_WEAPON_H_
