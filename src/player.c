@@ -3,7 +3,7 @@
 #include "team.h"
 #include "game.h"
 
-void internal_playerSetPosRot(Player *, VECTOR, VECTOR, int);
+void internal_playerSetPosRot(Player *, VECTOR, VECTOR, int, int, int, int, int);
 
 /*
  * 
@@ -89,7 +89,7 @@ int playerIdIsLocal(int playerId)
 //--------------------------------------------------------------------------------
 void playerSetPosRot(Player * player, VECTOR p, VECTOR r)
 {
-    internal_playerSetPosRot(player, p, r, 0);
+    internal_playerSetPosRot(player, p, r, 0, 1, 1, 1, 1);
 }
 
 //--------------------------------------------------------------------------------

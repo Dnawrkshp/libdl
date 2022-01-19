@@ -298,13 +298,17 @@ typedef struct Player
     char UNK0[0x88];                                                // 0x18
 
     VECTOR PlayerPosition;                                          // 0xA0
+		
+		union {
+			VECTOR PlayerRotation;
+			struct {
+				float PlayerRoll;
+				float PlayerPitch;
+				float PlayerYaw;
+			};
+		};
     
-    char UNK1[0x04];                                                // 0xB0
-
-    float PlayerPitch;                                              // 0xB4
-    float PlayerYaw;                                                // 0xB8
-
-    char UNK2[0x74];                                                // 0xBC
+    char UNK2[0x70];                                                // 0xBC
 
     VECTOR Velocity;                                                // 0x130
 
