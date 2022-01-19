@@ -13,6 +13,11 @@ WeaponDefsData* weaponGetGunLevelDefs(void)
     return WEAPON_DEFS_TABLE;
 }
 
+WeaponDefsData* weaponGetFlailLevelDefs(void)
+{
+    return FLAIL_DEFS_TABLE;
+}
+
 WrenchDefsData* weaponGetWrenchLevelDefs(void)
 {
     return WRENCH_DEFS_TABLE;

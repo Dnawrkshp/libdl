@@ -167,10 +167,10 @@ enum OMEGA_MOD_IDS
 };
 
 /*
- * NAME :		weaponSlotToId
+ * NAME :		weaponGetGunLevelDefs
  * 
  * DESCRIPTION :
- * 			Converts a WEAPON_SLOT_INDEX to the respective WEAPON_IDS
+ * 			Returns pointer to array of weapon level definitions starting at dual vipers.
  * 
  * NOTES :
  * 
@@ -184,10 +184,27 @@ enum OMEGA_MOD_IDS
 WeaponDefsData* weaponGetGunLevelDefs(void);
 
 /*
- * NAME :		weaponSlotToId
+ * NAME :		weaponGetFlailLevelDefs
  * 
  * DESCRIPTION :
- * 			Converts a WEAPON_SLOT_INDEX to the respective WEAPON_IDS
+ * 			Returns pointer to block of flail level definitions.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ *      slotId      :           Slot index.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+WeaponDefsData* weaponGetFlailLevelDefs(void);
+
+/*
+ * NAME :		weaponGetWrenchLevelDefs
+ * 
+ * DESCRIPTION :
+ * 			Returns pointer to block of wrench level definitions.
  * 
  * NOTES :
  * 
