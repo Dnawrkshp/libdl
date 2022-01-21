@@ -70,7 +70,7 @@ int netSendMediusAppMessage(void * connection, int clientIndex, int msgClass, in
 
 int netBroadcastMediusAppMessage(void * connection, int msgId, int msgSize, void * payload)
 {
-    return internal_netBroadcastMediusAppMessage(0x40, connection, -1, msgId, msgSize, payload);
+    return internal_netSendAppMessage(0x40, connection, -1, msgId, msgSize, payload);
 }
 
 int netSendCustomAppMessage(void * connection, int clientIndex, u8 customMsgId, int msgSize, void * payload)
