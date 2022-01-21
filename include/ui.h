@@ -131,6 +131,25 @@ void uiShowPopup(int localPlayerIndex, const char * message);
 void uiShowHelpPopup(int localPlayerIndex, const char * message, int seconds);
 
 /*
+ * NAME :		uiShowTimer
+ * 
+ * DESCRIPTION :
+ * 			Shows a timer popup with the given text and time to the given local player.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ *      localPlayerIndex    :               Local player to show popup for.
+ *      message             :               Message to show.
+ *      timeMs              :               Time in milliseconds to show.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+void uiShowTimer(int localPlayerIndex, const char * message, long timeMs);
+
+/*
  * NAME :		uiMsgString
  * 
  * DESCRIPTION :

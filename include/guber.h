@@ -118,7 +118,7 @@ void guberEventWrite(GuberEvent * event, void * src, int size);
 
 GuberEvent * guberEventCreateEvent(Guber * guber, int eventId, int arg3, int arg4);
 
-GuberMoby * guberMobyCreateSpawned(short mobyId, short pvarSize, GuberEvent ** event, Guber * parent);
+int guberMobyCreateSpawned(short mobyId, short pvarSize, GuberEvent ** event, Guber * parent);
 
 struct Player * guberMobyGetPlayerDamager(Moby* moby);
 

@@ -124,6 +124,7 @@ FUNCTION(internal_uiDialog, 0x00719A28)
 FUNCTION(uiShowPopup, 0x00540170)
 FUNCTION(uiShowHelpPopup, 0x00540140)
 FUNCTION(uiMsgString,  0x004E4180)
+FUNCTION(uiShowTimer, 0x00607c64)
 
 #--------------------------------------------------------
 #------------------------ VEHICLE -----------------------

@@ -3,7 +3,7 @@
 
 #define WRENCH_DEFS_TABLE                   ((WrenchDefsData*)0x00398A98)
 #define WEAPON_DEFS_TABLE                   ((WeaponDefsData*)0x00398B98)
-#define FLAIL_DEFS_TABLE                    ((WeaponDefsData*)0x00399768)
+#define FLAIL_DEFS_TABLE                    ((WeaponDefsData*)0x00399758)
 #define OMNI_DAMAGE_V1_PATCH                (0x003FFE00)
 #define OMNI_DAMAGE_V2_PATCH                (0x003FFE10)
 
