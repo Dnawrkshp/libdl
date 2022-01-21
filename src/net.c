@@ -10,8 +10,8 @@
 #define NET_DME_CONNECTION                  ((void*)(*(u32*)0x001AF920))
 #define NET_GLOBAL_CALLBACKS_PTR            ((NET_CALLBACK_DELEGATE*)(*(u32*)0x00211E64))
 
-int internal_netSendMediusAppMessage(int transport, void * connection, long a2, int msgClass, int msgId, int msgSize, void * payload);
-int internal_netBroadcastMediusAppMessage(int transport, void * connection, long a2, int msgId, int msgSize, void * payload);
+int internal_netSendMessage(int transport, void * connection, long clientIndex, int msgClass, int msgId, int msgSize, void * payload);
+int internal_netSendAppMessage(int transport, void * connection, long clientIndex, int msgId, int msgSize, void * payload);
 
 NET_CALLBACK_DELEGATE callbacks[256] = {};
 
@@ -63,9 +63,9 @@ void netInstallCustomMsgHandler(u8 id, NET_CALLBACK_DELEGATE callback)
     NET_GLOBAL_CALLBACKS_PTR[id] = callback;
 }
 
-int netSendMediusAppMessage(void * connection, int msgClass, int msgId, int msgSize, void * payload)
+int netSendMediusAppMessage(void * connection, int clientIndex, int msgClass, int msgId, int msgSize, void * payload)
 {
-    return internal_netSendMediusAppMessage(0x40, connection, 0xFFFF, msgClass, msgId, msgSize, payload);
+    return internal_netSendMessage(0x40, connection, clientIndex, msgClass, msgId, msgSize, payload);
 }
 
 int netBroadcastMediusAppMessage(void * connection, int msgId, int msgSize, void * payload)
@@ -73,7 +73,7 @@ int netBroadcastMediusAppMessage(void * connection, int msgId, int msgSize, void
     return internal_netBroadcastMediusAppMessage(0x40, connection, -1, msgId, msgSize, payload);
 }
 
-int netSendCustomAppMessage(void * connection, u8 customMsgId, int msgSize, void * payload)
+int netSendCustomAppMessage(void * connection, int clientIndex, u8 customMsgId, int msgSize, void * payload)
 {
     u8 buffer[512];
 
@@ -81,7 +81,7 @@ int netSendCustomAppMessage(void * connection, u8 customMsgId, int msgSize, void
         memcpy(buffer + 4, payload, msgSize);
         
     buffer[0] = customMsgId;
-    return netSendMediusAppMessage(connection, NET_CUSTOM_MESSAGE_CLASS, NET_CUSTOM_MESSAGE_ID, msgSize + 4, buffer);
+    return netSendMediusAppMessage(connection, clientIndex, NET_CUSTOM_MESSAGE_CLASS, NET_CUSTOM_MESSAGE_ID, msgSize + 4, buffer);
 }
 
 int netBroadcastCustomAppMessage(void * connection, u8 customMsgId, int msgSize, void * payload)

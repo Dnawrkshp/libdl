@@ -94,8 +94,8 @@ FUNCTION(mobyUpdateFlash, 0x00506b88)
 #--------------------------------------------------------
 #-------------------------- NET -------------------------
 #--------------------------------------------------------
-FUNCTION(internal_netSendMediusAppMessage, 0x01E9E198)
-FUNCTION(internal_netBroadcastMediusAppMessage, 0x01E9E270)
+FUNCTION(internal_netSendMessage, 0x01E9E198)
+FUNCTION(internal_netSendAppMessage, 0x01E9E270)
 
 #--------------------------------------------------------
 #------------------------ PLAYER ------------------------
