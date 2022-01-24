@@ -214,7 +214,6 @@ typedef struct GameOptions
             char UNK_0E : 1;
             char Flail : 1;
             char UNK_10 : 1;
-            char UNK_11 : 1;
             char Chargeboots : 1;
         };
         u32 Raw;
