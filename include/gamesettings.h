@@ -195,7 +195,30 @@ typedef struct GameOptions
         } MultiplayerGameFlags;
         char Raw[59];
     } GameFlags;
-    u32 WeaponFlags;
+    union {
+        struct {
+            char UNK_00 : 1;
+            char UNK_01 : 1;
+            char DualVipers : 1;
+            char MagmaCannon : 1;
+            char Arbiter : 1;
+            char FusionRifle : 1;
+            char MineLauncher : 1;
+            char B6 : 1;
+            char Holoshield : 1;
+            char UNK_09 : 1;
+            char UNK_0A : 1;
+            char UNK_0B : 1;
+            char UNK_0C : 1;
+            char UNK_0D : 1;
+            char UNK_0E : 1;
+            char Flail : 1;
+            char UNK_10 : 1;
+            char UNK_11 : 1;
+            char Chargeboots : 1;
+        };
+        u32 Raw;
+    } WeaponFlags;
     char PointValues[11];
     u8 UpgradeTimerMultipliers[11];
 } GameOptions;
