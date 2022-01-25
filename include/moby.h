@@ -756,6 +756,26 @@ void mobyMoveSystemUpdate(Moby* moby);
 /*
  * 
  */
+void mobyMoveSystemInit(Moby* moby);
+
+/*
+ * 
+ */
+void mobySetMoveDistanceThresholds(Moby* moby, float collRadius, float stopDist, float walkDist, float runDist);
+
+/*
+ * 
+ */
+void mobySetMoveSpeedLimits(Moby* moby, float linearAccel, float linearDecell, float walkSpeed, float runSpeed, float strafeSpeed, float backSpeed, float flySpeed);
+
+/*
+ * 
+ */
+void mobySetMoveAngularSpeeds(Moby* moby, float angularAccel, float angularDecel, float angularLimit);
+
+/*
+ * 
+ */
 void mobyMove(Moby* moby, u128 vectorTo, float dt);
 
 /*
