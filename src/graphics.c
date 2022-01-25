@@ -22,7 +22,12 @@ int gfxWorldSpaceToScreenSpace(VECTOR position, int * x, int * y)
 
         // check we're facing the position
         "vmaxw.xyzw $vf6, $vf0, $vf0w   \n"
+        "lui        $t0, 0x22           \n"
+        "lw         $t2, -0x2264($t0)   \n"
         "lui        $t0, 0x23           \n"
+        "li         $t1, 0x470          \n"
+        "mult       $t1, $t1, $t2       \n"
+        "addu       $t0, $t0, $t1       \n"
         "lqc2       $vf2, -0x3240($t0)  \n"
         "lqc2       $vf1, 0x00(%2)      \n"
         "vsub.xyz   $vf1, $vf1, $vf2    \n"
@@ -85,8 +90,8 @@ int gfxWorldSpaceToScreenSpace(VECTOR position, int * x, int * y)
         "bne        $v1, $0, fail       \n"
         "slti       $v1, $t1, -0x40     \n"
         "bne        $v1, $0, fail       \n"
-        "b          exit                \n"
         "li         %3, 1               \n"
+        "b          exit                \n"
 
         "fail:                          \n"
         "li         %3, 0               \n"

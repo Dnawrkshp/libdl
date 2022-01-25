@@ -700,6 +700,44 @@ void playerGiveWeapon(Player * player, int weaponId, int weaponLevel);
 void playerRespawn(Player * player);
 
 /*
+ * NAME :		playerIncHealth
+ * 
+ * DESCRIPTION :
+ * 			
+ * 
+ * NOTES :
+ * 
+ * 
+ * ARGS : 
+ *      player      :           Target player.
+ * 			health			:						Target health.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+void playerIncHealth(Player * player, float health);
+
+/*
+ * NAME :		playerDecHealth
+ * 
+ * DESCRIPTION :
+ * 			
+ * 
+ * NOTES :
+ * 
+ * 
+ * ARGS : 
+ *      player      :           Target player.
+ * 			health			:						Target health.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+void playerDecHealth(Player * player, float health);
+
+/*
  * NAME :		playerDropFlag
  * 
  * DESCRIPTION :

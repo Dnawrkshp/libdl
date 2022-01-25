@@ -1,0 +1,7 @@
+{
+  "files.associations": {
+    "*.cds": "mips",
+    "*.txt": "ignore",
+    "*.s": "c"
+  }
+}

@@ -105,6 +105,8 @@ FUNCTION(playerRespawn, 0x005E2940)
 FUNCTION(playerDropFlag, 0x005F05E8)
 FUNCTION(playerGetFromUID, 0x005cd480)
 FUNCTION(internal_playerSetPosRot, 0x005EB448)
+FUNCTION(playerIncHealth, 0x005D1140)
+FUNCTION(playerDecHealth, 0x005D1038)
 
 #--------------------------------------------------------
 #------------------------ WEAPON ------------------------
