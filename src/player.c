@@ -115,11 +115,11 @@ PadButtonStatus * playerGetPad(Player * player)
     }
     else
     {
-        u8 * remotePadInfo = player->RemotePadInfo;
-        if (!remotePadInfo)
+        struct tNW_Player* netPlayer = player->pNetPlayer;
+        if (!netPlayer)
             return 0;
 
-        return (PadButtonStatus*)(remotePadInfo + 0x70);
+        return (PadButtonStatus*)(&netPlayer->padMessageElems[0].msg.pad_data);
     }
 }
 

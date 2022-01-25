@@ -195,6 +195,91 @@ typedef struct CameraAngle
     float UNK1[3];
 } CameraAngle;
 
+struct tNW_PlayerWarpMessage {
+	/*   0 */ char netPlayerIndex;
+	/*   1 */ char dontKillMeInBaseHack;
+	/*   2 */ char resetPadRing;
+	/*   3 */ char playerSeq;
+	/*   4 */ float playerPos[3];
+	/*  10 */ float playerRot[3];
+	/*  1c */ short int state;
+	/*  1e */ char isResurrecting;
+};
+
+struct tNW_PlayerData {
+	/*   0 */ VECTOR vPosition;
+	/*  10 */ float vRotation[3];
+	/*  1c */ int timeStamp;
+	/*  20 */ VECTOR vIdealVec;
+	/*  30 */ int idealVecTime;
+	/*  34 */ int accountId;
+	/*  38 */ unsigned int UID;
+	/*  3c */ int playerType;
+	/*  40 */ int playerTeam;
+	/*  44 */ float hitPoints;
+	/*  48 */ int handGadget;
+	/*  4c */ int lastKeepAlive;
+	/*  50 */ int remoteTarget;
+	/*  54 */ int playerIndex;
+	/*  58 */ int cameraElevationSettings[3];
+	/*  64 */ int cameraAzimuthSettings[3];
+	/*  70 */ int cameraRotationSettings[3];
+	/*  7c */ int rank[6];
+	/*  94 */ char cGadgetLevel[32];
+	/*  b4 */ unsigned int updated;
+	/*  b8 */ short unsigned int gadgetsWithAmmo;
+	/*  ba */ short unsigned int fpsMode;
+	/*  bc */ unsigned char flags;
+};
+
+struct tNW_PlayerPadInputMessage {
+	/*   0 */ int cameraRot[4];
+	/*  10 */ short unsigned int playerPos[3];
+	/*  16 */ unsigned char sequenceNum;
+	/*  17 */ unsigned char stateAndRotFlag;
+	/*  17 */ unsigned char playerIndex;
+	/*  17 */ unsigned char flags;
+	/*  17 */ unsigned char framesWithButtonDiffs;
+	/*  18 */ unsigned char pad_data[128];
+};
+
+struct tNW_PlayerPadInputMessageListElem {
+	/*   0 */ struct tNW_PlayerPadInputMessage msg;
+	/*  98 */ struct tNW_PlayerPadInputMessageListElem* pNext;
+	/*  9c */ struct tNW_PlayerPadInputMessageListElem* pPrev;
+	/*  a0 */ char inUse;
+};
+
+/*
+ *
+ */
+struct tNW_Player {
+	/*   0 */ int netClientIndex;
+	/*   4 */ struct tNW_PlayerData* pNetPlayerData;
+	/*   8 */ short int bLocal;
+	/*   a */ short int bSpawned;
+	/*   c */ short int bGiveMeTheDasBoot;
+	/*   e */ short int bCallbackCalled;
+	/*  10 */ int latency;
+	/*  14 */ unsigned int flags;
+	/*  18 */ char accountName[32];
+	/*  38 */ struct tNW_PlayerWarpMessage warpMessage;
+	/*  58 */ struct tNW_PlayerPadInputMessageListElem padMessageElems[16];
+	/* a98 */ char padMessageCurDecodePos;
+	/* a99 */ char activePadFrame;
+	/* a9c */ int lastActiveSeqNum;
+	/* aa0 */ int numBufferedPadMessageElems;
+	/* aa4 */ int receivedActivePadMsgFrame;
+	/* aa8 */ char pullBack;
+	/* aa9 */ signed char jitterThrottleFrames;
+	/* aaa */ char numConseqSkips;
+	/* aac */ struct tNW_PlayerPadInputMessageListElem* pActivePadMsg;
+	/* ab0 */ struct tNW_PlayerPadInputMessageListElem* pPadMsgListTail;
+	/* ab4 */ unsigned char padFrame[20];
+	/* ac8 */ int homeBaseIndex;
+	/* acc */ int homeNodeIndex;
+};
+
 
 /*
  * NAME :		HeroTimers
@@ -473,7 +558,7 @@ typedef struct Player
 
     char UNK25[0x0C];                                               // 0x2F1C
 
-    void * RemotePadInfo;                                           // 0x2F28
+    struct tNW_Player * pNetPlayer;                                 // 0x2F28
 
     char UNK36[0x84];                                               // 0x2F2C
 
