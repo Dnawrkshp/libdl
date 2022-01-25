@@ -645,6 +645,23 @@ __LIBDL_GETTER__ int playerIsLocal(Player * player);
 __LIBDL_GETTER__ int playerIdIsLocal(int playerId);
 
 /*
+ * NAME :		playerGetNumLocals
+ * 
+ * DESCRIPTION :
+ * 			Number of locals the client has.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+__LIBDL_GETTER__ int playerGetNumLocals(void);
+
+/*
  * NAME :		playerGiveWeapon
  * 
  * DESCRIPTION :

@@ -21,6 +21,11 @@ void internal_playerSetPosRot(Player *, VECTOR, VECTOR, int, int, int, int, int)
 #define PLAYER_2_ID                                 (*(u32*)0x001B6ED8)
 
 /*
+ *
+ */
+#define PLAYER_LOCAL_COUNT                          (*(int*)0x00172174)
+
+/*
  * Weapon stuff.
  */
 #define WEAPON_DATA_START                           (0x001D49C0)
@@ -78,6 +83,12 @@ void playerSetTeam(Player * player, int teamId)
 int playerIsLocal(Player * player)
 {
     return (int)player >= 0x00300000 && (int)player <= 0x00400000;
+}
+
+//--------------------------------------------------------------------------------
+int playerGetNumLocals(void)
+{
+    return PLAYER_LOCAL_COUNT;
 }
 
 //--------------------------------------------------------------------------------
