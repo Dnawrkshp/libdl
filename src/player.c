@@ -67,6 +67,17 @@ void playerSetWeapon(Player * player, int weaponId)
 }
 
 //--------------------------------------------------------------------------------
+void playerSetHealth(Player * player, float health)
+{
+    if (!player)
+        return;
+
+    player->Health = health;
+    if (player->pNetPlayer && player->pNetPlayer->pNetPlayerData)
+        player->pNetPlayer->pNetPlayerData->hitPoints = health;
+}
+
+//--------------------------------------------------------------------------------
 void playerSetTeam(Player * player, int teamId)
 {
     if (!player)

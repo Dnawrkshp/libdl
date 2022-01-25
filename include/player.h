@@ -823,6 +823,25 @@ void playerIncHealth(Player * player, float health);
 void playerDecHealth(Player * player, float health);
 
 /*
+ * NAME :		playerSetHealth
+ * 
+ * DESCRIPTION :
+ * 			
+ * 
+ * NOTES :
+ * 
+ * 
+ * ARGS : 
+ *      player      :           Target player.
+ * 			health			:						Target health.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+void playerSetHealth(Player * player, float health);
+
+/*
  * NAME :		playerDropFlag
  * 
  * DESCRIPTION :
