@@ -774,6 +774,11 @@ void mobySetMoveSpeedLimits(Moby* moby, float linearAccel, float linearDecell, f
 void mobySetMoveAngularSpeeds(Moby* moby, float angularAccel, float angularDecel, float angularLimit);
 
 /*
+ *
+ */
+void mobySetAnimCache(Moby* moby, void* cache1, void* cache2);
+
+/*
  * 
  */
 void mobyMove(Moby* moby, u128 vectorTo, float dt);
