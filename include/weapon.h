@@ -15,28 +15,70 @@
 #define _LIBDL_WEAPON_H_
 
 #include "common.h"
+#include "math3d.h"
 
 /*
  *
  */
-typedef struct PlayerWeaponData
+struct tNW_GadgetEventMessage
+{
+	/*   0 */ short int GadgetId;
+	/*   2 */ char PlayerIndex;
+	/*   3 */ char GadgetEventType;
+	/*   4 */ char ExtraData;
+	/*   8 */ int ActiveTime;
+	/*   c */ unsigned int TargetUID;
+	/*  10 */ float FiringLoc[3];
+	/*  1c */ float TargetDir[3];
+};
+
+/*
+ *
+ */
+typedef struct GadgetEvent
+{
+	/*   0 */ unsigned char gadgetID;
+	/*   1 */ unsigned char cPlayerIndex;
+	/*   2 */ char cGadgetType;
+	/*   3 */ char gadgetEventType;
+	/*   4 */ int iActiveTime;
+	/*   8 */ unsigned int targetUID;
+	/*  10 */ VECTOR targetOffsetQuat;
+	/*  20 */ struct GadgetEvent* pNextGadgetEvent;
+	/*  24 */ struct tNW_GadgetEventMessage gadgetEventMsg;
+} GadgetEvent;
+
+/*
+ *
+ */
+typedef struct GadgetEntry
 {
     short Level;
     short Ammo;
-
     int Experience;
-
     int GameTimeLastShot;
-    
     int OmegaMod;
-
     int UNK_10;
-
     int AlphaMods[10];
-
     char UNK_3C[0x08];
+} GadgetEntry;
 
-} PlayerWeaponData;
+/*
+ *
+ */
+typedef struct GadgetBox
+{
+	/*   0 */ char Initialized;
+	/*   1 */ char Level;
+	/*   2 */ char bButtonDown[10];
+	/*   c */ short int ButtonUpFrames[10];
+	/*  20 */ char NumGadgetEvents;
+	/*  21 */ char ModBasic[8];
+	/*  2a */ short int ModPostFX;
+	/*  2c */ struct GadgetEvent* NextGadgetEvent;
+	/*  30 */ struct GadgetEvent GadgetEventSlots[32];
+	/* a30 */ struct GadgetEntry Gadgets[32];
+} GadgetBox;
 
 /*
  *

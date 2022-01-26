@@ -28,8 +28,6 @@ void internal_playerSetPosRot(Player *, VECTOR, VECTOR, int, int, int, int, int)
 /*
  * Weapon stuff.
  */
-#define WEAPON_DATA_START                           (0x001D49C0)
-#define WEAPON_DATA_SIZE                            (0x12B0)
 #define WEAPON_EQUIPSLOT                            ((int*)0x0020C690)
 
 // 
@@ -42,12 +40,6 @@ PadHistory PlayerPadHistory[GAME_MAX_PLAYERS];
 Player ** playerGetAll(void)
 {
     return PLAYER_STRUCT_ARRAY;
-}
-
-//--------------------------------------------------------------------------------
-PlayerWeaponData * playerGetWeaponData(int playerId)
-{
-    return (PlayerWeaponData *)(WEAPON_DATA_START + (WEAPON_DATA_SIZE * playerId));
 }
 
 //--------------------------------------------------------------------------------

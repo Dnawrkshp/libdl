@@ -458,7 +458,11 @@ typedef struct Player
 
     float CameraElevation;                                          // 0x1AFC
 
-    char UNK17[0x7F8];                                              // 0x1B00
+    char UNK17[0x7F0];                                              // 0x1B00
+
+		Moby* GadgetMoby;																								// 0x22F0
+
+		char UNK_50[4];																									// 0x22F4
 
     // When 1, the player is trying to shoot
     int IsShooting;                                                 // 0x22F8
@@ -521,7 +525,7 @@ typedef struct Player
 
     char UNK27[0x54];                                               // 0x2690
 
-    u32 WeaponHeldDataPointer;                                      // 0x26E4
+    GadgetBox * GadgetBox;                                      		// 0x26E4
 
     char UNK21[0x738];                                              // 0x26E8
     
@@ -641,23 +645,6 @@ __LIBDL_GETTER__ Player ** playerGetAll(void);
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_SETTER__ void playerSetWeapon(Player * player, int weaponId);
-
-/*
- * NAME :		playerGetWeaponData
- * 
- * DESCRIPTION :
- * 			Gets a pointer to the given player's weapon data struct.
- * 
- * NOTES :
- * 
- * ARGS : 
- *      playerId      :           Player index.
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-__LIBDL_GETTER__ PlayerWeaponData * playerGetWeaponData(int playerId);
 
 /*
  * NAME :		playerSetLocalEquipslot
