@@ -744,6 +744,11 @@ MobyColDamage* mobyGetDamage(Moby* moby, int damageFlagsFilter, int a2);
 void mobyProcessDamage(Moby* moby, float* damageOut, MobyColDamage* colDamageIn);
 
 /*
+ *
+ */
+int mobyGetNumSpawnableMobys(void);
+
+/*
  * 
  */
 int mobyIsHero(Moby* moby);

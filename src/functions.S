@@ -101,6 +101,7 @@ FUNCTION(mobyUpdateFlash, 0x00506b88)
 #--------------------------------------------------------
 FUNCTION(internal_netSendMessage, 0x01E9E198)
 FUNCTION(internal_netSendAppMessage, 0x01E9E270)
+FUNCTION(internal_netUpdatetNWGameSettings, 0x007700A8)
 
 #--------------------------------------------------------
 #------------------------ PLAYER ------------------------
@@ -112,6 +113,7 @@ FUNCTION(playerGetFromUID, 0x005cd480)
 FUNCTION(internal_playerSetPosRot, 0x005EB448)
 FUNCTION(playerIncHealth, 0x005D1140)
 FUNCTION(playerDecHealth, 0x005D1038)
+FUNCTION(playerGetFromSlot, 0x005cd3d0)
 
 #--------------------------------------------------------
 #------------------------ WEAPON ------------------------

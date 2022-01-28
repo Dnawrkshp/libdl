@@ -992,4 +992,21 @@ __LIBDL_GETTER__ PlayerVTable* playerGetVTable(Player * player);
  */
 Player * playerGetFromUID(int uid);
 
+/*
+ * NAME :		playerGetFromSlot
+ * 
+ * DESCRIPTION :
+ * 			Returns pointer to the player with the given local slot index.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ *          slot:                     	Player slot index.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+Player * playerGetFromSlot(int slot);
+
 #endif // _LIBDL_PLAYER_H_

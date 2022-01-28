@@ -13,3 +13,11 @@ Moby * mobyGetFirst(void)
 {
     return *FIRST_MOBY_PTR;
 }
+
+/*
+ * 
+ */
+int mobyGetNumSpawnableMobys(void)
+{
+    return *(int*)0x00222790;
+}

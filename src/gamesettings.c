@@ -42,6 +42,10 @@
  */
 #define GAME_FLAG_PICKUP_SQRDISTANCE            (0x00418A84)
 
+//
+void internal_netUpdatetNWGameSettings(void*, int, char*, int, int, int, void*);
+
+
 //--------------------------------------------------------
 GameSettings * gameGetSettings(void)
 {
@@ -79,4 +83,15 @@ char * gameGetGameModeName(int modeId)
       case GAMERULE_KOTH: return helpGetString(HELP_STRING_ID_KING_OF_THE_HILL);
       default: return helpGetString(-1);
   }
+}
+
+//--------------------------------------------------------
+void gameSetClientState(int pid, char state)
+{
+    GameSettings* gs = gameGetSettings();
+    if (!gs)
+        return;
+    
+    gs->PlayerStates[pid] = state;
+    internal_netUpdatetNWGameSettings(*(void**)(*(u32*)0x002233a4 + 0x48), pid, gs->PlayerNames[pid], 0, 0, state, (void*)((u32)gs + 0xA8));
 }

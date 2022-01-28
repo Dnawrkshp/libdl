@@ -288,4 +288,20 @@ __LIBDL_SETTER__ void gameFlagSetPickupDistance(float distance);
  */
 __LIBDL_GETTER__ char* gameGetGameModeName(int modeId);
 
+/*
+ * NAME :		gameSetClientState
+ * 
+ * DESCRIPTION :
+ * 			
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+void gameSetClientState(int pid, char state);
+
 #endif // _LIBDL_GAMESETTINGS_H_
