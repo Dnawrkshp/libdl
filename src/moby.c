@@ -39,3 +39,25 @@ int mobyGetNumSpawnableMobys(void)
 {
     return *(int*)0x00222790;
 }
+
+/*
+ * Returns a pointer to the next living moby of the given oclass.
+ * Returns NULL if none found.
+ */
+Moby* mobyFindNextByOClass(Moby* start, int oClass)
+{
+    Moby* mEnd = mobyListGetEnd();
+    
+	// find
+	if (oClass > 0 && start) {
+		while (start < mEnd && (start->OClass != oClass || mobyIsDestroyed(start)))
+			++start;
+	}
+
+    // found
+    if (start < mEnd)
+        return start;
+    
+    // couldn't find
+    return NULL;
+}

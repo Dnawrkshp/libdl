@@ -61,36 +61,32 @@ void cheatsApplyNoV2s(void)
 int cheatsDisableHealthboxes(void)
 {
     int count = 0;
+    Moby* moby = mobyListGetStart();
 
     // Iterate through mobys and disable healthboxes
-	Moby * currentMoby = mobyListGetStart();
-    Moby * endMoby = mobyListGetEnd();
-	while (currentMoby < endMoby)
-	{
-		if (!mobyIsDestroyed(currentMoby) && currentMoby->OClass == MOBY_ID_HEALTH_BOX_MULT)
-		{
-			memset(currentMoby->Position, 0, sizeof(currentMoby->Position));
+    while ((moby = mobyFindNextByOClass(moby, MOBY_ID_HEALTH_BOX_MULT)))
+    {
+        // move to 0,0,0
+        memset(moby->Position, 0, sizeof(moby->Position));
 
-			if (currentMoby->PVar)
-			{
-				void * subPtr = (void*)(*(u32*)(currentMoby->PVar));
-				if (subPtr)
-				{
-					Moby * orb = (Moby*)(*(u32*)(subPtr + 0x98));
-					if (orb)
-					{
-                        memset(orb->Position, 0, sizeof(orb->Position));
-						
-						++count;
-					}
-				}
-				// 
-			}
-		}
+        // move orb to 0,0,0
+        if (moby->PVar)
+        {
+            void * subPtr = (void*)(*(u32*)(moby->PVar));
+            if (subPtr)
+            {
+                Moby * orb = (Moby*)(*(u32*)(subPtr + 0x98));
+                if (orb)
+                {
+                    memset(orb->Position, 0, sizeof(orb->Position));
+                    ++count;
+                }
+            }
+        }
 
-        ++currentMoby;
-	}
-
+        ++moby; // increment moby
+    }
+    
     return count;
 }
 

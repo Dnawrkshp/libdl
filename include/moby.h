@@ -707,6 +707,12 @@ __LIBDL_GETTER__ Moby * mobyListGetEnd(void);
 __LIBDL_GETTER__ int mobyIsDestroyed(Moby* moby);
 
 /*
+ * Returns a pointer to the next living moby of the given oclass.
+ * Returns NULL if none found.
+ */
+Moby* mobyFindNextByOClass(Moby* start, int oClass);
+
+/*
  * Destroys the given moby.
  */
 void mobyDestroy(Moby * moby);
