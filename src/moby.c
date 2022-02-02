@@ -2,16 +2,34 @@
 
 //--------------------------------------------------------
 #define SPAWN_MOBY_FUNC                         (0x004F7200)
-#define FIRST_MOBY_PTR                          ((Moby**)0x0022D470)
+#define BEGIN_MOBY_PTR                          ((Moby**)0x00222794)
+#define END_MOBY_PTR                            ((Moby**)0x002227B0)
 #define MOBY_UPDATE_FUNC                        (0x004FE720)
 #define MOBY_DESTROY_FUNC                       (0x004F76A0)
 
 /*
- * Returns the first moby.
+ * Returns pointer to the start of the moby list.
  */
-Moby * mobyGetFirst(void)
+Moby * mobyListGetStart(void)
 {
-    return *FIRST_MOBY_PTR;
+    return *BEGIN_MOBY_PTR;
+}
+
+/*
+ * Returns pointer to the end of the moby list.
+ */
+Moby * mobyListGetEnd(void)
+{
+    return *END_MOBY_PTR;
+}
+
+
+/*
+ * Returns non-zero if the given moby is destroyed.
+ */
+int mobyIsDestroyed(Moby* moby)
+{
+    return moby && moby->State <= -2;
 }
 
 /*

@@ -692,9 +692,19 @@ typedef struct MobyFunctions
 Moby * mobySpawn(int id, int propSize);
 
 /*
- * Returns pointer to the first moby if it exists.
+ * Returns pointer to the start of the moby list.
  */
-__LIBDL_GETTER__ Moby * mobyGetFirst(void);
+__LIBDL_GETTER__ Moby * mobyListGetStart(void);
+
+/*
+ * Returns pointer to the end of the moby list.
+ */
+__LIBDL_GETTER__ Moby * mobyListGetEnd(void);
+
+/*
+ * Returns non-zero if the given moby is destroyed.
+ */
+__LIBDL_GETTER__ int mobyIsDestroyed(Moby* moby);
 
 /*
  * Destroys the given moby.
