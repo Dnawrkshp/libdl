@@ -500,22 +500,33 @@ typedef void (*PlayerUpdateState_func)(Player * player, int stateId, int a2, int
  */
 typedef struct PlayerVTable
 {
-    void * FUNC_00;
-    void * FUNC_04;
-    void * FUNC_08;
+    int NOP_00;
+    int NOP_04;
+    void * InitInstance__4Hero;
     void * FUNC_0C;
-    void * FUNC_10;
-    void * FUNC_14;
+    void * GetMoby__4Hero;
+    void * HandleEvent__4HeroP10GuberEvent;
     void * FUNC_18;
-    void * FUNC_1C;
+    void * FriendlyToTeam__4Heroi;
     void * FUNC_20;
-    void * FUNC_24;
+    void * DoBehavior__4Hero;
     void * FUNC_28;
     void * FUNC_2C;
     void * FUNC_30;
     void * FUNC_34;
-    void * FUNC_38;
-    PlayerUpdateState_func UpdateState;
+    void * ZeroMovement__4Hero;
+    PlayerUpdateState_func UpdateState; // InitBodyState__4HeroiibT3
+	void * FUNC_40;
+    void * FUNC_44;
+	void * FUNC_48;
+    void * FUNC_4C;
+	void * IsMyLookCamDisabled__4Hero;
+	void * AllowRemoteLedge;
+	void * AllowRemoteDeath;
+	int NOP_5C;
+	int NOP_60;
+	int NOP_64;
+	void * InitInstance__4Hero;
 } PlayerVTable;
 
 
