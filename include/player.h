@@ -526,7 +526,7 @@ typedef struct PlayerVTable
 	int NOP_5C;
 	int NOP_60;
 	int NOP_64;
-	void * InitInstance__4Hero;
+	void * InitInstance__4Hero__1;
 } PlayerVTable;
 
 
