@@ -22,30 +22,49 @@
 //--------------------------------------------------------
 typedef struct PlayerGameStats
 {
+    short WeaponKills[GAME_MAX_PLAYERS][9];
+    short WeaponDeaths[GAME_MAX_PLAYERS][9];
+    short WeaponShots[GAME_MAX_PLAYERS][9];
+    short WeaponShotsHitBy[GAME_MAX_PLAYERS][9];
+    short UNK_02D0[GAME_MAX_PLAYERS][4];
     short RoadKills[GAME_MAX_PLAYERS];
     short RoadKillDeaths[GAME_MAX_PLAYERS];
-    short UNK0[GAME_MAX_PLAYERS];
-    short UNK1[GAME_MAX_PLAYERS];
+    short UNK_0348[GAME_MAX_PLAYERS];
+    short UNK_035C[GAME_MAX_PLAYERS];
     short Kills[GAME_MAX_PLAYERS];
     short Deaths[GAME_MAX_PLAYERS];
     short Suicides[GAME_MAX_PLAYERS];
-    short UNK2[GAME_MAX_PLAYERS];
-    short UNK3[GAME_MAX_PLAYERS];
+    short UNK_03AC[GAME_MAX_PLAYERS];
+    short UNK_03C0[GAME_MAX_PLAYERS];
     short WrenchKills[GAME_MAX_PLAYERS];
-    short UNK4[GAME_MAX_PLAYERS];
-    short UNK5[GAME_MAX_PLAYERS];
+    char NodesCaptured[GAME_MAX_PLAYERS];
+    char UNK_03F2[GAME_MAX_PLAYERS];
+    char UNK_03FC[GAME_MAX_PLAYERS];
+    char UNK_0406[GAME_MAX_PLAYERS];
     char FlagsCapped[GAME_MAX_PLAYERS];
     char FlagsSaved[GAME_MAX_PLAYERS];
     float HillTime[GAME_MAX_PLAYERS];
+    char UNK_0442[GAME_MAX_PLAYERS];
+    float HillTime2[GAME_MAX_PLAYERS];
+    float TimeJuggernaut[GAME_MAX_PLAYERS];
+    short Squats[GAME_MAX_PLAYERS];
+    short VehicleSquats[GAME_MAX_PLAYERS];
+    short Bolts[GAME_MAX_PLAYERS];
 } PlayerGameStats;
 
 //--------------------------------------------------------
-typedef struct PlayerWeaponStats
+typedef struct TeamGameStats
 {
-    u16 WeaponKills[GAME_MAX_PLAYERS][9];
-    u16 WeaponDeaths[GAME_MAX_PLAYERS][9];
-} PlayerWeaponStats;
-
+    short Bolts[GAME_MAX_PLAYERS];
+    char HasNodeUpgrade1[GAME_MAX_PLAYERS];
+    char HasNodeUpgrade2[GAME_MAX_PLAYERS];
+    char HasNodeUpgrade3[GAME_MAX_PLAYERS];
+    float UpgradeTime[GAME_MAX_PLAYERS];
+    short NodesOwned[GAME_MAX_PLAYERS];
+    char NodesOwned2[GAME_MAX_PLAYERS];
+    int UNK_0554[GAME_MAX_PLAYERS];
+    float ConquestBoltIncTimer[GAME_MAX_PLAYERS];
+} TeamGameStats;
 
 //--------------------------------------------------------
 typedef struct ScoreboardItem
@@ -77,8 +96,8 @@ typedef struct GameData
     int MyTotalTimeSquatted;
     int MyTotalGangSquats;
     int TeamCaptain[GAME_MAX_PLAYERS];
-    char PlayerStats[0x4D8];
-    char TeamStats[0xD8];
+    PlayerGameStats PlayerStats;
+    TeamGameStats TeamStats;
     char AllYourBaseGameData[4];
     char CtfGameData[4];
     char DeathmatchGameData[4];
@@ -281,55 +300,6 @@ __LIBDL_GETTER__ float gameGetDeathHeight(void);
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_SETTER__ void gameSetDeathHeight(float height);
-
-/*
- * NAME :		gameGetPlayerStats
- * 
- * DESCRIPTION :
- * 			Gets all the player stats relevant to the current game.
- * 
- * NOTES :
- *          This includes kills, deaths, suicides, hill time, flags capped, wrench kills, etc.
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-__LIBDL_GETTER__ PlayerGameStats * gameGetPlayerStats(void);
-
-/*
- * NAME :		gameGetTeamStatCaps
- * 
- * DESCRIPTION :
- * 			Returns the collection of team flag captures.
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-__LIBDL_GETTER__ u8 * gameGetTeamStatCaps(void);
-
-/*
- * NAME :		gameGetPlayerWeaponStats
- * 
- * DESCRIPTION :
- * 			Gets all the player weapon stats.
- * 
- * NOTES :
- * 
- * ARGS : 
- * 
- * RETURN :
- * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
- */
-__LIBDL_GETTER__ PlayerWeaponStats * gameGetPlayerWeaponStats(void);
 
 /*
  * NAME :		gameGetRawTimeLimit

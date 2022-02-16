@@ -48,21 +48,6 @@ void internal_gameEnd(int);
 #define GAME_DEATH_BARRIER_Y                (*(float*)0x0022267C)
 
 /*
- * 
- */
-#define GAME_PLAYER_STATS_ARRAY             ((PlayerGameStats*)0x0036D9C8)
-
-/*
- *
- */
-#define GAME_TEAM_CAPS_ARRAY                ((u8*)0x0036DC4C)
-
-/*
- * 
- */
-#define PLAYER_WEAPON_STATS_ARRAY           ((PlayerWeaponStats*)0x0036D6A8)
-
-/*
  * When non-zero, it refreshes the in-game scoreboard.
  */
 #define GAME_SCOREBOARD_REFRESH_FLAG        (*(u32*)0x00310248)
@@ -172,21 +157,6 @@ float gameGetDeathHeight(void)
 void gameSetDeathHeight(float height)
 {
     GAME_DEATH_BARRIER_Y = height;
-}
-
-PlayerGameStats * gameGetPlayerStats(void)
-{
-    return GAME_PLAYER_STATS_ARRAY;
-}
-
-u8 * gameGetTeamStatCaps(void)
-{
-    return GAME_TEAM_CAPS_ARRAY;
-}
-
-PlayerWeaponStats * gameGetPlayerWeaponStats(void)
-{
-    return PLAYER_WEAPON_STATS_ARRAY;
 }
 
 int gameGetRawTimeLimit(void)
