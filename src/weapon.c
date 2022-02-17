@@ -40,6 +40,23 @@ int weaponSlotToId(int slotId)
     }
 }
 
+int weaponIdToSlot(int id)
+{
+    switch (id)
+    {
+        case WEAPON_ID_WRENCH: return WEAPON_SLOT_WRENCH;
+        case WEAPON_ID_VIPERS: return WEAPON_SLOT_VIPERS;
+        case WEAPON_ID_MAGMA_CANNON: return WEAPON_SLOT_MAGMA_CANNON;
+        case WEAPON_ID_ARBITER: return WEAPON_SLOT_ARBITER;
+        case WEAPON_ID_FUSION_RIFLE: return WEAPON_SLOT_FUSION_RIFLE;
+        case WEAPON_ID_MINE_LAUNCHER: return WEAPON_SLOT_MINE_LAUNCHER;
+        case WEAPON_ID_B6: return WEAPON_SLOT_B6;
+        case WEAPON_ID_FLAIL: return WEAPON_SLOT_FLAIL;
+        case WEAPON_ID_OMNI_SHIELD: return WEAPON_SLOT_OMNI_SHIELD;
+        default: return WEAPON_SLOT_WRENCH;
+    }
+}
+
 void weaponSetDamage(int weaponId, int level, float damage)
 {
     switch (weaponId)

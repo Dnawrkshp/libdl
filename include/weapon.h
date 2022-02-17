@@ -276,6 +276,22 @@ WrenchDefsData* weaponGetWrenchLevelDefs(void);
  */
 int weaponSlotToId(int slotId);
 
+/*
+ * NAME :		weaponIdToSlot
+ * 
+ * DESCRIPTION :
+ * 			Converts a WEAPON_IDS to the respective WEAPON_SLOT_INDEX
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ *      id      :               Weapon id.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+int weaponIdToSlot(int id);
 
 /*
  * NAME :		weaponSetDamage
