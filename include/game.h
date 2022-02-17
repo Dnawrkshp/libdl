@@ -15,6 +15,7 @@
 #define _LIBDL_GAME_H_
 
 #include <tamtypes.h>
+#include "moby.h"
 #include "gamesettings.h"
 #include "common.h"
 
@@ -26,45 +27,93 @@ typedef struct PlayerGameStats
     short WeaponDeaths[GAME_MAX_PLAYERS][9];
     short WeaponShots[GAME_MAX_PLAYERS][9];
     short WeaponShotsHitBy[GAME_MAX_PLAYERS][9];
-    short UNK_02D0[GAME_MAX_PLAYERS][4];
-    short RoadKills[GAME_MAX_PLAYERS];
-    short RoadKillDeaths[GAME_MAX_PLAYERS];
-    short UNK_0348[GAME_MAX_PLAYERS];
-    short UNK_035C[GAME_MAX_PLAYERS];
+    float VehicleTime[GAME_MAX_PLAYERS];
+    short VehicleWeaponKills[GAME_MAX_PLAYERS];
+    short VehicleWeaponDeaths[GAME_MAX_PLAYERS];
+    short VehicleRoadKills[GAME_MAX_PLAYERS];
+    short VehicleRoadDeaths[GAME_MAX_PLAYERS];
+    short VehicleShotsFired[GAME_MAX_PLAYERS];
+    short VehicleShotsHit[GAME_MAX_PLAYERS];
     short Kills[GAME_MAX_PLAYERS];
     short Deaths[GAME_MAX_PLAYERS];
     short Suicides[GAME_MAX_PLAYERS];
-    short UNK_03AC[GAME_MAX_PLAYERS];
-    short UNK_03C0[GAME_MAX_PLAYERS];
+    short MultiKills[GAME_MAX_PLAYERS];
+    short SniperKills[GAME_MAX_PLAYERS];
     short WrenchKills[GAME_MAX_PLAYERS];
-    char NodesCaptured[GAME_MAX_PLAYERS];
-    char UNK_03F2[GAME_MAX_PLAYERS];
-    char UNK_03FC[GAME_MAX_PLAYERS];
-    char UNK_0406[GAME_MAX_PLAYERS];
-    char FlagsCapped[GAME_MAX_PLAYERS];
-    char FlagsSaved[GAME_MAX_PLAYERS];
-    float HillTime[GAME_MAX_PLAYERS];
-    char UNK_0442[GAME_MAX_PLAYERS];
-    float HillTime2[GAME_MAX_PLAYERS];
-    float TimeJuggernaut[GAME_MAX_PLAYERS];
+    char ConquestNodesCaptured[GAME_MAX_PLAYERS];
+    char ConquestNodeSaves[GAME_MAX_PLAYERS];
+    char ConquestDefensiveKills[GAME_MAX_PLAYERS];
+    char ConquestPoints[GAME_MAX_PLAYERS];
+    char CtfFlagsCaptures[GAME_MAX_PLAYERS];
+    char CtfFlagsSaved[GAME_MAX_PLAYERS];
+    float KingHillHoldTime[GAME_MAX_PLAYERS];
+    float InternalKingHillHoldTime[GAME_MAX_PLAYERS];
+    float JuggernautTime[GAME_MAX_PLAYERS];
     short Squats[GAME_MAX_PLAYERS];
     short VehicleSquats[GAME_MAX_PLAYERS];
-    short Bolts[GAME_MAX_PLAYERS];
+    short TicketScore[GAME_MAX_PLAYERS];
 } PlayerGameStats;
 
 //--------------------------------------------------------
 typedef struct TeamGameStats
 {
-    short Bolts[GAME_MAX_PLAYERS];
-    char HasNodeUpgrade1[GAME_MAX_PLAYERS];
-    char HasNodeUpgrade2[GAME_MAX_PLAYERS];
-    char HasNodeUpgrade3[GAME_MAX_PLAYERS];
-    float UpgradeTime[GAME_MAX_PLAYERS];
-    short NodesOwned[GAME_MAX_PLAYERS];
-    char NodesOwned2[GAME_MAX_PLAYERS];
-    int UNK_0554[GAME_MAX_PLAYERS];
-    float ConquestBoltIncTimer[GAME_MAX_PLAYERS];
+    short TeamTicketScore[GAME_MAX_PLAYERS];
+    char TeamUpgradesLevel1[GAME_MAX_PLAYERS];
+    char TeamUpgradesLevel2[GAME_MAX_PLAYERS];
+    char TeamUpgradesLevel3[GAME_MAX_PLAYERS];
+    float TeamCaptureTimer[GAME_MAX_PLAYERS];
+    short TeamCaptureTimerSettings[GAME_MAX_PLAYERS];
+    char NumNodesOwned[GAME_MAX_PLAYERS];
+    float PercentNodesCaptured[GAME_MAX_PLAYERS];
+    float NodeHoldTime[GAME_MAX_PLAYERS];
+    char FlagCaptureCounts[GAME_MAX_PLAYERS];
 } TeamGameStats;
+
+//--------------------------------------------------------
+typedef struct DeathMatchGameData
+{
+    int ResurrectionPts[64];
+    int Pad1;
+    int RandomSpawn;
+    int SmartSpawnPts;
+    int pad[13];
+} DeathMatchGameData;
+
+//--------------------------------------------------------
+typedef struct CTFGameData
+{
+    Moby* BlueFlagMoby[2];
+    Moby* RedFlagMoby[2];
+    Moby* GreenFlagMoby[2];
+    Moby* OrangeFlagMoby[2];
+    int TeamFlagPositions[4];
+    int pad[8];
+} CTFGameData;
+
+//--------------------------------------------------------
+typedef struct LocalPlayerYourBaseGameData
+{
+    int Team1_SpawnPts[3];
+    int Team2_SpawnPts[3];
+    int NodeResurrectionPts[8];
+    Moby* BaseMobys[8];
+    Moby* NodeMobys[8];
+    int Team1_StartBase;
+    int Team2_StartBase;
+    int BaseTeam[8];
+    int NodeTeam[8];
+    int OrigBaseTeam[8];
+    int BaseHealth[8];
+    float TotalHudHealth[8];
+    float PrevHudHealth[8];
+    float HudHealth[8];
+    int NumBases;
+    int WinScore;
+    int Team3_SpawnPts[3];
+    int Team4_SpawnPts[3];
+    Moby* HomeNodeMobys[2];
+    int pad[8];
+} LocalPlayerYourBaseGameData;
 
 //--------------------------------------------------------
 typedef struct ScoreboardItem
@@ -98,9 +147,9 @@ typedef struct GameData
     int TeamCaptain[GAME_MAX_PLAYERS];
     PlayerGameStats PlayerStats;
     TeamGameStats TeamStats;
-    char AllYourBaseGameData[4];
-    char CtfGameData[4];
-    char DeathmatchGameData[4];
+    LocalPlayerYourBaseGameData * AllYourBaseGameData;
+    CTFGameData * CtfGameData;
+    DeathMatchGameData * DeathmatchGameData;
 } GameData;
 
 
