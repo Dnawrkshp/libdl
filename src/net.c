@@ -65,18 +65,24 @@ void netInstallCustomMsgHandler(u8 id, NET_CALLBACK_DELEGATE callback)
 
 int netSendMediusAppMessage(void * connection, int clientIndex, int msgClass, int msgId, int msgSize, void * payload)
 {
+    if (!connection)
+        return 0;
     return internal_netSendMessage(0x40, connection, clientIndex, msgClass, msgId, msgSize, payload);
 }
 
 int netBroadcastMediusAppMessage(void * connection, int msgId, int msgSize, void * payload)
 {
+    if (!connection)
+        return 0;
     return internal_netSendAppMessage(0x40, connection, -1, msgId, msgSize, payload);
 }
 
 int netSendCustomAppMessage(void * connection, int clientIndex, u8 customMsgId, int msgSize, void * payload)
 {
+    if (!connection)
+        return 0;
+        
     u8 buffer[512];
-
     if (payload && msgSize > 0)
         memcpy(buffer + 4, payload, msgSize);
         
@@ -86,8 +92,10 @@ int netSendCustomAppMessage(void * connection, int clientIndex, u8 customMsgId, 
 
 int netBroadcastCustomAppMessage(void * connection, u8 customMsgId, int msgSize, void * payload)
 {
-    u8 buffer[512];
+    if (!connection)
+        return 0;
 
+    u8 buffer[512];
     if (payload && msgSize > 0)
         memcpy(buffer + 4, payload, msgSize);
         
