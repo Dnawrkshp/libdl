@@ -8,6 +8,18 @@ int internal_widthFunc_inLobby(const char*,long,float);
 void internal_drawBox_inGame(void *, void *);
 void internal_drawBox_inLobby(void *, void *);
 
+void internal_doGifPaging_inGame(void);
+void internal_doGifPaging_inLobby(void);
+void internal_setupGifPaging_inGame(int);
+void internal_setupGifPaging_inLobby(int);
+u64 internal_getFrameTex_inGame(int id);
+u64 internal_getFrameTex_inLobby(int id);
+u64 internal_getEffectTex_inGame(int id, int);
+u64 internal_getEffectTex_inLobby(int id, int);
+void internal_drawSprite_inGame(int x, int y, int w, int h, int t0, int t1, int texW, int texH, u64 color, u64 texture);
+void internal_drawSprite_inLobby(int x, int y, int w, int h, int t0, int t1, int texW, int texH, u64 color, u64 texture);
+
+
 //--------------------------------------------------------
 int gfxWorldSpaceToScreenSpace(VECTOR position, int * x, int * y)
 {
@@ -215,4 +227,64 @@ void gfxScreenSpacePIF(RECT * rect)
         internal_drawBox_inGame(rect, buffer);
     else
         internal_drawBox_inLobby(rect, buffer);
+}
+
+void gfxDoGifPaging(void)
+{
+    if (gameIsIn())
+    {
+        internal_doGifPaging_inGame();
+    }
+    else
+    {
+        internal_doGifPaging_inLobby();
+    }
+}
+
+void gfxSetupGifPaging(int a0)
+{
+    if (gameIsIn())
+    {
+        internal_setupGifPaging_inGame(a0);
+    }
+    else
+    {
+        internal_setupGifPaging_inLobby(a0);
+    }
+}
+
+u64 gfxGetFrameTex(int id)
+{
+    if (gameIsIn())
+    {
+        internal_getFrameTex_inGame(id);
+    }
+    else
+    {
+        internal_getFrameTex_inLobby(id);
+    }
+}
+
+u64 gfxGetEffectTex(int id, int a1)
+{
+    if (gameIsIn())
+    {
+        internal_getEffectTex_inGame(id, a1);
+    }
+    else
+    {
+        internal_getEffectTex_inLobby(id, a1);
+    }
+}
+
+void gfxDrawSprite(int x, int y, int w, int h, int t0, int t1, int texW, int texH, u64 color, u64 texture)
+{
+    if (gameIsIn())
+    {
+        internal_drawSprite_inGame(x, y, w, h, t0, t1, texW, texH, color, texture);
+    }
+    else
+    {
+        internal_drawSprite_inLobby(x, y, w, h, t0, t1, texW, texH, color, texture);
+    }
 }

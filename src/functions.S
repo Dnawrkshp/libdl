@@ -61,6 +61,16 @@ FUNCTION(internal_widthFunc_inGame, 0x004D8130)
 FUNCTION(internal_widthFunc_inLobby, 0x005BDC90)
 FUNCTION(internal_drawBox_inGame, 0x005BE610)
 FUNCTION(internal_drawBox_inLobby, 0x00699C08)
+FUNCTION(internal_doGifPaging_inGame, 0x004c3f40)
+FUNCTION(internal_doGifPaging_inLobby, 0x005af9e8)
+FUNCTION(internal_setupGifPaging_inGame, 0x004c3e10)
+FUNCTION(internal_setupGifPaging_inLobby, 0x005af8b8)
+FUNCTION(internal_getFrameTex_inGame, 0x004e4d70)
+FUNCTION(internal_getFrameTex_inLobby, 0x005cab40)
+FUNCTION(internal_getEffectTex_inGame, 0x004c4200)
+FUNCTION(internal_getEffectTex_inLobby, 0x005afbe8)
+FUNCTION(internal_drawSprite_inGame, 0x004c5b30)
+FUNCTION(internal_drawSprite_inLobby, 0x005b1518)
 
 #--------------------------------------------------------
 #---------------------- MEMORY CARD ---------------------

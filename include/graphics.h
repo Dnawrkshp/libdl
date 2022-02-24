@@ -106,4 +106,10 @@ void gfxScreenSpacePIF(RECT * rect);
 
 int gfxGetFontWidth(const char * string, int length, float scale);
 
+void gfxDoGifPaging(void);
+void gfxSetupGifPaging(int);
+u64 gfxGetFrameTex(int id);
+u64 gfxGetEffectTex(int id, int);
+void gfxDrawSprite(int x, int y, int w, int h, int t0, int t1, int texW, int texH, u64 color, u64 texture);
+
 #endif // _LIBDL_GRAPHICS_H_
