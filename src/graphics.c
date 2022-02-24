@@ -16,8 +16,8 @@ u64 internal_getFrameTex_inGame(int id);
 u64 internal_getFrameTex_inLobby(int id);
 u64 internal_getEffectTex_inGame(int id, int);
 u64 internal_getEffectTex_inLobby(int id, int);
-void internal_drawSprite_inGame(int x, int y, int w, int h, int t0, int t1, int texW, int texH, u64 color, u64 texture);
-void internal_drawSprite_inLobby(int x, int y, int w, int h, int t0, int t1, int texW, int texH, u64 color, u64 texture);
+void internal_drawSprite_inGame(float x, float y, float w, float h, int t0, int t1, int texW, int texH, u64 color, u64 texture);
+void internal_drawSprite_inLobby(float x, float y, float w, float h, int t0, int t1, int texW, int texH, u64 color, u64 texture);
 
 
 //--------------------------------------------------------
@@ -277,7 +277,7 @@ u64 gfxGetEffectTex(int id, int a1)
     }
 }
 
-void gfxDrawSprite(int x, int y, int w, int h, int t0, int t1, int texW, int texH, u64 color, u64 texture)
+void gfxDrawSprite(float x, float y, float w, float h, int t0, int t1, int texW, int texH, u64 color, u64 texture)
 {
     if (gameIsIn())
     {
