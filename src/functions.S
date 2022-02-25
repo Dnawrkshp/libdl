@@ -51,6 +51,8 @@ FUNCTION(internal_dialogPlaySound_inLobby, 0x005C97D8)
 #------------------------- GAME -------------------------
 #--------------------------------------------------------
 FUNCTION(internal_gameEnd, 0x006228C8)
+FUNCTION(gameScoreboardSetTeamScore, 0x005425d0)
+
 
 #--------------------------------------------------------
 #----------------------- GRAPHICS -----------------------

@@ -398,4 +398,13 @@ __LIBDL_GETTER__ GameData* gameGetData(void);
  */
 __LIBDL_GETTER__ int gameGetPing(void);
 
+/*
+ * NAME :		gameScoreboardSetTeamScore
+ * 
+ * DESCRIPTION :
+ * 			Sets the given team's in game scoreboard value.
+ * 
+ */
+void gameScoreboardSetTeamScore(int teamId, int score);
+
 #endif // _LIBDL_GAME_H_
