@@ -893,15 +893,15 @@ __LIBDL_SETTER__ void playerSetPosRot(Player * player, VECTOR p, VECTOR r);
  * 
  * ARGS : 
  *      player      :           Target player.
- *      p           :           Position.
- *      r           :           Rotation.
+ *      outPos      :           Out position.
+ *      outRot      :           Out rotation.
  * 			isFirst			:						Whether or not its the player's first spawn.
  * 
  * RETURN :
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-__LIBDL_SETTER__ void playerGetSpawnpoint(Player * player, VECTOR p, VECTOR r, int isFirst);
+__LIBDL_SETTER__ void playerGetSpawnpoint(Player * player, VECTOR outPos, VECTOR outRot, int isFirst);
 
 /*
  * NAME :		playerGetPad
