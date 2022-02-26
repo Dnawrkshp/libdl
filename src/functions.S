@@ -127,6 +127,7 @@ FUNCTION(internal_playerSetPosRot, 0x005EB448)
 FUNCTION(playerIncHealth, 0x005D1140)
 FUNCTION(playerDecHealth, 0x005D1038)
 FUNCTION(playerGetFromSlot, 0x005cd3d0)
+FUNCTION(playerGetSpawnpoint, 0x006242d0)
 
 #--------------------------------------------------------
 #------------------------ WEAPON ------------------------

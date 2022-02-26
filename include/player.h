@@ -881,7 +881,27 @@ int playerIsDead(Player * player);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-__LIBDL_GETTER__ void playerSetPosRot(Player * player, VECTOR p, VECTOR r);
+__LIBDL_SETTER__ void playerSetPosRot(Player * player, VECTOR p, VECTOR r);
+
+/*
+ * NAME :		playerGetSpawnpoint
+ * 
+ * DESCRIPTION :
+ * 			Gets a given player's next spawn position and rotation.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ *      player      :           Target player.
+ *      p           :           Position.
+ *      r           :           Rotation.
+ * 			isFirst			:						Whether or not its the player's first spawn.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+__LIBDL_SETTER__ void playerGetSpawnpoint(Player * player, VECTOR p, VECTOR r, int isFirst);
 
 /*
  * NAME :		playerGetPad
