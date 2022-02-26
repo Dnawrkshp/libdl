@@ -80,6 +80,22 @@ int CollLine_Fix(VECTOR from, VECTOR to, u64 hitFlag, Moby * moby, u64 t0);
 __LIBDL_GETTER__ Moby* CollLine_Fix_GetHitMoby(void);
 
 /*
+ * NAME :		CollLine_Fix_GetHitPosition
+ * 
+ * DESCRIPTION :
+ * 			
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+__LIBDL_GETTER__ float* CollLine_Fix_GetHitPosition(void);
+
+/*
  * NAME :		CollLine_Fix_GetHitNormal
  * 
  * DESCRIPTION :
