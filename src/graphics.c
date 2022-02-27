@@ -188,6 +188,17 @@ void gfxScreenSpaceBox(float x, float y, float w, float h, u32 color)
     gfxScreenSpaceQuad(&r, color, color, color, color);
 }
 
+//--------------------------------------------------------
+void gfxPixelSpaceBox(float x, float y, float w, float h, u32 color)
+{
+    x /= SCREEN_WIDTH;
+    y /= SCREEN_HEIGHT;
+    w /= SCREEN_WIDTH;
+    h /= SCREEN_HEIGHT;
+    
+    gfxScreenSpaceBox(x, y, w, h, color);
+}
+
 void gfxScreenSpacePIF(RECT * rect)
 {
     u32 buffer[11];
@@ -257,11 +268,11 @@ u64 gfxGetFrameTex(int id)
 {
     if (gameIsIn())
     {
-        internal_getFrameTex_inGame(id);
+        return internal_getFrameTex_inGame(id);
     }
     else
     {
-        internal_getFrameTex_inLobby(id);
+        return internal_getFrameTex_inLobby(id);
     }
 }
 
@@ -269,11 +280,11 @@ u64 gfxGetEffectTex(int id, int a1)
 {
     if (gameIsIn())
     {
-        internal_getEffectTex_inGame(id, a1);
+        return internal_getEffectTex_inGame(id, a1);
     }
     else
     {
-        internal_getEffectTex_inLobby(id, a1);
+        return internal_getEffectTex_inLobby(id, a1);
     }
 }
 

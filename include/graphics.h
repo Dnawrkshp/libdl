@@ -86,6 +86,27 @@ void gfxScreenSpaceQuad(RECT * rect, u32 colorTL, u32 colorTR, u32 colorBL, u32 
 void gfxScreenSpaceBox(float x, float y, float w, float h, u32 color);
 
 /*
+ * NAME :		gfxPixelSpaceBox
+ * 
+ * DESCRIPTION :
+ * 			Draws a box on the screen.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ *      x:              Screen X position (0-SCREEN_WIDTH).
+ *      y:              Screen Y position (0-SCREEN_HEIGHT).
+ *      w:              width (0-SCREEN_WIDTH).
+ *      h:              height (0-SCREEN_HEIGHT).
+ *      color:          color of box.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+void gfxPixelSpaceBox(float x, float y, float w, float h, u32 color);
+
+/*
  * NAME :		gfxWorldSpaceToScreenSpace
  * 
  * DESCRIPTION :
