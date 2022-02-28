@@ -12,11 +12,15 @@
 
 #include <tamtypes.h>
 #include "math3d.h"
+#include "moby.h"
 
 
 //--------------------------------------------------------
 #define SCREEN_WIDTH           (512)
 #define SCREEN_HEIGHT          (416)
+
+//--------------------------------------------------------
+typedef void (*gfxDrawFuncDef)(Moby*);
 
 //--------------------------------------------------------
 typedef float POINT[2] __attribute__((__aligned__(8)));
@@ -29,6 +33,20 @@ typedef struct RECT
     POINT BottomLeft;
     POINT BottomRight;
 } RECT;
+
+//--------------------------------------------------------
+typedef struct CubicLineEndPoint {
+	/*   0 */ int iCoreRGBA;
+	/*   4 */ int iGlowRGBA;
+	/*   8 */ char bFadeEnd;
+	/*   9 */ char style;
+	/*   a */ unsigned char numEndPoints;
+	/*   b */ char bDisabled;
+	/*   c */ int iNumSkipPoints;
+	/*  10 */ VECTOR vPos;
+	/*  20 */ VECTOR vTangent;
+	/*  30 */ VECTOR vTangentOccQuat;
+} CubicLineEndPoint;
 
 
 /*
@@ -132,5 +150,8 @@ void gfxSetupGifPaging(int);
 u64 gfxGetFrameTex(int id);
 u64 gfxGetEffectTex(int id, int);
 void gfxDrawSprite(float x, float y, float w, float h, int t0, int t1, int texW, int texH, u64 color, u64 texture);
+
+void gfxDrawCubicLine(void * fxUtilsInterface, CubicLineEndPoint * points, int numPoints, void * cubicLineStatic, float scale);
+void gfxRegisterDrawFunction(void ** a0, gfxDrawFuncDef * callback, Moby* moby);
 
 #endif // _LIBDL_GRAPHICS_H_

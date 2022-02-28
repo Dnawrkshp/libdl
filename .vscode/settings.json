@@ -2,6 +2,8 @@
   "files.associations": {
     "*.cds": "mips",
     "*.txt": "ignore",
-    "*.s": "c"
+    "*.s": "c",
+    "*.h": "c",
+    "*.c": "c",
   }
 }

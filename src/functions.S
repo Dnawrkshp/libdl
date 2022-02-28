@@ -73,6 +73,8 @@ FUNCTION(internal_getEffectTex_inGame, 0x004c4200)
 FUNCTION(internal_getEffectTex_inLobby, 0x005afbe8)
 FUNCTION(internal_drawSprite_inGame, 0x004c5b30)
 FUNCTION(internal_drawSprite_inLobby, 0x005b1518)
+FUNCTION(gfxDrawCubicLine, 0x004d1780)
+FUNCTION(gfxRegisterDrawFunction, 0x004C4650)
 
 #--------------------------------------------------------
 #---------------------- MEMORY CARD ---------------------
