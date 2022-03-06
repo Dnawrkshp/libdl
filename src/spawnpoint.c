@@ -1,6 +1,7 @@
 #include <tamtypes.h>
 #include "string.h"
 #include "spawnpoint.h"
+#include "game.h"
 
 /*
  * Player 1's hud.
@@ -56,6 +57,20 @@ void hillPointSetIndex(int id, int value)
         return;
 
     ((u32*)(hillInfo + 0x50))[id] = value;
+}
+
+int spawnPointIsPlayer(int index)
+{
+    GameData* gameData = gameGetData();
+    int* spArray = (int*)gameData->AllYourBaseGameData->Team1_SpawnPts[2];
+    int sp = 0;
+    while ((sp = *spArray++) >= 0)
+    {
+        if (sp == index)
+            return 1;
+    }
+
+    return 0;
 }
 
 SpawnPoint * spawnPointGet(int index)

@@ -111,6 +111,22 @@ __LIBDL_GETTER__ int hillPointGetIndex(int id);
 __LIBDL_SETTER__ void hillPointSetIndex(int id, int value);
 
 /*
+ * NAME :		spawnPointIsPlayer
+ * 
+ * DESCRIPTION :
+ * 			
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+int spawnPointIsPlayer(int index);
+
+/*
  * NAME :		spawnPointGet
  * 
  * DESCRIPTION :
