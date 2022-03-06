@@ -67,3 +67,19 @@ Moby* mobyFindNextByOClass(Moby* start, int oClass)
     // couldn't find
     return NULL;
 }
+
+/*
+ * Returns non-zero if the given o class is loaded in the map.
+ */
+int mobyClassIsLoaded(int oClass)
+{
+    u16 * list = mobyGetLoadedMobyClassList();
+    u16 class = 0;
+    while ((class = *list++) != 0xFFFF)
+    {
+        if (class == oClass)
+            return 1;
+    }
+
+    return 0;
+}
