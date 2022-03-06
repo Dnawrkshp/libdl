@@ -6,6 +6,7 @@
 #define END_MOBY_PTR                            ((Moby**)0x002227B0)
 #define MOBY_UPDATE_FUNC                        (0x004FE720)
 #define MOBY_DESTROY_FUNC                       (0x004F76A0)
+#define MOBY_CLASS_LOADED_ADDR                  ((u16*)0x00249e30)
 
 /*
  * Returns pointer to the start of the moby list.
@@ -21,6 +22,11 @@ Moby * mobyListGetStart(void)
 Moby * mobyListGetEnd(void)
 {
     return *END_MOBY_PTR;
+}
+
+u16 * mobyGetLoadedMobyClassList(void)
+{
+    return MOBY_CLASS_LOADED_ADDR;
 }
 
 

@@ -702,6 +702,11 @@ __LIBDL_GETTER__ Moby * mobyListGetStart(void);
 __LIBDL_GETTER__ Moby * mobyListGetEnd(void);
 
 /*
+ *
+ */
+__LIBDL_GETTER__ u16 * mobyGetLoadedMobyClassList(void);
+
+/*
  * Returns non-zero if the given moby is destroyed.
  */
 __LIBDL_GETTER__ int mobyIsDestroyed(Moby* moby);

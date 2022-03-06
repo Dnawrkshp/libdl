@@ -66,10 +66,7 @@ typedef struct GameSettings
     char PlayerStates[GAME_MAX_PLAYERS];
 
     // 
-    int UNK_118;
-
-    // 
-    char UNK_11C[8];
+    char PlayerTypes[GAME_MAX_PLAYERS];
 
     //
     float PlayerRanks[GAME_MAX_PLAYERS];
