@@ -61,16 +61,15 @@ void hillPointSetIndex(int id, int value)
 
 int spawnPointIsPlayer(int index)
 {
-    GameData* gameData = gameGetData();
-    int* spArray = (int*)gameData->AllYourBaseGameData->Team1_SpawnPts[2];
-    int sp = 0;
-    while ((sp = *spArray++) >= 0)
-    {
-        if (sp == index)
-            return 1;
-    }
+	int i;
+	GameData* gameData = gameGetData();
+	for (i = 0; i < 64; ++i)
+	{
+		if (gameData->DeathmatchGameData->ResurrectionPts[i] == index)
+			return 1;
+	}
 
-    return 0;
+	return 0;
 }
 
 SpawnPoint * spawnPointGet(int index)
