@@ -146,6 +146,7 @@ FUNCTION(sha1, 0x01EB30C8)
 #-------------------------- UI --------------------------
 #--------------------------------------------------------
 FUNCTION(internal_uiDialog, 0x00719A28)
+FUNCTION(internal_uiSelectDialog, 0x00719C68)
 FUNCTION(uiShowPopup, 0x00540170)
 FUNCTION(uiShowHelpPopup, 0x00540140)
 FUNCTION(uiMsgString,  0x004E4180)
