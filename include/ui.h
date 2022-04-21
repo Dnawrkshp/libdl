@@ -94,6 +94,22 @@ int uiShowYesNoDialog(const char * title, const char * description);
 int uiShowOkDialog(const char * title, const char * description);
 
 /*
+ * NAME :		uiShowSelectDialog
+ * 
+ * DESCRIPTION :
+ * 			Shows a blocking select dialog.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+int uiShowSelectDialog(const char * title, const char * items[], int itemCount, int selectedIndex);
+
+/*
  * NAME :		uiShowPopup
  * 
  * DESCRIPTION :
