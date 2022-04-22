@@ -120,18 +120,19 @@ int gameGetMyClientId(void)
     return GAME_CLIENT_ID;
 }
 
-int gameIsIn(void)
+int isInGame(void)
 {
     return GAME_ACTIVE && SCENE_LOADED == 1;
-    
-    if (!GAME_ACTIVE || SCENE_LOADED != 1)
-        return 0;
+}
 
-    GameSettings * gs = gameGetSettings();
-    if (!gs)
-        return 0;
+int isInMenus(void)
+{
+    return !GAME_ACTIVE && SCENE_LOADED == 1;
+}
 
-    return gameGetTime() >= gs->GameStartTime;
+int isSceneLoading(void)
+{
+    return SCENE_LOADED != 1;
 }
 
 int gameHasEnded(void)

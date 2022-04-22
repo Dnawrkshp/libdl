@@ -190,10 +190,10 @@ __LIBDL_SETTER__ void gameSetWinner(int teamOrPlayerId, int isTeam);
 void gameEnd(int reason);
 
 /*
- * NAME :		gameIsIn
+ * NAME :		isInGame
  * 
  * DESCRIPTION :
- * 			Whether the client is currently in a game.
+ * 			Whether the client is currently in game world.
  * 
  * NOTES :
  * 
@@ -203,7 +203,39 @@ void gameEnd(int reason);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-__LIBDL_GETTER__ int gameIsIn(void);
+__LIBDL_GETTER__ int isInGame(void);
+
+/*
+ * NAME :		isInMenus
+ * 
+ * DESCRIPTION :
+ * 			Whether the client is currently in the menus.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+__LIBDL_GETTER__ int isInMenus(void);
+
+/*
+ * NAME :		isSceneLoading
+ * 
+ * DESCRIPTION :
+ * 			Whether the client is currently in a scene transition.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+__LIBDL_GETTER__ int isSceneLoading(void);
 
 /*
  * NAME :		gameIsHost
