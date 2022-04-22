@@ -49,11 +49,11 @@ void musicPlayTrack(int TrackNumber, int KeepPlaying)
     musicStopTrack();
     if (gameIsIn())
     {
-        internal_musicPlayTrack_inGame(TrackNumber, KeepPlaying, 0x400);
+        internal_musicPlayTrack_inGame(TrackNumber * 2, KeepPlaying, 0x400);
     }
     else
     {
-        internal_musicPlayTrack_inLobby(TrackNumber, KeepPlaying, 0x400);
+        internal_musicPlayTrack_inLobby(TrackNumber * 2, KeepPlaying, 0x400);
     }
 }
 
@@ -101,11 +101,11 @@ void musicTransitionTrack(short arg1, short CueTrack, short arg3, short arg4)
 {
     if (gameIsIn())
     {
-        internal_musicTransitionTrack_inGame(arg1, CueTrack, arg3, arg4);
+        internal_musicTransitionTrack_inGame(arg1, CueTrack * 2, arg3, arg4);
     }
     else
     {
-        internal_musicTransitionTrack_inLobby(arg1, CueTrack, arg3, arg4);
+        internal_musicTransitionTrack_inLobby(arg1, CueTrack * 2, arg3, arg4);
     }
 }
 

@@ -79,11 +79,21 @@ FUNCTION(gfxRegisterDrawFunction, 0x004C4650)
 #--------------------------------------------------------
 #---------------------- MEMORY CARD ---------------------
 #--------------------------------------------------------
+FUNCTION(McInit, 0x00139EC8)
+FUNCTION(McEnd, 0x0013A0F0)
 FUNCTION(McOpen, 0x0013A160)
+FUNCTION(McMkDir, 0x0013A288)
 FUNCTION(McClose, 0x0013A2C0)
 FUNCTION(McSeek, 0x0013A380)
 FUNCTION(McRead, 0x0013A510)
 FUNCTION(McWrite, 0x0013A628)
+FUNCTION(McSync, 0x0013A7A0)
+FUNCTION(McGetInfo, 0x0013A8C0)
+FUNCTION(McGetDir, 0x0013AA40)
+FUNCTION(McFormat, 0x0013AB98)
+FUNCTION(McDelete, 0x0013AC68)
+FUNCTION(McUnformat, 0x0013AD98)
+
 
 #--------------------------------------------------------
 #------------------------- MOBY -------------------------
