@@ -37,7 +37,7 @@ int uiShowInputDialog(const char * title, char * value, int maxLength)
 
 char * uiMsgString(int textId)
 {
-    if (gameIsIn())
+    if (!gameIsIn())
         return internal_uiMsgString_inLobby(textId);
     else
         return internal_uiMsgString_inGame(textId);
