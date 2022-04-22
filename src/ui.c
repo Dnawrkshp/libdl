@@ -37,10 +37,12 @@ int uiShowInputDialog(const char * title, char * value, int maxLength)
 
 char * uiMsgString(int textId)
 {
-    if (!gameIsIn())
-        return internal_uiMsgString_inLobby(textId);
-    else
+    if (isInGame())
         return internal_uiMsgString_inGame(textId);
+    else if (isInMenus())
+        return internal_uiMsgString_inLobby(textId);
+
+    return NULL;
 }
 
 void uiChangeMenu(enum UiMenuIds menuId)

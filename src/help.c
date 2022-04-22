@@ -8,12 +8,14 @@ char * internal_helpGetString_inLobby(int);
 //--------------------------------------------------------
 char * helpGetString(int stringId)
 {
-  if (gameIsIn())
+  if (isInGame())
   {
       return internal_helpGetString_inGame(stringId);
   }
-  else
+  else if (isInMenus())
   {
       return internal_helpGetString_inLobby(stringId);
   }
+
+  return NULL;
 }

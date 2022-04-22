@@ -100,7 +100,7 @@ void cheatsApplyMirrorWorld(int isOn)
     // Apply
     CHEAT_MIRROR_WORLD = isOn ? 1 : 0;
     
-    if (gameIsIn())
+    if (isInGame())
     {
         // Update
         CHEAT_UPDATE_FUNC(0);

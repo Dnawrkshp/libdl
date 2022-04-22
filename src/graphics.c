@@ -123,30 +123,34 @@ int gfxWorldSpaceToScreenSpace(VECTOR position, int * x, int * y)
 //--------------------------------------------------------
 int gfxGetFontWidth(const char * string, int length, float scale)
 {
-    if (gameIsIn())
+    if (isInGame())
     {
         return internal_widthFunc_inGame(string, length, scale);
     }
-    else
+    else if (isInMenus())
     {
         return internal_widthFunc_inLobby(string, length, scale);
     }
+
+    return 0;
 }
 
 //--------------------------------------------------------
 int gfxScreenSpaceText(float x, float y, float scaleX, float scaleY, u32 color, const char * string, int length, int alignment)
 {
     // draw
-    if (gameIsIn())
+    if (isInGame())
     {
         internal_drawFunc_inGame(color, string, length, alignment, 0, 0x80000000, x, y, scaleX, scaleY, 0, 0);
         return x + internal_widthFunc_inGame(string, length, scaleX);
     }
-    else
+    else if (isInMenus())
     {
         internal_drawFunc_inLobby(color, string, length, alignment, 0, 0x80000000, x, y, scaleX, scaleY, 0, 0);
         return x + internal_widthFunc_inLobby(string, length, scaleX);
     }
+
+    return 0;
 }
 
 //--------------------------------------------------------
@@ -165,11 +169,11 @@ void gfxScreenSpaceQuad(RECT * rect, u32 colorTL, u32 colorTR, u32 colorBL, u32 
     buffer[9] = colorBR;
     buffer[10] = 2;
 
-    if (gameIsIn())
+    if (isInGame())
     {
         internal_drawBox_inGame(rect, buffer);
     }
-    else
+    else if (isInMenus())
     {
         internal_drawBox_inLobby(rect, buffer);
     }
@@ -202,7 +206,8 @@ void gfxPixelSpaceBox(float x, float y, float w, float h, u32 color)
 void gfxScreenSpacePIF(RECT * rect)
 {
     u32 buffer[11];
-    int inGame = gameIsIn();
+    int inGame = isInGame();
+    int inMenus = isInMenus();
     u32 pifAddr = inGame ? 0x01E72C00 : 0x0036DED0;
     
     buffer[0] = 0x8;
@@ -219,7 +224,7 @@ void gfxScreenSpacePIF(RECT * rect)
 
     if (inGame)
         internal_drawBox_inGame(rect, buffer);
-    else
+    else if (inMenus)
         internal_drawBox_inLobby(rect, buffer);
 
     buffer[0] = 0x9;
@@ -236,17 +241,17 @@ void gfxScreenSpacePIF(RECT * rect)
 
     if (inGame)
         internal_drawBox_inGame(rect, buffer);
-    else
+    else if (inMenus)
         internal_drawBox_inLobby(rect, buffer);
 }
 
 void gfxDoGifPaging(void)
 {
-    if (gameIsIn())
+    if (isInGame())
     {
         internal_doGifPaging_inGame();
     }
-    else
+    else if (isInMenus())
     {
         internal_doGifPaging_inLobby();
     }
@@ -254,11 +259,11 @@ void gfxDoGifPaging(void)
 
 void gfxSetupGifPaging(int a0)
 {
-    if (gameIsIn())
+    if (isInGame())
     {
         internal_setupGifPaging_inGame(a0);
     }
-    else
+    else if (isInMenus())
     {
         internal_setupGifPaging_inLobby(a0);
     }
@@ -266,35 +271,39 @@ void gfxSetupGifPaging(int a0)
 
 u64 gfxGetFrameTex(int id)
 {
-    if (gameIsIn())
+    if (isInGame())
     {
         return internal_getFrameTex_inGame(id);
     }
-    else
+    else if (isInMenus())
     {
         return internal_getFrameTex_inLobby(id);
     }
+
+    return 0;
 }
 
 u64 gfxGetEffectTex(int id, int a1)
 {
-    if (gameIsIn())
+    if (isInGame())
     {
         return internal_getEffectTex_inGame(id, a1);
     }
-    else
+    else if (isInMenus())
     {
         return internal_getEffectTex_inLobby(id, a1);
     }
+    
+    return 0;
 }
 
 void gfxDrawSprite(float x, float y, float w, float h, int t0, int t1, int texW, int texH, u64 color, u64 texture)
 {
-    if (gameIsIn())
+    if (isInGame())
     {
         internal_drawSprite_inGame(x, y, w, h, t0, t1, texW, texH, color, texture);
     }
-    else
+    else if (isInMenus())
     {
         internal_drawSprite_inLobby(x, y, w, h, t0, t1, texW, texH, color, texture);
     }

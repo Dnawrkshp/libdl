@@ -47,11 +47,11 @@ void internal_wadGetSectors(u64, u64, u64);
 void musicPlayTrack(int TrackNumber, int KeepPlaying)
 {
     musicStopTrack();
-    if (gameIsIn())
+    if (isInGame())
     {
         internal_musicPlayTrack_inGame(TrackNumber, KeepPlaying, 0x400);
     }
-    else
+    else if (isInMenus())
     {
         internal_musicPlayTrack_inLobby(TrackNumber, KeepPlaying, 0x400);
     }
@@ -60,11 +60,11 @@ void musicPlayTrack(int TrackNumber, int KeepPlaying)
 //--------------------------------------------------------------------------------
 void musicStopTrack(void)
 {
-    if (gameIsIn())
+    if (isInGame())
     {
         internal_musicStopTrack_inGame();
     }
-    else
+    else if (isInMenus())
     {
         internal_musicStopTrack_inLobby();
     }
@@ -73,11 +73,11 @@ void musicStopTrack(void)
 //--------------------------------------------------------------------------------
 void musicPauseTrack(int arg1)
 {
-    if (gameIsIn())
+    if (isInGame())
     {
         internal_musicPauseTrack_inGame(arg1);
     }
-    else
+    else if (isInMenus())
     {
         internal_musicPauseTrack_inLobby(arg1);
     }
@@ -86,11 +86,11 @@ void musicPauseTrack(int arg1)
 //--------------------------------------------------------------------------------
 void musicUnpauseTrack(void)
 {
-    if (gameIsIn())
+    if (isInGame())
     {
         internal_musicUnpauseTrack_inGame();
     }
-    else
+    else if (isInMenus())
     {
         internal_musicUnpauseTrack_inLobby();
     }
@@ -99,11 +99,11 @@ void musicUnpauseTrack(void)
 //--------------------------------------------------------------------------------
 void musicTransitionTrack(short arg1, short CueTrack, short arg3, short arg4)
 {
-    if (gameIsIn())
+    if (isInGame())
     {
         internal_musicTransitionTrack_inGame(arg1, CueTrack, arg3, arg4);
     }
-    else
+    else if (isInMenus())
     {
         internal_musicTransitionTrack_inLobby(arg1, CueTrack, arg3, arg4);
     }
