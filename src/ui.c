@@ -5,6 +5,7 @@
 
 int internal_uiDialog(void *, const char *, const char *, int, int, int, int);
 int internal_uiSelectDialog(void *, const char *, const char **, int, int, int, int);
+int internal_uiInputDialog(void *, const char *, char *, int, int, int, int, int, int);
 
 int uiGetActive(void)
 {
@@ -24,4 +25,9 @@ int uiShowOkDialog(const char * title, const char * description)
 int uiShowSelectDialog(const char * title, const char * items[], int itemCount, int selectedIndex)
 {
     return internal_uiSelectDialog(UI_DIALOG_A0, title, items, itemCount, selectedIndex, 0, 0);
+}
+
+int uiShowInputDialog(const char * title, char * value, int maxLength)
+{
+    return internal_uiInputDialog(UI_DIALOG_A0, title, value, 0, maxLength, 0, 0, 0, 0);
 }

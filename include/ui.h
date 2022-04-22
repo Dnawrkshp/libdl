@@ -110,6 +110,22 @@ int uiShowOkDialog(const char * title, const char * description);
 int uiShowSelectDialog(const char * title, const char * items[], int itemCount, int selectedIndex);
 
 /*
+ * NAME :		uiShowInputDialog
+ * 
+ * DESCRIPTION :
+ * 			Shows a blocking text input dialog.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+int uiShowInputDialog(const char * title, char * value, int maxLength);
+
+/*
  * NAME :		uiShowPopup
  * 
  * DESCRIPTION :
