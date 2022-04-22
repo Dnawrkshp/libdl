@@ -42,3 +42,8 @@ char * uiMsgString(int textId)
     else
         return internal_uiMsgString_inGame(textId);
 }
+
+void uiChangeMenu(enum UiMenuIds menuId)
+{
+    *(int*)((int)UI_DIALOG_A0 + 0x118) = (int)menuId;
+}

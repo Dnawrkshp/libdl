@@ -12,6 +12,14 @@
 
 #include "common.h"
 
+enum UiMenuIds
+{
+    UI_MENU_ID_CLAN_ROOM = 0xA,
+    UI_MENU_ID_ONLINE_MAIN_MENU = 0x1A,
+    UI_MENU_ID_ONLINE_PROFILE_SELECT = 0x2A,
+    UI_MENU_ID_STATS = 0x24
+};
+
 enum UiIds
 {
     UI_ID_MULTIPLAYER_MENU = 0xFF,
@@ -44,10 +52,26 @@ enum UiIds
 };
 
 /*
+ * NAME :		uiChangeMenu
+ * 
+ * DESCRIPTION :
+ * 			Sets the current ui menu id.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+void uiChangeMenu(enum UiMenuIds menuId);
+
+/*
  * NAME :		uiGetActive
  * 
  * DESCRIPTION :
- * 			Gets the current ui menu id.
+ * 			Gets the current ui id.
  * 
  * NOTES :
  * 
