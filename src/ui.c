@@ -1,4 +1,5 @@
 #include "ui.h"
+#include "game.h"
 
 #define UI_ACTIVE_ID                            (*(int*)0x003434B8)
 #define UI_DIALOG_A0                            ((void*)0x011C7000)
@@ -6,6 +7,8 @@
 int internal_uiDialog(void *, const char *, const char *, int, int, int, int);
 int internal_uiSelectDialog(void *, const char *, const char **, int, int, int, int);
 int internal_uiInputDialog(void *, const char *, char *, int, int, int, int, int, int);
+char * internal_uiMsgString_inGame(int textId);
+char * internal_uiMsgString_inLobby(int textId);
 
 int uiGetActive(void)
 {
@@ -30,4 +33,12 @@ int uiShowSelectDialog(const char * title, const char * items[], int itemCount, 
 int uiShowInputDialog(const char * title, char * value, int maxLength)
 {
     return internal_uiInputDialog(UI_DIALOG_A0, title, value, 0, maxLength, 0, 0, 0, 0);
+}
+
+char * uiMsgString(int textId)
+{
+    if (gameIsIn())
+        return internal_uiMsgString_inLobby(textId);
+    else
+        return internal_uiMsgString_inGame(textId);
 }

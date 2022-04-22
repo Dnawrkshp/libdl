@@ -150,7 +150,8 @@ FUNCTION(internal_uiSelectDialog, 0x00719C68)
 FUNCTION(internal_uiInputDialog, 0x00719B80)
 FUNCTION(uiShowPopup, 0x00540170)
 FUNCTION(uiShowHelpPopup, 0x00540140)
-FUNCTION(uiMsgString,  0x004E4180)
+FUNCTION(internal_uiMsgString_inGame,  0x004E4180)
+FUNCTION(internal_uiMsgString_inLobby,  0x005c9f50)
 FUNCTION(uiShowTimer, 0x005401E8)
 
 #--------------------------------------------------------
