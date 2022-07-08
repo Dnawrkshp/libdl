@@ -484,9 +484,9 @@ typedef struct Player
 
     Moby * SkinMoby;                                                // 0x1A2C
 
-    float CameraDistance;                                           // 0x1A30
+    VECTOR CameraOffset;                                            // 0x1A30
 
-    char UNK15[0x1C];                                               // 0x1A34
+    VECTOR CameraRotOffset;                                         // 0x1A40
 
     short CameraType2;                                              // 0x1A50
 
