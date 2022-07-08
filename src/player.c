@@ -50,15 +50,6 @@ void playerSetLocalEquipslot(int localPlayerId, int slot, int weaponId)
 }
 
 //--------------------------------------------------------------------------------
-void playerSetWeapon(Player * player, int weaponId)
-{
-    if (!player)
-        return;
-
-    player->ChangeWeaponHeldId = weaponId;
-}
-
-//--------------------------------------------------------------------------------
 void playerSetHealth(Player * player, float health)
 {
     if (!player)

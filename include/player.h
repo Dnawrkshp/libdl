@@ -677,7 +677,7 @@ typedef struct PlayerVTable
 __LIBDL_GETTER__ Player ** playerGetAll(void);
 
 /*
- * NAME :		playerSetWeapon
+ * NAME :		playerEquipWeapon
  * 
  * DESCRIPTION :
  * 			Change player's equipped weapon.
@@ -692,7 +692,7 @@ __LIBDL_GETTER__ Player ** playerGetAll(void);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-__LIBDL_SETTER__ void playerSetWeapon(Player * player, int weaponId);
+__LIBDL_SETTER__ void playerEquipWeapon(Player * player, int weaponId);
 
 /*
  * NAME :		playerSetLocalEquipslot
