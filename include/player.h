@@ -365,6 +365,50 @@ typedef struct HeroTimers {
 	/*  b2 */ short int invincibilityTimer;
 } HeroTimers;
 
+typedef struct HeroTweaker {
+	/*   0 */ char manip[0x40];
+	/*  40 */ VECTOR rot;
+	/*  50 */ VECTOR speed;
+	/*  60 */ VECTOR target;
+	/*  70 */ VECTOR trans;
+	/*  80 */ VECTOR transSpeed;
+	/*  90 */ VECTOR transTarget;
+	/*  a0 */ short int joint;
+	/*  a2 */ short int whichMoby;
+	/*  a4 */ float gain;
+	/*  a8 */ float damp;
+	/*  ac */ float scale;
+} HeroTweaker;
+
+typedef struct HeroPlayerConstants {
+	/*   0 */ int mobyNum;
+	/*   4 */ float maxWalkSpeed;
+	/*   8 */ float kneeHeight;
+	/*   c */ float kneeCheckDist;
+	/*  10 */ float colRadius;
+	/*  14 */ float colTop;
+	/*  18 */ float colBot;
+	/*  1c */ float colBotFall;
+	/*  20 */ int jumpPushOffTime;
+	/*  24 */ float jumpPeakFrm;
+	/*  28 */ float jumpLandFrm;
+	/*  2c */ float jumpGameLandFrm;
+	/*  30 */ float jumpMaxHeight;
+	/*  34 */ float jumpMinHeight;
+	/*  38 */ int jumpMaxUpTime;
+	/*  3c */ float jumpGravity;
+	/*  40 */ float jumpMaxXySpeed;
+	/*  44 */ float fallGravity;
+	/*  48 */ float maxFallSpeed;
+	/*  4c */ float walkAnimSpeedMul;
+	/*  50 */ float walkAnimSpeedLimLower;
+	/*  54 */ float walkAnimSpeedLimUpper;
+	/*  58 */ float jogAnimSpeedMul;
+	/*  5c */ float jogAnimSpeedLimLower;
+	/*  60 */ float jogAnimSpeedLimUpper;
+	/*  64 */ int pad[3];
+} HeroPlayerConstants;
+
 /*
  * NAME :		Player
  * 
@@ -412,7 +456,11 @@ typedef struct Player
     // So wrench and swingshot are 0
     int WeaponHeldGun;                                              // 0x7FC
 
-    char UNK11[0x1150];                                             // 0x800
+    char UNK11[0x20];                                             	// 0x800
+
+		HeroTweaker Tweaker[18];																				// 0x820
+
+    char UNK31[0x4D0];                                             	// 0x1480
 
     VECTOR CameraPos;                                               // 0x1950
     VECTOR CameraDir;                                               // 0x1960
@@ -539,7 +587,7 @@ typedef struct Player
 
     Moby * HeldMoby;                                                // 0x2EE8
 
-    void * UNK44;                                                   // 0x2EEC
+		HeroPlayerConstants * PlayerConstants;                          // 0x2EEC
 
     // Points to the player moby
     Moby * PlayerMoby;                                              // 0x2EF0
