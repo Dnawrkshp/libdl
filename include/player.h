@@ -458,7 +458,7 @@ typedef struct Player
 
     char UNK11[0x20];                                             	// 0x800
 
-		HeroTweaker Tweaker[18];																				// 0x820
+		HeroTweaker Tweakers[18];																				// 0x820
 
     char UNK31[0x4D0];                                             	// 0x1480
 
