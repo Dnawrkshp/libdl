@@ -63,21 +63,21 @@ void netInstallCustomMsgHandler(u8 id, NET_CALLBACK_DELEGATE callback)
     NET_GLOBAL_CALLBACKS_PTR[id] = callback;
 }
 
-int netSendMediusAppMessage(void * connection, int clientIndex, int msgClass, int msgId, int msgSize, void * payload)
+int netSendMediusAppMessage(int transport, void * connection, int clientIndex, int msgClass, int msgId, int msgSize, void * payload)
 {
     if (!connection)
         return 0;
-    return internal_netSendMessage(0x40, connection, clientIndex, msgClass, msgId, msgSize, payload);
+    return internal_netSendMessage(transport, connection, clientIndex, msgClass, msgId, msgSize, payload);
 }
 
-int netBroadcastMediusAppMessage(void * connection, int msgId, int msgSize, void * payload)
+int netBroadcastMediusAppMessage(int transport, void * connection, int msgId, int msgSize, void * payload)
 {
     if (!connection)
         return 0;
-    return internal_netSendAppMessage(0x40, connection, -1, msgId, msgSize, payload);
+    return internal_netSendAppMessage(transport, connection, -1, msgId, msgSize, payload);
 }
 
-int netSendCustomAppMessage(void * connection, int clientIndex, u8 customMsgId, int msgSize, void * payload)
+int netSendCustomAppMessage(int transport, void * connection, int clientIndex, u8 customMsgId, int msgSize, void * payload)
 {
     if (!connection)
         return 0;
@@ -87,10 +87,10 @@ int netSendCustomAppMessage(void * connection, int clientIndex, u8 customMsgId, 
         memcpy(buffer + 4, payload, msgSize);
         
     buffer[0] = customMsgId;
-    return netSendMediusAppMessage(connection, clientIndex, NET_CUSTOM_MESSAGE_CLASS, NET_CUSTOM_MESSAGE_ID, msgSize + 4, buffer);
+    return netSendMediusAppMessage(transport, connection, clientIndex, NET_CUSTOM_MESSAGE_CLASS, NET_CUSTOM_MESSAGE_ID, msgSize + 4, buffer);
 }
 
-int netBroadcastCustomAppMessage(void * connection, u8 customMsgId, int msgSize, void * payload)
+int netBroadcastCustomAppMessage(int transport, void * connection, u8 customMsgId, int msgSize, void * payload)
 {
     if (!connection)
         return 0;
@@ -100,7 +100,7 @@ int netBroadcastCustomAppMessage(void * connection, u8 customMsgId, int msgSize,
         memcpy(buffer + 4, payload, msgSize);
         
     buffer[0] = customMsgId;
-    return netBroadcastMediusAppMessage(connection, NET_CUSTOM_MESSAGE_ID, msgSize + 4, buffer);
+    return netBroadcastMediusAppMessage(transport, connection, NET_CUSTOM_MESSAGE_ID, msgSize + 4, buffer);
 }
 
 void* netGetLobbyServerConnection(void)
