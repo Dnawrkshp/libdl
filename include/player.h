@@ -1083,4 +1083,21 @@ Player * playerGetFromUID(int uid);
  */
 Player * playerGetFromSlot(int slot);
 
+/*
+ * NAME :		playerGetJuggSafeTeam
+ * 
+ * DESCRIPTION :
+ * 			Returns juggernaut safe team.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+int playerGetJuggSafeTeam(Player * player);
+
 #endif // _LIBDL_PLAYER_H_

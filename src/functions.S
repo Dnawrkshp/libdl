@@ -131,6 +131,7 @@ FUNCTION(playerIncHealth, 0x005D1140)
 FUNCTION(playerDecHealth, 0x005D1038)
 FUNCTION(playerGetFromSlot, 0x005cd3d0)
 FUNCTION(playerGetSpawnpoint, 0x006242d0)
+FUNCTION(playerGetJuggSafeTeam, 0x005d0fd8)
 
 #--------------------------------------------------------
 #------------------------ WEAPON ------------------------
