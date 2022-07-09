@@ -409,6 +409,27 @@ typedef struct HeroPlayerConstants {
 	/*  64 */ int pad[3];
 } HeroPlayerConstants;
 
+typedef struct Gadget {
+	/*   0 */ VECTOR jointPos;
+	/*  10 */ VECTOR jointRot;
+	/*  20 */ Moby* pMoby;
+	/*  24 */ Moby* pMoby2;
+	/*  28 */ int padButtonDown;
+	/*  2c */ int alignPad;
+	/*  30 */ int padButton;
+	/*  34 */ int gsSpawnFrame;
+	/*  38 */ char noAmmoTime;
+	/*  39 */ char unEquipTimer;
+	/*  3a */ char detached;
+	/*  3b */ char unequipTime;
+	/*  3c */ char unEquipStatus;
+	/*  3d */ char unEquipDelay;
+	/*  40 */ int equippedTime;
+	/*  44 */ int state;
+	/*  48 */ int id;
+	/*  4c */ float lightAng;
+} Gadget;
+
 /*
  * NAME :		Player
  * 
@@ -506,24 +527,9 @@ typedef struct Player
 
     float CameraElevation;                                          // 0x1AFC
 
-    char UNK17[0x7F0];                                              // 0x1B00
+    char UNK17[0x7D0];                                              // 0x1B00
 
-		Moby* GadgetMoby;																								// 0x22F0
-
-		char UNK_50[4];																									// 0x22F4
-
-    // When 1, the player is trying to shoot
-    int IsShooting;                                                 // 0x22F8
-
-    char UNK29[0x18];                                               // 0x22FC
-
-    // When this value is set to 3,
-    // The weapon held is changed to the weapon id
-    // set in WeaponHeldId
-    int WeaponSwitchState;                                          // 0x2314
-    int WeaponSwitchLastWeaponHeldId;                               // 0x2318
-
-    char UNK28[0x194];                                              // 0x231C
+		Gadget gadgets[6];																							// 0x22D0
 
     int WeaponHeldId0;                                              // 0x24B0
 
