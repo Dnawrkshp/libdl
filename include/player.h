@@ -529,7 +529,7 @@ typedef struct Player
 
     char UNK17[0x7D0];                                              // 0x1B00
 
-		Gadget gadgets[6];																							// 0x22D0
+		Gadget Gadgets[6];																							// 0x22D0
 
     int WeaponHeldId0;                                              // 0x24B0
 
