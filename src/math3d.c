@@ -626,6 +626,18 @@ void matrix_rotate(MATRIX output, MATRIX input0, VECTOR input1)
 }
 
 //--------------------------------------------------------
+void matrix_scale(MATRIX output, MATRIX input0, VECTOR input1) {
+    MATRIX work;
+
+    // Apply the scaling.
+    matrix_unit(work);
+    work[0x00] = input1[0];
+    work[0x05] = input1[1];
+    work[0x0A] = input1[2];
+    matrix_multiply(output, input0, work);
+}
+
+//--------------------------------------------------------
 void matrix_unit(MATRIX output)
 {
     // Create a unit matrix.
