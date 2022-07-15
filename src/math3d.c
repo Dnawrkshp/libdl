@@ -179,23 +179,10 @@ float vector_innerproduct(VECTOR input0, VECTOR input1)
 }
 
 //--------------------------------------------------------
-void vector_multiply(VECTOR output, VECTOR input0, VECTOR input1)
+float vector_innerproduct_unscaled(VECTOR input0, VECTOR input1)
 {
-    asm __volatile__ (
-#if __GNUC__ > 3
-    "lqc2		    $vf1, 0x00(%1)	    \n"
-    "lqc2		    $vf2, 0x00(%2)	    \n"
-    "vmul.xyzw		$vf1, $vf1, $vf2    \n"
-    "sqc2		    $vf1, 0x00(%0)	    \n"
-#else
-    "lqc2		    vf1, 0x00(%1)	    \n"
-    "lqc2		    vf2, 0x00(%2)	    \n"
-    "vmul.xyzw		vf1, vf1, vf2       \n"
-    "sqc2		    vf1, 0x00(%0)	    \n"
-#endif
-    : : "r" (output), "r" (input0), "r" (input1)
-    : "memory"
-    );
+    // Return the inner product.
+    return  (input0[0] * input1[0]) + (input0[1] * input1[1]) + (input0[2] * input1[2]);
 }
 
 //--------------------------------------------------------
@@ -312,6 +299,26 @@ void vector_scale(VECTOR output, VECTOR input0, float scalar)
 #endif
     : : "r" (output), "r" (input0), "r" (timeVector)
   );
+}
+
+//--------------------------------------------------------
+void vector_multiply(VECTOR output, VECTOR input0, VECTOR input1)
+{
+    asm __volatile__ (
+#if __GNUC__ > 3
+    "lqc2		    $vf1, 0x00(%1)	    \n"
+    "lqc2		    $vf2, 0x00(%2)	    \n"
+    "vmul.xyzw		$vf1, $vf1, $vf2    \n"
+    "sqc2		    $vf1, 0x00(%0)	    \n"
+#else
+    "lqc2		    vf1, 0x00(%1)	    \n"
+    "lqc2		    vf2, 0x00(%2)	    \n"
+    "vmul.xyzw		vf1, vf1, vf2       \n"
+    "sqc2		    vf1, 0x00(%0)	    \n"
+#endif
+    : : "r" (output), "r" (input0), "r" (input1)
+    : "memory"
+    );
 }
 
 //--------------------------------------------------------

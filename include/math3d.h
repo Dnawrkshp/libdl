@@ -38,6 +38,7 @@ void vector_fromyaw(VECTOR out, float radians);
 void vector_apply(VECTOR output, VECTOR input0, MATRIX input1);
 void vector_copy(VECTOR output, VECTOR input0);
 void vector_normalize(VECTOR output, VECTOR input0);
+float vector_innerproduct_unscaled(VECTOR input0, VECTOR input1);
 float vector_innerproduct(VECTOR input0, VECTOR input1);
 void vector_outerproduct(VECTOR output, VECTOR input0, VECTOR input1);
 float vector_length(VECTOR input0);
