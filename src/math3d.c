@@ -37,8 +37,8 @@ void vector_reflect(VECTOR output, VECTOR input0, VECTOR normal)
 //--------------------------------------------------------
 void vector_fromyaw(VECTOR out, float radians)
 {
-	out[0] = cosf(radians),
-	out[1] = sinf(radians),
+	out[0] = sinf(radians),
+	out[1] = cosf(radians),
 	out[2] = 0;
 	out[3] = 0;
 }
