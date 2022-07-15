@@ -77,4 +77,20 @@ typedef struct Vehicle
  */
 void vehicleRemovePlayer(Vehicle * vehicle, struct Player * player);
 
+/*
+ * NAME :		vehicleAddPlayer
+ * 
+ * DESCRIPTION :
+ * 			Add the given player to the given vehicle.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+void vehicleAddPlayer(Vehicle * vehicle, struct Player * player);
+
 #endif // _LIBDL_VEHICLE_H_
