@@ -32,7 +32,7 @@ int netSendMediusAppMessage(int transport, void * connection, int clientIndex, i
 int netSendCustomAppMessage(int transport, void * connection, int clientIndex, u8 customMsgId, int msgSize, void * payload);
 int netBroadcastMediusAppMessage(int transport, void * connection, int msgId, int msgSize, void * payload);
 int netBroadcastCustomAppMessage(int transport, void * connection, u8 customMsgId, int msgSize, void * payload);
-int netSetSendAggregationInverval(void * connection, u64 a1, int aggTimeMs);
+int netSetSendAggregationInterval(void * connection, u64 a1, int aggTimeMs);
 
 __LIBDL_GETTER__ void* netGetLobbyServerConnection(void);
 __LIBDL_GETTER__ void* netGetDmeServerConnection(void);
