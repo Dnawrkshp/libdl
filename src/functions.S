@@ -117,6 +117,7 @@ FUNCTION(mobyUpdateFlash, 0x00506b88)
 FUNCTION(internal_netSendMessage, 0x01E9E198)
 FUNCTION(internal_netSendAppMessage, 0x01E9E270)
 FUNCTION(internal_netUpdatetNWGameSettings, 0x007700A8)
+FUNCTION(netSetSendAggregationInverval, 0x01ea0558)
 
 #--------------------------------------------------------
 #------------------------ PLAYER ------------------------
