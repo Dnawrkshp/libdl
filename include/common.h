@@ -14,4 +14,6 @@
 #define __LIBDL_SETTER__    inline
 #define __LIBDL_INLINE__    inline
 
+#define SET_NOREORDER       (asm(".set noreorder;"))
+
 #endif // _LIBDL_COMMON_H_
