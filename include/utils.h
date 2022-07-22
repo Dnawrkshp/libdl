@@ -13,6 +13,9 @@
 
 #define HOOK_JAL(dest, function)            (*(u32*)(dest) = 0x0C000000 | ((u32)(function) >> 2))
 #define POKE_U32(dest, value)								(*(u32*)(dest) = value)
+#define POKE_U16(dest, value)								(*(u16*)(dest) = value)
+#define POKE_U8(dest, value)								(*(u8*)(dest) = value)
+
 
 /*
  * NAME :		isInEEMemory
