@@ -50,6 +50,13 @@ void playerSetLocalEquipslot(int localPlayerId, int slot, int weaponId)
 }
 
 //--------------------------------------------------------------------------------
+int playerGetLocalEquipslot(int localPlayerId, int slot)
+{
+    int * equipslots = WEAPON_EQUIPSLOT;
+    return equipslots[slot + (localPlayerId * 3)];
+}
+
+//--------------------------------------------------------------------------------
 void playerSetHealth(Player * player, float health)
 {
     if (!player)

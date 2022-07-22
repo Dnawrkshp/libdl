@@ -719,6 +719,24 @@ __LIBDL_SETTER__ void playerEquipWeapon(Player * player, int weaponId);
 __LIBDL_SETTER__ void playerSetLocalEquipslot(int localPlayerId, int slot, int weaponId);
 
 /*
+ * NAME :		playerGetLocalEquipslot
+ * 
+ * DESCRIPTION :
+ * 			Gets the given local player's currently equipped weapon in the given slot.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ *      localPlayerId      :           Local player index.
+ *      
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+__LIBDL_GETTER__ int playerGetLocalEquipslot(int localPlayerId, int slot);
+
+/*
  * NAME :		playerSetTeam
  * 
  * DESCRIPTION :
