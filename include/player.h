@@ -236,10 +236,13 @@ struct tNW_PlayerPadInputMessage {
 	/*   0 */ int cameraRot[4];
 	/*  10 */ short unsigned int playerPos[3];
 	/*  16 */ unsigned char sequenceNum;
-	/*  17 */ unsigned char stateAndRotFlag;
-	/*  17 */ unsigned char playerIndex;
-	/*  17 */ unsigned char flags;
-	/*  17 */ unsigned char framesWithButtonDiffs;
+	union
+	{
+		/*  17 */ unsigned char stateAndRotFlag : 1;
+		/*  17 */ unsigned char playerIndex : 1;
+		/*  17 */ unsigned char flags : 2;
+		/*  17 */ unsigned char framesWithButtonDiffs : 4;
+	};
 	/*  18 */ unsigned char pad_data[128];
 };
 
