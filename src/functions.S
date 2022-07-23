@@ -24,6 +24,8 @@ FUNCTION(memcpy, 0x0011A370)
 FUNCTION(strncpy, 0x0011AFC8)
 FUNCTION(strlen, 0x0011AB04)
 FUNCTION(strcmp, 0x0011A8A0)
+FUNCTION(malloc, 0x0011ef60)
+FUNCTION(free, 0x0011efb0)
 
 #--------------------------------------------------------
 #------------------------- MATH -------------------------
