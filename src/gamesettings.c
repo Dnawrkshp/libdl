@@ -126,6 +126,6 @@ void gameSetClientName(int pid, char* name)
     if (!gs)
         return;
     
-    strncpy(&gs->PlayerNames[pid], name, 0x16);
+    strncpy(gs->PlayerNames[pid], name, 0x16);
     internal_netUpdatetNWGameSettings(*(void**)(*(u32*)0x002233a4 + 0x48), pid, name, gs->PlayerSkins[pid], gs->PlayerTeams[pid], gs->PlayerStates[pid], (void*)((u32)gs + 0xA8));
 }
