@@ -2,6 +2,7 @@
 #include "gamesettings.h"
 #include "math.h"
 #include "help.h"
+#include "string.h"
 
 
 /*
@@ -43,7 +44,7 @@
 #define GAME_FLAG_PICKUP_SQRDISTANCE            (0x00418A84)
 
 //
-void internal_netUpdatetNWGameSettings(void*, int, char*, int, int, int, void*);
+void internal_netUpdatetNWGameSettings(void*, int, char*, int skin, int team, int state, void*);
 
 
 //--------------------------------------------------------
@@ -93,5 +94,38 @@ void gameSetClientState(int pid, char state)
         return;
     
     gs->PlayerStates[pid] = state;
-    internal_netUpdatetNWGameSettings(*(void**)(*(u32*)0x002233a4 + 0x48), pid, gs->PlayerNames[pid], 0, 0, state, (void*)((u32)gs + 0xA8));
+    internal_netUpdatetNWGameSettings(*(void**)(*(u32*)0x002233a4 + 0x48), pid, gs->PlayerNames[pid], gs->PlayerSkins[pid], gs->PlayerTeams[pid], state, (void*)((u32)gs + 0xA8));
+}
+
+//--------------------------------------------------------
+void gameSetClientTeam(int pid, char team)
+{
+    GameSettings* gs = gameGetSettings();
+    if (!gs)
+        return;
+    
+    gs->PlayerTeams[pid] = team;
+    internal_netUpdatetNWGameSettings(*(void**)(*(u32*)0x002233a4 + 0x48), pid, gs->PlayerNames[pid], gs->PlayerSkins[pid], team, gs->PlayerStates[pid], (void*)((u32)gs + 0xA8));
+}
+
+//--------------------------------------------------------
+void gameSetClientSkin(int pid, char skin)
+{
+    GameSettings* gs = gameGetSettings();
+    if (!gs)
+        return;
+    
+    gs->PlayerSkins[pid] = skin;
+    internal_netUpdatetNWGameSettings(*(void**)(*(u32*)0x002233a4 + 0x48), pid, gs->PlayerNames[pid], skin, gs->PlayerTeams[pid], gs->PlayerStates[pid], (void*)((u32)gs + 0xA8));
+}
+
+//--------------------------------------------------------
+void gameSetClientName(int pid, char* name)
+{
+    GameSettings* gs = gameGetSettings();
+    if (!gs)
+        return;
+    
+    strncpy(&gs->PlayerNames[pid], name, 0x16);
+    internal_netUpdatetNWGameSettings(*(void**)(*(u32*)0x002233a4 + 0x48), pid, name, gs->PlayerSkins[pid], gs->PlayerTeams[pid], gs->PlayerStates[pid], (void*)((u32)gs + 0xA8));
 }

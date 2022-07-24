@@ -301,4 +301,52 @@ __LIBDL_GETTER__ char* gameGetGameModeName(int modeId);
  */
 void gameSetClientState(int pid, char state);
 
+/*
+ * NAME :		gameSetClientTeam
+ * 
+ * DESCRIPTION :
+ * 			
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+void gameSetClientTeam(int pid, char team);
+
+/*
+ * NAME :		gameSetClientSkin
+ * 
+ * DESCRIPTION :
+ * 			
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+void gameSetClientSkin(int pid, char skin);
+
+/*
+ * NAME :		gameSetClientName
+ * 
+ * DESCRIPTION :
+ * 			
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+void gameSetClientName(int pid, char* name);
+
 #endif // _LIBDL_GAMESETTINGS_H_
