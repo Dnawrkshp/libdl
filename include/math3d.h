@@ -50,20 +50,11 @@ void vector_scale(VECTOR output, VECTOR input0, float scalar);
 void vector_multiply(VECTOR output, VECTOR input0, VECTOR input1);
 void vector_print(VECTOR input0);
 
-void quaternion_fromeuler(VECTOR output, VECTOR input0);
-void quaternion_toeuler(VECTOR output, VECTOR input0);
-void quaternion_lookrotation(VECTOR output, VECTOR input0, VECTOR input1);
-void quaternion_multiply(VECTOR output, VECTOR input0, VECTOR input1);
-void quaternion_multiplyvector(VECTOR output, VECTOR q, VECTOR v);
-void quaternion_frommatrix(VECTOR output, MATRIX input0);
-
-void matrix_fromquaternion(MATRIX output, VECTOR input0);
 void matrix_toeuler(VECTOR output, MATRIX input0);
 void matrix_fromrows(MATRIX output, VECTOR input0, VECTOR input1, VECTOR input2, VECTOR input3);
 void matrix_copy(MATRIX output, MATRIX input0);
 void matrix_inverse(MATRIX output, MATRIX input0);
 void matrix_multiply(MATRIX output, MATRIX input0, MATRIX input1);
-void matrix_rotate(MATRIX output, MATRIX input0, VECTOR input1);
 void matrix_rotate_x(MATRIX output, MATRIX input0, float radians);
 void matrix_rotate_y(MATRIX output, MATRIX input0, float radians);
 void matrix_rotate_z(MATRIX output, MATRIX input0, float radians);

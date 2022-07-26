@@ -40,6 +40,7 @@ FUNCTION(floorf, 0x001359A8)
 #--------------------------------------------------------
 #------------------------ MATH 3D -----------------------
 #--------------------------------------------------------
+FUNCTION(matrix_unit, 0x0013c478)
 FUNCTION(matrix_rotate_x, 0x0013c5c0)
 FUNCTION(matrix_rotate_y, 0x0013c668)
 FUNCTION(matrix_rotate_z, 0x0013c518)
