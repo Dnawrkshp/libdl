@@ -238,6 +238,22 @@ __LIBDL_GETTER__ int isInMenus(void);
 __LIBDL_GETTER__ int isSceneLoading(void);
 
 /*
+ * NAME :		gameIsStartMenuOpen
+ * 
+ * DESCRIPTION :
+ * 			Whether the client is in game and has the start menu open.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+__LIBDL_GETTER__ int gameIsStartMenuOpen(void);
+
+/*
  * NAME :		gameIsHost
  * 
  * DESCRIPTION :
