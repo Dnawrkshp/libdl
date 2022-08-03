@@ -49,3 +49,8 @@ void uiChangeMenu(enum UiMenuIds menuId)
 {
     *(int*)((int)UI_DIALOG_A0 + 0x118) = (int)menuId;
 }
+
+void* uiGetPointer(int id)
+{
+    return (void*)(*(u32*)((u32)UI_DIALOG_A0 + 0x64 + (id * 4)));
+}

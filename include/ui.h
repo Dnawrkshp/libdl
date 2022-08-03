@@ -14,11 +14,46 @@
 
 enum UiMenuIds
 {
+    UI_MENU_ID_BETA_ONLINE_LOBBY = 0x0,
+    UI_MENU_ID_GAME_DETAILS = 0x1,
+    UI_MENU_ID_ONLINE_AGREEMENT_PAGE_2 = 0x2,
+    UI_MENU_ID_BUDDY_LIST = 0x3,
+    UI_MENU_ID_CLAN_CHALLENGE_LIST = 0x4,
+    UI_MENU_ID_CLAN_1 = 0x5,
+    UI_MENU_ID_CLAN_MESSAGE = 0x6,
+    UI_MENU_ID_CLAN_3 = 0x7,
+    UI_MENU_ID_CLAN_4 = 0x8,
+    UI_MENU_ID_CLAN_INVITE = 0x9,
     UI_MENU_ID_CLAN_ROOM = 0xA,
-    UI_MENU_ID_END_GAME_SCOREBOARD = 0x12,
-    UI_MENU_ID_ONLINE_MAIN_MENU = 0x1A,
+    UI_MENU_ID_CLAN_YES_NO_MESSAGE_BOX = 0xB,
+    UI_MENU_ID_CREATE_GAME = 0xC,
+    UI_MENU_ID_DNAS_AUTH = 0xD,
+    UI_MENU_ID_SELECT_NETWORK = 0xE,
+    UI_MENU_ID_FIND_GAME = 0xF,
+    UI_MENU_ID_GAME_INFO = 0x10,
+    UI_MENU_ID_INVITE_BUDDY = 0x11,
+    UI_MENU_ID_END_GAME_DETAILS = 0x12,
+    UI_MENU_ID_IGNORED_PLAYERS = 0x13,
+    UI_MENU_ID_KEYBOARD = 0x14,
+    UI_MENU_ID_ONLINE_AGREEMENT_PAGE_1 = 0x15,
+    UI_MENU_ID_STAGING_SECONDARY_PLAYER_OPTIONS = 0x16,
+    UI_MENU_ID_CREATE_GAME1 = 0x17,
+    UI_MENU_ID_END_GAME_DETAILS_2 = 0x18,
+    UI_MENU_ID_LOCAL_PLAY_STAGING = 0x19,
+    UI_MENU_ID_ONLINE_LOCAL_EDIT_PROFILE_MENU = 0x1A,
+    UI_MENU_ID_ONLINE_LOBBY = 0x1B,
+    UI_MENU_ID_FORM_PARTY = 0x1C,
+    UI_MENU_ID_PLAYER_PROFILE = 0x1D,
+    UI_MENU_ID_EDIT_PROFILE = 0x1E,
     UI_MENU_ID_ONLINE_PROFILE_SELECT = 0x1F,
-    UI_MENU_ID_STATS = 0x24
+    UI_MENU_ID_RECENT_PLAYERS = 0x20,
+    UI_MENU_ID_STAGING = 0x21,
+    UI_MENU_ID_IN_GAME_DETAILS = 0x22,
+    UI_MENU_ID_CHANGE_SKIN_TEAM = 0x23,
+    UI_MENU_ID_STATS = 0x24,
+    UI_MENU_ID_VEHICLE_SELECT = 0x25,
+    UI_MENU_ID_WEAPON_SELECT = 0x26,
+    UI_MENU_ID_KEYBOARD_UNK = 0x27,
 };
 
 enum UiIds
@@ -222,5 +257,23 @@ void uiShowTimer(int localPlayerIndex, const char * message, long timeMs);
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
 char * uiMsgString(int textId);
+
+
+/*
+ * NAME :		uiGetPointer
+ * 
+ * DESCRIPTION :
+ * 			Returns pointer to the given ui menu.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ *      id              :               Id of the menu.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Troy "Agent Moose" Pruitt
+ */
+void* uiGetPointer(int id);
 
 #endif // _LIBDL_UI_H_
