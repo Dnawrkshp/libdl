@@ -87,6 +87,53 @@ enum UiIds
     UI_ID_MENU_STATS = 0x14C,
 };
 
+enum UiElementType
+{
+    UI_ELEMENT_MENU = -1,
+    UI_ELEMENT_BUTTON = 0,
+    UI_ELEMENT_NUMBER_SELECT = 8,
+    UI_ELEMENT_TEXT = 10,
+};
+
+typedef struct UiElement
+{
+    enum UiElementType Type;
+    int State;
+    int LastState;
+    struct UiElement* Parent;
+} UiElement_t;
+
+typedef struct UiTextElement
+{
+    UiElement_t Element;
+    char PAD_10[0x48];
+    void* VTable;
+    unsigned int Id;
+    char Text[200];
+    /* 138 */
+} UiTextElement_t;
+
+typedef struct UiButtonElement
+{
+    UiElement_t Element;
+    int SelectId;
+    int Id;
+    char Text[64];
+    void* VTable;
+    int PAD_5C;
+    /* 60 */
+} UiButtonElement_t;
+
+typedef struct UiMenu
+{
+    UiElement_t Element;
+    char PAD_10[0x48];
+    void* VTable;
+    char PAD_5C[0x50];
+    int ChildCount;
+    UiElement_t* Children[64];
+} UiMenu_t;
+
 /*
  * NAME :		uiChangeMenu
  * 
@@ -274,6 +321,6 @@ char * uiMsgString(int textId);
  * 
  * AUTHOR :			Troy "Agent Moose" Pruitt
  */
-void* uiGetPointer(int id);
+UiMenu_t* uiGetPointer(int id);
 
 #endif // _LIBDL_UI_H_
