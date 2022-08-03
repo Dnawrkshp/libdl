@@ -54,3 +54,8 @@ UiMenu_t* uiGetPointer(int id)
 {
     return *(UiMenu_t**)((u32)UI_DIALOG_A0 + 0x64 + (id * 4));
 }
+
+UiMenu_t* uiGetActivePointer()
+{
+    return *(UiMenu_t**)((u32)UI_DIALOG_A0 + 0x64 + 0xA4);
+}

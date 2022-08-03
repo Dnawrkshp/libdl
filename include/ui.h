@@ -323,4 +323,20 @@ char * uiMsgString(int textId);
  */
 UiMenu_t* uiGetPointer(int id);
 
+/*
+ * NAME :		uiGetActivePointer
+ * 
+ * DESCRIPTION :
+ * 			Returns the pointer to the current menu.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Troy "Agent Moose" Pruitt
+ */
+UiMenu_t* uiGetActivePointer();
+
 #endif // _LIBDL_UI_H_
