@@ -337,6 +337,22 @@ UiMenu_t* uiGetPointer(int id);
  * 
  * AUTHOR :			Troy "Agent Moose" Pruitt
  */
-UiMenu_t* uiGetActivePointer();
+UiMenu_t* uiGetActivePointer(void);
+
+/*
+ * NAME :		uiRunCallbacks
+ * 
+ * DESCRIPTION :
+ * 			Runs background ui callbacks.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+void uiRunCallbacks(void);
 
 #endif // _LIBDL_UI_H_

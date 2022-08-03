@@ -166,6 +166,7 @@ FUNCTION(uiShowHelpPopup, 0x00540140)
 FUNCTION(internal_uiMsgString_inGame,  0x004E4180)
 FUNCTION(internal_uiMsgString_inLobby,  0x005c9f50)
 FUNCTION(uiShowTimer, 0x005401E8)
+FUNCTION(uiRunCallbacks, 0x0015a050)
 
 #--------------------------------------------------------
 #------------------------ VEHICLE -----------------------
