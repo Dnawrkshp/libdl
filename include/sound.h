@@ -124,6 +124,22 @@ short soundCreateHandle(short soundId);
 short soundKillByHandle(short handle);
 
 /*
+ * NAME :		soundKillById
+ * 
+ * DESCRIPTION :
+ * 			
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+short soundKillById(short soundId, Moby* moby);
+
+/*
  * NAME :		soundGetData
  * 
  * DESCRIPTION :
