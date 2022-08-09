@@ -204,6 +204,7 @@ FUNCTION(radarGetBlipIndex, 0x00553b00)
 FUNCTION(soundPlay, 0x0058f340)
 FUNCTION(soundCreateHandle, 0x0058ce58)
 FUNCTION(soundKillByHandle, 0x0058f228)
+FUNCTION(soundSetPosition, 0x0058FBB8)
 
 #--------------------------------------------------------
 #------------------------- HELP -------------------------

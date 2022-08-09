@@ -87,4 +87,20 @@ short soundCreateHandle(short soundId);
  */
 short soundKillByHandle(short handle);
 
+/*
+ * NAME :		soundSetPosition
+ * 
+ * DESCRIPTION :
+ * 			
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+int soundSetPosition(short handle, VECTOR position);
+
 #endif // _LIBDL_SOUND_H_
