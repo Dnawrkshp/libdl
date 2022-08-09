@@ -39,6 +39,42 @@ typedef struct SoundDef
 	int BankIndex;
 } SoundDef;
 
+typedef struct SoundInstance {
+	/*   0 */ short int oClass;
+	/*   2 */ short int mClass;
+	/*   4 */ /* function */ void** pUpdate;
+	/*   8 */ void* pVar;
+	/*   c */ float range;
+	/*  10 */ char cuboid[0x80];
+} SoundInstance;
+
+typedef struct SoundData {
+	/*   0 */ unsigned int handle;
+	/*   4 */ SoundDef* def;
+	/*   8 */ short int index;
+	/*   a */ short int def_index;
+	/*   c */ short int volumeMod;
+	/*   e */ short unsigned int occlpos;
+	/*  10 */ char status;
+	/*  11 */ char loop;
+	/*  12 */ char priority;
+	/*  13 */ char unused0;
+	/*  14 */ int pitch;
+	/*  18 */ int pitchMod;
+	/*  1c */ Moby* pMoby;
+	/*  20 */ VECTOR pos;
+	/*  30 */ VECTOR offset;
+	/*  40 */ struct SoundInstance* pAmbient;
+	/*  44 */ int lineEmitter;
+	/*  48 */ int oClass;
+	/*  4c */ float pan;
+	/*  50 */ int delay;
+	/*  54 */ int flags;
+	/*  58 */ short unsigned int unique_id;
+	/*  5a */ short unsigned int pad16_0;
+	/*  5c */ char occl[36];
+} SoundData;
+
 /*
  * NAME :		soundPlay
  * 
@@ -88,7 +124,7 @@ short soundCreateHandle(short soundId);
 short soundKillByHandle(short handle);
 
 /*
- * NAME :		soundSetPosition
+ * NAME :		soundGetData
  * 
  * DESCRIPTION :
  * 			
@@ -101,6 +137,6 @@ short soundKillByHandle(short handle);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-int soundSetPosition(short handle, VECTOR position);
+SoundData* soundGetData(short soundId);
 
 #endif // _LIBDL_SOUND_H_
