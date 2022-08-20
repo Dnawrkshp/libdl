@@ -455,4 +455,13 @@ __LIBDL_GETTER__ int gameGetPing(void);
  */
 void gameScoreboardSetTeamScore(int teamId, int score);
 
+/*
+ * NAME :		gameGetWorldId
+ * 
+ * DESCRIPTION :
+ * 			Returns the current dme world id. -1 if not in a world.
+ * 
+ */
+__LIBDL_GETTER__ int gameGetWorldId(void);
+
 #endif // _LIBDL_GAME_H_

@@ -64,6 +64,7 @@ FUNCTION(internal_dialogPlaySound_inLobby, 0x005C97D8)
 #--------------------------------------------------------
 FUNCTION(internal_gameEnd, 0x006228C8)
 FUNCTION(gameScoreboardSetTeamScore, 0x005425d0)
+FUNCTION(gameGetWorldId, 0x01ea55e8)
 
 
 #--------------------------------------------------------
