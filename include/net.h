@@ -33,6 +33,7 @@ int netSendCustomAppMessage(int transport, void * connection, int clientIndex, u
 int netBroadcastMediusAppMessage(int transport, void * connection, int msgId, int msgSize, void * payload);
 int netBroadcastCustomAppMessage(int transport, void * connection, u8 customMsgId, int msgSize, void * payload);
 int netSetSendAggregationInterval(void * connection, int clientAggTimeMs, int serverAggTimeMs);
+int netDoIHaveNetError(void);
 
 __LIBDL_GETTER__ void* netGetLobbyServerConnection(void);
 __LIBDL_GETTER__ void* netGetDmeServerConnection(void);

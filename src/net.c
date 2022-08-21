@@ -9,6 +9,7 @@
 #define NET_LOBBY_CONNECTION                ((void*)(*(u32*)0x001AF91C))
 #define NET_DME_CONNECTION                  ((void*)(*(u32*)0x001AF920))
 #define NET_GLOBAL_CALLBACKS_PTR            ((NET_CALLBACK_DELEGATE*)(*(u32*)0x00211E64))
+#define NET_ERROR                           (*(int*)0x00172420)
 
 int internal_netSendMessage(int transport, void * connection, long clientIndex, int msgClass, int msgId, int msgSize, void * payload);
 int internal_netSendAppMessage(int transport, void * connection, long clientIndex, int msgId, int msgSize, void * payload);
@@ -111,4 +112,9 @@ void* netGetLobbyServerConnection(void)
 void* netGetDmeServerConnection(void)
 {
     return NET_DME_CONNECTION;
+}
+
+int netDoIHaveNetError(void)
+{
+    return NET_ERROR != 0;
 }
