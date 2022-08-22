@@ -129,7 +129,11 @@ typedef struct UiMenu
     UiElement_t Element;
     char PAD_10[0x48];
     void* VTable;
-    char PAD_5C[0x50];
+    char PAD_5C[0x40];
+    int Id;
+    int ReturnToMenuId;
+    int LastMenuId;
+    char PAD_A8[0x04];
     int ChildCount;
     UiElement_t* Children[64];
 } UiMenu_t;
