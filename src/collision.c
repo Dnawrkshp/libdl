@@ -8,7 +8,7 @@
 /*
  * 
  */
-#define COLL_LINE_FIX_HIT_MOBY                               ((Moby*)0x0023F918)
+#define COLL_LINE_FIX_HIT_MOBY                               (*(Moby**)0x0023F918)
 #define COLL_LINE_FIX_HIT_POSITION                           ((float*)0x0023F920)
 #define COLL_LINE_FIX_HIT_NORMAL                             ((float*)0x0023F940)
 #define COLL_LINE_FIX_HIT_COLLISION_ID                       (*(u8*)0x0023F91C)
