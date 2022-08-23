@@ -6,6 +6,7 @@ void internal_gameEnd(int);
 /*
  * 
  */
+#define ACTIVE_LEVEL_ID                     (*(int*)0x0021DE10)
 #define GAME_ACTIVE                         (*(int*)0x0021E1EC)
 #define SCENE_LOADED                        (*(int*)0x0022026C)
 
@@ -132,7 +133,7 @@ int isInGame(void)
 
 int isInMenus(void)
 {
-    return !GAME_ACTIVE && SCENE_LOADED == 1;
+    return ACTIVE_LEVEL_ID == 0 && SCENE_LOADED == 1;
 }
 
 int isSceneLoading(void)
