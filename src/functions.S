@@ -148,6 +148,13 @@ FUNCTION(playerGetSpawnpoint, 0x006242d0)
 FUNCTION(playerGetJuggSafeTeam, 0x005d0fd8)
 
 #--------------------------------------------------------
+#------------------------ MASTER ------------------------
+#--------------------------------------------------------
+FUNCTION(masterGet, 0x005cf340)
+FUNCTION(masterDelete, 0x005cf4c8)
+FUNCTION(masterCreate, 0x005cf3f8)
+
+#--------------------------------------------------------
 #------------------------ WEAPON ------------------------
 #--------------------------------------------------------
 FUNCTION(weaponTurnOnHoloshields, 0x005a37f0)
