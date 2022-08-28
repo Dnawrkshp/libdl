@@ -750,7 +750,7 @@ int mobyPlaySound(short a0, u8 a1, Moby* moby);
 /*
  * 
  */
-void mobyAnimTransition(Moby* moby, int animId, int a2, int a3);
+void mobyAnimTransition(Moby* moby, int animId, int a2, float f12);
 
 /*
  * 
