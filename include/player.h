@@ -369,6 +369,38 @@ typedef struct HeroTimers {
 	/*  b2 */ short int invincibilityTimer;
 } HeroTimers;
 
+typedef struct HeroGround {
+	/*   0 */ VECTOR normal;
+	/*  10 */ VECTOR waterNormal;
+	/*  20 */ VECTOR gravity;
+	/*  30 */ VECTOR point;
+	/*  40 */ VECTOR lastGoodPos;
+	/*  50 */ VECTOR externalBootGrav;
+	/*  60 */ float feetHeights[2];
+	/*  68 */ float pitchSlopes[2];
+	/*  70 */ float rollSlopes[2];
+	/*  78 */ float height;
+	/*  7c */ float dist;
+	/*  80 */ float slope;
+	/*  84 */ float pitchSlope;
+	/*  88 */ float rollSlope;
+	/*  8c */ float angz;
+	/*  90 */ float waterHeight;
+	/*  94 */ float quicksandHeight;
+	/*  98 */ int underWater;
+	/*  9c */ Moby* pMoby;
+	/*  a0 */ int onGood;
+	/*  a4 */ float speed;
+	/*  a8 */ short int magnetic;
+	/*  aa */ short int stickLanding;
+	/*  ac */ short int offAny;
+	/*  ae */ short int offGood;
+	/*  b0 */ int oscillating;
+	/*  b4 */ float oscPos1;
+	/*  b8 */ float oscPos2;
+	/*  bc */ int pad[1];
+} HeroGround;
+
 typedef struct HeroTweaker {
 	/*   0 */ char manip[0x40];
 	/*  40 */ VECTOR rot;
@@ -466,11 +498,11 @@ typedef struct Player
 
     VECTOR Velocity;                                                // 0x130
 
-    char UNK164[0x1BC];                                             // 0x140
+    char UNK164[0x110];                                             // 0x140
 
-    int Airwalk;                                                    // 0x2FC
+		HeroGround Ground;																							// 0x250
 
-    char UNK3[0x70];                                                // 0x300
+    char UNK3[0x60];                                                // 0x310
 
     HeroTimers timers;                                              // 0x370
 
