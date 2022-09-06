@@ -22,6 +22,7 @@
 #include "math3d.h"
 #include "vehicle.h"
 #include "common.h"
+#include "camera.h"
 #include "guber.h"
 
 /*
@@ -603,7 +604,9 @@ typedef struct Player
 
     Vehicle * Vehicle;                                              // 0x2EF4
 
-    char UNK23[0x08];                                               // 0x2EF8
+    char UNK23[0x04];                                               // 0x2EF8
+
+		GameCamera * Camera;																						// 0x2EFC
 
     PadButtonStatus * Paddata;                                      // 0x2F00
 
