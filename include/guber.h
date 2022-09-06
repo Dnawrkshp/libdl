@@ -125,5 +125,7 @@ struct Player * guberMobyGetPlayerDamager(Moby* moby);
 void guberMobyDestroy(Moby* moby);
 
 void* masterGet(u32 uid);
+void* masterDelete(void * master);
+void* masterCreate(void * object, u32 a1);
 
 #endif // _LIBDL_GUBER_H_
