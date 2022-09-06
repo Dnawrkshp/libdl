@@ -207,6 +207,7 @@ FUNCTION(guberMobyDestroy, 0x0061c450)
 #--------------------------------------------------------
 FUNCTION(flagIsReturning, 0x004177c8)
 FUNCTION(flagIsBeingPickedUp, 0x00417758)
+FUNCTION(flagIsAtBase, 0x00417410)
 FUNCTION(flagReturnToBase, 0x004177f0)
 FUNCTION(flagIsOnSafeGround, 0x00417528)
 FUNCTION(flagPickup, 0x00417780)

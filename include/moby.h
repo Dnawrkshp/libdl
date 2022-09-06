@@ -844,6 +844,7 @@ void mobyBlowCorn(Moby* moby, int bangle, u128 baseVelocity
 int flagIsReturning(Moby* flagMoby);
 int flagIsBeingPickedUp(Moby* flagMoby);
 int flagIsOnSafeGround(Moby* flagMoby);
+int flagIsAtBase(Moby* flagMoby);
 void flagReturnToBase(Moby* flagMoby, int a0, char returnedByPlayerIdx);
 void flagPickup(Moby* flagMoby, int playerIdx);
 
