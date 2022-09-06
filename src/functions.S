@@ -203,6 +203,15 @@ FUNCTION(guberMobyGetPlayerDamager, 0x005ce5c8)
 FUNCTION(guberMobyDestroy, 0x0061c450)
 
 #--------------------------------------------------------
+#------------------------- FLAG -------------------------
+#--------------------------------------------------------
+FUNCTION(flagIsReturning, 0x004177c8)
+FUNCTION(flagIsBeingPickedUp, 0x00417758)
+FUNCTION(flagReturnToBase, 0x004177f0)
+FUNCTION(flagIsOnSafeGround, 0x00417528)
+FUNCTION(flagPickup, 0x00417780)
+
+#--------------------------------------------------------
 #------------------------ RADAR -------------------------
 #--------------------------------------------------------
 FUNCTION(radarGetBlipIndex, 0x00553b00)

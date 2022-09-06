@@ -841,5 +841,10 @@ void mobyBlowCorn(Moby* moby, int bangle, u128 baseVelocity
                 , int arg17, float arg18, Moby* arg19, int arg20);
 
 
+int flagIsReturning(Moby* flagMoby);
+int flagIsBeingPickedUp(Moby* flagMoby);
+int flagIsOnSafeGround(Moby* flagMoby);
+void flagReturnToBase(Moby* flagMoby, int a0, char returnedByPlayerIdx);
+void flagPickup(Moby* flagMoby, int playerIdx);
 
 #endif // _LIBDL_MOBY_H_
