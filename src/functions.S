@@ -88,6 +88,8 @@ FUNCTION(internal_drawSprite_inGame, 0x004c5b30)
 FUNCTION(internal_drawSprite_inLobby, 0x005b1518)
 FUNCTION(gfxDrawCubicLine, 0x004d1780)
 FUNCTION(gfxRegisterDrawFunction, 0x004C4650)
+FUNCTION(gfxDrawQuad, 0x004CA188)
+FUNCTION(gfxResetQuad, 0x005b6378)
 
 #--------------------------------------------------------
 #---------------------- MEMORY CARD ---------------------

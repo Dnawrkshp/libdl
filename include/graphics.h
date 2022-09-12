@@ -48,6 +48,24 @@ typedef struct CubicLineEndPoint {
 	/*  30 */ VECTOR vTangentOccQuat;
 } CubicLineEndPoint;
 
+//--------------------------------------------------------
+struct UV
+{
+  float U;
+  float V;
+};
+
+//--------------------------------------------------------
+struct QuadDef
+{
+  VECTOR VertexPositions[4];
+  u32 VertexColors[4];
+  struct UV VertexUVs[4];
+	u64 Clamp;
+	u64 Tex0;
+	u64 Tex1;
+	u64 Alpha;
+};
 
 /*
  * NAME :		gfxScreenSpaceText
@@ -152,6 +170,8 @@ u64 gfxGetEffectTex(int id, int);
 void gfxDrawSprite(float x, float y, float w, float h, int t0, int t1, int texW, int texH, u64 color, u64 texture);
 
 void gfxDrawCubicLine(void * fxUtilsInterface, CubicLineEndPoint * points, int numPoints, void * cubicLineStatic, float scale);
+void gfxDrawQuad(void * fxRegistrySystemInterface, struct QuadDef * quadDef, MATRIX worldMatrix, u32 a3);
+void gfxResetQuad(struct QuadDef * quadDef);
 void gfxRegisterDrawFunction(void ** a0, gfxDrawFuncDef * callback, Moby* moby);
 
 #endif // _LIBDL_GRAPHICS_H_
