@@ -840,6 +840,7 @@ void mobyBlowCorn(Moby* moby, int bangle, u128 baseVelocity
                 , int arg13, int bArg14, float arg15, int arg16
                 , int arg17, float arg18, Moby* arg19, int arg20);
 
+void mobyGetJointMatrix(Moby* moby, int jointIdx, MATRIX out);
 
 int flagIsReturning(Moby* flagMoby);
 int flagIsBeingPickedUp(Moby* flagMoby);
