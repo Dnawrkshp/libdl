@@ -48,7 +48,7 @@
 
 
 struct PAD {
-	/*   0 */ long long unsigned int pad_buf[16];
+	/*   0 */ u128 pad_buf[16];
 	/* 100 */ float analog[16];
 	/* 140 */ float hudAnalog[16];
 	/* 180 */ unsigned char profile[4];
