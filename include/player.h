@@ -494,7 +494,7 @@ typedef struct Player
 			};
 		};
     
-    char UNK2[0x70];                                                // 0xBC
+    char UNK2[0x70];                                                // 0xC0
 
     VECTOR Velocity;                                                // 0x130
 
@@ -667,6 +667,7 @@ typedef struct Player
 } Player;
 
 
+typedef void (*PlayerUpdate_func)(Player * player);
 typedef void (*PlayerUpdateState_func)(Player * player, int stateId, int a2, int a3, int t0);
 
 /*
@@ -688,7 +689,7 @@ typedef struct PlayerVTable
     void * FUNC_00;
     void * FUNC_04;
     void * FUNC_08;
-    void * FUNC_0C;
+    PlayerUpdate_func Update;
     void * FUNC_10;
     void * FUNC_14;
     void * FUNC_18;
