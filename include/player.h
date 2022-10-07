@@ -664,6 +664,36 @@ typedef struct Player
 
     float Speed;                                                    // 0x2FC0
 
+		char UNK44[0x1C];																								// 0x2FC4
+
+		union {
+			struct {
+				char UNK_LOCALHERO[0x200];
+			} LocalHero;
+			struct {
+				GameCamera DummyCamera;
+				struct PAD PAD;
+				char completedEnoughUpdates;
+				char rotOutOfSyncLastUpdate;
+				char padFrameChunksReceived;
+				char posOutOfSyncLastUpdate;
+				char stateAtSyncFrame;
+				VECTOR receivedSyncPos;
+				VECTOR posAtSyncFrame;
+				VECTOR syncPosDifference;
+				VECTOR receivedSyncRot;
+				VECTOR rotAtSyncFrame;
+				float interpVel;
+				float syncRotDifference;
+				int flags;
+				int sequenceIdOfSyncData;
+				enum PlayerState receivedState;
+				VECTOR remoteCorrectionVel;
+				float remoteCorrectionRotVel;
+				char syncFrameOffset;
+			} RemoteHero;
+		};
+
 } Player;
 
 
