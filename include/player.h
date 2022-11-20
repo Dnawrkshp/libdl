@@ -642,8 +642,9 @@ typedef struct Player
 
     PadButtonStatus * Paddata;                                      // 0x2F00
 
-    char UNK24[0x10];                                               // 0x2F04
+    char UNK24[0x0C];                                               // 0x2F04
 
+    int MpIndex;                                                    // 0x2F10
     int Team;                                                       // 0x2F14
 
     // Not super sure what this is
