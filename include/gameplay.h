@@ -68,8 +68,8 @@ typedef struct GameplayMobyDef
 	int Bolts;
 	int OClass;
 	float Scale;
-	float DrawDistance;
-	float UpdateDistance;
+	int DrawDistance;
+	int UpdateDistance;
 	short UNK_20;
 	short UNK_22;
 	short UNK_24;
