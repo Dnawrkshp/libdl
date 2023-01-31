@@ -35,7 +35,7 @@ typedef struct GameplayHeaderDef
   /* 40 */ u32 PVarTableOffset;                         // GameplayPVarDef_t
   /* 44 */ u32 PVarDataOffset;                          // 
   /* 48 */ u32 PVarPointerRewireTableOffset;            // 
-  /* 4C */ u32 CuboidsOffset;                           // 
+  /* 4C */ u32 CuboidsOffset;                           // GameplayCuboidDef_t
   /* 50 */ u32 SpheresOffset;                           // 
   /* 54 */ u32 CylindersOffset;                         // 
   /* 58 */ u32 UNK58Offset;                             // 
@@ -106,5 +106,14 @@ typedef struct GameplayMobyHeaderDef
   int pad[2];
   struct GameplayMobyDef MobyInstances[0];
 } GameplayMobyHeaderDef_t;
+
+/*
+ *
+ */
+typedef struct GameplayCuboidDef
+{
+  MATRIX M0;
+  MATRIX M1;
+} GameplayCuboidDef_t;
 
 #endif // _LIBDL_GAMEPLAY_H_
