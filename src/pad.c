@@ -4,9 +4,9 @@
 #include "player.h"
 
 #define PAD_POINTER                         ((PadButtonStatus**)0x0021DDCC)
-#define P1_PAD                              ((PadButtonStatus*)0x001EE600)
-#define P2_PAD                              ((PadButtonStatus*)0x001EFD00)
-#define P3_PAD                              ((PadButtonStatus*)0x001F1400)
+#define P1_PAD                              ((PadButtonStatus*)(0x001EE600 + 0x574))
+#define P2_PAD                              ((PadButtonStatus*)(0x001EFD00 + 0x574))
+#define P3_PAD                              ((PadButtonStatus*)(0x001F1400 + 0x574))
 #define PAD_PROCESS_ADDR                    (*(u32*)0x00718930)
 #define PAD_PROCESS_VALUE                   (0x0C1C61DA)
 
