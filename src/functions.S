@@ -297,3 +297,11 @@ FUNCTION(randRange, 0x00500748)
 FUNCTION(randRangeNeg, 0x005007a0)
 FUNCTION(randRangeInt, 0x00500700)
 FUNCTION(randRadian, 0x00500800)
+
+#--------------------------------------------------------
+#------------------------- HUD --------------------------
+#--------------------------------------------------------
+FUNCTION(internal_hudGetCanvas_inGame, 0x0053f988)
+FUNCTION(internal_hudGetCurrentCanvas_inGame, 0x005c228)
+FUNCTION(internal_hudCanvasGetObject_inGame, 0x005bcc90)
+FUNCTION(hudGetTeamColor, 0x00541ef8)

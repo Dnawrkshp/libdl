@@ -653,9 +653,10 @@ typedef struct Player
     // letting you get in another vehicle
     int InVehicle;                                                  // 0x2F18
 
-    char UNK25[0x0C];                                               // 0x2F1C
+    char UNK25[0x08];                                               // 0x2F1C
 
-    struct tNW_Player * pNetPlayer;                                 // 0x2F28
+    float MaxHealth;                                      					// 0x2F24 
+    struct tNW_Player * pNetPlayer;                                 // 0x2F28                            // 0x2F28
 
     char UNK36[0x84];                                               // 0x2F2C
 
