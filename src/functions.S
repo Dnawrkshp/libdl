@@ -38,6 +38,7 @@ FUNCTION(fabsf, 0x00135960)
 FUNCTION(fptodp, 0x00131918)
 FUNCTION(floorf, 0x001359A8)
 FUNCTION(__divdi3, 0x0012feb0)
+FUNCTION(ceilf, 0x00135770)
 
 #--------------------------------------------------------
 #------------------------ MATH 3D -----------------------
