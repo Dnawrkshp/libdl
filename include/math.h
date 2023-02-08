@@ -35,6 +35,7 @@ __LIBDL_INLINE__ float fabsf(float f);
 __LIBDL_INLINE__ float lerpf(float a, float b, float t);
 __LIBDL_INLINE__ float signf(float a);
 __LIBDL_INLINE__ float maxf(float a, float b);
+__LIBDL_INLINE__ float ceilf(float a);
 __LIBDL_INLINE__ float floorf(float a);
 __LIBDL_INLINE__ float lerpfAngle(float a, float b, float t);
 __LIBDL_INLINE__ float clamp(float v, float min, float max);
