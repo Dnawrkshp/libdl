@@ -93,6 +93,8 @@ FUNCTION(gfxDrawCubicLine, 0x004d1780)
 FUNCTION(gfxRegisterDrawFunction, 0x004C4650)
 FUNCTION(gfxDrawQuad, 0x004CA188)
 FUNCTION(gfxResetQuad, 0x005b6378)
+FUNCTION(gfxSetBlendMode, 0x004c97d8)
+FUNCTION(gfxSetTexture, 0x004c9a58)
 
 #--------------------------------------------------------
 #---------------------- MEMORY CARD ---------------------
