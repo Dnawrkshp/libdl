@@ -321,6 +321,40 @@ void vector_multiply(VECTOR output, VECTOR input0, VECTOR input1)
     );
 }
 
+//--------------------------------------------------------------------------
+void vector_projectonvertical(VECTOR output, VECTOR input0)
+{
+    asm __volatile__ (
+#if __GNUC__ > 3
+    "lqc2   $vf1, 0x00(%1)  \n"
+    "vmove.xy   $vf1, $vf0   \n"
+    "sqc2   $vf1, 0x00(%0)  \n"
+#else
+    "lqc2		vf1, 0x00(%1)	\n"
+    "vmove.xy  vf1, vf0    \n"
+    "sqc2		vf1, 0x00(%0)	\n"
+#endif
+    : : "r" (output), "r" (input0)
+  );
+}
+
+//--------------------------------------------------------------------------
+void vector_projectonhorizontal(VECTOR output, VECTOR input0)
+{
+    asm __volatile__ (
+#if __GNUC__ > 3
+    "lqc2   $vf1, 0x00(%1)  \n"
+    "vmove.z   $vf1, $vf0   \n"
+    "sqc2   $vf1, 0x00(%0)  \n"
+#else
+    "lqc2		vf1, 0x00(%1)	\n"
+    "vmove.z  vf1, vf0    \n"
+    "sqc2		vf1, 0x00(%0)	\n"
+#endif
+    : : "r" (output), "r" (input0)
+  );
+}
+
 //--------------------------------------------------------
 void vector_print(VECTOR input0)
 {
