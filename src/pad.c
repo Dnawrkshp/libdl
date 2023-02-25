@@ -147,8 +147,8 @@ void padResetInput(int port)
     PadButtonStatus * pad = port ? P2_PAD : P1_PAD;
 
     u64 defaultValue = 0x7F7F7F7FFFFF7900;
-    *(u64*)((u32)pad + 0x00) = defaultValue;
-    *(u64*)((u32)pad + 0x80) = defaultValue;
+    memcpy((void*)pad, &defaultValue, 8);
+    memcpy((void*)((u32)pad + 0x80), &defaultValue, 8);
 }
 
 /*
