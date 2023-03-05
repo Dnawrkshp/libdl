@@ -143,6 +143,21 @@ FUNCTION(internal_netUpdatetNWGameSettings, 0x007700A8)
 FUNCTION(netSetSendAggregationInterval, 0x01ea0558)
 
 #--------------------------------------------------------
+#------------------------- INET -------------------------
+#--------------------------------------------------------
+FUNCTION(inetAbort, 0x01e9bce8)
+FUNCTION(inetClose, 0x01e9bb28)
+FUNCTION(inetControl, 0x01e9bd30)
+FUNCTION(inetCreate, 0x01e9ba68)
+FUNCTION(inetGetInterfaceList, 0x01e9bde0)
+FUNCTION(inetGetNameServers, 0x01e9bf20)
+FUNCTION(inetInterfaceControl, 0x01e9be70)
+FUNCTION(inetName2Address, 0x01e9b978)
+FUNCTION(inetOpen, 0x01e9bae0)
+FUNCTION(inetRecv, 0x01e9bb70)
+FUNCTION(inetSend, 0x01e9bc38)
+
+#--------------------------------------------------------
 #------------------------ PLAYER ------------------------
 #--------------------------------------------------------
 FUNCTION(playerGiveWeapon, 0x00628018)
