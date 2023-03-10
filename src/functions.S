@@ -133,6 +133,7 @@ FUNCTION(mobyStand, 0x00516a70)
 FUNCTION(mobyStartFlash, 0x00506960)
 FUNCTION(mobyUpdateFlash, 0x00506b88)
 FUNCTION(mobyGetJointMatrix, 0x004f8150)
+FUNCTION(mobySpawnExplosion, 0x003c3b38)
 
 #--------------------------------------------------------
 #-------------------------- NET -------------------------
