@@ -573,7 +573,11 @@ typedef struct Player
 
     int PlayerState;                                                // 0x25CC
 
-    char UNK19[0x90];                                               // 0x25D0
+    char UNK29[8];                                                  // 0x25D0
+
+    int PlayerPreviousState;                                        // 0x25D8
+
+    char UNK19[0x84];                                               // 0x25D0
 
     // These seem to do a variety of things
     // 0x04: 1 = Disables shooting and cbooting
