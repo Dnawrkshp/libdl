@@ -134,8 +134,8 @@ typedef struct GameOptions
             char Hovership : 8;
             char Hoverbike : 8;
             char Landstalker : 8;
-            char Vehicles2 : 8;     // idk what this does but it always matches Vehicles
-            char Vehicles : 8;
+            char UNK_04 : 8;     // idk what this does but it always matches Vehicles
+            char UNK_05 : 8;
             char UNK_06 : 8;
             char UNK_07 : 8;
             char UNK_08 : 8;
@@ -143,7 +143,7 @@ typedef struct GameOptions
             char Homenodes : 8;
             char UNK_0B : 8;
             char UNK_0C : 8;
-            char UNK_0D : 8;
+            char Vehicles : 8;
             char UNK_0E : 8;
             char UNK_0F : 8;
             char UNK_10 : 8;
