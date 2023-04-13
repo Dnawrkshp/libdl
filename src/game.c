@@ -27,11 +27,13 @@ void internal_gameEnd(int);
  * Game winner team id.
  */
 #define GAME_WINNER_TEAM_ID                 (*(int*)0x0036D610)
+#define GAME_WINNER_TEAM_ID2                (*(int*)0x001E0D94)
 
 /*
  * Player id of the winner. Set to -1 for team win.
  */
 #define GAME_WINNER_PLAYER_ID               (*(int*)0x0036D614)
+#define GAME_WINNER_PLAYER_ID2              (*(int*)0x001E0D98)
 
 /*
  * Time (ms) that the game ended.
@@ -96,8 +98,8 @@ void internal_gameEnd(int);
 
 void gameSetWinner(int teamOrPlayerId, int isTeam)
 {
-    GAME_WINNER_TEAM_ID = teamOrPlayerId;
-    GAME_WINNER_PLAYER_ID = isTeam ? -1 : teamOrPlayerId;
+    GAME_WINNER_TEAM_ID2 = GAME_WINNER_TEAM_ID = teamOrPlayerId;
+    GAME_WINNER_PLAYER_ID2 = GAME_WINNER_PLAYER_ID = isTeam ? -1 : teamOrPlayerId;
 }
 
 void gameEnd(int reason)
