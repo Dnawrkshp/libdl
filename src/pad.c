@@ -144,7 +144,7 @@ void padResetInput(int port)
     if (port < 0 || port >= PAD_PORT_MAX)
         return;
 
-    PadButtonStatus * pad = port ? P2_PAD : P1_PAD;
+    PadButtonStatus * pad = port ? (PadButtonStatus*)0x001EFD00 : (PadButtonStatus*)0x001EE600;
 
     u64 defaultValue = 0x7F7F7F7FFFFF7900;
     memcpy((void*)pad, &defaultValue, 8);
