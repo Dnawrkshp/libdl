@@ -164,6 +164,7 @@ FUNCTION(inetSend, 0x01e9bc38)
 #--------------------------------------------------------
 FUNCTION(playerGiveWeapon, 0x00628018)
 FUNCTION(playerEquipWeapon, 0x005F0208)
+FUNCTION(playerGetWeaponMaxAmmo, 0x00626FB8)
 FUNCTION(playerRespawn, 0x005E2940)
 FUNCTION(playerDropFlag, 0x005F05E8)
 FUNCTION(playerGetFromUID, 0x005cd480)

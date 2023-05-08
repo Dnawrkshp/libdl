@@ -812,6 +812,23 @@ __LIBDL_SETTER__ void playerSetLocalEquipslot(int localPlayerId, int slot, int w
 __LIBDL_GETTER__ int playerGetLocalEquipslot(int localPlayerId, int slot);
 
 /*
+ * NAME :		playerGetWeaponMaxAmmo
+ * 
+ * DESCRIPTION :
+ * 			Gets the given player's max ammo for the given weapon id.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ *      
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+__LIBDL_GETTER__ short playerGetWeaponMaxAmmo(GadgetBox* gBox, int weaponId);
+
+/*
  * NAME :		playerSetTeam
  * 
  * DESCRIPTION :
