@@ -112,7 +112,7 @@ PadButtonStatus * playerGetPad(Player * player)
 
     if (playerIsLocal(player))
     {
-        return player->Paddata;
+        return (PadButtonStatus*)((u32)player->Paddata + 0x574);
     }
     else
     {
