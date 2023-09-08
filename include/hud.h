@@ -163,5 +163,6 @@ u32 hudGetTeamColor(int team, int variant);
 void* hudGetCanvas(u32 canvas);
 u32 hudGetCurrentCanvas(void);
 struct HUDObject* hudCanvasGetObject(void* canvas, u32 objId);
+void hudHidePopup(void);
 
 #endif // _LIBDL_HUD_H_

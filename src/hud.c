@@ -13,6 +13,9 @@
 #define HUD_P2			((PlayerHUDFlags*)0x0030D8F0)
 
 
+#define HUD_POPUP_VISIBILITY_FLOAT    (0x0030E7E8)
+
+
 void* internal_hudGetCanvas_inGame(u32 canvas);
 u32 internal_hudGetCurrentCanvas_inGame(void);
 struct HUDObject* internal_hudCanvasGetObject_inGame(void* canvas, u32 objId);
@@ -53,4 +56,9 @@ struct HUDObject* hudCanvasGetObject(void* canvas, u32 objId)
     }
 
     return NULL;
+}
+
+void hudHidePopup(void)
+{
+  *(u32*)HUD_POPUP_VISIBILITY_FLOAT = 0;
 }
