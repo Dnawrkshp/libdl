@@ -547,7 +547,11 @@ typedef struct Player
 
     short CameraType2;                                              // 0x1A50
 
-    char UNK45[0x4A];                                               // 0x1A52
+    char UNK45[0x0E];                                               // 0x1A52
+
+    VECTOR CameraForward;                                           // 0x1A60
+
+    char UNK46[0x2C];                                               // 0x1A70
 
     int LocalPlayerIndex;                                           // 0x1A9C
 
