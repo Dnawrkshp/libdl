@@ -481,7 +481,10 @@ typedef struct Gadget {
 typedef struct Player
 {
     struct Guber Guber;                                             // 0x00
-    char UNK0[0x88];                                                // 0x18
+    char UNK0[0x08];                                                // 0x18
+
+    MATRIX WorldMatrix;                                             // 0x20
+    MATRIX InvWorldMatrix;                                          // 0x60
 
     VECTOR PlayerPosition;                                          // 0xA0
 		
