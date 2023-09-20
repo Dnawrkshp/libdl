@@ -81,4 +81,20 @@ __LIBDL_GETTER__ RadarBlip * radarGetBlips(void);
  */
 __LIBDL_GETTER__ int radarGetBlipIndex(Moby * moby);
 
+/*
+ * NAME :		radarGetBlipColor
+ * 
+ * DESCRIPTION :
+ * 			
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+__LIBDL_GETTER__ u32 radarGetBlipColor(int blipIdx);
+
 #endif // _LIBDL_RADAR_H_
