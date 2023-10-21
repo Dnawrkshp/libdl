@@ -42,6 +42,8 @@ FUNCTION(fptodp, 0x00131918)
 FUNCTION(floorf, 0x001359A8)
 FUNCTION(__divdi3, 0x0012feb0)
 FUNCTION(ceilf, 0x00135770)
+FUNCTION(logf, 0x001364f0)
+FUNCTION(log10f, 0x00136638)
 FUNCTION(internal_fastmodf_inGame, 0x004d75a8)
 FUNCTION(internal_fastmodf_inLobby, 0x005bd108)
 

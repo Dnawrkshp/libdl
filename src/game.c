@@ -98,8 +98,8 @@ void internal_gameEnd(int);
 
 void gameSetWinner(int teamOrPlayerId, int isTeam)
 {
-    GAME_WINNER_TEAM_ID2 = GAME_WINNER_TEAM_ID = teamOrPlayerId;
-    GAME_WINNER_PLAYER_ID2 = GAME_WINNER_PLAYER_ID = isTeam ? -1 : teamOrPlayerId;
+  GAME_WINNER_TEAM_ID2 = GAME_WINNER_TEAM_ID = teamOrPlayerId;
+  GAME_WINNER_PLAYER_ID2 = GAME_WINNER_PLAYER_ID = isTeam ? -1 : teamOrPlayerId;
 }
 
 void gameEnd(int reason)

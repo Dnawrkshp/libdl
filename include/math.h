@@ -38,6 +38,8 @@ __LIBDL_INLINE__ float maxf(float a, float b);
 __LIBDL_INLINE__ float minf(float a, float b);
 __LIBDL_INLINE__ float ceilf(float a);
 __LIBDL_INLINE__ float floorf(float a);
+__LIBDL_INLINE__ float logf(float a);
+__LIBDL_INLINE__ float log10f(float a);
 __LIBDL_INLINE__ float lerpfAngle(float a, float b, float t);
 __LIBDL_INLINE__ float clamp(float v, float min, float max);
 __LIBDL_INLINE__ float clampAngle(float theta);
