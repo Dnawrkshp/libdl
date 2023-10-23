@@ -15,6 +15,9 @@
 */
 
 u128 internal_vectorReflect(u128 input, u128 normal);
+void internal_vector_pack(u128 input, u32* dst);
+u128 internal_vector_unpack(u32* src);
+
 
 //--------------------------------------------------------
 void vector_write(VECTOR output, u128 input0)
@@ -363,6 +366,18 @@ void vector_print(VECTOR input0)
         input0[1],
         input0[2],
         input0[3]);
+}
+
+//--------------------------------------------------------
+void vector_pack(VECTOR input0, u32* dst)
+{
+  internal_vector_pack(vector_read(input0), dst);
+}
+
+//--------------------------------------------------------
+void vector_unpack(VECTOR dst, u32 vector)
+{
+  vector_write(dst, internal_vector_unpack(&vector));
 }
 
 //--------------------------------------------------------

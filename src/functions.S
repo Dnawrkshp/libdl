@@ -307,6 +307,8 @@ FUNCTION(internal_wadGetSectors, 0x00159A00)
 #------------------------ VECTOR ------------------------
 #--------------------------------------------------------
 FUNCTION(internal_vectorReflect, 0x005b9ae8)
+FUNCTION(internal_vector_pack, 0x0050A7E0)
+FUNCTION(internal_vector_unpack, 0x0050a758)
 
 #--------------------------------------------------------
 #----------------------- COLLISION ----------------------
