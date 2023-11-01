@@ -83,3 +83,21 @@ int mobyClassIsLoaded(int oClass)
 
     return 0;
 }
+
+/*
+ * Computes the world space joint matrix for the given moby's joint.
+ */
+void mobyComputeJointWorldMatrix(Moby* moby, int jointIdx, MATRIX out)
+{
+  if (!moby->JointCache) return;
+  if (jointIdx >= moby->JointCnt) return;
+
+  MATRIX* mtxs = (MATRIX*)moby->JointCache;
+  memcpy(out, mtxs[jointIdx], sizeof(MATRIX));
+  MATRIX mrot;
+  memset(mrot, 0, sizeof(mrot));
+  memcpy(mrot, moby->M0_03, 12);
+  vector_scale(&out[12], &out[12], moby->Scale / 1024.0);
+  matrix_multiply(out, out, mrot);
+  vector_add(&out[12], &out[12], moby->Position);
+}

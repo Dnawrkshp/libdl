@@ -843,6 +843,7 @@ void mobyBlowCorn(Moby* moby, int bangle, u128 baseVelocity
                 , int arg17, float arg18, Moby* arg19, int arg20);
 
 void mobyGetJointMatrix(Moby* moby, int jointIdx, MATRIX out);
+void mobyComputeJointWorldMatrix(Moby* moby, int jointIdx, MATRIX out);
 
 /*
  *
