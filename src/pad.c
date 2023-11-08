@@ -42,9 +42,9 @@ void padUpdate(void)
   for (i = 0; i < GAME_MAX_LOCALS; ++i) {
     struct PAD* pad = PAD_POINTER[i];
     if (pad) {
-      memcpy(LocalPadHistory + i, &pad->rdata[2], 6);
+      memcpy(&LocalPadHistory[i], &pad->rdata[2], 6);
     } else {
-      memcpy(LocalPadHistory + i, &DefaultPadHistory, 6);
+      memcpy(&LocalPadHistory[i], &DefaultPadHistory, sizeof(PadHistory));
     }
   }
 }

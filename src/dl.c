@@ -39,6 +39,6 @@ void dlPreUpdate(void)
  */
 void dlPostUpdate(void)
 {
-    padUpdate();
-    playerPadUpdate();
+  padUpdate();
+  playerPadUpdate();
 }
