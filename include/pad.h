@@ -28,6 +28,7 @@
 #include "common.h"
 
 #define PAD_PORT_MAX        2
+#define PAD_SLOT_MAX        4
 
 #define PAD_LEFT            0x0080
 #define PAD_DOWN            0x0040
