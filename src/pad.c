@@ -3,10 +3,7 @@
 #include "game.h"
 #include "player.h"
 
-#define PAD_POINTER                         ((PadButtonStatus**)0x0021DDCC)
-#define P1_PAD                              ((PadButtonStatus*)(0x001EE600 + 0x574))
-#define P2_PAD                              ((PadButtonStatus*)(0x001EFD00 + 0x574))
-#define P3_PAD                              ((PadButtonStatus*)(0x001F1400 + 0x574))
+#define PAD_POINTER                         ((struct PAD**)0x0021ddd8)
 #define PAD_PROCESS_ADDR                    (*(u32*)0x00718930)
 #define PAD_PROCESS_VALUE                   (0x0C1C61DA)
 
@@ -21,7 +18,7 @@ const PadHistory DefaultPadHistory = {
 };
 
 // Local pad history
-PadHistory LocalPadHistory[PAD_PORT_MAX];
+PadHistory LocalPadHistory[GAME_MAX_LOCALS];
 
 /*
  * NAME :		padUpdate
@@ -40,9 +37,16 @@ PadHistory LocalPadHistory[PAD_PORT_MAX];
  */
 void padUpdate(void)
 {
-    // Update local pad
-    memcpy(LocalPadHistory, &P1_PAD->btns, 6);
-    memcpy(LocalPadHistory+1, &P2_PAD->btns, 6);
+  int i;
+
+  for (i = 0; i < GAME_MAX_LOCALS; ++i) {
+    struct PAD* pad = PAD_POINTER[i];
+    if (pad) {
+      memcpy(LocalPadHistory + i, &pad->rdata[2], 6);
+    } else {
+      memcpy(LocalPadHistory + i, &DefaultPadHistory, 6);
+    }
+  }
 }
 
 /*
@@ -55,21 +59,22 @@ void padUpdate(void)
  * NOTES :
  * 
  * ARGS : 
- *          port:                       Which controller port to read.
+ *          localPlayerIndex:           Which local player's controller to read.
  *          buttonMask:                 Buttons to check.
  * 
  * RETURN :
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-int padGetButton(int port, u16 buttonMask)
+int padGetButton(int localPlayerIndex, u16 buttonMask)
 {
-    switch (port)
-    {
-        case 0: return (P1_PAD->btns & buttonMask) == 0;
-        case 1: return (P2_PAD->btns & buttonMask) == 0;
-        default: return -1;
-    }
+  struct PAD* pad = PAD_POINTER[localPlayerIndex];
+  if (pad) {
+    u16 btns = *(u16*)&pad->rdata[2];
+    return (btns & buttonMask) == 0;
+  }
+
+  return -1;
 }
 
 /*
@@ -82,20 +87,20 @@ int padGetButton(int port, u16 buttonMask)
  * NOTES :
  * 
  * ARGS : 
- *          port:                       Which controller port to read.
+ *          localPlayerIndex:           Which local player's controller to read.
  *          buttonMask:                 Buttons to check.
  * 
  * RETURN :
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-int padGetButtonDown(int port, u16 buttonMask)
+int padGetButtonDown(int localPlayerIndex, u16 buttonMask)
 {
-    if (port < 0 || port >= PAD_PORT_MAX)
-        return -1;
+  if (localPlayerIndex < 0 || localPlayerIndex >= GAME_MAX_LOCALS)
+    return -1;
 
-    return padGetButton(port, buttonMask) &&
-            (LocalPadHistory[port].btns & buttonMask) != 0;
+  return padGetButton(localPlayerIndex, buttonMask) &&
+    (LocalPadHistory[localPlayerIndex].btns & buttonMask) != 0;
 }
 
 /*
@@ -108,20 +113,20 @@ int padGetButtonDown(int port, u16 buttonMask)
  * NOTES :
  * 
  * ARGS : 
- *          port:                       Which controller port to read.
+ *          localPlayerIndex:           Which local player's controller to read.
  *          buttonMask:                 Buttons to check.
  * 
  * RETURN :
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-int padGetButtonUp(int port, u16 buttonMask)
+int padGetButtonUp(int localPlayerIndex, u16 buttonMask)
 {
-    if (port < 0 || port >= PAD_PORT_MAX)
-        return -1;
+  if (localPlayerIndex < 0 || localPlayerIndex >= GAME_MAX_LOCALS)
+    return -1;
 
-    return !padGetButton(port, buttonMask) &&
-        (LocalPadHistory[port].btns & buttonMask) == 0;
+  return !padGetButton(localPlayerIndex, buttonMask) &&
+    (LocalPadHistory[localPlayerIndex].btns & buttonMask) == 0;
 }
 
 /*
@@ -133,22 +138,23 @@ int padGetButtonUp(int port, u16 buttonMask)
  * NOTES :
  * 
  * ARGS : 
- *          port:                       Which controller port to reset.
+ *          localPlayerIndex:           Which local player's controller to read.
  * 
  * RETURN :
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-void padResetInput(int port)
+void padResetInput(int localPlayerIndex)
 {
-    if (port < 0 || port >= PAD_PORT_MAX)
+    if (localPlayerIndex < 0 || localPlayerIndex >= GAME_MAX_LOCALS)
         return;
 
-    PadButtonStatus * pad = port ? (PadButtonStatus*)0x001EFD00 : (PadButtonStatus*)0x001EE600;
+    struct PAD* pad = PAD_POINTER[localPlayerIndex];
+    if (!pad) return;
 
     u64 defaultValue = 0x7F7F7F7FFFFF7900;
-    memcpy((void*)pad, &defaultValue, 8);
-    memcpy((void*)((u32)pad + 0x80), &defaultValue, 8);
+    memcpy(&pad->rdata[2], &defaultValue, 8);
+    memcpy((void*)((u32)&pad->rdata[2] + 0x80), &defaultValue, 8);
 }
 
 /*
@@ -167,17 +173,17 @@ void padResetInput(int port)
  */
 void padDisableInput(void)
 {
-    if (PAD_PROCESS_ADDR == PAD_PROCESS_VALUE)
-        PAD_PROCESS_ADDR = 0;
+  if (PAD_PROCESS_ADDR == PAD_PROCESS_VALUE)
+    PAD_PROCESS_ADDR = 0;
 
-    if (isInGame())
-    {
-        // no input timer
-        *(u16*)(0x00347AA0 + 0x3BA) = 0x7FFF;
+  if (isInGame())
+  {
+    // no input timer
+    *(u16*)(0x00347AA0 + 0x3BA) = 0x7FFF;
 
-        // no cam
-        *(u16*)(0x00347AA0 + 0x402) = 0x7FFF;
-    }
+    // no cam
+    *(u16*)(0x00347AA0 + 0x402) = 0x7FFF;
+  }
 }
 
 /*
@@ -196,14 +202,14 @@ void padDisableInput(void)
  */
 void padEnableInput(void)
 {
-    PAD_PROCESS_ADDR = PAD_PROCESS_VALUE;
+  PAD_PROCESS_ADDR = PAD_PROCESS_VALUE;
 
-    if (isInGame())
-    {
-        // no input timer
-        *(u16*)(0x00347AA0 + 0x3BA) = 0;
+  if (isInGame())
+  {
+    // no input timer
+    *(u16*)(0x00347AA0 + 0x3BA) = 0;
 
-        // no cam
-        *(u16*)(0x00347AA0 + 0x402) = 0;
-    }
+    // no cam
+    *(u16*)(0x00347AA0 + 0x402) = 0;
+  }
 }

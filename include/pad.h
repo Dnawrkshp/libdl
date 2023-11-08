@@ -127,7 +127,7 @@ typedef struct padButtonStatus
     unsigned char r1_p;
     unsigned char l2_p;
     unsigned char r2_p;
-} __attribute__((packed)) PadButtonStatus;
+} PadButtonStatus;
 
 typedef struct PadHistory
 {
@@ -149,14 +149,14 @@ typedef struct PadHistory
  * NOTES :
  * 
  * ARGS : 
- *          port:                       Which controller port to read.
+ *          localPlayerIndex:           Which local player's controller to read.
  *          buttonMask:                 Buttons to check.
  * 
  * RETURN :
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-__LIBDL_GETTER__ int padGetButton(int port, u16 buttonMask);
+__LIBDL_GETTER__ int padGetButton(int localPlayerIndex, u16 buttonMask);
 
 /*
  * NAME :		padGetButtonDown
@@ -168,14 +168,14 @@ __LIBDL_GETTER__ int padGetButton(int port, u16 buttonMask);
  * NOTES :
  * 
  * ARGS : 
- *          port:                       Which controller port to read.
+ *          localPlayerIndex:           Which local player's controller to read.
  *          buttonMask:                 Buttons to check.
  * 
  * RETURN :
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-__LIBDL_GETTER__ int padGetButtonDown(int port, u16 buttonMask);
+__LIBDL_GETTER__ int padGetButtonDown(int localPlayerIndex, u16 buttonMask);
 
 /*
  * NAME :		padGetButtonUp
@@ -187,14 +187,14 @@ __LIBDL_GETTER__ int padGetButtonDown(int port, u16 buttonMask);
  * NOTES :
  * 
  * ARGS : 
- *          port:                       Which controller port to read.
+ *          localPlayerIndex:           Which local player's controller to read.
  *          buttonMask:                 Buttons to check.
  * 
  * RETURN :
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-__LIBDL_GETTER__ int padGetButtonUp(int port, u16 buttonMask);
+__LIBDL_GETTER__ int padGetButtonUp(int localPlayerIndex, u16 buttonMask);
 
 /*
  * NAME :		padResetInput
@@ -205,13 +205,13 @@ __LIBDL_GETTER__ int padGetButtonUp(int port, u16 buttonMask);
  * NOTES :
  * 
  * ARGS : 
- *          port:                       Which controller port to reset.
+ *          localPlayerIndex:           Which local player's controller to read.
  * 
  * RETURN :
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-__LIBDL_SETTER__ void padResetInput(int port);
+__LIBDL_SETTER__ void padResetInput(int localPlayerIndex);
 
 /*
  * NAME :		padDisableInput

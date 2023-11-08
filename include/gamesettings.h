@@ -21,6 +21,7 @@
  * Maximum number of players in a game.
  */
 #define GAME_MAX_PLAYERS                (10)
+#define GAME_MAX_LOCALS                 (4)
 
 /*
  *
