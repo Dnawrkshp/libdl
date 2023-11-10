@@ -4,6 +4,7 @@
 #include "player.h"
 
 #define PAD_POINTER                         ((struct PAD**)0x0021ddd8)
+#define PAD_P0                              ((struct PAD*)0x001EE600)
 #define PAD_PROCESS_ADDR                    (*(u32*)0x00718930)
 #define PAD_PROCESS_VALUE                   (0x0C1C61DA)
 
@@ -41,6 +42,7 @@ void padUpdate(void)
 
   for (i = 0; i < GAME_MAX_LOCALS; ++i) {
     struct PAD* pad = PAD_POINTER[i];
+    if (!pad && i == 0) pad = PAD_P0;
     if (pad) {
       memcpy(&LocalPadHistory[i], &pad->rdata[2], 6);
     } else {
