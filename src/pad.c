@@ -22,6 +22,34 @@ const PadHistory DefaultPadHistory = {
 PadHistory LocalPadHistory[GAME_MAX_LOCALS];
 
 /*
+ * NAME :		padGetPad
+ * 
+ * DESCRIPTION :
+ * 			Returns a pointer to the respective local player's pad struct.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+struct PAD* padGetPad(int localPlayerIdx)
+{
+  if (localPlayerIdx < 0 || localPlayerIdx >= GAME_MAX_LOCALS) return NULL;
+
+  struct PAD* pad = PAD_POINTER[localPlayerIdx];
+
+  // if the pad pointers haven't been configured yet
+  // and we're looking for player 0
+  // return pad address for player 0 (this never changes)
+  if (!pad && !localPlayerIdx) return PAD_P0;
+
+  return pad;
+}
+
+/*
  * NAME :		padUpdate
  * 
  * DESCRIPTION :
@@ -41,8 +69,7 @@ void padUpdate(void)
   int i;
 
   for (i = 0; i < GAME_MAX_LOCALS; ++i) {
-    struct PAD* pad = PAD_POINTER[i];
-    if (!pad && i == 0) pad = PAD_P0;
+    struct PAD* pad = padGetPad(i);
     if (pad) {
       memcpy(&LocalPadHistory[i], &pad->rdata[2], 6);
     } else {
@@ -70,7 +97,7 @@ void padUpdate(void)
  */
 int padGetButton(int localPlayerIndex, u16 buttonMask)
 {
-  struct PAD* pad = PAD_POINTER[localPlayerIndex];
+  struct PAD* pad = padGetPad(localPlayerIndex);
   if (pad) {
     u16 btns = *(u16*)&pad->rdata[2];
     return (btns & buttonMask) == 0;
@@ -151,7 +178,7 @@ void padResetInput(int localPlayerIndex)
     if (localPlayerIndex < 0 || localPlayerIndex >= GAME_MAX_LOCALS)
         return;
 
-    struct PAD* pad = PAD_POINTER[localPlayerIndex];
+    struct PAD* pad = padGetPad(localPlayerIndex);
     if (!pad) return;
 
     u64 defaultValue = 0x7F7F7F7FFFFF7900;
