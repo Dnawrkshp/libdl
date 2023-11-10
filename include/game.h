@@ -456,6 +456,15 @@ __LIBDL_GETTER__ int gameGetPing(void);
 void gameScoreboardSetTeamScore(int teamId, int score);
 
 /*
+ * NAME :		gameScoreboardAddTeam
+ * 
+ * DESCRIPTION :
+ * 			Adds the given team to the scoreboard.
+ * 
+ */
+void gameScoreboardAddTeam(int teamId, int isLocal);
+
+/*
  * NAME :		gameGetWorldId
  * 
  * DESCRIPTION :
