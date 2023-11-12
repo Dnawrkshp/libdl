@@ -171,6 +171,7 @@ void gfxDrawSprite(float x, float y, float w, float h, int t0, int t1, int texW,
 
 void gfxDrawCubicLine(void * fxUtilsInterface, CubicLineEndPoint * points, int numPoints, void * cubicLineStatic, float scale);
 void gfxDrawQuad(void * fxRegistrySystemInterface, struct QuadDef * quadDef, MATRIX worldMatrix, u32 a3);
+void gfxDrawBillboardQuad(u128 pos, float size, u32 color, int alpha, float rot, int texId, int mode, float pushToCamera);
 void gfxResetQuad(struct QuadDef * quadDef);
 void gfxRegisterDrawFunction(void ** a0, gfxDrawFuncDef * callback, Moby* moby);
 
