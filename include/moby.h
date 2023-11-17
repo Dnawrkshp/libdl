@@ -848,14 +848,13 @@ void mobyComputeJointWorldMatrix(Moby* moby, int jointIdx, MATRIX out);
 /*
  *
  */
-Moby* mobySpawnExplosion(u128 pos,float exploScale,int bCameraShake,int numMoonRock,int numSliver,
+Moby* mobySpawnExplosion(u128 pos,int bCameraShake,int numMoonRock,int numSliver,
               int numMoltenRock,int numCloud,u16 numLines,u16 numPlumes,int bDistort,
               int bShell,int bScreenFlash1,int bScreenFlash2,int bGroundRing,int bRandomRing,
-              float pointLightRadius,float damageHp,float damageRadius,int damageFlags,
-              Moby *pPlatform,int colorCenterCore1,int colorCenterCore2,int colorMoonRock,
+              int damageFlags,Moby *pPlatform,int colorCenterCore1,int colorCenterCore2,int colorMoonRock,
               int colorMoonRockGlow,int colorSliver,int colorMoltenRock,int colorCloud,
-              int colorShell,int colorRing,int bDirtyRing,Moby *pDamager,
-              Moby *pIgnore,u128 externalVel);
+              int colorShell,int colorRing,int bDirtyRing,Moby *pDamager,Moby *pIgnore,u128 externalVel,
+              float exploScale,float pointLightRadius,float damageHp,float damageRadius);
 
 int flagIsReturning(Moby* flagMoby);
 int flagIsBeingPickedUp(Moby* flagMoby);
