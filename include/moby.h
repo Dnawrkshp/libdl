@@ -24,6 +24,28 @@ struct GuberEvent;
 struct Gid;
 
 //--------------------------------------------------------
+enum MobyModeBit
+{
+  MOBY_MODE_BIT_NONE =                  (0x0000),
+  MOBY_MODE_BIT_DISABLED =              (0x0001),
+  MOBY_MODE_BIT_NO_ANIMATIONS =         (0x0002),
+  MOBY_MODE_BIT_NO_POST_UPDATE =        (0x0004),
+  MOBY_MODE_BIT_TRANSPARENT =           (0x0008),
+  MOBY_MODE_BIT_HAS_GLOW =              (0x0010),
+  MOBY_MODE_BIT_HAS_SPECIAL_VARS =      (0x0020),
+  MOBY_MODE_BIT_UNK_40 =                (0x0040),
+  MOBY_MODE_BIT_HIDDEN =                (0x0080),
+  MOBY_MODE_BIT_LOCK_ROTATION =         (0x0100),
+  MOBY_MODE_BIT_DRAW_TRANSPARENT_WEIRD =(0x0200),
+  MOBY_MODE_BIT_DRAW_SHADOW =           (0x0400),
+  MOBY_MODE_BIT_DISABLE_Z_WRITE =       (0x0800),
+  MOBY_MODE_BIT_CAN_BE_AUTO_TARGETED =  (0x1000),
+  MOBY_MODE_BIT_HIDE_BACKFACES =        (0x2000),
+  MOBY_MODE_BIT_CAN_BE_DAMAGED =        (0x4000),
+  MOBY_MODE_BIT_MIRROR =                (0x8000),
+};
+
+//--------------------------------------------------------
 enum MobyId
 {
     MOBY_ID_CLANK = 0x000A,
