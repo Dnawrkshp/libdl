@@ -34,7 +34,7 @@ enum CollisionFlags
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-int CollMobysSphere_Fix(VECTOR position, u64 hitFlag, Moby * moby, u64 a3, float radius);
+int CollMobysSphere_Fix(VECTOR position, u64 hitFlag, Moby * moby, MobyColDamageIn* colDamageIn, float radius);
 
 
 /*
@@ -67,7 +67,7 @@ __LIBDL_GETTER__ Moby** CollMobysSphere_Fix_GetHitMobies(void);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-int CollLine_Fix(VECTOR from, VECTOR to, u64 hitFlag, Moby * moby, u64 t0);
+int CollLine_Fix(VECTOR from, VECTOR to, u64 hitFlag, Moby * moby, MobyColDamageIn* colDamageIn);
 
 /*
  * NAME :		CollLine_Fix_GetHitMoby
