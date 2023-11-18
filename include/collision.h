@@ -13,6 +13,12 @@
 #include <tamtypes.h>
 #include "moby.h"
 
+enum CollisionFlags
+{
+  COLLISION_FLAG_IGNORE_NONE = 0,
+  COLLISION_FLAG_IGNORE_STATIC = (1 << 0),
+  COLLISION_FLAG_IGNORE_DYNAMIC = (1 << 1),
+};
 
 /*
  * NAME :		CollMobysSphere_Fix
