@@ -913,7 +913,7 @@ __LIBDL_GETTER__ int playerGetNumLocals(void);
  * NOTES :
  * 
  * ARGS : 
- *      player      :           Target player.
+ *      gadgetBox   :           Target player's gadget box.
  *      weaponId    :           ID of weapon to give.
  *      weaponLevel :           Level of weapon.
  * 
@@ -921,7 +921,7 @@ __LIBDL_GETTER__ int playerGetNumLocals(void);
  * 
  * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
  */
-void playerGiveWeapon(Player * player, int weaponId, int weaponLevel);
+void playerGiveWeapon(GadgetBox * gadgetBox, int weaponId, int weaponLevel, int giveMaxAmmo);
 
 /*
  * NAME :		playerRespawn
