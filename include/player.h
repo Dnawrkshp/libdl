@@ -672,8 +672,9 @@ typedef struct Player
     char UNK36[0x84];                                               // 0x2F2C
 
     float DamageMultiplier;                                         // 0x2FB0
+    int ArmorLevel;                                                 // 0x2FB4
 
-    char UNK26[0x0C];                                               // 0x2FB4
+    char UNK26[0x08];                                               // 0x2FB8
 
     float Speed;                                                    // 0x2FC0
 
