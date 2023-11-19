@@ -120,7 +120,7 @@ PadButtonStatus * playerGetPad(Player * player)
         if (!netPlayer)
             return 0;
 
-        return (PadButtonStatus*)(&netPlayer->padMessageElems[0].msg.pad_data);
+        return (PadButtonStatus*)(netPlayer->padMessageElems[0].msg.pad_data);
     }
 }
 
@@ -194,7 +194,7 @@ int playerPadGetButtonUp(Player * player, u16 buttonMask)
         return 0;
 
     return !playerPadGetButton(player, buttonMask) &&
-        (PlayerPadHistory[player->PlayerId].btns & buttonMask) != 0;
+        (PlayerPadHistory[player->PlayerId].btns & buttonMask) == 0;
 }
 
 //--------------------------------------------------------------------------------
