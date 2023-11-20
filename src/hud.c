@@ -18,6 +18,7 @@
 
 void* internal_hudGetCanvas_inGame(u32 canvas);
 u32 internal_hudGetCurrentCanvas_inGame(void);
+void internal_hudSetCurrentCanvas_inGame(u32);
 struct HUDObject* internal_hudCanvasGetObject_inGame(void* canvas, u32 objId);
 
 
@@ -47,6 +48,13 @@ u32 hudGetCurrentCanvas(void)
     }
 
     return NULL;
+}
+
+void hudSetCurrentCanvas(u32 canvas)
+{
+  if (isInGame()) {
+    internal_hudSetCurrentCanvas_inGame(canvas);
+  }
 }
 
 struct HUDObject* hudCanvasGetObject(void* canvas, u32 objId)

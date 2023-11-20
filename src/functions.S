@@ -335,5 +335,6 @@ FUNCTION(randRadian, 0x00500800)
 #--------------------------------------------------------
 FUNCTION(internal_hudGetCanvas_inGame, 0x0053f988)
 FUNCTION(internal_hudGetCurrentCanvas_inGame, 0x005c2288)
+FUNCTION(internal_hudSetCurrentCanvas_inGame, 0x005c2240)
 FUNCTION(internal_hudCanvasGetObject_inGame, 0x005bcc90)
 FUNCTION(hudGetTeamColor, 0x00541ef8)

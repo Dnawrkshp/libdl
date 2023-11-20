@@ -162,6 +162,7 @@ u32 hudGetTeamColor(int team, int variant);
 
 void* hudGetCanvas(u32 canvas);
 u32 hudGetCurrentCanvas(void);
+void hudSetCurrentCanvas(u32);
 struct HUDObject* hudCanvasGetObject(void* canvas, u32 objId);
 void hudHidePopup(void);
 
