@@ -165,5 +165,6 @@ u32 hudGetCurrentCanvas(void);
 void hudSetCurrentCanvas(u32);
 struct HUDObject* hudCanvasGetObject(void* canvas, u32 objId);
 void hudHidePopup(void);
+u32 hudPanelGetElement(void* panel, int element);
 
 #endif // _LIBDL_HUD_H_
