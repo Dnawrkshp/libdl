@@ -318,6 +318,7 @@ FUNCTION(internal_vector_unpack, 0x0050a858)
 #--------------------------------------------------------
 FUNCTION(CollMobysSphere_Fix, 0x004bb788)
 FUNCTION(CollLine_Fix, 0x004b7e50)
+FUNCTION(CollMovingSphere, 0x005038d0)
 
 #--------------------------------------------------------
 #------------------------ RANDOM ------------------------

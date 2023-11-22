@@ -21,6 +21,22 @@ enum CollisionFlags
 };
 
 /*
+ * NAME :		CollMovingSphere
+ * 
+ * DESCRIPTION :
+ * 			
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ */
+float CollMovingSphere(VECTOR from, VECTOR to, float radius, u64 hitFlag, Moby * moby);
+
+/*
  * NAME :		CollMobysSphere_Fix
  * 
  * DESCRIPTION :
