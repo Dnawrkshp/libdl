@@ -359,13 +359,71 @@ void vector_projectonhorizontal(VECTOR output, VECTOR input0)
 }
 
 //--------------------------------------------------------
+void vector_project(VECTOR output, VECTOR input0, VECTOR input1)
+{
+  asm __volatile__ (
+#if __GNUC__ > 3
+  "vmaxw.xyzw     $vf3, $vf0, $vf0w   \n"
+  "lqc2		        $vf1, 0x00(%1)	    \n"
+  "lqc2		        $vf2, 0x00(%2)	    \n"
+  "vmul.xyz		    $vf1, $vf1, $vf2    \n"
+  "vadday.x       $ACC, $vf1, $vf1y   \n"
+  "vmaddz.x		    $vf1, $vf3, $vf1z   \n"
+  "vmulx.xyz		  $vf2, $vf2, $vf1x   \n"
+  "sqc2		        $vf2, 0x00(%0)	    \n"
+#else
+  "vmaxw.xyzw     vf3, vf0, vf0w      \n"
+  "lqc2		        vf1, 0x00(%1)	      \n"
+  "lqc2		        vf2, 0x00(%2)	      \n"
+  "vmul.xyz		    vf1, vf1, vf2       \n"
+  "vadday.x       ACC, vf1, vf1y      \n"
+  "vmaddz.x		    vf1, vf3, vf1z      \n"
+  "vmulx.xyz      vf2, vf2, vf1x      \n"
+  "sqc2		        vf2, 0x00(%0)	      \n"
+#endif
+  : : "r" (output), "r" (input0), "r" (input1)
+  : "memory"
+  );
+}
+
+//--------------------------------------------------------
+void vector_projectonplane(VECTOR output, VECTOR input0, VECTOR input1)
+{
+  asm __volatile__ (
+#if __GNUC__ > 3
+  "vmaxw.xyzw     $vf3, $vf0, $vf0w   \n"
+  "lqc2		        $vf4, 0x00(%1)	    \n"
+  "lqc2		        $vf2, 0x00(%2)	    \n"
+  "vmul.xyz		    $vf1, $vf4, $vf2    \n"
+  "vadday.x       $ACC, $vf1, $vf1y   \n"
+  "vmaddz.x		    $vf1, $vf3, $vf1z   \n"
+  "vmulx.xyz		  $vf2, $vf2, $vf1x   \n"
+  "vsub.xyz		    $vf2, $vf4, $vf2    \n"
+  "sqc2		        $vf2, 0x00(%0)	    \n"
+#else
+  "vmaxw.xyzw     vf3, vf0, vf0w      \n"
+  "lqc2		        vf4, 0x00(%1)	      \n"
+  "lqc2		        vf2, 0x00(%2)	      \n"
+  "vmul.xyz		    vf1, vf4, vf2       \n"
+  "vadday.x       ACC, vf1, vf1y      \n"
+  "vmaddz.x		    vf1, vf3, vf1z      \n"
+  "vmulx.xyz      vf2, vf2, vf1x      \n"
+  "vsub.xyz       vf2, vf4, vf2       \n"
+  "sqc2		        vf2, 0x00(%0)	      \n"
+#endif
+  : : "r" (output), "r" (input0), "r" (input1)
+  : "memory"
+  );
+}
+
+//--------------------------------------------------------
 void vector_print(VECTOR input0)
 {
 	printf("(%f, %f, %f, %f)",
 		input0[0],
-        input0[1],
-        input0[2],
-        input0[3]);
+    input0[1],
+    input0[2],
+    input0[3]);
 }
 
 //--------------------------------------------------------

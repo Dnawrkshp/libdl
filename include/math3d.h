@@ -52,6 +52,8 @@ void vector_scale(VECTOR output, VECTOR input0, float scalar);
 void vector_multiply(VECTOR output, VECTOR input0, VECTOR input1);
 void vector_projectonvertical(VECTOR output, VECTOR input0);
 void vector_projectonhorizontal(VECTOR output, VECTOR input0);
+void vector_project(VECTOR output, VECTOR input0, VECTOR input1);
+void vector_projectonplane(VECTOR output, VECTOR input0, VECTOR input1);
 void vector_print(VECTOR input0);
 
 void matrix_toeuler(VECTOR output, MATRIX input0);
