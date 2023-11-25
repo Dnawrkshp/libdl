@@ -779,6 +779,11 @@ int mobyPlaySound(short a0, u8 a1, Moby* moby);
 /*
  * 
  */
+int mobyPlaySoundByClass(short a0, u8 a1, Moby* moby, int oclass);
+
+/*
+ * 
+ */
 void mobyAnimTransition(Moby* moby, int animId, int a2, float f12);
 
 /*
