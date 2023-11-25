@@ -742,6 +742,11 @@ __LIBDL_GETTER__ int mobyIsDestroyed(Moby* moby);
 Moby* mobyFindNextByOClass(Moby* start, int oClass);
 
 /*
+ * Returns pointer to the moby's MobyClass (if loaded).
+ */
+void * mobyGetClass(int oClass);
+
+/*
  * Returns non-zero if the given o class is loaded in the map.
  */
 int mobyClassIsLoaded(int oClass);
