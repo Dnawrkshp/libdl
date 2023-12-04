@@ -28,7 +28,7 @@ enum MobyModeBit
 {
   MOBY_MODE_BIT_NONE =                  (0x0000),
   MOBY_MODE_BIT_DISABLED =              (0x0001),
-  MOBY_MODE_BIT_NO_ANIMATIONS =         (0x0002),
+  MOBY_MODE_BIT_NO_UPDATE =             (0x0002),
   MOBY_MODE_BIT_NO_POST_UPDATE =        (0x0004),
   MOBY_MODE_BIT_TRANSPARENT =           (0x0008),
   MOBY_MODE_BIT_HAS_GLOW =              (0x0010),
