@@ -325,7 +325,7 @@ FUNCTION(CollMovingSphere, 0x005038d0)
 #------------------------ RANDOM ------------------------
 #--------------------------------------------------------
 FUNCTION(rand, 0x005006d0)
-FUNCTION(randVector, 0x004b7e50)
+FUNCTION(randVector, 0x00500930)
 FUNCTION(randVectorRangeNeg, 0x005083c8)
 FUNCTION(randVectorRange, 0x00508448)
 FUNCTION(randRange, 0x00500748)
