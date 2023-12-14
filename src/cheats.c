@@ -60,23 +60,25 @@ void cheatsApplyNoV2s(void)
 //--------------------------------------------------------
 int cheatsDisableHealthboxes(void)
 {
-    int count = 0;
-    Moby* moby = mobyListGetStart();
-    Moby* mEnd = mobyListGetEnd();
+  if (!isInGame()) return;
 
-    while (moby < mEnd)
+  int count = 0;
+  Moby* moby = mobyListGetStart();
+  Moby* mEnd = mobyListGetEnd();
+
+  while (moby < mEnd)
+  {
+    if (moby->OClass == MOBY_ID_HEALTH_BOX_MULT || moby->OClass == MOBY_ID_HEALTH_ORB_MULT)
     {
-      if (moby->OClass == MOBY_ID_HEALTH_BOX_MULT || moby->OClass == MOBY_ID_HEALTH_ORB_MULT)
-      {
-        // move to 0,0,0
-        memset(moby->Position, 0, sizeof(moby->Position));
-        ++count;
-      }
-
-      ++moby;
+      // move to 0,0,0
+      memset(moby->Position, 0, sizeof(moby->Position));
+      ++count;
     }
-    
-    return count;
+
+    ++moby;
+  }
+  
+  return count;
 }
 
 //--------------------------------------------------------

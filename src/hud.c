@@ -5,12 +5,12 @@
 /*
  * Player 1's hud.
  */
-#define HUD_P1			((PlayerHUDFlags*)0x0030D8E0)
+#define HUD_P1      ((PlayerHUDFlags*)0x0030D8E0)
 
 /*
  * Player 2's hud.
  */
-#define HUD_P2			((PlayerHUDFlags*)0x0030D8F0)
+#define HUD_P2      ((PlayerHUDFlags*)0x0030D8F0)
 
 
 #define HUD_POPUP_VISIBILITY_FLOAT    (0x0030E7E8)

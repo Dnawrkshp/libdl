@@ -15,7 +15,7 @@
 
 .global _start
 
-	.ent _start
+  .ent _start
 _start:
-	j main
-	nop
+  j main
+  nop

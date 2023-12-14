@@ -22,10 +22,10 @@ const PadHistory DefaultPadHistory = {
 PadHistory LocalPadHistory[GAME_MAX_LOCALS];
 
 /*
- * NAME :		padGetPad
+ * NAME :    padGetPad
  * 
  * DESCRIPTION :
- * 			Returns a pointer to the respective local player's pad struct.
+ *       Returns a pointer to the respective local player's pad struct.
  * 
  * NOTES :
  * 
@@ -33,7 +33,7 @@ PadHistory LocalPadHistory[GAME_MAX_LOCALS];
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 struct PAD* padGetPad(int localPlayerIdx)
 {
@@ -50,10 +50,10 @@ struct PAD* padGetPad(int localPlayerIdx)
 }
 
 /*
- * NAME :		padUpdate
+ * NAME :    padUpdate
  * 
  * DESCRIPTION :
- * 			Processes pad state, registering when a button is pressed and released.
+ *       Processes pad state, registering when a button is pressed and released.
  * 
  * NOTES :
  *          This must be called every tick in order for pad functionality to work.
@@ -62,7 +62,7 @@ struct PAD* padGetPad(int localPlayerIdx)
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 void padUpdate(void)
 {
@@ -79,10 +79,10 @@ void padUpdate(void)
 }
 
 /*
- * NAME :		padGetButton
+ * NAME :    padGetButton
  * 
  * DESCRIPTION :
- * 			Returns 1 when the user is pressing the given button combination.
+ *       Returns 1 when the user is pressing the given button combination.
  *          Returns negative on failure.
  * 
  * NOTES :
@@ -93,7 +93,7 @@ void padUpdate(void)
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 int padGetButton(int localPlayerIndex, u16 buttonMask)
 {
@@ -107,10 +107,10 @@ int padGetButton(int localPlayerIndex, u16 buttonMask)
 }
 
 /*
- * NAME :		padGetButtonDown
+ * NAME :    padGetButtonDown
  * 
  * DESCRIPTION :
- * 			Returns 1 during the frame that the user starts pressing the given button combination.
+ *       Returns 1 during the frame that the user starts pressing the given button combination.
  *          Returns negative on failure.
  * 
  * NOTES :
@@ -121,7 +121,7 @@ int padGetButton(int localPlayerIndex, u16 buttonMask)
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 int padGetButtonDown(int localPlayerIndex, u16 buttonMask)
 {
@@ -133,10 +133,10 @@ int padGetButtonDown(int localPlayerIndex, u16 buttonMask)
 }
 
 /*
- * NAME :		padGetButtonUp
+ * NAME :    padGetButtonUp
  * 
  * DESCRIPTION :
- * 			Returns 1 during the frame that the user releases the given button combination.
+ *       Returns 1 during the frame that the user releases the given button combination.
  *          Returns negative on failure.
  * 
  * NOTES :
@@ -147,7 +147,7 @@ int padGetButtonDown(int localPlayerIndex, u16 buttonMask)
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 int padGetButtonUp(int localPlayerIndex, u16 buttonMask)
 {
@@ -159,10 +159,10 @@ int padGetButtonUp(int localPlayerIndex, u16 buttonMask)
 }
 
 /*
- * NAME :		padResetInput
+ * NAME :    padResetInput
  * 
  * DESCRIPTION :
- * 			Resets the given ports inputs.
+ *       Resets the given ports inputs.
  * 
  * NOTES :
  * 
@@ -171,7 +171,7 @@ int padGetButtonUp(int localPlayerIndex, u16 buttonMask)
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 void padResetInput(int localPlayerIndex)
 {
@@ -187,10 +187,10 @@ void padResetInput(int localPlayerIndex)
 }
 
 /*
- * NAME :		padDisableInput
+ * NAME :    padDisableInput
  * 
  * DESCRIPTION :
- * 			Disables the pad input.
+ *       Disables the pad input.
  * 
  * NOTES :
  * 
@@ -198,7 +198,7 @@ void padResetInput(int localPlayerIndex)
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 void padDisableInput(void)
 {
@@ -216,10 +216,10 @@ void padDisableInput(void)
 }
 
 /*
- * NAME :		padEnableInput
+ * NAME :    padEnableInput
  * 
  * DESCRIPTION :
- * 			Enables the pad input.
+ *       Enables the pad input.
  * 
  * NOTES :
  * 
@@ -227,7 +227,7 @@ void padDisableInput(void)
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 void padEnableInput(void)
 {

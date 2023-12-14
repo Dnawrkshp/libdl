@@ -1,9 +1,9 @@
 /***************************************************
- * FILENAME :		stdlib.h
+ * FILENAME :    stdlib.h
  * 
  * DESCRIPTION :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 
 #ifndef _LIBDL_STDLIB_H_

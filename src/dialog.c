@@ -5,10 +5,10 @@ void internal_dialogPlaySound_inGame(u64, u64, u64, u64, float, float, float, fl
 void internal_dialogPlaySound_inLobby(u64, u64);
 
 /*
- * NAME :		dialogPlaySound
+ * NAME :    dialogPlaySound
  * 
  * DESCRIPTION :
- * 			Plays the given dialog sound.
+ *       Plays the given dialog sound.
  * 
  * NOTES :
  * 
@@ -18,7 +18,7 @@ void internal_dialogPlaySound_inLobby(u64, u64);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 void dialogPlaySound(int dialogId, int arg2)
 {

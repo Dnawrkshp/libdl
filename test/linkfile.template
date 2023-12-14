@@ -15,63 +15,63 @@ ENTRY(_start);
 
 SECTIONS {
 #ifdef _PROGRAM_ENTRY
-	.text _PROGRAM_ENTRY: {
+  .text _PROGRAM_ENTRY: {
 #else
-	.text 0x000F0000: {
+  .text 0x000F0000: {
 #endif
-		_ftext = . ;
-		*(.text)
-		*(.text.*)
-		*(.gnu.linkonce.t*)
-	}
+    _ftext = . ;
+    *(.text)
+    *(.text.*)
+    *(.gnu.linkonce.t*)
+  }
 
 
-	PROVIDE(_etext = .);
-	PROVIDE(etext = .);
+  PROVIDE(_etext = .);
+  PROVIDE(etext = .);
 
-	.reginfo : { *(.reginfo) }
+  .reginfo : { *(.reginfo) }
 
-	/* Static data.  */
-	.rodata ALIGN(16): {
-		*(.rodata)
-		*(.rodata.*)
-		*(.gnu.linkonce.r*)
-	}
+  /* Static data.  */
+  .rodata ALIGN(16): {
+    *(.rodata)
+    *(.rodata.*)
+    *(.gnu.linkonce.r*)
+  }
 
-	.data ALIGN(16): {
-		_fdata = . ;
-		*(.data)
-		*(.data.*)
-		*(.gnu.linkonce.d*)
-		SORT(CONSTRUCTORS)
-	}
+  .data ALIGN(16): {
+    _fdata = . ;
+    *(.data)
+    *(.data.*)
+    *(.gnu.linkonce.d*)
+    SORT(CONSTRUCTORS)
+  }
 
-	.sdata ALIGN(16): {
-		*(.sdata)
-		*(.sdata.*)
-		*(.gnu.linkonce.s*)
-	}
+  .sdata ALIGN(16): {
+    *(.sdata)
+    *(.sdata.*)
+    *(.gnu.linkonce.s*)
+  }
 
-	_edata = .;
-	PROVIDE(edata = .);
+  _edata = .;
+  PROVIDE(edata = .);
 
-	/* Uninitialized data.  */
-	.sbss ALIGN(16) : {
-		_fbss = . ;
-		*(.sbss)
-		*(.sbss.*)
-		*(.gnu.linkonce.sb*)
-		*(.scommon)
-	}
+  /* Uninitialized data.  */
+  .sbss ALIGN(16) : {
+    _fbss = . ;
+    *(.sbss)
+    *(.sbss.*)
+    *(.gnu.linkonce.sb*)
+    *(.scommon)
+  }
 
-	.bss ALIGN(16) : {
-		*(.bss)
-		*(.bss.*)
-		*(.gnu.linkonce.b*)
-		*(COMMON)
-	}
-	_end_bss = .;
+  .bss ALIGN(16) : {
+    *(.bss)
+    *(.bss.*)
+    *(.gnu.linkonce.b*)
+    *(COMMON)
+  }
+  _end_bss = .;
 
-	_end = . ;
-	PROVIDE(end = .);
+  _end = . ;
+  PROVIDE(end = .);
 }

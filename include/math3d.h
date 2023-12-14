@@ -1,12 +1,12 @@
 /***************************************************
- * FILENAME :		math3d.h
+ * FILENAME :    math3d.h
  * 
  * DESCRIPTION :
- * 		
+ *     
  * NOTES :
  *          Many functions are pulled from the PS2SDK.
- * 		
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ *     
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 
 /*

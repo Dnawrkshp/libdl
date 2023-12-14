@@ -1,10 +1,10 @@
 /***************************************************
- * FILENAME :		common.h
+ * FILENAME :    common.h
  * 
  * DESCRIPTION :
- * 		
- * 		
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ *     
+ *     
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 
 #ifndef _LIBDL_COMMON_H_

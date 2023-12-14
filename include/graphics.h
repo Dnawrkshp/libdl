@@ -1,10 +1,10 @@
 /***************************************************
- * FILENAME :		graphics.h
+ * FILENAME :    graphics.h
  * 
  * DESCRIPTION :
- * 		
- * 		
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ *     
+ *     
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 
 #ifndef _LIBDL_GRAPHICS_H_
@@ -36,16 +36,16 @@ typedef struct RECT
 
 //--------------------------------------------------------
 typedef struct CubicLineEndPoint {
-	/*   0 */ int iCoreRGBA;
-	/*   4 */ int iGlowRGBA;
-	/*   8 */ char bFadeEnd;
-	/*   9 */ char style;
-	/*   a */ unsigned char numEndPoints;
-	/*   b */ char bDisabled;
-	/*   c */ int iNumSkipPoints;
-	/*  10 */ VECTOR vPos;
-	/*  20 */ VECTOR vTangent;
-	/*  30 */ VECTOR vTangentOccQuat;
+  /*   0 */ int iCoreRGBA;
+  /*   4 */ int iGlowRGBA;
+  /*   8 */ char bFadeEnd;
+  /*   9 */ char style;
+  /*   a */ unsigned char numEndPoints;
+  /*   b */ char bDisabled;
+  /*   c */ int iNumSkipPoints;
+  /*  10 */ VECTOR vPos;
+  /*  20 */ VECTOR vTangent;
+  /*  30 */ VECTOR vTangentOccQuat;
 } CubicLineEndPoint;
 
 //--------------------------------------------------------
@@ -61,17 +61,17 @@ struct QuadDef
   VECTOR VertexPositions[4];
   u32 VertexColors[4];
   struct UV VertexUVs[4];
-	u64 Clamp;
-	u64 Tex0;
-	u64 Tex1;
-	u64 Alpha;
+  u64 Clamp;
+  u64 Tex0;
+  u64 Tex1;
+  u64 Alpha;
 };
 
 /*
- * NAME :		gfxScreenSpaceText
+ * NAME :    gfxScreenSpaceText
  * 
  * DESCRIPTION :
- * 			Draws the text on the screen.
+ *       Draws the text on the screen.
  * 
  * NOTES :
  * 
@@ -79,15 +79,15 @@ struct QuadDef
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 int gfxScreenSpaceText(float x, float y, float scaleX, float scaleY, u32 color, const char * string, int length, int alignment);
 
 /*
- * NAME :		gfxScreenSpaceBox
+ * NAME :    gfxScreenSpaceBox
  * 
  * DESCRIPTION :
- * 			Draws a quad on the screen.
+ *       Draws a quad on the screen.
  * 
  * NOTES :
  * 
@@ -96,15 +96,15 @@ int gfxScreenSpaceText(float x, float y, float scaleX, float scaleY, u32 color, 
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 void gfxScreenSpaceQuad(RECT * rect, u32 colorTL, u32 colorTR, u32 colorBL, u32 colorBR);
 
 /*
- * NAME :		gfxScreenSpaceBox
+ * NAME :    gfxScreenSpaceBox
  * 
  * DESCRIPTION :
- * 			Draws a box on the screen.
+ *       Draws a box on the screen.
  * 
  * NOTES :
  * 
@@ -117,15 +117,15 @@ void gfxScreenSpaceQuad(RECT * rect, u32 colorTL, u32 colorTR, u32 colorBL, u32 
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 void gfxScreenSpaceBox(float x, float y, float w, float h, u32 color);
 
 /*
- * NAME :		gfxPixelSpaceBox
+ * NAME :    gfxPixelSpaceBox
  * 
  * DESCRIPTION :
- * 			Draws a box on the screen.
+ *       Draws a box on the screen.
  * 
  * NOTES :
  * 
@@ -138,15 +138,15 @@ void gfxScreenSpaceBox(float x, float y, float w, float h, u32 color);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 void gfxPixelSpaceBox(float x, float y, float w, float h, u32 color);
 
 /*
- * NAME :		gfxWorldSpaceToScreenSpace
+ * NAME :    gfxWorldSpaceToScreenSpace
  * 
  * DESCRIPTION :
- * 			Converts world space to screen space pixel coordinates.
+ *       Converts world space to screen space pixel coordinates.
  * 
  * NOTES :
  * 
@@ -155,7 +155,7 @@ void gfxPixelSpaceBox(float x, float y, float w, float h, u32 color);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 int gfxWorldSpaceToScreenSpace(VECTOR position, int * x, int * y);
 

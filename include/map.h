@@ -1,13 +1,13 @@
 /***************************************************
- * FILENAME :		map.h
+ * FILENAME :    map.h
  * 
  * DESCRIPTION :
- * 		Contains map specific offsets and structures for Deadlocked.
+ *     Contains map specific offsets and structures for Deadlocked.
  * 
  * NOTES :
  * 
- * 		
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ *     
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 
 #ifndef _LIBDL_MAP_H_

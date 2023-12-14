@@ -1,14 +1,14 @@
 /***************************************************
- * FILENAME :		color.h
+ * FILENAME :    color.h
  * 
  * DESCRIPTION :
- * 		Contains color related function definitions found in Deadlocked.
+ *     Contains color related function definitions found in Deadlocked.
  * 
  * NOTES :
- * 		Each offset is determined per app id.
- * 		This is to ensure compatibility between versions of Deadlocked/Gladiator.
- * 		
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ *     Each offset is determined per app id.
+ *     This is to ensure compatibility between versions of Deadlocked/Gladiator.
+ *     
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 
 /*
@@ -25,10 +25,10 @@
 #define _LIBDL_COLOR_H_
 
 /*
- * NAME :		colorLerp
+ * NAME :    colorLerp
  * 
  * DESCRIPTION :
- * 			Interpolates the color from a to b by t.
+ *       Interpolates the color from a to b by t.
  * 
  * NOTES :
  * 
@@ -39,7 +39,7 @@
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 u32 colorLerp(u32 a, u32 b, float t);
 

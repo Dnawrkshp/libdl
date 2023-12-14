@@ -1,10 +1,10 @@
 /***************************************************
- * FILENAME :		radar.h
+ * FILENAME :    radar.h
  * 
  * DESCRIPTION :
- * 		Contains radar and blip specific offsets and structures for Deadlocked.
+ *     Contains radar and blip specific offsets and structures for Deadlocked.
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 
 #ifndef _LIBDL_RADAR_H_
@@ -15,45 +15,45 @@
 #include "moby.h"
 
 /*
- * NAME :		RADAR_BLIPS_ARRAY_SIZE
+ * NAME :    RADAR_BLIPS_ARRAY_SIZE
  * 
  * DESCRIPTION :
- * 			Maximum number of elements in the radar blip buffer.
+ *       Maximum number of elements in the radar blip buffer.
  * 
  * NOTES :
  * 
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 #define RADAR_BLIPS_ARRAY_SIZE                  (0x40)
 
 /*
- * NAME :		SpawnPoint
+ * NAME :    SpawnPoint
  * 
  * DESCRIPTION :
- * 			
+ *       
  * 
  * NOTES :
  * 
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 typedef struct RadarBlip
 {
-	short Type;
-	int Team;
-	float X;
-	float Y;
-	float Rotation;
-	Moby * Moby;
-	short Life;
+  short Type;
+  int Team;
+  float X;
+  float Y;
+  float Rotation;
+  Moby * Moby;
+  short Life;
 } RadarBlip;
 
 /*
- * NAME :		radarGetBlips
+ * NAME :    radarGetBlips
  * 
  * DESCRIPTION :
- * 			
+ *       
  * 
  * NOTES :
  * 
@@ -61,15 +61,15 @@ typedef struct RadarBlip
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ RadarBlip * radarGetBlips(void);
 
 /*
- * NAME :		radarGetBlipIndex
+ * NAME :    radarGetBlipIndex
  * 
  * DESCRIPTION :
- * 			
+ *       
  * 
  * NOTES :
  * 
@@ -77,15 +77,15 @@ __LIBDL_GETTER__ RadarBlip * radarGetBlips(void);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ int radarGetBlipIndex(Moby * moby);
 
 /*
- * NAME :		radarGetBlipColor
+ * NAME :    radarGetBlipColor
  * 
  * DESCRIPTION :
- * 			
+ *       
  * 
  * NOTES :
  * 
@@ -93,7 +93,7 @@ __LIBDL_GETTER__ int radarGetBlipIndex(Moby * moby);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ u32 radarGetBlipColor(int blipIdx);
 

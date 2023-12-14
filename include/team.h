@@ -1,14 +1,14 @@
 /***************************************************
- * FILENAME :		team.h
+ * FILENAME :    team.h
  * 
  * DESCRIPTION :
- * 		Contains team specific offsets and structures for Deadlocked.
+ *     Contains team specific offsets and structures for Deadlocked.
  * 
  * NOTES :
- * 		Each offset is determined per app id.
- * 		This is to ensure compatibility between versions of Deadlocked/Gladiator.
- * 		
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ *     Each offset is determined per app id.
+ *     This is to ensure compatibility between versions of Deadlocked/Gladiator.
+ *     
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 
 #ifndef _LIBDL_TEAM_H_

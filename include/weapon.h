@@ -1,14 +1,14 @@
 /***************************************************
- * FILENAME :		weapon.h
+ * FILENAME :    weapon.h
  * 
  * DESCRIPTION :
- * 		Contains weapon specific offsets and structures for Deadlocked.
+ *     Contains weapon specific offsets and structures for Deadlocked.
  * 
  * NOTES :
- * 		Each offset is determined per app id.
- * 		This is to ensure compatibility between versions of Deadlocked/Gladiator.
- * 		
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ *     Each offset is determined per app id.
+ *     This is to ensure compatibility between versions of Deadlocked/Gladiator.
+ *     
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 
 #ifndef _LIBDL_WEAPON_H_
@@ -22,14 +22,14 @@
  */
 struct tNW_GadgetEventMessage
 {
-	/*   0 */ short int GadgetId;
-	/*   2 */ char PlayerIndex;
-	/*   3 */ char GadgetEventType;
-	/*   4 */ char ExtraData;
-	/*   8 */ int ActiveTime;
-	/*   c */ unsigned int TargetUID;
-	/*  10 */ float FiringLoc[3];
-	/*  1c */ float TargetDir[3];
+  /*   0 */ short int GadgetId;
+  /*   2 */ char PlayerIndex;
+  /*   3 */ char GadgetEventType;
+  /*   4 */ char ExtraData;
+  /*   8 */ int ActiveTime;
+  /*   c */ unsigned int TargetUID;
+  /*  10 */ float FiringLoc[3];
+  /*  1c */ float TargetDir[3];
 };
 
 /*
@@ -37,15 +37,15 @@ struct tNW_GadgetEventMessage
  */
 typedef struct GadgetEvent
 {
-	/*   0 */ unsigned char gadgetID;
-	/*   1 */ unsigned char cPlayerIndex;
-	/*   2 */ char cGadgetType;
-	/*   3 */ char gadgetEventType;
-	/*   4 */ int iActiveTime;
-	/*   8 */ unsigned int targetUID;
-	/*  10 */ VECTOR targetOffsetQuat;
-	/*  20 */ struct GadgetEvent* pNextGadgetEvent;
-	/*  24 */ struct tNW_GadgetEventMessage gadgetEventMsg;
+  /*   0 */ unsigned char gadgetID;
+  /*   1 */ unsigned char cPlayerIndex;
+  /*   2 */ char cGadgetType;
+  /*   3 */ char gadgetEventType;
+  /*   4 */ int iActiveTime;
+  /*   8 */ unsigned int targetUID;
+  /*  10 */ VECTOR targetOffsetQuat;
+  /*  20 */ struct GadgetEvent* pNextGadgetEvent;
+  /*  24 */ struct tNW_GadgetEventMessage gadgetEventMsg;
 } GadgetEvent;
 
 /*
@@ -68,16 +68,16 @@ typedef struct GadgetEntry
  */
 typedef struct GadgetBox
 {
-	/*   0 */ char Initialized;
-	/*   1 */ char Level;
-	/*   2 */ char bButtonDown[10];
-	/*   c */ short int ButtonUpFrames[10];
-	/*  20 */ char NumGadgetEvents;
-	/*  21 */ char ModBasic[8];
-	/*  2a */ short int ModPostFX;
-	/*  2c */ struct GadgetEvent* NextGadgetEvent;
-	/*  30 */ struct GadgetEvent GadgetEventSlots[32];
-	/* a30 */ struct GadgetEntry Gadgets[32];
+  /*   0 */ char Initialized;
+  /*   1 */ char Level;
+  /*   2 */ char bButtonDown[10];
+  /*   c */ short int ButtonUpFrames[10];
+  /*  20 */ char NumGadgetEvents;
+  /*  21 */ char ModBasic[8];
+  /*  2a */ short int ModPostFX;
+  /*  2c */ struct GadgetEvent* NextGadgetEvent;
+  /*  30 */ struct GadgetEvent GadgetEventSlots[32];
+  /* a30 */ struct GadgetEntry Gadgets[32];
 } GadgetBox;
 
 /*
@@ -109,15 +109,15 @@ typedef struct WrenchDefsData
 } WrenchDefsData;
 
 /*
- * NAME :		WEAPON_IDS
+ * NAME :    WEAPON_IDS
  * 
  * DESCRIPTION :
- * 			Defines the value for each weapon id.
+ *       Defines the value for each weapon id.
  * 
  * NOTES :
  *          
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 enum WEAPON_IDS
 {
@@ -137,15 +137,15 @@ enum WEAPON_IDS
 };
 
 /*
- * NAME :		WEAPON_SLOT_INDEX
+ * NAME :    WEAPON_SLOT_INDEX
  * 
  * DESCRIPTION :
- * 			Defines the equip slot index for each weapon.
+ *       Defines the equip slot index for each weapon.
  * 
  * NOTES :
  *          
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 enum WEAPON_SLOT_INDEX
 {
@@ -161,15 +161,15 @@ enum WEAPON_SLOT_INDEX
 };
 
 /*
- * NAME :		ALPHA_MOD_IDS
+ * NAME :    ALPHA_MOD_IDS
  * 
  * DESCRIPTION :
- * 			Defines the value for each alpha mod.
+ *       Defines the value for each alpha mod.
  * 
  * NOTES :
  *          
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 enum ALPHA_MOD_IDS
 {
@@ -185,15 +185,15 @@ enum ALPHA_MOD_IDS
 };
 
 /*
- * NAME :		OMEGA_MOD_IDS
+ * NAME :    OMEGA_MOD_IDS
  * 
  * DESCRIPTION :
- * 			Defines the value for each omega mod.
+ *       Defines the value for each omega mod.
  * 
  * NOTES :
  *          
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 enum OMEGA_MOD_IDS
 {
@@ -209,10 +209,10 @@ enum OMEGA_MOD_IDS
 };
 
 /*
- * NAME :		weaponGetGunLevelDefs
+ * NAME :    weaponGetGunLevelDefs
  * 
  * DESCRIPTION :
- * 			Returns pointer to array of weapon level definitions starting at dual vipers.
+ *       Returns pointer to array of weapon level definitions starting at dual vipers.
  * 
  * NOTES :
  * 
@@ -221,15 +221,15 @@ enum OMEGA_MOD_IDS
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 WeaponDefsData* weaponGetGunLevelDefs(void);
 
 /*
- * NAME :		weaponGetFlailLevelDefs
+ * NAME :    weaponGetFlailLevelDefs
  * 
  * DESCRIPTION :
- * 			Returns pointer to block of flail level definitions.
+ *       Returns pointer to block of flail level definitions.
  * 
  * NOTES :
  * 
@@ -238,15 +238,15 @@ WeaponDefsData* weaponGetGunLevelDefs(void);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 WeaponDefsData* weaponGetFlailLevelDefs(void);
 
 /*
- * NAME :		weaponGetWrenchLevelDefs
+ * NAME :    weaponGetWrenchLevelDefs
  * 
  * DESCRIPTION :
- * 			Returns pointer to block of wrench level definitions.
+ *       Returns pointer to block of wrench level definitions.
  * 
  * NOTES :
  * 
@@ -255,15 +255,15 @@ WeaponDefsData* weaponGetFlailLevelDefs(void);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 WrenchDefsData* weaponGetWrenchLevelDefs(void);
 
 /*
- * NAME :		weaponSlotToId
+ * NAME :    weaponSlotToId
  * 
  * DESCRIPTION :
- * 			Converts a WEAPON_SLOT_INDEX to the respective WEAPON_IDS
+ *       Converts a WEAPON_SLOT_INDEX to the respective WEAPON_IDS
  * 
  * NOTES :
  * 
@@ -272,15 +272,15 @@ WrenchDefsData* weaponGetWrenchLevelDefs(void);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 int weaponSlotToId(int slotId);
 
 /*
- * NAME :		weaponIdToSlot
+ * NAME :    weaponIdToSlot
  * 
  * DESCRIPTION :
- * 			Converts a WEAPON_IDS to the respective WEAPON_SLOT_INDEX
+ *       Converts a WEAPON_IDS to the respective WEAPON_SLOT_INDEX
  * 
  * NOTES :
  * 
@@ -289,15 +289,15 @@ int weaponSlotToId(int slotId);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 int weaponIdToSlot(int id);
 
 /*
- * NAME :		weaponSetDamage
+ * NAME :    weaponSetDamage
  * 
  * DESCRIPTION :
- * 			Sets the damage of the given weapon at the given level.
+ *       Sets the damage of the given weapon at the given level.
  * 
  * NOTES :
  * 
@@ -308,15 +308,15 @@ int weaponIdToSlot(int id);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 void weaponSetDamage(int weaponId, int level, float damage);
 
 /*
- * NAME :		weaponTurnOnHoloshields
+ * NAME :    weaponTurnOnHoloshields
  * 
  * DESCRIPTION :
- * 			Enables holoshields for use in collision detection.
+ *       Enables holoshields for use in collision detection.
  * 
  * NOTES :
  * 
@@ -324,15 +324,15 @@ void weaponSetDamage(int weaponId, int level, float damage);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 void weaponTurnOnHoloshields(int team);
 
 /*
- * NAME :		weaponTurnOffHoloshields
+ * NAME :    weaponTurnOffHoloshields
  * 
  * DESCRIPTION :
- * 			Disables holoshields for use in collision detection.
+ *       Disables holoshields for use in collision detection.
  * 
  * NOTES :
  *          Always call this after you are done using weaponTurnOnHoloshields().
@@ -344,7 +344,7 @@ void weaponTurnOnHoloshields(int team);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 void weaponTurnOffHoloshields(void);
 

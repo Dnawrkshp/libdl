@@ -1,13 +1,13 @@
 /***************************************************
- * FILENAME :		sound.h
+ * FILENAME :    sound.h
  * 
  * DESCRIPTION :
- * 		Contains sound specific offsets and structures for Deadlocked.
+ *     Contains sound specific offsets and structures for Deadlocked.
  * 
  * NOTES :
  * 
- * 		
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ *     
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 
 #ifndef _LIBDL_DIALOG_H_

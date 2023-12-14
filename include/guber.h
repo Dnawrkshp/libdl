@@ -1,14 +1,14 @@
 /***************************************************
- * FILENAME :		guber.h
+ * FILENAME :    guber.h
  * 
  * DESCRIPTION :
- * 		Contains guber specific offsets and structures for Deadlocked.
+ *     Contains guber specific offsets and structures for Deadlocked.
  * 
  * NOTES :
- * 		Each offset is determined per app id.
- * 		This is to ensure compatibility between versions of Deadlocked/Gladiator.
- * 		
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ *     Each offset is determined per app id.
+ *     This is to ensure compatibility between versions of Deadlocked/Gladiator.
+ *     
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 
 #ifndef _LIBDL_GUBER_H_
@@ -22,16 +22,16 @@
 
 
 /*
- * NAME :		GuberDef
+ * NAME :    GuberDef
  * 
  * DESCRIPTION :
- * 			Contains the guber definition struct data.
+ *       Contains the guber definition struct data.
  * 
  * NOTES :
  *          Mobies are objects that can be spawned in game.
  *          This includes things like vehicles, turrets, mod pads, etc
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 
 
@@ -83,9 +83,9 @@ typedef struct NetEvent
         unsigned int OriginClientIdx : 4;
         unsigned int RelDispatchTime : 18;
     };
-	int CreateTime;
-	unsigned int ObjUID;
-	char NetData[64];
+  int CreateTime;
+  unsigned int ObjUID;
+  char NetData[64];
 } NetEvent;
 
 typedef struct GuberEvent

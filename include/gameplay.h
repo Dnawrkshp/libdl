@@ -1,10 +1,10 @@
 /***************************************************
- * FILENAME :		gameplay.h
+ * FILENAME :    gameplay.h
  * 
  * DESCRIPTION :
- * 		
- * 		
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ *     
+ *     
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 
 #ifndef _LIBDL_GAMEPLAY_H_
@@ -62,38 +62,38 @@ typedef struct GameplayPVarDef
  */
 typedef struct GameplayMobyDef
 {
-	u32 Size;
-	char Mission;
-	int UID;
-	int Bolts;
-	int OClass;
-	float Scale;
-	int DrawDistance;
-	int UpdateDistance;
-	short UNK_20;
-	short UNK_22;
-	short UNK_24;
-	short UNK_26;
-	float PosX;
-	float PosY;
-	float PosZ;
-	float RotX;
-	float RotY;
-	float RotZ;
-	int Group;
-	int IsRooted;
-	float RootedDistance;
-	short UNK_4C;
-	short UNK_4E;
-	int PVarIndex;
-	short UNK_54;
-	short UNK_56;
-	int UNK_58;
-	int Red;
-	int Green;
-	int Blue;
-	int Light;
-	int UNK_6C;
+  u32 Size;
+  char Mission;
+  int UID;
+  int Bolts;
+  int OClass;
+  float Scale;
+  int DrawDistance;
+  int UpdateDistance;
+  short UNK_20;
+  short UNK_22;
+  short UNK_24;
+  short UNK_26;
+  float PosX;
+  float PosY;
+  float PosZ;
+  float RotX;
+  float RotY;
+  float RotZ;
+  int Group;
+  int IsRooted;
+  float RootedDistance;
+  short UNK_4C;
+  short UNK_4E;
+  int PVarIndex;
+  short UNK_54;
+  short UNK_56;
+  int UNK_58;
+  int Red;
+  int Green;
+  int Blue;
+  int Light;
+  int UNK_6C;
 } GameplayMobyDef_t;
 
 /*

@@ -1,14 +1,14 @@
 /***************************************************
- * FILENAME :		hud.h
+ * FILENAME :    hud.h
  * 
  * DESCRIPTION :
- * 		Contains hud specific offsets and structures for Deadlocked.
+ *     Contains hud specific offsets and structures for Deadlocked.
  * 
  * NOTES :
- * 		Each offset is determined per app id.
- * 		This is to ensure compatibility between versions of Deadlocked/Gladiator.
- * 		
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ *     Each offset is determined per app id.
+ *     This is to ensure compatibility between versions of Deadlocked/Gladiator.
+ *     
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 
 #ifndef _LIBDL_HUD_H_
@@ -18,15 +18,15 @@
 #include <tamtypes.h>
 
 /*
- * NAME :		PlayerHUDFlags
+ * NAME :    PlayerHUDFlags
  * 
  * DESCRIPTION :
- * 			Each bit represents a hud 
+ *       Each bit represents a hud 
  * 
  * NOTES :
  * 
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 typedef struct PlayerHUDFlags
 {
@@ -141,10 +141,10 @@ struct HUDWidgetWheelObject
 
 
 /*
- * NAME :		hudGetPlayerFlags
+ * NAME :    hudGetPlayerFlags
  * 
  * DESCRIPTION :
- * 			Gets the respective local player's HUD flags object.
+ *       Gets the respective local player's HUD flags object.
  * 
  * NOTES :
  * 
@@ -154,7 +154,7 @@ struct HUDWidgetWheelObject
  * RETURN :
  *          Will return NULL if the localPlayerIndex is invalid.
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ PlayerHUDFlags * hudGetPlayerFlags(int localPlayerIndex);
 

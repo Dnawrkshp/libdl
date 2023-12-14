@@ -1,10 +1,10 @@
 /***************************************************
- * FILENAME :		spawnpoint.h
+ * FILENAME :    spawnpoint.h
  * 
  * DESCRIPTION :
- * 		Contains spawnpoint specific offsets and structures for Deadlocked.
+ *     Contains spawnpoint specific offsets and structures for Deadlocked.
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 
 #ifndef _LIBDL_SPAWNPOINT_H_
@@ -14,15 +14,15 @@
 #include "common.h"
 
 /*
- * NAME :		SpawnPoint
+ * NAME :    SpawnPoint
  * 
  * DESCRIPTION :
- * 			
+ *       
  * 
  * NOTES :
  * 
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 typedef struct SpawnPoint
 {
@@ -31,10 +31,10 @@ typedef struct SpawnPoint
 } SpawnPoint;
 
 /*
- * NAME :		spawnPointGetCount
+ * NAME :    spawnPointGetCount
  * 
  * DESCRIPTION :
- * 			
+ *       
  * 
  * NOTES :
  * 
@@ -42,15 +42,15 @@ typedef struct SpawnPoint
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ int spawnPointGetCount();
 
 /*
- * NAME :		hillPointGetCount
+ * NAME :    hillPointGetCount
  * 
  * DESCRIPTION :
- * 			
+ *       
  * 
  * NOTES :
  * 
@@ -58,15 +58,15 @@ __LIBDL_GETTER__ int spawnPointGetCount();
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ short hillPointGetCount();
 
 /*
- * NAME :		hillPointSetCount
+ * NAME :    hillPointSetCount
  * 
  * DESCRIPTION :
- * 			
+ *       
  * 
  * NOTES :
  * 
@@ -74,15 +74,15 @@ __LIBDL_GETTER__ short hillPointGetCount();
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_SETTER__ void hillPointSetCount(short count);
 
 /*
- * NAME :		hillPointGetIndex
+ * NAME :    hillPointGetIndex
  * 
  * DESCRIPTION :
- * 			
+ *       
  * 
  * NOTES :
  * 
@@ -90,15 +90,15 @@ __LIBDL_SETTER__ void hillPointSetCount(short count);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ int hillPointGetIndex(int id);
 
 /*
- * NAME :		hillPointSetIndex
+ * NAME :    hillPointSetIndex
  * 
  * DESCRIPTION :
- * 			
+ *       
  * 
  * NOTES :
  * 
@@ -106,15 +106,15 @@ __LIBDL_GETTER__ int hillPointGetIndex(int id);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_SETTER__ void hillPointSetIndex(int id, int value);
 
 /*
- * NAME :		spawnPointIsPlayer
+ * NAME :    spawnPointIsPlayer
  * 
  * DESCRIPTION :
- * 			
+ *       
  * 
  * NOTES :
  * 
@@ -122,15 +122,15 @@ __LIBDL_SETTER__ void hillPointSetIndex(int id, int value);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 int spawnPointIsPlayer(int index);
 
 /*
- * NAME :		spawnPointGet
+ * NAME :    spawnPointGet
  * 
  * DESCRIPTION :
- * 			
+ *       
  * 
  * NOTES :
  * 
@@ -138,15 +138,15 @@ int spawnPointIsPlayer(int index);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ SpawnPoint * spawnPointGet(int index);
 
 /*
- * NAME :		spawnPointSet
+ * NAME :    spawnPointSet
  * 
  * DESCRIPTION :
- * 			
+ *       
  * 
  * NOTES :
  * 
@@ -154,7 +154,7 @@ __LIBDL_GETTER__ SpawnPoint * spawnPointGet(int index);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_SETTER__ void spawnPointSet(SpawnPoint * sp, int index);
 

@@ -1,10 +1,10 @@
 /***************************************************
- * FILENAME :		string.h
+ * FILENAME :    string.h
  * 
  * DESCRIPTION :
  * 
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 
 #ifndef _LIBDL_STRING_H_

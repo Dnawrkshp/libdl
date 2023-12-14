@@ -1,14 +1,14 @@
 /***************************************************
- * FILENAME :		game.h
+ * FILENAME :    game.h
  * 
  * DESCRIPTION :
- * 		Contains game specific offsets and structures for Deadlocked.
+ *     Contains game specific offsets and structures for Deadlocked.
  * 
  * NOTES :
- * 		Each offset is determined per app id.
- * 		This is to ensure compatibility between versions of Deadlocked/Gladiator.
- * 		
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ *     Each offset is determined per app id.
+ *     This is to ensure compatibility between versions of Deadlocked/Gladiator.
+ *     
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 
 #ifndef _LIBDL_GAME_H_
@@ -155,10 +155,10 @@ typedef struct GameData
 
 
 /*
- * NAME :		setWinner
+ * NAME :    setWinner
  * 
  * DESCRIPTION :
- * 			Set the winning team/player
+ *       Set the winning team/player
  * 
  * NOTES :
  * 
@@ -168,15 +168,15 @@ typedef struct GameData
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_SETTER__ void gameSetWinner(int teamOrPlayerId, int isTeam);
 
 /*
- * NAME :		gameEnd
+ * NAME :    gameEnd
  * 
  * DESCRIPTION :
- * 			End game.
+ *       End game.
  * 
  * NOTES :
  * 
@@ -185,15 +185,15 @@ __LIBDL_SETTER__ void gameSetWinner(int teamOrPlayerId, int isTeam);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 void gameEnd(int reason);
 
 /*
- * NAME :		isInGame
+ * NAME :    isInGame
  * 
  * DESCRIPTION :
- * 			Whether the client is currently in game world.
+ *       Whether the client is currently in game world.
  * 
  * NOTES :
  * 
@@ -201,15 +201,15 @@ void gameEnd(int reason);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ int isInGame(void);
 
 /*
- * NAME :		isInMenus
+ * NAME :    isInMenus
  * 
  * DESCRIPTION :
- * 			Whether the client is currently in the menus.
+ *       Whether the client is currently in the menus.
  * 
  * NOTES :
  * 
@@ -217,15 +217,15 @@ __LIBDL_GETTER__ int isInGame(void);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ int isInMenus(void);
 
 /*
- * NAME :		isSceneLoading
+ * NAME :    isSceneLoading
  * 
  * DESCRIPTION :
- * 			Whether the client is currently in a scene transition.
+ *       Whether the client is currently in a scene transition.
  * 
  * NOTES :
  * 
@@ -233,15 +233,15 @@ __LIBDL_GETTER__ int isInMenus(void);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ int isSceneLoading(void);
 
 /*
- * NAME :		gameIsStartMenuOpen
+ * NAME :    gameIsStartMenuOpen
  * 
  * DESCRIPTION :
- * 			Whether the client is in game and has the start menu open.
+ *       Whether the client is in game and has the start menu open.
  * 
  * NOTES :
  * 
@@ -249,15 +249,15 @@ __LIBDL_GETTER__ int isSceneLoading(void);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ int gameIsStartMenuOpen(void);
 
 /*
- * NAME :		gameIsHost
+ * NAME :    gameIsHost
  * 
  * DESCRIPTION :
- * 			Whether the given host id is the host of the game.
+ *       Whether the given host id is the host of the game.
  * 
  * NOTES :
  * 
@@ -265,15 +265,15 @@ __LIBDL_GETTER__ int gameIsStartMenuOpen(void);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 int gameIsHost(int hostId);
 
 /*
- * NAME :		gameAmIHost
+ * NAME :    gameAmIHost
  * 
  * DESCRIPTION :
- * 			Whether the current client is also the game host.
+ *       Whether the current client is also the game host.
  * 
  * NOTES :
  * 
@@ -281,15 +281,15 @@ int gameIsHost(int hostId);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 int gameAmIHost(void);
 
 /*
- * NAME :		gameGetHostId
+ * NAME :    gameGetHostId
  * 
  * DESCRIPTION :
- * 			Returns the current game's host's client/dme id.
+ *       Returns the current game's host's client/dme id.
  * 
  * NOTES :
  * 
@@ -297,15 +297,15 @@ int gameAmIHost(void);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ int gameGetHostId(void);
 
 /*
- * NAME :		gameGetMyClientId
+ * NAME :    gameGetMyClientId
  * 
  * DESCRIPTION :
- * 			Returns the current client's game/dme id.
+ *       Returns the current client's game/dme id.
  * 
  * NOTES :
  * 
@@ -313,15 +313,15 @@ __LIBDL_GETTER__ int gameGetHostId(void);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ int gameGetMyClientId(void);
 
 /*
- * NAME :		gameHasEnded
+ * NAME :    gameHasEnded
  * 
  * DESCRIPTION :
- * 			Whether the game has ended and/or is ending.
+ *       Whether the game has ended and/or is ending.
  * 
  * NOTES :
  * 
@@ -329,15 +329,15 @@ __LIBDL_GETTER__ int gameGetMyClientId(void);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ int gameHasEnded(void);
 
 /*
- * NAME :		gameGetTime
+ * NAME :    gameGetTime
  * 
  * DESCRIPTION :
- * 			Gets the current game time in milliseconds.
+ *       Gets the current game time in milliseconds.
  * 
  * NOTES :
  * 
@@ -345,15 +345,15 @@ __LIBDL_GETTER__ int gameHasEnded(void);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ int gameGetTime(void);
 
 /*
- * NAME :		gameGetFinishedExitTime
+ * NAME :    gameGetFinishedExitTime
  * 
  * DESCRIPTION :
- * 			Gets the time when to leave after the game has ended.
+ *       Gets the time when to leave after the game has ended.
  * 
  * NOTES :
  * 
@@ -362,15 +362,15 @@ __LIBDL_GETTER__ int gameGetTime(void);
  * RETURN :
  *          Returns 0 if the game has not ended.
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ int gameGetFinishedExitTime(void);
 
 /*
- * NAME :		gameGetDeathHeight
+ * NAME :    gameGetDeathHeight
  * 
  * DESCRIPTION :
- * 			Gets the level's death height.
+ *       Gets the level's death height.
  * 
  * NOTES :
  * 
@@ -378,15 +378,15 @@ __LIBDL_GETTER__ int gameGetFinishedExitTime(void);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ float gameGetDeathHeight(void);
 
 /*
- * NAME :		gameSetDeathHeight
+ * NAME :    gameSetDeathHeight
  * 
  * DESCRIPTION :
- * 			Sets the level's death height.
+ *       Sets the level's death height.
  * 
  * NOTES :
  * 
@@ -394,15 +394,15 @@ __LIBDL_GETTER__ float gameGetDeathHeight(void);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_SETTER__ void gameSetDeathHeight(float height);
 
 /*
- * NAME :		gameGetRawTimeLimit
+ * NAME :    gameGetRawTimeLimit
  * 
  * DESCRIPTION :
- * 			Gets the actual time limit in milliseconds.
+ *       Gets the actual time limit in milliseconds.
  * 
  * NOTES :
  * 
@@ -410,15 +410,15 @@ __LIBDL_SETTER__ void gameSetDeathHeight(float height);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ int gameGetRawTimeLimit(void);
 
 /*
- * NAME :		gameGetData
+ * NAME :    gameGetData
  * 
  * DESCRIPTION :
- * 			Gets the game data.
+ *       Gets the game data.
  * 
  * NOTES :
  * 
@@ -426,15 +426,15 @@ __LIBDL_GETTER__ int gameGetRawTimeLimit(void);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ GameData* gameGetData(void);
 
 /*
- * NAME :		gameGetPing
+ * NAME :    gameGetPing
  * 
  * DESCRIPTION :
- * 			Gets the client's current ping.
+ *       Gets the client's current ping.
  * 
  * NOTES :
  * 
@@ -442,33 +442,33 @@ __LIBDL_GETTER__ GameData* gameGetData(void);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ int gameGetPing(void);
 
 /*
- * NAME :		gameScoreboardSetTeamScore
+ * NAME :    gameScoreboardSetTeamScore
  * 
  * DESCRIPTION :
- * 			Sets the given team's in game scoreboard value.
+ *       Sets the given team's in game scoreboard value.
  * 
  */
 void gameScoreboardSetTeamScore(int teamId, int score);
 
 /*
- * NAME :		gameScoreboardAddTeam
+ * NAME :    gameScoreboardAddTeam
  * 
  * DESCRIPTION :
- * 			Adds the given team to the scoreboard.
+ *       Adds the given team to the scoreboard.
  * 
  */
 void gameScoreboardAddTeam(int teamId, int isLocal);
 
 /*
- * NAME :		gameGetWorldId
+ * NAME :    gameGetWorldId
  * 
  * DESCRIPTION :
- * 			Returns the current dme world id. -1 if not in a world.
+ *       Returns the current dme world id. -1 if not in a world.
  * 
  */
 __LIBDL_GETTER__ int gameGetWorldId(void);

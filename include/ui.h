@@ -1,10 +1,10 @@
 /***************************************************
- * FILENAME :		ui.h
+ * FILENAME :    ui.h
  * 
  * DESCRIPTION :
- * 		
- * 		
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ *     
+ *     
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 
 #ifndef _LIBDL_UI_H_
@@ -139,10 +139,10 @@ typedef struct UiMenu
 } UiMenu_t;
 
 /*
- * NAME :		uiChangeMenu
+ * NAME :    uiChangeMenu
  * 
  * DESCRIPTION :
- * 			Sets the current ui menu id.
+ *       Sets the current ui menu id.
  * 
  * NOTES :
  * 
@@ -150,15 +150,15 @@ typedef struct UiMenu
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 void uiChangeMenu(enum UiMenuIds menuId);
 
 /*
- * NAME :		uiGetActive
+ * NAME :    uiGetActive
  * 
  * DESCRIPTION :
- * 			Gets the current ui id.
+ *       Gets the current ui id.
  * 
  * NOTES :
  * 
@@ -166,15 +166,15 @@ void uiChangeMenu(enum UiMenuIds menuId);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ int uiGetActive(void);
 
 /*
- * NAME :		uiShowYesNoDialog
+ * NAME :    uiShowYesNoDialog
  * 
  * DESCRIPTION :
- * 			Shows a blocking yes no dialog.
+ *       Shows a blocking yes no dialog.
  * 
  * NOTES :
  * 
@@ -184,15 +184,15 @@ __LIBDL_GETTER__ int uiGetActive(void);
  *          Returns 1 if 'Yes' is selected.
  *          Returns 2 if 'No' is selected.
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 int uiShowYesNoDialog(const char * title, const char * description);
 
 /*
- * NAME :		uiShowOkDialog
+ * NAME :    uiShowOkDialog
  * 
  * DESCRIPTION :
- * 			Shows a blocking ok dialog.
+ *       Shows a blocking ok dialog.
  * 
  * NOTES :
  * 
@@ -200,15 +200,15 @@ int uiShowYesNoDialog(const char * title, const char * description);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 int uiShowOkDialog(const char * title, const char * description);
 
 /*
- * NAME :		uiShowSelectDialog
+ * NAME :    uiShowSelectDialog
  * 
  * DESCRIPTION :
- * 			Shows a blocking select dialog.
+ *       Shows a blocking select dialog.
  * 
  * NOTES :
  * 
@@ -216,15 +216,15 @@ int uiShowOkDialog(const char * title, const char * description);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 int uiShowSelectDialog(const char * title, const char * items[], int itemCount, int selectedIndex);
 
 /*
- * NAME :		uiShowInputDialog
+ * NAME :    uiShowInputDialog
  * 
  * DESCRIPTION :
- * 			Shows a blocking text input dialog.
+ *       Shows a blocking text input dialog.
  * 
  * NOTES :
  * 
@@ -232,15 +232,15 @@ int uiShowSelectDialog(const char * title, const char * items[], int itemCount, 
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 int uiShowInputDialog(const char * title, char * value, int maxLength);
 
 /*
- * NAME :		uiShowPopup
+ * NAME :    uiShowPopup
  * 
  * DESCRIPTION :
- * 			Shows a popup with the given text to the given local player.
+ *       Shows a popup with the given text to the given local player.
  * 
  * NOTES :
  * 
@@ -250,15 +250,15 @@ int uiShowInputDialog(const char * title, char * value, int maxLength);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 void uiShowPopup(int localPlayerIndex, const char * message);
 
 /*
- * NAME :		uiShowHelpPopup
+ * NAME :    uiShowHelpPopup
  * 
  * DESCRIPTION :
- * 			Shows a help popup with the given text to the given local player.
+ *       Shows a help popup with the given text to the given local player.
  * 
  * NOTES :
  * 
@@ -269,15 +269,15 @@ void uiShowPopup(int localPlayerIndex, const char * message);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 void uiShowHelpPopup(int localPlayerIndex, const char * message, int seconds);
 
 /*
- * NAME :		uiShowTimer
+ * NAME :    uiShowTimer
  * 
  * DESCRIPTION :
- * 			Shows a timer popup with the given text and time to the given local player.
+ *       Shows a timer popup with the given text and time to the given local player.
  * 
  * NOTES :
  * 
@@ -288,15 +288,15 @@ void uiShowHelpPopup(int localPlayerIndex, const char * message, int seconds);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 void uiShowTimer(int localPlayerIndex, const char * message, long timeMs);
 
 /*
- * NAME :		uiMsgString
+ * NAME :    uiMsgString
  * 
  * DESCRIPTION :
- * 			Returns the string associated with the given text id.
+ *       Returns the string associated with the given text id.
  * 
  * NOTES :
  * 
@@ -305,16 +305,16 @@ void uiShowTimer(int localPlayerIndex, const char * message, long timeMs);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 char * uiMsgString(int textId);
 
 
 /*
- * NAME :		uiGetPointer
+ * NAME :    uiGetPointer
  * 
  * DESCRIPTION :
- * 			Returns pointer to the given ui menu.
+ *       Returns pointer to the given ui menu.
  * 
  * NOTES :
  * 
@@ -323,15 +323,15 @@ char * uiMsgString(int textId);
  * 
  * RETURN :
  * 
- * AUTHOR :			Troy "Agent Moose" Pruitt
+ * AUTHOR :      Troy "Agent Moose" Pruitt
  */
 UiMenu_t* uiGetPointer(int id);
 
 /*
- * NAME :		uiGetActivePointer
+ * NAME :    uiGetActivePointer
  * 
  * DESCRIPTION :
- * 			Returns the pointer to the current menu.
+ *       Returns the pointer to the current menu.
  * 
  * NOTES :
  * 
@@ -339,15 +339,15 @@ UiMenu_t* uiGetPointer(int id);
  * 
  * RETURN :
  * 
- * AUTHOR :			Troy "Agent Moose" Pruitt
+ * AUTHOR :      Troy "Agent Moose" Pruitt
  */
 UiMenu_t* uiGetActivePointer(void);
 
 /*
- * NAME :		uiRunCallbacks
+ * NAME :    uiRunCallbacks
  * 
  * DESCRIPTION :
- * 			Runs background ui callbacks.
+ *       Runs background ui callbacks.
  * 
  * NOTES :
  * 
@@ -355,7 +355,7 @@ UiMenu_t* uiGetActivePointer(void);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 void uiRunCallbacks(void);
 

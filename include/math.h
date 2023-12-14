@@ -1,14 +1,14 @@
 /***************************************************
- * FILENAME :		math.h
+ * FILENAME :    math.h
  * 
  * DESCRIPTION :
- * 		Contains many math related function definitions found in Deadlocked.
+ *     Contains many math related function definitions found in Deadlocked.
  * 
  * NOTES :
- * 		Each offset is determined per app id.
- * 		This is to ensure compatibility between versions of Deadlocked/Gladiator.
- * 		
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ *     Each offset is determined per app id.
+ *     This is to ensure compatibility between versions of Deadlocked/Gladiator.
+ *     
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 
 #ifndef _LIBDL_MATH_H_

@@ -1,10 +1,10 @@
 /***************************************************
- * FILENAME :		random.h
+ * FILENAME :    random.h
  * 
  * DESCRIPTION :
- * 		
- * 		
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ *     
+ *     
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 
 #ifndef _LIBDL_RANDOM_H_
@@ -13,10 +13,10 @@
 #include <tamtypes.h>
 
 /*
- * NAME :		rand
+ * NAME :    rand
  * 
  * DESCRIPTION :
- * 			
+ *       
  * 
  * NOTES :
  * 
@@ -28,10 +28,10 @@
 int rand(int mod);
 
 /*
- * NAME :		randVector
+ * NAME :    randVector
  * 
  * DESCRIPTION :
- * 			Returns a vector where the first three components are between +- unitLen.
+ *       Returns a vector where the first three components are between +- unitLen.
  * 
  * NOTES :
  * 
@@ -43,10 +43,10 @@ int rand(int mod);
 u128 randVector(float unitLen);
 
 /*
- * NAME :		randVectorRangeNeg
+ * NAME :    randVectorRangeNeg
  * 
  * DESCRIPTION :
- * 			Returns a vector where the first three components are between [min, max] or [-min, -max]
+ *       Returns a vector where the first three components are between [min, max] or [-min, -max]
  * 
  * NOTES :
  * 
@@ -58,10 +58,10 @@ u128 randVector(float unitLen);
 u128 randVectorRangeNeg(float min, float max);
 
 /*
- * NAME :		randVectorRange
+ * NAME :    randVectorRange
  * 
  * DESCRIPTION :
- * 			Returns a vector where the first three components are between [min, max]
+ *       Returns a vector where the first three components are between [min, max]
  * 
  * NOTES :
  * 
@@ -73,10 +73,10 @@ u128 randVectorRangeNeg(float min, float max);
 u128 randVectorRange(float min, float max);
 
 /*
- * NAME :		randRange
+ * NAME :    randRange
  * 
  * DESCRIPTION :
- * 			
+ *       
  * 
  * NOTES :
  * 
@@ -88,10 +88,10 @@ u128 randVectorRange(float min, float max);
 float randRange(float min, float max);
 
 /*
- * NAME :		randRangeNeg
+ * NAME :    randRangeNeg
  * 
  * DESCRIPTION :
- * 			Returns a value between [min, max] or [-min, -max]
+ *       Returns a value between [min, max] or [-min, -max]
  * 
  * NOTES :
  * 
@@ -103,10 +103,10 @@ float randRange(float min, float max);
 float randRangeNeg(float min, float max);
 
 /*
- * NAME :		randRangeInt
+ * NAME :    randRangeInt
  * 
  * DESCRIPTION :
- * 			Returns a value between [min, max]
+ *       Returns a value between [min, max]
  * 
  * NOTES :
  * 
@@ -118,10 +118,10 @@ float randRangeNeg(float min, float max);
 int randRangeInt(int min, int max);
 
 /*
- * NAME :		randRangeInt
+ * NAME :    randRangeInt
  * 
  * DESCRIPTION :
- * 			Returns a value between [min, max]
+ *       Returns a value between [min, max]
  * 
  * NOTES :
  * 

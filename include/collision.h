@@ -1,10 +1,10 @@
 /***************************************************
- * FILENAME :		collision.h
+ * FILENAME :    collision.h
  * 
  * DESCRIPTION :
- * 		
- * 		
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ *     
+ *     
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 
 #ifndef _LIBDL_COLLISION_H_
@@ -21,10 +21,10 @@ enum CollisionFlags
 };
 
 /*
- * NAME :		CollMovingSphere
+ * NAME :    CollMovingSphere
  * 
  * DESCRIPTION :
- * 			
+ *       
  * 
  * NOTES :
  * 
@@ -32,15 +32,15 @@ enum CollisionFlags
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 float CollMovingSphere(VECTOR from, VECTOR to, float radius, u64 hitFlag, Moby * moby);
 
 /*
- * NAME :		CollMobysSphere_Fix
+ * NAME :    CollMobysSphere_Fix
  * 
  * DESCRIPTION :
- * 			
+ *       
  * 
  * NOTES :
  * 
@@ -48,16 +48,16 @@ float CollMovingSphere(VECTOR from, VECTOR to, float radius, u64 hitFlag, Moby *
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 int CollMobysSphere_Fix(VECTOR position, u64 hitFlag, Moby * moby, MobyColDamageIn* colDamageIn, float radius);
 
 
 /*
- * NAME :		CollMobysSphere_Fix_GetHitMobies
+ * NAME :    CollMobysSphere_Fix_GetHitMobies
  * 
  * DESCRIPTION :
- * 			
+ *       
  * 
  * NOTES :
  * 
@@ -65,15 +65,15 @@ int CollMobysSphere_Fix(VECTOR position, u64 hitFlag, Moby * moby, MobyColDamage
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ Moby** CollMobysSphere_Fix_GetHitMobies(void);
 
 /*
- * NAME :		CollLine_Fix
+ * NAME :    CollLine_Fix
  * 
  * DESCRIPTION :
- * 			
+ *       
  * 
  * NOTES :
  * 
@@ -81,15 +81,15 @@ __LIBDL_GETTER__ Moby** CollMobysSphere_Fix_GetHitMobies(void);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 int CollLine_Fix(VECTOR from, VECTOR to, u64 hitFlag, Moby * moby, MobyColDamageIn* colDamageIn);
 
 /*
- * NAME :		CollLine_Fix_GetHitMoby
+ * NAME :    CollLine_Fix_GetHitMoby
  * 
  * DESCRIPTION :
- * 		 
+ *      
  * 
  * NOTES :
  * 
@@ -97,15 +97,15 @@ int CollLine_Fix(VECTOR from, VECTOR to, u64 hitFlag, Moby * moby, MobyColDamage
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ Moby* CollLine_Fix_GetHitMoby(void);
 
 /*
- * NAME :		CollLine_Fix_GetHitPosition
+ * NAME :    CollLine_Fix_GetHitPosition
  * 
  * DESCRIPTION :
- * 			
+ *       
  * 
  * NOTES :
  * 
@@ -113,15 +113,15 @@ __LIBDL_GETTER__ Moby* CollLine_Fix_GetHitMoby(void);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ float* CollLine_Fix_GetHitPosition(void);
 
 /*
- * NAME :		CollLine_Fix_GetHitNormal
+ * NAME :    CollLine_Fix_GetHitNormal
  * 
  * DESCRIPTION :
- * 			
+ *       
  * 
  * NOTES :
  * 
@@ -129,15 +129,15 @@ __LIBDL_GETTER__ float* CollLine_Fix_GetHitPosition(void);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ float* CollLine_Fix_GetHitNormal(void);
 
 /*
- * NAME :		CollLine_Fix_GetHitCollisionId
+ * NAME :    CollLine_Fix_GetHitCollisionId
  * 
  * DESCRIPTION :
- * 			
+ *       
  * 
  * NOTES :
  * 
@@ -145,7 +145,7 @@ __LIBDL_GETTER__ float* CollLine_Fix_GetHitNormal(void);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ u8 CollLine_Fix_GetHitCollisionId(void);
 

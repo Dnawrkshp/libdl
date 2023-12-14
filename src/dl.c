@@ -5,10 +5,10 @@ extern void padUpdate(void);
 extern void playerPadUpdate(void);
 
 /*
- * NAME :		dlPreUpdate
+ * NAME :    dlPreUpdate
  * 
  * DESCRIPTION :
- * 			Must be called at the beginning of each tick.
+ *       Must be called at the beginning of each tick.
  * 
  * NOTES :
  * 
@@ -16,7 +16,7 @@ extern void playerPadUpdate(void);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 void dlPreUpdate(void)
 {
@@ -24,10 +24,10 @@ void dlPreUpdate(void)
 }
 
 /*
- * NAME :		dlPostUpdate
+ * NAME :    dlPostUpdate
  * 
  * DESCRIPTION :
- * 			Must be called at the end of each tick.
+ *       Must be called at the end of each tick.
  * 
  * NOTES :
  * 
@@ -35,7 +35,7 @@ void dlPreUpdate(void)
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 void dlPostUpdate(void)
 {

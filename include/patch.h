@@ -1,20 +1,20 @@
 /***************************************************
- * FILENAME :		patch.h
+ * FILENAME :    patch.h
  * 
  * DESCRIPTION :
- * 		
- * 		
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ *     
+ *     
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 
 #ifndef _LIBDL_PATCH_H_
 #define _LIBDL_PATCH_H_
 
 /*
- * NAME :		patchSifRpc
+ * NAME :    patchSifRpc
  * 
  * DESCRIPTION :
- * 			Patches sif rpc functions to use game's.
+ *       Patches sif rpc functions to use game's.
  * 
  * NOTES :
  * 
@@ -22,7 +22,7 @@
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 void patchSifRpc(void);
 

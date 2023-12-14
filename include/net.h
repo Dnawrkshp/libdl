@@ -1,10 +1,10 @@
 /***************************************************
- * FILENAME :		net.h
+ * FILENAME :    net.h
  * 
  * DESCRIPTION :
- * 	
- * 	
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ *   
+ *   
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 
 #ifndef _LIBDL_NET_H_
@@ -28,40 +28,40 @@ typedef int (*NET_CALLBACK_DELEGATE)(void * connection, void * data);
 
 
 typedef struct inetSifMRpcData {
-	void		*paddr;	/* packet address */
-	unsigned int	pid;	/* packet id */
-	int		tid;	/* thread id */
-	unsigned int	mode;	/* call mode */
+  void    *paddr;  /* packet address */
+  unsigned int  pid;  /* packet id */
+  int    tid;  /* thread id */
+  unsigned int  mode;  /* call mode */
 } inetSifMRpcData_t;
 
 typedef struct inetAddress {
-	int reserved;	/* must be zero */
-	char data[12];	/* IP address (4 bytes) + reserved (8 bytes) */
+  int reserved;  /* must be zero */
+  char data[12];  /* IP address (4 bytes) + reserved (8 bytes) */
 } inetAddress_t;
 
 typedef struct inetParam {
-	int type;
-	int local_port;
-	struct inetAddress remote_addr;
-	int remote_port;
-	int reserved[9];	/* must be zero */
+  int type;
+  int local_port;
+  struct inetAddress remote_addr;
+  int remote_port;
+  int reserved[9];  /* must be zero */
 } inetParam_t;
 
 typedef void (* inetSifMEndFunc)(void *);
 
 typedef struct inetSifMClientData {
-	struct inetSifMRpcData	rpcd;
-	unsigned int	command;
-	void		*buff;
-	void		*gp;
-	inetSifMEndFunc	func;
-	void		*para;
-	void		*serve;
-	int		sema;
-	int		unbind;
-	int		buffersize;
-	int		stacksize;
-	int		prio;
+  struct inetSifMRpcData  rpcd;
+  unsigned int  command;
+  void    *buff;
+  void    *gp;
+  inetSifMEndFunc  func;
+  void    *para;
+  void    *serve;
+  int    sema;
+  int    unbind;
+  int    buffersize;
+  int    stacksize;
+  int    prio;
 } inetSifMClientData_t;
 
 void netInstallCustomMsgHandler(u8 id, NET_CALLBACK_DELEGATE callback);

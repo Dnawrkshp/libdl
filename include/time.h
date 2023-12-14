@@ -1,14 +1,14 @@
 /***************************************************
- * FILENAME :		time.h
+ * FILENAME :    time.h
  * 
  * DESCRIPTION :
- * 		Contains time related constants.
+ *     Contains time related constants.
  * 
  * NOTES :
- * 		Each offset is determined per app id.
- * 		This is to ensure compatibility between versions of Deadlocked/Gladiator.
- * 		
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ *     Each offset is determined per app id.
+ *     This is to ensure compatibility between versions of Deadlocked/Gladiator.
+ *     
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 
 #ifndef _LIBDL_TIME_H_
@@ -19,10 +19,10 @@
 #define SYSTEM_TIME_TICKS_PER_MS  (0x24000)
 
 /*
- * NAME :		timerGetSystemTime
+ * NAME :    timerGetSystemTime
  * 
  * DESCRIPTION :
- * 			Returns system time.
+ *       Returns system time.
  * 
  * NOTES :
  * 
@@ -30,7 +30,7 @@
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 long timerGetSystemTime(void);
 

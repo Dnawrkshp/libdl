@@ -1,10 +1,10 @@
 /***************************************************
- * FILENAME :		mc.h
+ * FILENAME :    mc.h
  * 
  * DESCRIPTION :
- * 		
- * 		
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ *     
+ *     
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 
 #ifndef _LIBDL_MC_H_

@@ -6,7 +6,7 @@
 /*
  * Player 1's hud.
  */
-#define SPAWNPOINTS		    ((SpawnPoint*)(*(u32*)0x00222820))
+#define SPAWNPOINTS        ((SpawnPoint*)(*(u32*)0x00222820))
 
 /*
  *
@@ -16,7 +16,7 @@
 /*
  * Player 2's hud.
  */
-#define SP_HILL_PTR	        (*(u32*)0x00222698)
+#define SP_HILL_PTR          (*(u32*)0x00222698)
 
 int spawnPointGetCount()
 {
@@ -61,15 +61,15 @@ void hillPointSetIndex(int id, int value)
 
 int spawnPointIsPlayer(int index)
 {
-	int i;
-	GameData* gameData = gameGetData();
-	for (i = 0; i < 64; ++i)
-	{
-		if (gameData->DeathmatchGameData->ResurrectionPts[i] == index)
-			return 1;
-	}
+  int i;
+  GameData* gameData = gameGetData();
+  for (i = 0; i < 64; ++i)
+  {
+    if (gameData->DeathmatchGameData->ResurrectionPts[i] == index)
+      return 1;
+  }
 
-	return 0;
+  return 0;
 }
 
 SpawnPoint * spawnPointGet(int index)

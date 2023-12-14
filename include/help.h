@@ -1,12 +1,12 @@
 /***************************************************
- * FILENAME :		help.h
+ * FILENAME :    help.h
  * 
  * DESCRIPTION :
- * 		Contains help specific offsets and structures for Deadlocked.
+ *     Contains help specific offsets and structures for Deadlocked.
  * 
  * NOTES :
- * 		
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ *     
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 
 #ifndef _LIBDL_HELP_H_
@@ -40,10 +40,10 @@ enum HELP_STRING_IDS
 };
 
 /*
- * NAME :		helpGetString
+ * NAME :    helpGetString
  * 
  * DESCRIPTION :
- * 			Gets the respective string from the locale.
+ *       Gets the respective string from the locale.
  * 
  * NOTES :
  * 
@@ -52,7 +52,7 @@ enum HELP_STRING_IDS
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ char * helpGetString(int stringId);
 

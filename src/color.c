@@ -5,10 +5,10 @@ u32 internal_colorLerp_inGame(u32, u32, float);
 u32 internal_colorLerp_inLobby(u32, u32, float);
 
 /*
- * NAME :		colorLerp
+ * NAME :    colorLerp
  * 
  * DESCRIPTION :
- * 			Interpolates the color from a to b by t.
+ *       Interpolates the color from a to b by t.
  * 
  * NOTES :
  * 
@@ -19,7 +19,7 @@ u32 internal_colorLerp_inLobby(u32, u32, float);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 u32 colorLerp(u32 a, u32 b, float t)
 {

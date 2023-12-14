@@ -1,13 +1,13 @@
 /***************************************************
- * FILENAME :		gid.h
+ * FILENAME :    gid.h
  * 
  * DESCRIPTION :
  * 
  * NOTES :
- * 		Each offset is determined per app id.
- * 		This is to ensure compatibility between versions of Deadlocked/Gladiator.
- * 		
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ *     Each offset is determined per app id.
+ *     This is to ensure compatibility between versions of Deadlocked/Gladiator.
+ *     
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 
 #ifndef _LIBDL_GID_H_
@@ -16,14 +16,14 @@
 #include <tamtypes.h>
 
 /*
- * NAME :		Gid
+ * NAME :    Gid
  * 
  * DESCRIPTION :
- * 			Contains the gid definition struct data.
+ *       Contains the gid definition struct data.
  * 
  * NOTES :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 typedef struct
 {

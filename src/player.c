@@ -209,7 +209,7 @@ PlayerVTable* playerGetVTable(Player * player)
 //--------------------------------------------------------------------------------
 int playerIsDead(Player * player)
 {
-	return player->PlayerState == PLAYER_STATE_DEATH
+  return player->PlayerState == PLAYER_STATE_DEATH
         || player->PlayerState == PLAYER_STATE_DROWN
         || player->PlayerState == PLAYER_STATE_DEATH_FALL
         || player->PlayerState == PLAYER_STATE_DEATHSAND_SINK

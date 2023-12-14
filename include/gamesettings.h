@@ -1,14 +1,14 @@
 /***************************************************
- * FILENAME :		gamesettings.h
+ * FILENAME :    gamesettings.h
  * 
  * DESCRIPTION :
- * 		Contains lobby specific offsets and structures for Deadlocked.
+ *     Contains lobby specific offsets and structures for Deadlocked.
  * 
  * NOTES :
- * 		Each offset is determined per app id.
- * 		This is to ensure compatibility between versions of Deadlocked/Gladiator.
- * 		
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ *     Each offset is determined per app id.
+ *     This is to ensure compatibility between versions of Deadlocked/Gladiator.
+ *     
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 
 #ifndef _LIBDL_GAMESETTINGS_H_
@@ -36,15 +36,15 @@ enum GameRuleIds
 };
 
 /*
- * NAME :		GameSettings
+ * NAME :    GameSettings
  * 
  * DESCRIPTION :
- * 			Contains the lobby's game settings.
+ *       Contains the lobby's game settings.
  * 
  * NOTES :
  * 
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 typedef struct GameSettings
 {
@@ -117,15 +117,15 @@ typedef struct GameSettings
 } GameSettings;
 
 /*
- * NAME :		GameOptions
+ * NAME :    GameOptions
  * 
  * DESCRIPTION :
- * 			Contains the game options.
+ *       Contains the game options.
  * 
  * NOTES :
  * 
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 typedef struct GameOptions
 {
@@ -221,10 +221,10 @@ typedef struct GameOptions
 } GameOptions;
 
 /*
- * NAME :		gameGetSettings
+ * NAME :    gameGetSettings
  * 
  * DESCRIPTION :
- * 			Returns a pointer to the active tNW_GameSettings object.
+ *       Returns a pointer to the active tNW_GameSettings object.
  * 
  * NOTES :
  * 
@@ -233,15 +233,15 @@ typedef struct GameOptions
  * RETURN :
  *          Returns NULL if no lobby.
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ GameSettings * gameGetSettings(void);
 
 /*
- * NAME :		gameGetOptions
+ * NAME :    gameGetOptions
  * 
  * DESCRIPTION :
- * 			Returns a pointer to the active tNW_GameOptions object.
+ *       Returns a pointer to the active tNW_GameOptions object.
  * 
  * NOTES :
  * 
@@ -250,15 +250,15 @@ __LIBDL_GETTER__ GameSettings * gameGetSettings(void);
  * RETURN :
  *          Returns NULL if no lobby/game.
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ GameOptions * gameGetOptions(void);
 
 /*
- * NAME :		gameFlagSetPickupDistance
+ * NAME :    gameFlagSetPickupDistance
  * 
  * DESCRIPTION :
- * 			Sets the distance from a flag a player can pick up or save it.
+ *       Sets the distance from a flag a player can pick up or save it.
  * 
  * NOTES :
  * 
@@ -266,15 +266,15 @@ __LIBDL_GETTER__ GameOptions * gameGetOptions(void);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_SETTER__ void gameFlagSetPickupDistance(float distance);
 
 /*
- * NAME :		gameGetGameModeName
+ * NAME :    gameGetGameModeName
  * 
  * DESCRIPTION :
- * 			Returns the name of the given game mode (GameRuleId)
+ *       Returns the name of the given game mode (GameRuleId)
  * 
  * NOTES :
  * 
@@ -282,15 +282,15 @@ __LIBDL_SETTER__ void gameFlagSetPickupDistance(float distance);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ char* gameGetGameModeName(int modeId);
 
 /*
- * NAME :		gameSetClientState
+ * NAME :    gameSetClientState
  * 
  * DESCRIPTION :
- * 			
+ *       
  * 
  * NOTES :
  * 
@@ -298,15 +298,15 @@ __LIBDL_GETTER__ char* gameGetGameModeName(int modeId);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 void gameSetClientState(int pid, char state);
 
 /*
- * NAME :		gameSetClientTeam
+ * NAME :    gameSetClientTeam
  * 
  * DESCRIPTION :
- * 			
+ *       
  * 
  * NOTES :
  * 
@@ -314,15 +314,15 @@ void gameSetClientState(int pid, char state);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 void gameSetClientTeam(int pid, char team);
 
 /*
- * NAME :		gameSetClientSkin
+ * NAME :    gameSetClientSkin
  * 
  * DESCRIPTION :
- * 			
+ *       
  * 
  * NOTES :
  * 
@@ -330,15 +330,15 @@ void gameSetClientTeam(int pid, char team);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 void gameSetClientSkin(int pid, char skin);
 
 /*
- * NAME :		gameSetClientName
+ * NAME :    gameSetClientName
  * 
  * DESCRIPTION :
- * 			
+ *       
  * 
  * NOTES :
  * 
@@ -346,7 +346,7 @@ void gameSetClientSkin(int pid, char skin);
  * 
  * RETURN :
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 void gameSetClientName(int pid, char* name);
 

@@ -54,11 +54,11 @@ Moby* mobyFindNextByOClass(Moby* start, int oClass)
 {
     Moby* mEnd = mobyListGetEnd();
     
-	// find
-	if (oClass > 0 && start) {
-		while (start < mEnd && (start->OClass != oClass || mobyIsDestroyed(start)))
-			++start;
-	}
+  // find
+  if (oClass > 0 && start) {
+    while (start < mEnd && (start->OClass != oClass || mobyIsDestroyed(start)))
+      ++start;
+  }
 
     // found
     if (start < mEnd)

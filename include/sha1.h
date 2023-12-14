@@ -1,14 +1,14 @@
 /***************************************************
- * FILENAME :		sha1.h
+ * FILENAME :    sha1.h
  * 
  * DESCRIPTION :
- * 		Contains SHA1 related function definitions found in Deadlocked.
+ *     Contains SHA1 related function definitions found in Deadlocked.
  * 
  * NOTES :
- * 		Each offset is determined per app id.
- * 		This is to ensure compatibility between versions of Deadlocked/Gladiator.
- * 		
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ *     Each offset is determined per app id.
+ *     This is to ensure compatibility between versions of Deadlocked/Gladiator.
+ *     
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 
 /*

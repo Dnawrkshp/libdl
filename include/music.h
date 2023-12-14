@@ -1,13 +1,13 @@
 /***************************************************
- * FILENAME :		music.h
+ * FILENAME :    music.h
  * 
  * DESCRIPTION :
- * 		Contains music specific offsets and structures for Deadlocked.
+ *     Contains music specific offsets and structures for Deadlocked.
  * 
  * NOTES :
  * 
- * 		
- * AUTHOR :			Troy "Agent Moose" Pruitt
+ *     
+ * AUTHOR :      Troy "Agent Moose" Pruitt
  */
 
 #ifndef _LIBDL_MUSIC_H_
@@ -83,10 +83,10 @@ enum TrackNumbers
 };
 
 /*
- * NAME :		             musicPlayTrack
+ * NAME :                 musicPlayTrack
  * 
  * DESCRIPTION :
- * 			                 Plays the given Music Track
+ *                        Plays the given Music Track
  * 
  * NOTES :                   In order to play a new track, the current track must finish
  *                           or be stopped with musicStopTrack.
@@ -99,15 +99,15 @@ enum TrackNumbers
  * 
  * RETURN :
  * 
- * AUTHOR :			         Troy "Agent Moose" Pruitt
+ * AUTHOR :               Troy "Agent Moose" Pruitt
  */
 void musicPlayTrack(int TrackNumber, int KeepPlaying);
 
 /*
- * NAME :		             musicStopTrack
+ * NAME :                 musicStopTrack
  * 
  * DESCRIPTION :
- * 			                 Stops the current Music Track
+ *                        Stops the current Music Track
  * 
  * NOTES :
  * 
@@ -115,15 +115,15 @@ void musicPlayTrack(int TrackNumber, int KeepPlaying);
  * 
  * RETURN :
  * 
- * AUTHOR :			         Troy "Agent Moose" Pruitt
+ * AUTHOR :               Troy "Agent Moose" Pruitt
  */
 void musicStopTrack(void);
 
 /*
- * NAME :		             musicPauseTrack
+ * NAME :                 musicPauseTrack
  * 
  * DESCRIPTION :
- * 			                 Pauses the current Music Track
+ *                        Pauses the current Music Track
  * 
  * NOTES :
  * 
@@ -131,15 +131,15 @@ void musicStopTrack(void);
  * 
  * RETURN :
  * 
- * AUTHOR :			         Troy "Agent Moose" Pruitt
+ * AUTHOR :               Troy "Agent Moose" Pruitt
  */
 void musicPauseTrack(int arg1);
 
 /*
- * NAME :		             musicUnpauseTrack
+ * NAME :                 musicUnpauseTrack
  * 
  * DESCRIPTION :
- * 			                 Unpauses the currently paused Music Track
+ *                        Unpauses the currently paused Music Track
  * 
  * NOTES :
  * 
@@ -147,15 +147,15 @@ void musicPauseTrack(int arg1);
  * 
  * RETURN :
  * 
- * AUTHOR :			         Troy "Agent Moose" Pruitt
+ * AUTHOR :               Troy "Agent Moose" Pruitt
  */
 void musicUnpauseTrack(void);
 
 /*
- * NAME :		             musicTransitionTrack
+ * NAME :                 musicTransitionTrack
  * 
  * DESCRIPTION :
- * 			                 Transitions to another track.
+ *                        Transitions to another track.
  * 
  * NOTES :                   This function is better used to fade-out the current track, so it
  *                           can transition to the next track without doing a hacky job of
@@ -170,15 +170,15 @@ void musicUnpauseTrack(void);
  * 
  * RETURN :
  * 
- * AUTHOR :			         Troy "Agent Moose" Pruitt
+ * AUTHOR :               Troy "Agent Moose" Pruitt
  */
 void musicTransitionTrack(short arg1, short CueTrack, short arg3, short arg4);
 
 /*
- * NAME :		             musicIsLoaded
+ * NAME :                 musicIsLoaded
  * 
  * DESCRIPTION :
- * 			                 Returns non-zero if the game has loaded the music data.
+ *                        Returns non-zero if the game has loaded the music data.
  * 
  * NOTES :                   
  * 
@@ -186,7 +186,7 @@ void musicTransitionTrack(short arg1, short CueTrack, short arg3, short arg4);
  * 
  * RETURN :
  * 
- * AUTHOR :			         Troy "Agent Moose" Pruitt
+ * AUTHOR :               Troy "Agent Moose" Pruitt
  */
 int musicIsLoaded(void);
 

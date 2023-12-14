@@ -8,13 +8,13 @@
 /*
  * Points to the active game settings.
  */
-#define GLOBAL_GAMESETTINGS			            ((GameSettings*)(*(u32*)0x0021DFE8))
+#define GLOBAL_GAMESETTINGS                  ((GameSettings*)(*(u32*)0x0021DFE8))
 
 
 /*
  * Points to the active game options.
  */
-#define GLOBAL_GAMEOPTIONS			            ((GameOptions*)(*(u32*)0x0021DFF0))
+#define GLOBAL_GAMEOPTIONS                  ((GameOptions*)(*(u32*)0x0021DFF0))
 
 /*
  *

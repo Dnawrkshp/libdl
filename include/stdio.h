@@ -1,10 +1,10 @@
 /***************************************************
- * FILENAME :		stdio.h
+ * FILENAME :    stdio.h
  * 
  * DESCRIPTION :
- * 		Contains useful functions for debugging.
+ *     Contains useful functions for debugging.
  * 
- * AUTHOR :			Daniel "Dnawrkshp" Gerendasy
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 
 #ifndef _LIBDL_STDIO_H_
