@@ -85,6 +85,12 @@ void internal_gameEnd(int);
  */
 #define GAME_CLIENT_ID                        (*(u8*)0x00172170)
 
+
+/*
+ * Account id of the current client.
+ */
+#define GAME_ACCOUNT_ID                        (*(int*)0x00172194)
+
 /*
  *
  */
@@ -126,6 +132,11 @@ int gameGetHostId(void)
 int gameGetMyClientId(void)
 {
     return GAME_CLIENT_ID;
+}
+
+int gameGetMyAccountId(void)
+{
+    return GAME_ACCOUNT_ID;
 }
 
 int isInGame(void)

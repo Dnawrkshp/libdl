@@ -318,6 +318,22 @@ __LIBDL_GETTER__ int gameGetHostId(void);
 __LIBDL_GETTER__ int gameGetMyClientId(void);
 
 /*
+ * NAME :    gameGetMyAccountId
+ * 
+ * DESCRIPTION :
+ *       Returns the current client's account id.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
+ */
+__LIBDL_GETTER__ int gameGetMyAccountId(void);
+
+/*
  * NAME :    gameHasEnded
  * 
  * DESCRIPTION :
