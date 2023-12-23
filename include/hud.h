@@ -166,9 +166,9 @@ void hudSetCurrentCanvas(u32);
 struct HUDObject* hudCanvasGetObject(void* canvas, u32 objId);
 void hudHidePopup(void);
 u32 hudPanelGetElement(void* panel, int element);
-void hudElementGetScale(u32 id, float *sx, float *sy);
+int hudElementGetScale(u32 id, float *sx, float *sy);
 int hudElementSetScale(u32 id, float sx, float sy);
-void hudElementGetPosition(u32 id, float *px, float *py);
+int hudElementGetPosition(u32 id, float *px, float *py);
 int hudElementSetPosition(u32 id, float px, float py);
 
 #endif // _LIBDL_HUD_H_
