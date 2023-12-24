@@ -154,6 +154,11 @@ int isSceneLoading(void)
     return SCENE_LOADED != 1;
 }
 
+int gameIsAnyStartMenuOpen(void)
+{
+    return GAME_START_MENU_OPEN[1];
+}
+
 int gameIsStartMenuOpen(int localPlayerIndex)
 {
     return GAME_START_MENU_OPEN[localPlayerIndex * 15];

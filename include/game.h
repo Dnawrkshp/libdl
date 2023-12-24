@@ -238,6 +238,22 @@ __LIBDL_GETTER__ int isInMenus(void);
 __LIBDL_GETTER__ int isSceneLoading(void);
 
 /*
+ * NAME :    gameIsAnyStartMenuOpen
+ * 
+ * DESCRIPTION :
+ *       Whether any local is in game and has the start menu open.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
+ */
+__LIBDL_GETTER__ int gameIsAnyStartMenuOpen(void);
+
+/*
  * NAME :    gameIsStartMenuOpen
  * 
  * DESCRIPTION :
