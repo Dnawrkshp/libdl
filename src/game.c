@@ -13,7 +13,7 @@ void internal_gameEnd(int);
 /*
  * When non-zero start menu is open in-game.
  */
-#define GAME_START_MENU_OPEN                (*(int*)0x002F9EA0)
+#define GAME_START_MENU_OPEN                ((int*)0x002F9EA0)
 
 /*
  * How many milliseconds for the game to last.
@@ -154,9 +154,9 @@ int isSceneLoading(void)
     return SCENE_LOADED != 1;
 }
 
-int gameIsStartMenuOpen(void)
+int gameIsStartMenuOpen(int localPlayerIndex)
 {
-    return GAME_START_MENU_OPEN;
+    return GAME_START_MENU_OPEN[localPlayerIndex * 15];
 }
 
 int gameHasEnded(void)

@@ -251,7 +251,7 @@ __LIBDL_GETTER__ int isSceneLoading(void);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-__LIBDL_GETTER__ int gameIsStartMenuOpen(void);
+__LIBDL_GETTER__ int gameIsStartMenuOpen(int localPlayerIndex);
 
 /*
  * NAME :    gameIsHost
