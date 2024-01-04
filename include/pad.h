@@ -260,6 +260,6 @@ void padEnableInput(void);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-int padGetMappedPad(int bits, int localPlayerIndex);
+int padGetMappedPad(int bits, int index);
 
 #endif // _LIBDL_PAD_H
