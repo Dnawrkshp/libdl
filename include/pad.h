@@ -246,4 +246,20 @@ void padDisableInput(void);
  */
 void padEnableInput(void);
 
+/*
+ * NAME :    padGetMappedPad
+ * 
+ * DESCRIPTION :
+ *       Returns the remapped pad bits for the given player's pad.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
+ */
+int padGetMappedPad(int bits, int localPlayerIndex);
+
 #endif // _LIBDL_PAD_H

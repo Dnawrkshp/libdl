@@ -34,7 +34,7 @@ void internal_playerSetPosRot(Player *, VECTOR, VECTOR, int, int, int, int, int)
 extern const PadHistory DefaultPadHistory;
 
 // Player pad history
-PadHistory PlayerPadHistory[GAME_MAX_PLAYERS];
+PadHistory PlayerPadHistory[GAME_MAX_PLAYERS] = {};
 
 //--------------------------------------------------------------------------------
 Player ** playerGetAll(void)
