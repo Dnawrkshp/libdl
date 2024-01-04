@@ -1111,6 +1111,25 @@ __LIBDL_GETTER__ PadButtonStatus * playerGetPad(Player * player);
 __LIBDL_GETTER__ int playerPadGetButton(Player * player, u16 buttonMask);
 
 /*
+ * NAME :    playerPadGetAnyButton
+ * 
+ * DESCRIPTION :
+ *       Returns 1 when the given player is pressing any of the given buttons.
+ *          Returns negative on failure.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ *          player:                     Pointer to player's player object.
+ *          buttonMask:                 Buttons to check.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
+ */
+__LIBDL_GETTER__ int playerPadGetAnyButton(Player * player, u16 buttonMask);
+
+/*
  * NAME :    playerPadGetButtonDown
  * 
  * DESCRIPTION :
@@ -1130,6 +1149,25 @@ __LIBDL_GETTER__ int playerPadGetButton(Player * player, u16 buttonMask);
 __LIBDL_GETTER__ int playerPadGetButtonDown(Player * player, u16 buttonMask);
 
 /*
+ * NAME :    playerPadGetAnyButtonDown
+ * 
+ * DESCRIPTION :
+ *       Returns 1 during the frame that the given player starts pressing any of the given buttons.
+ *          Returns negative on failure.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ *          player:                     Pointer to player's player object.
+ *          buttonMask:                 Buttons to check.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
+ */
+__LIBDL_GETTER__ int playerPadGetAnyButtonDown(Player * player, u16 buttonMask);
+
+/*
  * NAME :    playerPadGetButtonUp
  * 
  * DESCRIPTION :
@@ -1147,6 +1185,25 @@ __LIBDL_GETTER__ int playerPadGetButtonDown(Player * player, u16 buttonMask);
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ int playerPadGetButtonUp(Player * player, u16 buttonMask);
+
+/*
+ * NAME :    playerPadGetAnyButtonUp
+ * 
+ * DESCRIPTION :
+ *       Returns 1 during the frame that the given player releases any of the given buttons.
+ *          Returns negative on failure.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ *          player:                     Pointer to player's player object.
+ *          buttonMask:                 Buttons to check.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
+ */
+__LIBDL_GETTER__ int playerPadGetAnyButtonUp(Player * player, u16 buttonMask);
 
 /*
  * NAME :    playerGetVTable

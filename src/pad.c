@@ -107,6 +107,34 @@ int padGetButton(int localPlayerIndex, u16 buttonMask)
 }
 
 /*
+ * NAME :    padGetAnyButton
+ * 
+ * DESCRIPTION :
+ *       Returns 1 when the user is pressing any of the given buttons.
+ *          Returns negative on failure.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ *          localPlayerIndex:           Which local player's controller to read.
+ *          buttonMask:                 Buttons to check.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
+ */
+int padGetAnyButton(int localPlayerIndex, u16 buttonMask)
+{
+  struct PAD* pad = padGetPad(localPlayerIndex);
+  if (pad) {
+    u16 btns = *(u16*)&pad->rdata[2];
+    return (btns & buttonMask) != buttonMask;
+  }
+
+  return -1;
+}
+
+/*
  * NAME :    padGetButtonDown
  * 
  * DESCRIPTION :
@@ -133,6 +161,32 @@ int padGetButtonDown(int localPlayerIndex, u16 buttonMask)
 }
 
 /*
+ * NAME :    padGetAnyButtonDown
+ * 
+ * DESCRIPTION :
+ *       Returns 1 during the frame that the user starts pressing any of the given buttons.
+ *          Returns negative on failure.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ *          localPlayerIndex:           Which local player's controller to read.
+ *          buttonMask:                 Buttons to check.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
+ */
+int padGetAnyButtonDown(int localPlayerIndex, u16 buttonMask)
+{
+  if (localPlayerIndex < 0 || localPlayerIndex >= GAME_MAX_LOCALS)
+    return -1;
+
+  return padGetAnyButton(localPlayerIndex, buttonMask) &&
+    (LocalPadHistory[localPlayerIndex].btns & buttonMask) == buttonMask;
+}
+
+/*
  * NAME :    padGetButtonUp
  * 
  * DESCRIPTION :
@@ -156,6 +210,32 @@ int padGetButtonUp(int localPlayerIndex, u16 buttonMask)
 
   return !padGetButton(localPlayerIndex, buttonMask) &&
     (LocalPadHistory[localPlayerIndex].btns & buttonMask) == 0;
+}
+
+/*
+ * NAME :    padGetAnyButtonUp
+ * 
+ * DESCRIPTION :
+ *       Returns 1 during the frame that the user releases any of the given buttons.
+ *          Returns negative on failure.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ *          localPlayerIndex:           Which local player's controller to read.
+ *          buttonMask:                 Buttons to check.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
+ */
+int padGetAnyButtonUp(int localPlayerIndex, u16 buttonMask)
+{
+  if (localPlayerIndex < 0 || localPlayerIndex >= GAME_MAX_LOCALS)
+    return -1;
+
+  return !padGetAnyButton(localPlayerIndex, buttonMask) &&
+    (LocalPadHistory[localPlayerIndex].btns & buttonMask) != buttonMask;
 }
 
 /*

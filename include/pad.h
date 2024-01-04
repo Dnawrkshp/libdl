@@ -160,6 +160,25 @@ typedef struct PadHistory
 __LIBDL_GETTER__ int padGetButton(int localPlayerIndex, u16 buttonMask);
 
 /*
+ * NAME :    padGetAnyButton
+ * 
+ * DESCRIPTION :
+ *       Returns 1 when the user is pressing any of the given buttons.
+ *          Returns negative on failure.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ *          localPlayerIndex:           Which local player's controller to read.
+ *          buttonMask:                 Buttons to check.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
+ */
+__LIBDL_GETTER__ int padGetAnyButton(int localPlayerIndex, u16 buttonMask);
+
+/*
  * NAME :    padGetButtonDown
  * 
  * DESCRIPTION :
@@ -179,6 +198,25 @@ __LIBDL_GETTER__ int padGetButton(int localPlayerIndex, u16 buttonMask);
 __LIBDL_GETTER__ int padGetButtonDown(int localPlayerIndex, u16 buttonMask);
 
 /*
+ * NAME :    padGetAnyButtonDown
+ * 
+ * DESCRIPTION :
+ *       Returns 1 during the frame that the user starts pressing any of the given buttons.
+ *          Returns negative on failure.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ *          localPlayerIndex:           Which local player's controller to read.
+ *          buttonMask:                 Buttons to check.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
+ */
+__LIBDL_GETTER__ int padGetAnyButtonDown(int localPlayerIndex, u16 buttonMask);
+
+/*
  * NAME :    padGetButtonUp
  * 
  * DESCRIPTION :
@@ -196,6 +234,25 @@ __LIBDL_GETTER__ int padGetButtonDown(int localPlayerIndex, u16 buttonMask);
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ int padGetButtonUp(int localPlayerIndex, u16 buttonMask);
+
+/*
+ * NAME :    padGetAnyButtonUp
+ * 
+ * DESCRIPTION :
+ *       Returns 1 during the frame that the user releases any of the given buttons.
+ *          Returns negative on failure.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ *          localPlayerIndex:           Which local player's controller to read.
+ *          buttonMask:                 Buttons to check.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
+ */
+__LIBDL_GETTER__ int padGetAnyButtonUp(int localPlayerIndex, u16 buttonMask);
 
 /*
  * NAME :    padResetInput

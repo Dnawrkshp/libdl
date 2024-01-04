@@ -178,6 +178,19 @@ int playerPadGetButton(Player * player, u16 buttonMask)
 }
 
 //--------------------------------------------------------------------------------
+int playerPadGetAnyButton(Player * player, u16 buttonMask)
+{
+    if (!player)
+        return 0;
+
+    PadButtonStatus * paddata = playerGetPad(player);
+    if (!paddata)
+        return 0;
+
+    return (paddata->btns & buttonMask) != buttonMask;
+}
+
+//--------------------------------------------------------------------------------
 int playerPadGetButtonDown(Player * player, u16 buttonMask)
 {
     if (!player)
@@ -188,6 +201,16 @@ int playerPadGetButtonDown(Player * player, u16 buttonMask)
 }
 
 //--------------------------------------------------------------------------------
+int playerPadGetAnyButtonDown(Player * player, u16 buttonMask)
+{
+    if (!player)
+        return 0;
+
+    return playerPadGetAnyButton(player, buttonMask) &&
+            (PlayerPadHistory[player->PlayerId].btns & buttonMask) == buttonMask;
+}
+
+//--------------------------------------------------------------------------------
 int playerPadGetButtonUp(Player * player, u16 buttonMask)
 {
     if (!player)
@@ -195,6 +218,16 @@ int playerPadGetButtonUp(Player * player, u16 buttonMask)
 
     return !playerPadGetButton(player, buttonMask) &&
         (PlayerPadHistory[player->PlayerId].btns & buttonMask) == 0;
+}
+
+//--------------------------------------------------------------------------------
+int playerPadGetAnyButtonUp(Player * player, u16 buttonMask)
+{
+    if (!player)
+        return 0;
+
+    return !playerPadGetAnyButton(player, buttonMask) &&
+        (PlayerPadHistory[player->PlayerId].btns & buttonMask) != buttonMask;
 }
 
 //--------------------------------------------------------------------------------
