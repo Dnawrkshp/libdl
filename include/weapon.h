@@ -313,6 +313,24 @@ int weaponIdToSlot(int id);
 void weaponSetDamage(int weaponId, int level, float damage);
 
 /*
+ * NAME :    weaponGetDamage
+ * 
+ * DESCRIPTION :
+ *       Gets the damage of the given weapon at the given level.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ *      weaponId        :           Target weapon.
+ *      level           :           Target weapon level.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
+ */
+float weaponGetDamage(int weaponId, int level);
+
+/*
  * NAME :    weaponTurnOnHoloshields
  * 
  * DESCRIPTION :

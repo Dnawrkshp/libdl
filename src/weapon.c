@@ -87,3 +87,29 @@ void weaponSetDamage(int weaponId, int level, float damage)
     }
 }
 
+float weaponGetDamage(int weaponId, int level)
+{
+    switch (weaponId)
+    {
+        case WEAPON_ID_WRENCH:
+        {
+            return WRENCH_DEFS_TABLE->Entries[level].Damage[2];
+        }
+        case WEAPON_ID_OMNI_SHIELD:
+        {
+            if (level == 0)
+                return *(u16*)OMNI_DAMAGE_V1_PATCH;
+            else
+                return *(u16*)OMNI_DAMAGE_V2_PATCH;
+        }
+        case WEAPON_ID_FLAIL:
+        {
+            return FLAIL_DEFS_TABLE->Entries[level].Damage[2];
+        }
+        default:
+        {
+            return WEAPON_DEFS_TABLE[weaponId - WEAPON_ID_VIPERS].Entries[level].Damage[2];
+        }
+    }
+}
+
