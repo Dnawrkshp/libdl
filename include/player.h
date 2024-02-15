@@ -631,7 +631,11 @@ typedef struct Player
     
     float Health;                                                   // 0x2E20
     
-    char UNK22[0xB2];                                               // 0x2E24
+    char UNK22[0x58];                                               // 0x2E24
+
+    int LastDamagedMeGadgetId;                                      // 0x2E7C
+
+    char UNK123[0x56];                                              // 0x2E80
 
     char Explode;                                                   // 0x2ED6
 
