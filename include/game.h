@@ -512,6 +512,6 @@ __LIBDL_GETTER__ int gameGetWorldId(void);
  *       Sets whether or not the current game will count towards rank/stats.
  * 
  */
-void setIsGameRanked(int trueOrFalse);
+void gameSetIsGameRanked(int trueOrFalse);
 
 #endif // _LIBDL_GAME_H_

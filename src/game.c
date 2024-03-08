@@ -209,7 +209,7 @@ int gameGetPing(void)
     return GAME_PING_ARRAY[lastIndex] * 2;
 }
 
-void setIsGameRanked(int trueOrFalse)
+void gameSetIsGameRanked(int trueOrFalse)
 {
   *(u8*)GAME_INFO_GAME_IS_RANKED = trueOrFalse;
 }
