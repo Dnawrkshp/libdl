@@ -505,4 +505,13 @@ void gameScoreboardAddTeam(int teamId, int isLocal);
  */
 __LIBDL_GETTER__ int gameGetWorldId(void);
 
+/*
+ * NAME :    setIsGameRanked
+ * 
+ * DESCRIPTION :
+ *       Sets whether or not the current game will count towards rank/stats.
+ * 
+ */
+void setIsGameRanked(int trueOrFalse);
+
 #endif // _LIBDL_GAME_H_

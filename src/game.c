@@ -102,6 +102,8 @@ void internal_gameEnd(int);
 #define GAME_PING_ARRAY                     ((int*)0x001B2420)
 #define GAME_PING_CURRENT_INDEX             (*(int*)0x001B25B4)
 
+#define GAME_INFO_GAME_IS_RANKED            (0x001722F5)
+
 void gameSetWinner(int teamOrPlayerId, int isTeam)
 {
   GAME_WINNER_TEAM_ID2 = GAME_WINNER_TEAM_ID = teamOrPlayerId;
@@ -205,4 +207,9 @@ int gameGetPing(void)
     if (lastIndex < 0)
         lastIndex = 0x63;
     return GAME_PING_ARRAY[lastIndex] * 2;
+}
+
+void setIsGameRanked(int trueOrFalse)
+{
+  *(u8*)GAME_INFO_GAME_IS_RANKED = trueOrFalse;
 }
