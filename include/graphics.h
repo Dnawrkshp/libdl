@@ -20,6 +20,20 @@
 #define SCREEN_HEIGHT          (416)
 
 //--------------------------------------------------------
+enum TextAlign
+{
+  TEXT_ALIGN_TOPLEFT,
+  TEXT_ALIGN_TOPCENTER,
+  TEXT_ALIGN_TOPRIGHT,
+  TEXT_ALIGN_MIDDLELEFT,
+  TEXT_ALIGN_MIDDLECENTER,
+  TEXT_ALIGN_MIDDLERIGHT,
+  TEXT_ALIGN_BOTTOMLEFT,
+  TEXT_ALIGN_BOTTOMCENTER,
+  TEXT_ALIGN_BOTTOMRIGHT,
+};
+
+//--------------------------------------------------------
 typedef void (*gfxDrawFuncDef)(Moby*);
 
 //--------------------------------------------------------
