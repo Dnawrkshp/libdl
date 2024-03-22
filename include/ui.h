@@ -265,13 +265,13 @@ void uiShowPopup(int localPlayerIndex, const char * message);
  * ARGS : 
  *      localPlayerIndex    :               Local player to show popup for.
  *      message             :               Message to show.
- *      seconds             :               How many seconds to show the popup for.
+ *      ticks               :               How many ticks to show the popup for.
  * 
  * RETURN :
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-void uiShowHelpPopup(int localPlayerIndex, const char * message, int seconds);
+void uiShowHelpPopup(int localPlayerIndex, const char * message, int ticks);
 
 /*
  * NAME :    uiShowTimer
