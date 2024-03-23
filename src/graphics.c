@@ -18,7 +18,8 @@ u64 internal_getEffectTex_inGame(int id, int);
 u64 internal_getEffectTex_inLobby(int id, int);
 void internal_drawSprite_inGame(float x, float y, float w, float h, int t0, int t1, int texW, int texH, u64 color, u64 texture);
 void internal_drawSprite_inLobby(float x, float y, float w, float h, int t0, int t1, int texW, int texH, u64 color, u64 texture);
-
+void internal_setScissor_inGame(int xmin, int xmax, int ymin, int ymax);
+void internal_setScissor_inLobby(int xmin, int xmax, int ymin, int ymax);
 
 //--------------------------------------------------------
 int gfxWorldSpaceToScreenSpace(VECTOR position, int * x, int * y)
@@ -307,4 +308,11 @@ void gfxDrawSprite(float x, float y, float w, float h, int t0, int t1, int texW,
     {
         internal_drawSprite_inLobby(x, y, w, h, t0, t1, texW, texH, color, texture);
     }
+}
+
+//--------------------------------------------------------
+void gfxSetScissor(int xmin, int xmax, int ymin, int ymax)
+{
+  if (isInGame()) internal_setScissor_inGame(xmin, xmax, ymin, ymax);
+  else if (isInMenus()) internal_setScissor_inLobby(xmin, xmax, ymin, ymax);
 }

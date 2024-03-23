@@ -103,6 +103,8 @@ FUNCTION(gfxDrawBillboardQuad, 0x005b6450)
 FUNCTION(gfxResetQuad, 0x005b6378)
 FUNCTION(gfxSetBlendMode, 0x004c97d8)
 FUNCTION(gfxSetTexture, 0x004c9a58)
+FUNCTION(internal_setScissor_inLobby, 0x006792f0)
+FUNCTION(internal_setScissor_inGame, 0x0059b940)
 
 #--------------------------------------------------------
 #---------------------- MEMORY CARD ---------------------
