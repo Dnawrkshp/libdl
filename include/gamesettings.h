@@ -140,7 +140,7 @@ typedef struct GameOptions
             char UNK_06 : 8;
             char UNK_07 : 8;
             char UNK_08 : 8;
-            char UNK_09 : 8;
+            char Nodes : 8;
             char Homenodes : 8;
             char UNK_0B : 8;
             char UNK_0C : 8;
