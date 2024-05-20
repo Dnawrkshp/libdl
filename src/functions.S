@@ -354,3 +354,8 @@ FUNCTION(hudElementGetScale, 0x005c0cf0)
 FUNCTION(hudElementSetScale, 0x005c2048)
 FUNCTION(hudElementGetPosition, 0x005c0bf8)
 FUNCTION(hudElementSetPosition, 0x005c08e0)
+
+#--------------------------------------------------------
+#------------------------ VOICE -------------------------
+#--------------------------------------------------------
+FUNCTION(voiceEnableGlobalChat, 0x00162760)

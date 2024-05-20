@@ -514,4 +514,13 @@ __LIBDL_GETTER__ int gameGetWorldId(void);
  */
 void gameSetIsGameRanked(int trueOrFalse);
 
+/*
+ * NAME :    voiceEnableGlobalChat
+ * 
+ * DESCRIPTION :
+ *       Whether to use the global or team voice chat.
+ * 
+ */
+void voiceEnableGlobalChat(int enable);
+
 #endif // _LIBDL_GAME_H_
