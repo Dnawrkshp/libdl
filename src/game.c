@@ -2,7 +2,7 @@
 
 
 void internal_gameEnd(int);
-void internal_voiceEnableGlobalChat(int enable)
+void internal_voiceEnableGlobalChat(int enable);
 
 /*
  * 
