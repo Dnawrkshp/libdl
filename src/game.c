@@ -2,6 +2,7 @@
 
 
 void internal_gameEnd(int);
+void internal_voiceEnableGlobalChat(int enable)
 
 /*
  * 
@@ -214,6 +215,14 @@ int gameGetPing(void)
 void gameSetIsGameRanked(int trueOrFalse)
 {
   *(u8*)GAME_INFO_GAME_IS_RANKED = trueOrFalse;
+}
+
+void voiceEnableGlobalChat(int enable)
+{
+  if (VOICE_CHANNEL == 0 && enable) return;
+  if (VOICE_CHANNEL != 0 && !enable) return;
+
+  internal_voiceEnableGlobalChat(enable);
 }
 
 int voiceGetChannel(void)

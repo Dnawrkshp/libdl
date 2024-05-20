@@ -358,4 +358,4 @@ FUNCTION(hudElementSetPosition, 0x005c08e0)
 #--------------------------------------------------------
 #------------------------ VOICE -------------------------
 #--------------------------------------------------------
-FUNCTION(voiceEnableGlobalChat, 0x00162760)
+FUNCTION(internal_voiceEnableGlobalChat, 0x00162760)
