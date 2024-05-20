@@ -70,20 +70,27 @@ void playerSetHealth(Player * player, float health)
 //--------------------------------------------------------------------------------
 void playerSetTeam(Player * player, int teamId)
 {
-    if (!player)
-        return;
+  if (!player || player->Team == teamId)
+      return;
 
-    player->Team = teamId;
-    player->PlayerMoby->GlowRGBA = TEAM_COLORS[teamId];
-    player->SkinMoby->ModeBits2 = (player->SkinMoby->ModeBits2 & 0xff) | ((0x80 + (8 * teamId)) << 8);
-    player->SkinMoby->Triggers = 0;
-    
-    // move to correct voice channel
+  player->Team = teamId;
+  player->PlayerMoby->GlowRGBA = TEAM_COLORS[teamId];
+  player->SkinMoby->ModeBits2 = (player->SkinMoby->ModeBits2 & 0xff) | ((0x80 + (8 * teamId)) << 8);
+  player->SkinMoby->Triggers = 0;
+
+  // update game settings
+  GameSettings* gs = gameGetSettings();
+  if (gs) {
+    gs->PlayerTeams[player->PlayerId] = teamId;
+  }
+ 
+  // move to correct voice channel
+  if (player->IsLocal && player->LocalPlayerIndex == 0) {
     int channel = voiceGetChannel();
     if (channel > 0 && channel != (teamId + 1)) {
-      internal_voiceEnableGlobalChat(1);
       internal_voiceEnableGlobalChat(0);
     }
+  }
 }
 
 //--------------------------------------------------------------------------------
