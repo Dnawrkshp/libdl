@@ -79,7 +79,9 @@ void playerSetTeam(Player * player, int teamId)
     player->SkinMoby->Triggers = 0;
     
     // move to correct voice channel
-    if (voiceGetChannel() > 0 && voiceGetChannel() != (teamId + 1)) {
+    int channel = voiceGetChannel();
+    if (channel > 0 && channel != (teamId + 1)) {
+      internal_voiceEnableGlobalChat(1);
       internal_voiceEnableGlobalChat(0);
     }
 }
