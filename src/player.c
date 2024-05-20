@@ -88,6 +88,7 @@ void playerSetTeam(Player * player, int teamId)
   if (player->IsLocal && player->LocalPlayerIndex == 0) {
     int channel = voiceGetChannel();
     if (channel > 0 && channel != (teamId + 1)) {
+      internal_voiceEnableGlobalChat(1);
       internal_voiceEnableGlobalChat(0);
     }
   }
