@@ -104,6 +104,8 @@ void internal_gameEnd(int);
 
 #define GAME_INFO_GAME_IS_RANKED            (0x001722F5)
 
+#define VOICE_CHANNEL                       (*(int*)0x002120e4)
+
 void gameSetWinner(int teamOrPlayerId, int isTeam)
 {
   GAME_WINNER_TEAM_ID2 = GAME_WINNER_TEAM_ID = teamOrPlayerId;
@@ -212,4 +214,9 @@ int gameGetPing(void)
 void gameSetIsGameRanked(int trueOrFalse)
 {
   *(u8*)GAME_INFO_GAME_IS_RANKED = trueOrFalse;
+}
+
+int voiceGetChannel(void)
+{
+  return VOICE_CHANNEL;
 }

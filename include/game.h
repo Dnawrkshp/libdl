@@ -523,4 +523,15 @@ void gameSetIsGameRanked(int trueOrFalse);
  */
 void voiceEnableGlobalChat(int enable);
 
+/*
+ * NAME :    voiceGetChannel
+ * 
+ * DESCRIPTION :
+ *       Which voice channel we are in.
+ *        0 is global.
+ *        1 is blue team, 2 is red, etc.
+ * 
+ */
+int voiceGetChannel(void);
+
 #endif // _LIBDL_GAME_H_
