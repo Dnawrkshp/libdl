@@ -201,6 +201,7 @@ FUNCTION(masterCreate, 0x005cf3f8)
 #--------------------------------------------------------
 FUNCTION(weaponTurnOnHoloshields, 0x005a37f0)
 FUNCTION(weaponTurnOffHoloshields, 0x005a3940)
+FUNCTION(weaponMobyUpdateBangles, 0x00628a60)
 
 #--------------------------------------------------------
 #------------------------- SHA1 -------------------------

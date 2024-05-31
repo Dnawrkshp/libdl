@@ -16,6 +16,7 @@
 
 #include "common.h"
 #include "math3d.h"
+#include "moby.h"
 
 /*
  *
@@ -365,5 +366,22 @@ void weaponTurnOnHoloshields(int team);
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 void weaponTurnOffHoloshields(void);
+
+/*
+ * NAME :    weaponMobyUpdateBangles
+ * 
+ * DESCRIPTION :
+ *       Sets the given weapon moby's bangles according to the weapon's level.
+ * 
+ * ARGS : 
+ *      weaponMoby      :           Target weapon moby.
+ *      weaponId        :           Target weapon.
+ *      level           :           Target weapon level.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
+ */
+void weaponMobyUpdateBangles(Moby* weaponMoby, int weaponId, int level);
 
 #endif // _LIBDL_WEAPON_H_
