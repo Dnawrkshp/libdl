@@ -627,7 +627,13 @@ typedef struct Player
 
     GadgetBox * GadgetBox;                                          // 0x26E4
 
-    char UNK21[0x738];                                              // 0x26E8
+    char UNK21[0x5E8];                                              // 0x26E8
+
+    VECTOR CamPos;                                                  // 0x2CD0
+    VECTOR CamRot;                                                  // 0x2CE0
+    VECTOR CamUMtx[3];                                              // 0x2CF0
+
+    char UNK29[0x100];                                              // 0x2D20
     
     float Health;                                                   // 0x2E20
     
