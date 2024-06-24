@@ -85,7 +85,7 @@ struct PAD {
   /* 350 */ int lagValidSize;
   /* 354 */ int bits_Lagged[7];
   /* 370 */ int digitalBits_Lagged[7];
-  /* 38c */ float analog_Lagged[16][7];
+  /* 38c */ float analog_Lagged[7][16];
   /* 54c */ u8 port;
   /* 54d */ u8 repeatDelay;
   /* 54e */ u8 repeatSpeed;
