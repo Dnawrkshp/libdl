@@ -181,7 +181,10 @@ void gfxDoGifPaging(void);
 void gfxSetupGifPaging(int);
 u64 gfxGetFrameTex(int id);
 u64 gfxGetEffectTex(int id, int);
+int gfxConstructEffectTex(int texGsAddr, int palGsAddr, int ulog, int vlog, int format);
 void gfxDrawSprite(float x, float y, float w, float h, int t0, int t1, int texW, int texH, u64 color, u64 texture);
+int gfxLoadPalToGs(void* ptr, int format);
+int gfxLoadTexToGs(void* ptr, int ulog, int vlog, int format);
 
 void gfxDrawCubicLine(void * fxUtilsInterface, CubicLineEndPoint * points, int numPoints, void * cubicLineStatic, float scale);
 Moby* gfxDrawSimpleTwoPointLightning(void* fxSpawningInterface, VECTOR from, VECTOR to, int life, int numStrands, int bContactBothEnds, void* style, Moby* startMoby, Moby* endMoby, u32 color);

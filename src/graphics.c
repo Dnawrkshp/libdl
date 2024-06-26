@@ -20,6 +20,9 @@ void internal_drawSprite_inGame(float x, float y, float w, float h, int t0, int 
 void internal_drawSprite_inLobby(float x, float y, float w, float h, int t0, int t1, int texW, int texH, u64 color, u64 texture);
 void internal_setScissor_inGame(int xmin, int xmax, int ymin, int ymax);
 void internal_setScissor_inLobby(int xmin, int xmax, int ymin, int ymax);
+int internal_loadPalToGs_inLobby(void* ptr, int format);
+int internal_loadTexToGs_inLobby(void* ptr, int ulog, int vlog, int format);
+int internal_constructEffectTex_inLobby(int texGsAddr, int palGsAddr, int ulog, int vlog, int format);
 
 //--------------------------------------------------------
 int gfxWorldSpaceToScreenSpace(VECTOR position, int * x, int * y)
@@ -298,6 +301,15 @@ u64 gfxGetEffectTex(int id, int a1)
     return 0;
 }
 
+int gfxConstructEffectTex(int texGsAddr, int palGsAddr, int ulog, int vlog, int format)
+{
+  if (isInMenus()) {
+    return internal_constructEffectTex_inLobby(texGsAddr, palGsAddr, ulog, vlog, format);
+  }
+
+  return 0;
+}
+
 void gfxDrawSprite(float x, float y, float w, float h, int t0, int t1, int texW, int texH, u64 color, u64 texture)
 {
     if (isInGame())
@@ -308,6 +320,24 @@ void gfxDrawSprite(float x, float y, float w, float h, int t0, int t1, int texW,
     {
         internal_drawSprite_inLobby(x, y, w, h, t0, t1, texW, texH, color, texture);
     }
+}
+
+int gfxLoadPalToGs(void* ptr, int format)
+{
+  if (isInMenus()) {
+    return internal_loadPalToGs_inLobby(ptr, format);
+  }
+
+  return 0;
+}
+
+int gfxLoadTexToGs(void* ptr, int ulog, int vlog, int format)
+{
+  if (isInMenus()) {
+    return internal_loadTexToGs_inLobby(ptr, ulog, vlog, format);
+  }
+
+  return 0;
 }
 
 //--------------------------------------------------------
