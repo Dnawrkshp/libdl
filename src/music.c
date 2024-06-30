@@ -97,15 +97,15 @@ void musicUnpauseTrack(void)
 }
 
 //--------------------------------------------------------------------------------
-void musicTransitionTrack(short arg1, short CueTrack, short arg3, short arg4)
+void musicTransitionTrack(short track, short CueTrack, short flags, short vol)
 {
     if (isInGame())
     {
-        internal_musicTransitionTrack_inGame(arg1, CueTrack, arg3, arg4);
+        internal_musicTransitionTrack_inGame(track, CueTrack, flags, vol);
     }
     else if (isInMenus())
     {
-        internal_musicTransitionTrack_inLobby(arg1, CueTrack, arg3, arg4);
+        internal_musicTransitionTrack_inLobby(track, CueTrack, flags, vol);
     }
 }
 
@@ -113,4 +113,24 @@ void musicTransitionTrack(short arg1, short CueTrack, short arg3, short arg4)
 int musicIsLoaded(void)
 {
   return MUSIC_LOCATION == 0xF8D29;
+}
+
+int musicCurrentTrack(void)
+{
+    return CURRENT_TRACK;
+}
+
+int musicTrackDuration(void)
+{
+    return TRACK_DURATION;
+}
+
+int musicTrackRangeMin(void)
+{
+    return TRACK_RANGE_MIN;
+}
+
+int musicTrackRangeMax(void)
+{
+    return TRACK_RANGE_MAX;
 }
