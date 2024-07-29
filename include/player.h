@@ -1284,4 +1284,21 @@ Player * playerGetFromSlot(int slot);
  */
 int playerGetJuggSafeTeam(Player * player);
 
+/*
+ * NAME :    playerIsConnected
+ * 
+ * DESCRIPTION :
+ *       Returns whether or not the given player still has a valid connection.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
+ */
+int playerIsConnected(Player * player);
+
 #endif // _LIBDL_PLAYER_H_
