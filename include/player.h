@@ -721,7 +721,7 @@ typedef struct Player
 
 
 typedef void (*PlayerUpdate_func)(Player * player);
-typedef void (*PlayerUpdateState_func)(Player * player, int stateId, int a2, int a3, int t0);
+typedef void (*PlayerUpdateState_func)(Player * player, int stateId, int bTransAnim, int bForce, int bFall);
 
 /*
  * NAME :    PlayerVTable
@@ -1044,6 +1044,24 @@ void playerDropFlag(Player * player, int a1);
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 int playerIsDead(Player * player);
+
+/*
+ * NAME :    playerStateIsDead
+ * 
+ * DESCRIPTION :
+ *       Returns non-zero if the given player state is dead.
+ * 
+ * NOTES :
+ * 
+ * 
+ * ARGS : 
+ *      state      :           State.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
+ */
+int playerStateIsDead(int state);
 
 /*
  * NAME :    playerSetPosRot

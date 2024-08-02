@@ -255,14 +255,20 @@ PlayerVTable* playerGetVTable(Player * player)
 }
 
 //--------------------------------------------------------------------------------
+int playerStateIsDead(int state)
+{
+  return state == PLAYER_STATE_DEATH
+        || state == PLAYER_STATE_DROWN
+        || state == PLAYER_STATE_DEATH_FALL
+        || state == PLAYER_STATE_DEATHSAND_SINK
+        || state == PLAYER_STATE_LAVA_DEATH
+        || state == PLAYER_STATE_DEATH_NO_FALL
+        || state == PLAYER_STATE_WAIT_FOR_RESURRECT
+        ;
+}
+
+//--------------------------------------------------------------------------------
 int playerIsDead(Player * player)
 {
-  return player->PlayerState == PLAYER_STATE_DEATH
-        || player->PlayerState == PLAYER_STATE_DROWN
-        || player->PlayerState == PLAYER_STATE_DEATH_FALL
-        || player->PlayerState == PLAYER_STATE_DEATHSAND_SINK
-        || player->PlayerState == PLAYER_STATE_LAVA_DEATH
-        || player->PlayerState == PLAYER_STATE_DEATH_NO_FALL
-        || player->PlayerState == PLAYER_STATE_WAIT_FOR_RESURRECT
-        ;
+  return playerStateIsDead(player->PlayerState);
 }
