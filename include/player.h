@@ -369,6 +369,34 @@ typedef struct HeroTimers {
   /*  b2 */ short int invincibilityTimer;
 } HeroTimers;
 
+typedef struct HeroColl { // 0x80
+	/* 0x00 */ VECTOR normal;
+	/* 0x10 */ VECTOR ip;
+	/* 0x20 */ float top;
+	/* 0x24 */ float bot;
+	/* 0x28 */ float ideal_top;
+	/* 0x2c */ float ideal_bot;
+	/* 0x30 */ float idealRadius;
+	/* 0x34 */ float radius;
+	/* 0x38 */ float radiusSpeed;
+	/* 0x3c */ Moby *pContactMoby;
+	/* 0x40 */ Moby *pBumpMoby;
+	/* 0x44 */ float bumpPushSpeed;
+	/* 0x48 */ float distToWall;
+	/* 0x4c */ float wallAng;
+	/* 0x50 */ float wallSlope;
+	/* 0x54 */ char wallIsCrate;
+	/* 0x55 */ char wallIsMoby;
+	/* 0x56 */ char contact;
+	/* 0x57 */ char cpad;
+	/* 0x58 */ float ledgeHeight;
+	/* 0x5c */ float ledgeDist;
+	/* 0x60 */ int atLedge;
+	/* 0x64 */ Moby *pWallJumpMoby;
+	/* 0x68 */ int pad[2];
+	/* 0x70 */ float radiusSqd;
+} HeroColl;
+
 typedef struct HeroGround {
   /*   0 */ VECTOR normal;
   /*  10 */ VECTOR waterNormal;
@@ -501,7 +529,9 @@ typedef struct Player
 
     VECTOR Velocity;                                                // 0x130
 
-    char UNK164[0x110];                                             // 0x140
+    char UNK164[0x90];                                              // 0x140
+
+    HeroColl Coll;                                                  // 0x1D0
 
     HeroGround Ground;                                              // 0x250
 
