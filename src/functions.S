@@ -195,6 +195,7 @@ FUNCTION(playerGetFromSlot, 0x005cd3d0)
 FUNCTION(playerGetSpawnpoint, 0x006242d0)
 FUNCTION(playerGetJuggSafeTeam, 0x005d0fd8)
 FUNCTION(playerIsConnected, 0x004447e8)
+FUNCTION(playerGetWeaponAlphaModCount, 0x006299a8)
 
 #--------------------------------------------------------
 #------------------------ MASTER ------------------------

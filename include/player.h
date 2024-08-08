@@ -964,6 +964,25 @@ __LIBDL_GETTER__ int playerGetNumLocals(void);
 void playerGiveWeapon(GadgetBox * gadgetBox, int weaponId, int weaponLevel, int giveMaxAmmo);
 
 /*
+ * NAME :    playerGetWeaponAlphaModCount
+ * 
+ * DESCRIPTION :
+ *       Returns the number of the given alpha mod on the given weapon.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ *      gadgetBox   :           Target player's gadget box.
+ *      weaponId    :           ID of weapon to check.
+ *      alphaModId :            Alpha mod to count.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
+ */
+int playerGetWeaponAlphaModCount(GadgetBox* gadgetBox, int weaponId, int alphaModId);
+
+/*
  * NAME :    playerRespawn
  * 
  * DESCRIPTION :
