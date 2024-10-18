@@ -257,6 +257,7 @@ FUNCTION(guberGetObjectByMoby, 0x005cec98)
 FUNCTION(guberGetUID, 0x005cec68)
 FUNCTION(guberMobyGetPlayerDamager, 0x005ce5c8)
 FUNCTION(guberMobyDestroy, 0x0061c450)
+FUNCTION(guberGetOrCreateObjectByMoby, 0x0061c1b0)
 
 #--------------------------------------------------------
 #------------------------- FLAG -------------------------
