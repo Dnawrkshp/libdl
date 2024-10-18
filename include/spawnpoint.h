@@ -158,4 +158,20 @@ __LIBDL_GETTER__ SpawnPoint * spawnPointGet(int index);
  */
 __LIBDL_SETTER__ void spawnPointSet(SpawnPoint * sp, int index);
 
+/*
+ * NAME :    spawnPointIsPointInside
+ * 
+ * DESCRIPTION :
+ *       
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
+ */
+int spawnPointIsPointInside(SpawnPoint* sp, VECTOR point, VECTOR outDt);
+
 #endif // _LIBDL_SPAWNPOINT_H_
