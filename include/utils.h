@@ -12,7 +12,7 @@
 
 
 #define COUNT_OF(x) ((sizeof(x)/sizeof(0[x])) / ((unsigned long)(!(sizeof(x) % sizeof(0[x])))))
-#define OFFSET_OF(st, m) ((size_t)(&((st *)0)->m))
+#define OFFSET_OF(st, m) ((u32)(&((st *)0)->m))
 #define HOOK_JAL(dest, function)            (*(u32*)(dest) = 0x0C000000 | ((u32)(function) >> 2))
 #define HOOK_J(dest, function)              (*(u32*)(dest) = 0x08000000 | ((u32)(function) >> 2))
 #define POKE_F32(dest, value)               (*(float*)(dest) = value)
