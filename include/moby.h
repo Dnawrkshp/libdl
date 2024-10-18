@@ -19,6 +19,7 @@
 #include "common.h"
 #include "gid.h"
 
+struct Guber;
 struct GuberMoby;
 struct GuberEvent;
 struct Gid;
@@ -693,8 +694,10 @@ struct MoveVars_V2 {
   /* 1a8 */ u64 attachGroupCache;
 };
 
-typedef void (*MobyGetInterface_func)(int mobyId, int arg2, int arg3);
-typedef void (*MobyGetGuberObject_func)(Moby * moby);
+struct MobyFunctions;
+
+typedef struct MobyFunctions* (*MobyGetInterface_func)(int mobyId, int arg2, int arg3);
+typedef struct Guber* (*MobyGetGuberObject_func)(Moby * moby);
 typedef void (*MobyEventHandler_func)(Moby * moby, struct GuberEvent * event);
 
 typedef struct MobyFunctions
