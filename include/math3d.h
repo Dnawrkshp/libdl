@@ -58,7 +58,7 @@ void vector_projectonplane(VECTOR output, VECTOR input0, VECTOR input1);
 void vector_print(VECTOR input0);
 void vector_fromforwardup(VECTOR output, VECTOR forward, VECTOR up);
 
-void matrix_toeuler(VECTOR output, MATRIX input0);
+void matrix_toeuler(MATRIX input0, VECTOR output);
 void matrix_fromrows(MATRIX output, VECTOR input0, VECTOR input1, VECTOR input2, VECTOR input3);
 void matrix_copy(MATRIX output, MATRIX input0);
 void matrix_inverse(MATRIX output, MATRIX input0);
@@ -70,7 +70,6 @@ void matrix_scale(MATRIX output, MATRIX input0, VECTOR input1);
 void matrix_translate(MATRIX output, MATRIX input0, VECTOR input1);
 void matrix_transpose(MATRIX output, MATRIX input0);
 void matrix_unit(MATRIX output);
-void matrix_toeuler(MATRIX m, VECTOR out);
 float matrix_determinant(MATRIX input0);
 
 #endif // _LIBDL_MATH3D_H_

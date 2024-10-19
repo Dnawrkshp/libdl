@@ -1,6 +1,5 @@
 #include "string.h"
 #include "math.h"
-#include "math3d.h"
 #include "stdio.h"
 #include "game.h"
 #include <tamtypes.h>
@@ -488,18 +487,10 @@ void matrix_copy(MATRIX output, MATRIX input0)
 }
 
 //--------------------------------------------------------
-void matrix_toeuler(VECTOR output, MATRIX input0)
+void matrix_toeuler(MATRIX input0, VECTOR output)
 {
-    float m11 = input0[0],m12 = input0[1],m13 = input0[2];
-    float m21 = input0[4],m22 = input0[5],m23 = input0[6];
-    float m31 = input0[8],m32 = input0[9],m33 = input0[10];
-
-    output[0] = atan2f(m23, m33);
-    output[1] = -atan2f(-m13, sqrtf(powf(m11,2) + powf(m12,2)));
-    float s = sinf(output[0]);
-    float c = cosf(output[0]);
-    output[2] = atan2f(s*m31 - c*m21, c*m22 - s*m32);
-    output[3] = 0;
+  if (isInGame()) internal_matrix_toeuler_inGame(input0, output);
+  else if (isInMenus()) internal_matrix_toeuler_inLobby(input0, output);
 }
 
 //--------------------------------------------------------
@@ -633,11 +624,4 @@ void matrix_transpose(MATRIX output, MATRIX input0)
  
   // Output the result.
   matrix_copy(output, work);
-}
-
-//--------------------------------------------------------
-void matrix_toeuler(MATRIX m, VECTOR out)
-{
-  if (isInGame()) internal_matrix_toeuler_inGame(m, out);
-  else if (isInMenus()) internal_matrix_toeuler_inLobby(m, out);
 }
