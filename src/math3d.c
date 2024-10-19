@@ -47,6 +47,14 @@ void vector_fromyaw(VECTOR out, float radians)
 }
 
 //--------------------------------------------------------
+void vector_clampeuler(VECTOR output, VECTOR input0)
+{
+  output[0] = clampAngle(input0[0]);
+  output[1] = clampAngle(input0[1]);
+  output[2] = clampAngle(input0[2]);
+}
+
+//--------------------------------------------------------
 void vector_apply(VECTOR output, VECTOR input0, MATRIX input1)
 {
     asm __volatile__ (

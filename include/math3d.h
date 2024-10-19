@@ -37,6 +37,7 @@ void vector_unpack(VECTOR dst, u32 vector);
 float vector_sqrmag(VECTOR input0);
 void vector_reflect(VECTOR output, VECTOR input0, VECTOR normal);
 void vector_fromyaw(VECTOR out, float radians);
+void vector_clampeuler(VECTOR output, VECTOR input0);
 void vector_apply(VECTOR output, VECTOR input0, MATRIX input1);
 void vector_copy(VECTOR output, VECTOR input0);
 void vector_normalize(VECTOR output, VECTOR input0);
