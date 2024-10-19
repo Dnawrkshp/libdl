@@ -439,6 +439,34 @@ void vector_unpack(VECTOR dst, u32 vector)
 }
 
 //--------------------------------------------------------
+void matrix_copy(MATRIX output, MATRIX input0)
+{
+  asm __volatile__ (
+#if __GNUC__ > 3
+   "lqc2        $vf1, 0x00(%1)  \n"
+   "lqc2        $vf2, 0x10(%1)  \n"
+   "lqc2        $vf3, 0x20(%1)  \n"
+   "lqc2        $vf4, 0x30(%1)  \n"
+   "sqc2        $vf1, 0x00(%0)  \n"
+   "sqc2        $vf2, 0x10(%0)  \n"
+   "sqc2        $vf3, 0x20(%0)  \n"
+   "sqc2        $vf4, 0x30(%0)  \n"
+#else
+   "lqc2        vf1, 0x00(%1)   \n"
+   "lqc2        vf2, 0x10(%1)   \n"
+   "lqc2        vf3, 0x20(%1)   \n"
+   "lqc2        vf4, 0x30(%1)   \n"
+   "sqc2        vf1, 0x00(%0)   \n"
+   "sqc2        vf2, 0x10(%0)   \n"
+   "sqc2        vf3, 0x20(%0)   \n"
+   "sqc2        vf4, 0x30(%0)   \n"
+#endif
+   : : "r" (output), "r" (input0)
+   : "memory"
+  );
+}
+
+//--------------------------------------------------------
 void matrix_toeuler(VECTOR output, MATRIX input0)
 {
     float m11 = input0[0],m12 = input0[1],m13 = input0[2];
