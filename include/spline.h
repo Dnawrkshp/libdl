@@ -19,4 +19,6 @@ typedef struct Spline3D
   VECTOR Points[0];
 } Spline3D_t;
 
+Spline3D_t* splineGetSpline(int splineIndex);
+
 #endif // _LIBDL_SPLINE_H_
