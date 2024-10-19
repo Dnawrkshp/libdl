@@ -558,3 +558,30 @@ float matrix_determinant(MATRIX input0)
     -   input0[12] *(input0[1]*input0[6]*input0[11] + input0[2]*input0[7]*input0[9] + input0[3]*input0[5]*input0[10]
                     -input0[3]*input0[6]*input0[9] - input0[2]*input0[5]*input0[11] - input0[1]*input0[7]*input0[10]);
 }
+
+//--------------------------------------------------------
+void matrix_transpose(MATRIX output, MATRIX input0)
+{
+  MATRIX work;
+ 
+  // Transpose the matrix.
+  work[0x00] = input0[0x00];
+  work[0x01] = input0[0x04];
+  work[0x02] = input0[0x08];
+  work[0x03] = input0[0x0C];
+  work[0x04] = input0[0x01];
+  work[0x05] = input0[0x05];
+  work[0x06] = input0[0x09];
+  work[0x07] = input0[0x0D];
+  work[0x08] = input0[0x02];
+  work[0x09] = input0[0x06];
+  work[0x0A] = input0[0x0A];
+  work[0x0B] = input0[0x0E];
+  work[0x0C] = input0[0x03];
+  work[0x0D] = input0[0x07];
+  work[0x0E] = input0[0x0B];
+  work[0x0F] = input0[0x0F];
+ 
+  // Output the result.
+  matrix_copy(output, work);
+}
