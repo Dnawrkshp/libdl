@@ -2,6 +2,7 @@
 #include "math.h"
 #include "math3d.h"
 #include "stdio.h"
+#include "game.h"
 #include <tamtypes.h>
   
 /*
@@ -17,7 +18,8 @@
 u128 internal_vectorReflect(u128 input, u128 normal);
 void internal_vector_pack(u128 input, u32* dst);
 u128 internal_vector_unpack(u32* src);
-
+void internal_matrix_toeuler_inGame(MATRIX m, VECTOR out);
+void internal_matrix_toeuler_inLobby(MATRIX m, VECTOR out);
 
 //--------------------------------------------------------
 void vector_write(VECTOR output, u128 input0)
@@ -447,6 +449,17 @@ void vector_unpack(VECTOR dst, u32 vector)
 }
 
 //--------------------------------------------------------
+void vector_fromforwardup(VECTOR output, VECTOR forward, VECTOR up)
+{
+  MATRIX m;
+  matrix_unit(m);
+  vector_copy(&m[0], forward);
+  vector_copy(&m[8], up);
+  vector_outerproduct(&m[4], &m[8], forward);
+  matrix_toeuler(m, output);
+}
+
+//--------------------------------------------------------
 void matrix_copy(MATRIX output, MATRIX input0)
 {
   asm __volatile__ (
@@ -620,4 +633,11 @@ void matrix_transpose(MATRIX output, MATRIX input0)
  
   // Output the result.
   matrix_copy(output, work);
+}
+
+//--------------------------------------------------------
+void matrix_toeuler(MATRIX m, VECTOR out)
+{
+  if (isInGame()) internal_matrix_toeuler_inGame(m, out);
+  else if (isInMenus()) internal_matrix_toeuler_inLobby(m, out);
 }

@@ -58,6 +58,8 @@ FUNCTION(matrix_unit, 0x0013c478)
 FUNCTION(matrix_rotate_x, 0x0013c5c0)
 FUNCTION(matrix_rotate_y, 0x0013c668)
 FUNCTION(matrix_rotate_z, 0x0013c518)
+FUNCTION(internal_matrix_toeuler_inGame, 0x00506738)
+FUNCTION(internal_matrix_toeuler_inLobby, 0x005eb300)
 
 #--------------------------------------------------------
 #------------------------ COLOR -------------------------
