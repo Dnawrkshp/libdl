@@ -167,6 +167,14 @@ float vector_length(VECTOR input0)
 }
 
 //--------------------------------------------------------
+float vector_distance(VECTOR input0, VECTOR input1)
+{
+  VECTOR dt;
+  vector_subtract(dt, input0, input0);
+  return vector_length(dt);
+}
+
+//--------------------------------------------------------
 float vector_innerproduct(VECTOR input0, VECTOR input1)
 {
     VECTOR work0, work1;
