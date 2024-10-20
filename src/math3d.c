@@ -170,7 +170,7 @@ float vector_length(VECTOR input0)
 float vector_distance(VECTOR input0, VECTOR input1)
 {
   VECTOR dt;
-  vector_subtract(dt, input0, input0);
+  vector_subtract(dt, input0, input1);
   return vector_length(dt);
 }
 
