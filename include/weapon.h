@@ -158,7 +158,8 @@ enum WEAPON_SLOT_INDEX
     WEAPON_SLOT_MINE_LAUNCHER =       5,
     WEAPON_SLOT_B6 =                  6,
     WEAPON_SLOT_FLAIL =               7,
-    WEAPON_SLOT_OMNI_SHIELD =         8
+    WEAPON_SLOT_OMNI_SHIELD =         8,
+    WEAPON_SLOT_COUNT
 };
 
 /*
