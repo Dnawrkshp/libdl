@@ -183,6 +183,7 @@ enum ALPHA_MOD_IDS
     ALPHA_MOD_XP =                      6,
     ALPHA_MOD_JACKPOT =                 7,
     ALPHA_MOD_NANOLEECH =               8,
+    ALPHA_MOD_COUNT,
 };
 
 /*
