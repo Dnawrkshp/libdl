@@ -964,6 +964,23 @@ __LIBDL_GETTER__ int playerGetNumLocals(void);
 void playerGiveWeapon(GadgetBox * gadgetBox, int weaponId, int weaponLevel, int giveMaxAmmo);
 
 /*
+ * NAME :    playerStripWeapons
+ * 
+ * DESCRIPTION :
+ *       Removes all weapons from the given player's gadgetbox.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ *      player      :           Target player's.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
+ */
+void playerStripWeapons(Player* player);
+
+/*
  * NAME :    playerGetWeaponAlphaModCount
  * 
  * DESCRIPTION :
