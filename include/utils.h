@@ -20,6 +20,14 @@
 #define POKE_U16(dest, value)                (*(u16*)(dest) = value)
 #define POKE_U8(dest, value)                (*(u8*)(dest) = value)
 
+#define HOOK_JAL_OP(dest, function, op)\
+  *(u32*)(dest) = 0x0C000000 | ((u32)(function) >> 2);\
+  *(u32*)(dest + 4) = op;
+
+#define HOOK_J_OP(dest, function, op)\
+  *(u32*)(dest) = 0x08000000 | ((u32)(function) >> 2);\
+  *(u32*)(dest + 4) = op;
+
 
 /*
  * NAME :    isInEEMemory
