@@ -211,6 +211,55 @@ enum OMEGA_MOD_IDS
     OMEGA_MOD_SHOCK =                   8,
 };
 
+struct GadgetDef // 0xb0
+{
+	/* 0x00 */ int level;
+	/* 0x04 */ short int pickupTag;
+	/* 0x06 */ short int uppercaseTag;
+	/* 0x08 */ short int quickSelectTag;
+	/* 0x0a */ short int description;
+	/* 0x0c */ short int basicGotTag;
+	/* 0x0e */ short int basicAmmoTag;
+	/* 0x10 */ short int basicQSTag;
+	/* 0x12 */ short int basicUCTag;
+	/* 0x14 */ short int upgQSTag;
+	/* 0x16 */ short int megaUpgQSTag;
+	/* 0x18 */ short int upgUCTag;
+	/* 0x1a */ short int megaUpgUCTag;
+	/* 0x1c */ short int upgGotTag;
+	/* 0x1e */ short int megaUpgGotTag;
+	/* 0x20 */ short int mobyClass;
+	/* 0x22 */ short int mobyClass2;
+	/* 0x24 */ short int pvarSize1;
+	/* 0x26 */ short int pvarSize2;
+	/* 0x28 */ char isWeapon;
+	/* 0x29 */ char plateID;
+	/* 0x2a */ char basicPlateID;
+	/* 0x2b */ char upgPlateID;
+	/* 0x2c */ signed char type;
+	/* 0x2d */ signed char joint;
+	/* 0x2e */ signed char handGadgetType;
+	/* 0x2f */ char knockback;
+	/* 0x30 */ short int fullFireAnim;
+	/* 0x32 */ short int armFireAnimDefault;
+	/* 0x34 */ short int armFireAnimCrouch;
+	/* 0x36 */ short unsigned int icon;
+	/* 0x38 */ short int ammotag;
+	/* 0x3a */ short int upgAmmotag;
+	/* 0x3c */ short int ammoClass;
+	/* 0x3e */ short int ammoAmount;
+	/* 0x40 */ short unsigned int padButton;
+	/* 0x42 */ short int maxAmmo;
+	/* 0x44 */ short int mpMaxAmmo;
+	/* 0x46 */ char cycleFire;
+	/* 0x47 */ char rootID;
+	/* 0x48 */ float metersPerSec1;
+	/* 0x4c */ float shotsPerSec1;
+	/* 0x50 */ char gadgetPrices[0x30];
+	/* 0x80 */ char gadgetFPSdata[0x20];
+	/* 0xa0 */ void* gadgetTargetFunc;
+};
+
 /*
  * NAME :    weaponGetGunLevelDefs
  * 
@@ -385,5 +434,21 @@ void weaponTurnOffHoloshields(void);
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 void weaponMobyUpdateBangles(Moby* weaponMoby, int weaponId, int level);
+
+/*
+ * NAME :    weaponGetDef
+ * 
+ * DESCRIPTION :
+ *       Gets the gadget def for the given gadget (weapon).
+ * 
+ * ARGS : 
+ *      weaponId        :           Target weapon.
+ *      type            :           0=player,1=bot,2=vehicle
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
+ */
+struct GadgetDef* weaponGetDef(int weaponId, int type);
 
 #endif // _LIBDL_WEAPON_H_
