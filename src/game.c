@@ -161,7 +161,7 @@ int isSceneLoading(void)
 
 int gameIsAnyStartMenuOpen(void)
 {
-    return GAME_START_MENU_OPEN[1];
+    return GAME_START_MENU_OPEN[0] || GAME_START_MENU_OPEN[15];
 }
 
 int gameIsStartMenuOpen(int localPlayerIndex)
