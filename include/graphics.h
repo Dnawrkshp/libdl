@@ -18,6 +18,8 @@
 //--------------------------------------------------------
 #define SCREEN_WIDTH           (512)
 #define SCREEN_HEIGHT          (416)
+#define SCREEN_RATIO           (SCREEN_WIDTH / (float)SCREEN_HEIGHT)
+#define SCREEN_RATIO_INV       (SCREEN_HEIGHT / (float)SCREEN_WIDTH)
 
 //--------------------------------------------------------
 enum TextAlign
