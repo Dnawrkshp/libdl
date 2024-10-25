@@ -462,6 +462,7 @@ typedef struct Moby
     VECTOR LSphere;
     union
     {
+        struct Guber * Guber;
         struct GuberMoby * GuberMoby;
         void * NetObject;
         Gid NetObjectGid;
