@@ -134,9 +134,9 @@ __LIBDL_GETTER__ GuberMoby * guberMobyGetFirst(void);
 
 Guber * guberGetObjectByUID(u32 uid);
 
-GuberMoby * guberGetObjectByMoby(Moby* moby);
+Guber * guberGetObjectByMoby(Moby* moby);
 
-GuberMoby * guberGetOrCreateObjectByMoby(Moby* moby, int a1, int a2);
+Guber * guberGetOrCreateObjectByMoby(Moby* moby, int a1, int a2);
 
 u32 guberGetUID(Moby* moby);
 
