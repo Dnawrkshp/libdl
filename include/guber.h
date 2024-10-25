@@ -21,7 +21,7 @@
 #include "gid.h"
 
 
-typedef Moby* (*GuberGetMoby_func)(Guber* guber);
+typedef Moby* (*GuberGetMoby_func)(struct Guber* guber);
 
 /*
  * NAME :    PlayerVTable

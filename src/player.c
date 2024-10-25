@@ -251,7 +251,7 @@ PlayerVTable* playerGetVTable(Player * player)
     if (!player)
         return NULL;
 
-    return (PlayerVTable*)player->Guber.Vtable;
+    return (PlayerVTable*)player->Guber.VTable;
 }
 
 //--------------------------------------------------------------------------------
