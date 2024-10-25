@@ -21,6 +21,35 @@
 #include "gid.h"
 
 
+typedef Moby* (*GuberGetMoby_func)(Guber* guber);
+
+/*
+ * NAME :    PlayerVTable
+ * 
+ * DESCRIPTION :
+ * 
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
+ */
+struct GuberVTable
+{
+    void * FUNC_00;
+    void * FUNC_04;
+    void * FUNC_08;
+    void * FUNC_0C;
+    GuberGetMoby_func GetMoby;
+    void * FUNC_14;
+    void * FUNC_18;
+    void * FUNC_1C;
+    void * FUNC_20;
+};
+
 /*
  * NAME :    GuberDef
  * 
@@ -33,9 +62,6 @@
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-
-
-
 typedef struct Guber 
 {
     union
@@ -48,7 +74,7 @@ typedef struct Guber
     int State;
     struct Guber * Next;
     struct Guber * Prev;
-    void * Vtable;
+    struct GuberVTable * VTable;
 
 } Guber;
 
