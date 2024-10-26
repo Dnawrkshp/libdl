@@ -94,6 +94,8 @@ FUNCTION(gameGetWorldId, 0x01ea55e8)
 #--------------------------------------------------------
 FUNCTION(internal_drawFunc_inGame, 0x004D8420)
 FUNCTION(internal_drawFunc_inLobby, 0x005BE058)
+FUNCTION(internal_drawTextWindow_inGame, 0x004d9828)
+FUNCTION(internal_drawTextWindow_inLobby, 0x005bf460)
 FUNCTION(internal_widthFunc_inGame, 0x004D8130)
 FUNCTION(internal_widthFunc_inLobby, 0x005BDC90)
 FUNCTION(internal_drawBox_inGame, 0x005BE610)

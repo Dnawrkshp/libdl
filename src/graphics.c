@@ -3,6 +3,8 @@
 
 int internal_drawFunc_inGame(u32,const char*,long,u64,u64,u64,float,float,float,float,float,float);
 int internal_drawFunc_inLobby(u32,const char*,long,u64,u64,u64,float,float,float,float,float,float);
+int internal_drawTextWindow_inGame(void*,u32,char*,int,float,float,u32);
+int internal_drawTextWindow_inLobby(void*,u32,char*,int,float,float,u32);
 int internal_widthFunc_inGame(const char*,long,float);
 int internal_widthFunc_inLobby(const char*,long,float);
 void internal_drawBox_inGame(void *, void *);
@@ -155,6 +157,20 @@ int gfxScreenSpaceText(float x, float y, float scaleX, float scaleY, u32 color, 
     }
 
     return 0;
+}
+
+//--------------------------------------------------------
+void gfxScreenSpaceTextWindow(struct FontWindow* fontWindow, float scaleX, float scaleY, u32 color, const char * string, int length, u32 shadowColor)
+{
+    // draw
+    if (isInGame())
+    {
+        internal_drawTextWindow_inGame(fontWindow, color, string, length, scaleX, scaleY, shadowColor);
+    }
+    else if (isInMenus())
+    {
+        internal_drawTextWindow_inLobby(fontWindow, color, string, length, scaleX, scaleY, shadowColor);
+    }
 }
 
 //--------------------------------------------------------

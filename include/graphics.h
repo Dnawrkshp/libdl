@@ -83,6 +83,25 @@ struct QuadDef
   u64 Alpha;
 };
 
+//--------------------------------------------------------
+struct FontWindow
+{
+  short windowTop;
+  short windowBottom;
+  short windowLeft;
+  short windowRight;
+  short textX;
+  short textY;
+  short maxWidth;
+  short maxHeight;
+  short lineSpacing;
+  short flags;
+  short subPixelX;
+  short subPixelY;
+  short shadowOffsetX;
+  short shadowOffsetY;
+};
+
 /*
  * NAME :    gfxScreenSpaceText
  * 
@@ -98,6 +117,22 @@ struct QuadDef
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 int gfxScreenSpaceText(float x, float y, float scaleX, float scaleY, u32 color, const char * string, int length, int alignment);
+
+/*
+ * NAME :    gfxScreenSpaceTextWindow
+ * 
+ * DESCRIPTION :
+ *       Draws the text inside a window on the screen.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
+ */
+void gfxScreenSpaceTextWindow(struct FontWindow* fontWindow, float scaleX, float scaleY, u32 color, const char * string, int length, u32 shadowColor);
 
 /*
  * NAME :    gfxScreenSpaceBox
