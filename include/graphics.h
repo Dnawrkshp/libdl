@@ -36,6 +36,17 @@ enum TextAlign
 };
 
 //--------------------------------------------------------
+enum FontWindowFlags
+{
+  FONT_WINDOW_FLAGS_NONE = 0,
+  FONT_WINDOW_FLAGS_H_ALIGN_CENTER = 1 << 0,
+  FONT_WINDOW_FLAGS_V_ALIGN_CENTER = 1 << 1,
+  FONT_WINDOW_FLAGS_NO_DRAW = 1 << 2,
+  FONT_WINDOW_FLAGS_SUBPIXEL = 1 << 3,
+  FONT_WINDOW_FLAGS_NO_SCISSOR = 1 << 4
+};
+
+//--------------------------------------------------------
 typedef void (*gfxDrawFuncDef)(Moby*);
 
 //--------------------------------------------------------
