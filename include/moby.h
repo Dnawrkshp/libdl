@@ -892,6 +892,8 @@ Moby* mobySpawnExplosion(u128 pos,int bCameraShake,int numMoonRock,int numSliver
               int colorShell,int colorRing,int bDirtyRing,Moby *pDamager,Moby *pIgnore,u128 externalVel,
               float exploScale,float pointLightRadius,float damageHp,float damageRadius);
 
+void mobySpawnMinibombs(Moby* pParent, int count, VECTOR rootVel, float randSpeed, float damage, int damageFlags, int lifeTimeMin, int lifeTimeMax, int weaponSource);
+
 int flagIsReturning(Moby* flagMoby);
 int flagIsBeingPickedUp(Moby* flagMoby);
 int flagIsOnSafeGround(Moby* flagMoby);
