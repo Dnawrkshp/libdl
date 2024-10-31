@@ -44,6 +44,8 @@ __LIBDL_INLINE__ float lerpfAngle(float a, float b, float t);
 __LIBDL_INLINE__ float clamp(float v, float min, float max);
 __LIBDL_INLINE__ float clampAngle(float theta);
 __LIBDL_INLINE__ double fmod(double x, double y);
+__LIBDL_INLINE__ double pow(double x, double y);
+__LIBDL_INLINE__ double sqrt(double x);
 __LIBDL_INLINE__ float fastmodf(float x, float y);
 __LIBDL_INLINE__ float atan2f(float y, float x);
 
