@@ -805,6 +805,22 @@ typedef struct PlayerVTable
 __LIBDL_GETTER__ Player ** playerGetAll(void);
 
 /*
+ * NAME :    playerIsValid
+ * 
+ * DESCRIPTION :
+ *       Returns a whether the given player is a valid and connected client.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
+ */
+int playerIsValid(Player * player);
+
+/*
  * NAME :    playerEquipWeapon
  * 
  * DESCRIPTION :

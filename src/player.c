@@ -43,6 +43,12 @@ Player ** playerGetAll(void)
 }
 
 //--------------------------------------------------------------------------------
+int playerIsValid(Player * player)
+{
+    return player && player->PlayerMoby && player->pNetPlayer && playerIsConnected(player);
+}
+
+//--------------------------------------------------------------------------------
 void playerSetLocalEquipslot(int localPlayerId, int slot, int weaponId)
 {
     int * equipslots = WEAPON_EQUIPSLOT;
