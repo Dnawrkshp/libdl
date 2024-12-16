@@ -68,3 +68,4 @@ lib/
 
 
 .vscode/
+docker-deploy.sh

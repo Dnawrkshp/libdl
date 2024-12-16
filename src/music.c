@@ -114,3 +114,9 @@ int musicIsLoaded(void)
 {
   return MUSIC_LOCATION == 0xF8D29;
 }
+
+//--------------------------------------------------------------------------------
+int musicGetCurrentTrack(void)
+{
+    return CURRENT_TRACK;
+}

@@ -190,4 +190,20 @@ void musicTransitionTrack(short arg1, short CueTrack, short arg3, short arg4);
  */
 int musicIsLoaded(void);
 
+/*
+ * NAME :                 musicGetCurrentTrack
+ * 
+ * DESCRIPTION :
+ *                        Returns the currently playing track id.
+ * 
+ * NOTES :                   
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :               Daniel "Dnawrkshp" Gerendasy
+ */
+int musicGetCurrentTrack(void);
+
 #endif // _LIBDL_MUSIC_H_
