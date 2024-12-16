@@ -34,7 +34,7 @@ void internal_wadGetSectors(u64, u64, u64);
  */
 #define TRACK_RANGE_MAX (*(u8*)0x0021EC0C)
 
-#define CURRENT_TRACK (*(u16*)0x00206990)
+#define CURRENT_TRACK (*(short*)0x00206990)
 
 /*
  * how long the track is.
