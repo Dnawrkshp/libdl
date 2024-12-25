@@ -893,6 +893,7 @@ Moby* mobySpawnExplosion(u128 pos,int bCameraShake,int numMoonRock,int numSliver
               float exploScale,float pointLightRadius,float damageHp,float damageRadius);
 
 void mobySpawnMinibombs(Moby* pParent, int count, VECTOR rootVel, float randSpeed, float damage, int damageFlags, int lifeTimeMin, int lifeTimeMax, int weaponSource);
+struct TargetVars* mobyGetTargetVars(Moby* moby);
 
 int flagIsReturning(Moby* flagMoby);
 int flagIsBeingPickedUp(Moby* flagMoby);
