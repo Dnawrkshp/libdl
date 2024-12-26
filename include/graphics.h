@@ -241,6 +241,7 @@ void gfxDrawBillboardQuad(u128 pos, float size, u32 color, int alpha, float rot,
 void gfxResetQuad(struct QuadDef * quadDef);
 void gfxRegisterDrawFunction(void ** a0, gfxDrawFuncDef * callback, Moby* moby);
 
+void gfxResetGsRegisters(void);
 void gfxSetScissor(int xmin, int xmax, int ymin, int ymax);
 
 #endif // _LIBDL_GRAPHICS_H_
