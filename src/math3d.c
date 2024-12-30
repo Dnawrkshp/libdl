@@ -175,6 +175,14 @@ float vector_distance(VECTOR input0, VECTOR input1)
 }
 
 //--------------------------------------------------------
+float vector_sqrdistance(VECTOR input0, VECTOR input1)
+{
+  VECTOR dt;
+  vector_subtract(dt, input0, input1);
+  return vector_sqrmag(dt);
+}
+
+//--------------------------------------------------------
 float vector_innerproduct(VECTOR input0, VECTOR input1)
 {
     VECTOR work0, work1;
@@ -195,7 +203,7 @@ float vector_innerproduct(VECTOR input0, VECTOR input1)
 
 
     // Return the inner product.
-    return  (work0[0] * work1[0]) + (work0[1] * work1[1]) + (work0[2] * work1[2]);
+    return clamp((work0[0] * work1[0]) + (work0[1] * work1[1]) + (work0[2] * work1[2]), -1, 1);
 }
 
 //--------------------------------------------------------

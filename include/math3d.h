@@ -36,6 +36,7 @@ void vector_pack(VECTOR input0, u32* dst);
 void vector_unpack(VECTOR dst, u32 vector);
 float vector_sqrmag(VECTOR input0);
 float vector_distance(VECTOR input0, VECTOR input1);
+float vector_sqrdistance(VECTOR input0, VECTOR input1);
 void vector_reflect(VECTOR output, VECTOR input0, VECTOR normal);
 void vector_fromyaw(VECTOR out, float radians);
 void vector_clampeuler(VECTOR output, VECTOR input0);
