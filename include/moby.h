@@ -872,11 +872,11 @@ void mobyStartFlash(Moby* moby, int flashType, u32 color, struct FlashVars* flas
  */
 void mobyBlowCorn(Moby* moby, int bangle, u128 baseVelocity
                 , float minEmitHorizontalSpeed, float maxEmitHorizontalSpeed, float minEmitVerticalSpeed, float maxEmitVerticalSpeed
-                , char arg8
+                , char sound
                 , float gravity, float rotationalVelocity
-                , int lifetime, int arg12
-                , int arg13, int bArg14, float arg15, int arg16
-                , int arg17, float arg18, Moby* arg19, int arg20);
+                , int lifetime, int ignoreCpu
+                , int flameMode, int flamePercent, float flameScale, int lightningMode
+                , int lightningStrands, float strandWidthScale, Moby* parent, int flags);
 
 void mobyGetJointMatrix(Moby* moby, int jointIdx, MATRIX out);
 void mobyComputeJointWorldMatrix(Moby* moby, int jointIdx, MATRIX out);
