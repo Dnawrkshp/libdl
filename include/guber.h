@@ -145,6 +145,7 @@ void guberEventRead(GuberEvent * event, void * dest, int size);
 void guberEventWrite(GuberEvent * event, void * src, int size);
 
 GuberEvent * guberEventCreateEvent(Guber * guber, int eventId, int arg3, int arg4);
+GuberEvent * guberEventCreateEventSafe(Guber * guber, int eventId, int arg3, int arg4);
 
 int guberMobyCreateSpawned(short mobyId, short pvarSize, GuberEvent ** event, Guber * parent);
 
