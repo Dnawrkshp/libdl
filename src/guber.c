@@ -17,3 +17,15 @@ GuberEvent * guberEventCreateEventSafe(Guber * guber, int eventId, int arg3, int
 
   return guberEventCreateEvent(guber, eventId, arg3, arg4);
 }
+
+int guberCountFreeEvents(void)
+{
+  GuberEvent* gEvent = *(GuberEvent**)0x002206a8;
+  int freeCount = 0;
+  while (gEvent) {
+    if (!gEvent->MsgSendPending) ++freeCount;
+    gEvent = (GuberEvent*)gEvent->NextEvent;
+  }
+
+  return freeCount;
+}
