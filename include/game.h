@@ -190,6 +190,38 @@ __LIBDL_SETTER__ void gameSetWinner(int teamOrPlayerId, int isTeam);
 void gameEnd(int reason);
 
 /*
+ * NAME :    hasGameCodeSeg
+ * 
+ * DESCRIPTION :
+ *       Whether the client has the game code loaded.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
+ */
+int hasGameCodeSeg(void);
+
+/*
+ * NAME :    hasMenuCodeSeg
+ * 
+ * DESCRIPTION :
+ *       Whether the client has the menu code loaded.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
+ */
+int hasMenuCodeSeg(void);
+
+/*
  * NAME :    isInGame
  * 
  * DESCRIPTION :

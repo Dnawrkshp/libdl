@@ -10,6 +10,7 @@ void internal_voiceEnableGlobalChat(int enable);
 #define ACTIVE_LEVEL_ID                     (*(int*)0x0021DE10)
 #define GAME_ACTIVE                         (*(int*)0x0021E1EC)
 #define SCENE_LOADED                        (*(int*)0x0022026C)
+#define SCENE_LOADED_OR_FROM                (*(int*)0x00220268)
 
 /*
  * When non-zero start menu is open in-game.
@@ -142,6 +143,16 @@ int gameGetMyClientId(void)
 int gameGetMyAccountId(void)
 {
     return GAME_ACCOUNT_ID;
+}
+
+int hasGameCodeSeg(void)
+{
+  return (GAME_ACTIVE && SCENE_LOADED == 1) || (SCENE_LOADED != 1 && SCENE_LOADED_OR_FROM > 1);
+}
+
+int hasMenuCodeSeg(void)
+{
+  return (ACTIVE_LEVEL_ID == 0 && SCENE_LOADED == 1) || (SCENE_LOADED != 1 && SCENE_LOADED_OR_FROM == 0);
 }
 
 int isInGame(void)
