@@ -147,12 +147,12 @@ int gameGetMyAccountId(void)
 
 int hasGameCodeSeg(void)
 {
-  return (GAME_ACTIVE && SCENE_LOADED == 1) || (SCENE_LOADED != 1 && SCENE_LOADED_OR_FROM > 1);
+  return (GAME_ACTIVE && SCENE_LOADED == 1) || (SCENE_LOADED != 1 && SCENE_LOADED_OR_FROM > 1) || (SCENE_LOADED == 1 && SCENE_LOADED_OR_FROM == 1 && ACTIVE_LEVEL_ID != 0);
 }
 
 int hasMenuCodeSeg(void)
 {
-  return (ACTIVE_LEVEL_ID == 0 && SCENE_LOADED == 1) || (SCENE_LOADED != 1 && SCENE_LOADED_OR_FROM == 0);
+  return (ACTIVE_LEVEL_ID == 0 && SCENE_LOADED == 1) || (SCENE_LOADED != 1 && SCENE_LOADED_OR_FROM == 0) || (SCENE_LOADED == 1 && SCENE_LOADED_OR_FROM == 1 && ACTIVE_LEVEL_ID == 0);
 }
 
 int isInGame(void)
