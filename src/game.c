@@ -159,6 +159,11 @@ int isSceneLoading(void)
     return SCENE_LOADED != 1;
 }
 
+int isSceneLoadedNotYetInGame(void)
+{
+    return SCENE_LOADED == 1 && ACTIVE_LEVEL_ID != 0 && GAME_ACTIVE == 0;
+}
+
 int gameIsAnyStartMenuOpen(void)
 {
     return GAME_START_MENU_OPEN[0] || GAME_START_MENU_OPEN[15];

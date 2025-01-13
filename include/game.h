@@ -238,6 +238,22 @@ __LIBDL_GETTER__ int isInMenus(void);
 __LIBDL_GETTER__ int isSceneLoading(void);
 
 /*
+ * NAME :    isSceneLoadedNotYetInGame
+ * 
+ * DESCRIPTION :
+ *       Whether the client is currently in between a scene transition and being in-game.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
+ */
+__LIBDL_GETTER__ int isSceneLoadedNotYetInGame(void);
+
+/*
  * NAME :    gameIsAnyStartMenuOpen
  * 
  * DESCRIPTION :
