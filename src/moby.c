@@ -79,7 +79,9 @@ Moby* mobyFindByUID(int uid)
   
   while (mStart < mEnd)
   {
-    if (mStart->UID == uid) return mStart;
+    if (mStart->UID == uid)
+      return mStart;
+    ++mStart;
   }
 
   return NULL;
