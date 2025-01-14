@@ -746,6 +746,12 @@ __LIBDL_GETTER__ int mobyIsDestroyed(Moby* moby);
 Moby* mobyFindNextByOClass(Moby* start, int oClass);
 
 /*
+ * Returns a pointer to the moby with the given uid.
+ * Returns NULL if none found.
+ */
+Moby* mobyFindByUID(int uid);
+
+/*
  * Returns pointer to the moby's MobyClass (if loaded).
  */
 void * mobyGetClass(int oClass);

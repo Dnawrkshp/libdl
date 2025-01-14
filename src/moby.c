@@ -69,6 +69,23 @@ Moby* mobyFindNextByOClass(Moby* start, int oClass)
 }
 
 /*
+ * Returns a pointer to the moby with the given uid.
+ * Returns NULL if none found.
+ */
+Moby* mobyFindByUID(int uid)
+{
+  Moby* mStart = mobyListGetStart();
+  Moby* mEnd = mobyListGetEnd();
+  
+  while (mStart < mEnd)
+  {
+    if (mStart->UID == uid) return mStart;
+  }
+
+  return NULL;
+}
+
+/*
  * Returns pointer to the moby's MobyClass (if loaded).
  */
 void * mobyGetClass(int oClass)
