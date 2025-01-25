@@ -132,4 +132,19 @@ int randRangeInt(int min, int max);
  */
 float randRadian(void);
 
+/*
+ * NAME :    randSeed
+ * 
+ * DESCRIPTION :
+ *       
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ */
+void randSeed(int seed);
+
 #endif // _LIBDL_RANDOM_H_
