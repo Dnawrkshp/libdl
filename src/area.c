@@ -17,12 +17,8 @@ int areaGetArea(int areaIndex, Area_t* out)
   vector_copy(out->BSphere, def->BSphere);
   out->SplineCount = def->SplineCount;
   out->CuboidCount = def->CuboidCount;
-
-  if (header->Splines) out->Splines = header->Splines + def->SplineOffset;
-  else out->Splines = NULL;
-
-  if (header->Cuboids) out->Cuboids = header->Cuboids + def->CuboidOffset;
-  else out->Cuboids = NULL;
+  out->Splines = def->Splines;
+  out->Cuboids = def->Cuboids;
 
   return 1;
 }

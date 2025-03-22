@@ -33,8 +33,8 @@ typedef struct AreaDef
   short UNK_14;
   short UNK_16;
   int UNK_18;
-  int SplineOffset;
-  int CuboidOffset;
+  int* Splines;
+  int* Cuboids;
   int UNK_24;
   int UNK_28;
   int UNK_2C;
