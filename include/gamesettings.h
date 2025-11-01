@@ -149,8 +149,8 @@ typedef struct GameOptions
             char UNK_0F : 8;
             char UNK_10 : 8;
             char UNK_11 : 8;
-            char UNK_12 : 8;
-            char UNK_13 : 8;
+            char Flags : 8;
+            char Hills : 8;
             char UNK_14 : 8;
             char UNK_15 : 8;
             char UNK_16 : 8;
