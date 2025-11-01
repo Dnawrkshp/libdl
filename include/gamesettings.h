@@ -168,7 +168,7 @@ typedef struct GameOptions
             char Teamplay : 8;
             char Lockdown : 8;
             char RespawnTime : 8;
-            char UNK_25 : 8;
+            char SpawnType : 8;
             char UpgradeTimer : 8;
             char UNK_27 : 8;
             char UNK_28 : 8;
