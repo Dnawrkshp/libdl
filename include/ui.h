@@ -95,6 +95,20 @@ enum UiElementType
     UI_ELEMENT_TEXT = 10,
 };
 
+enum UiSoundIds
+{
+    UI_SOUND_ID_NAV_UP_DOWN = 0x00,
+    UI_SOUND_ID_OPEN_MENU = 0x01,
+    UI_SOUND_ID_UYA_OPEN_MENU = 0x03,
+    UI_SOUND_ID_BAD_SELECT = 0x04,
+    UI_SOUND_ID_OPEN_SUBMENU = 0x07,
+    UI_SOUND_ID_CLOSE_SUBMENU = 0x08,
+    UI_SOUND_ID_OPEN_SUBMENU_2 = 0x0B,
+    UI_SOUND_ID_CLOSE_MENU_DECLINE = 0x0C,
+    UI_SOUND_ID_CLOSE_MENU_ACCEPT = 0x0E,
+    UI_SOUND_ID_SELECT = 0x25,
+};
+
 typedef struct UiElement
 {
     enum UiElementType Type;
@@ -358,5 +372,23 @@ UiMenu_t* uiGetActivePointer(void);
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 void uiRunCallbacks(void);
+
+/*
+ * NAME :    uiPlaySound
+ * 
+ * DESCRIPTION :
+ *       Plays the given menu sound.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ *      soundId             :               Id of the sound to play.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
+ */
+void uiPlaySound(int soundId, int a1);
+
 
 #endif // _LIBDL_UI_H_
