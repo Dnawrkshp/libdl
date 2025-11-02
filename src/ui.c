@@ -9,6 +9,8 @@ int internal_uiSelectDialog(void *, const char *, const char **, int, int, int, 
 int internal_uiInputDialog(void *, const char *, char *, int, int, int, int, int, int);
 char * internal_uiMsgString_inGame(int textId);
 char * internal_uiMsgString_inLobby(int textId);
+void internal_uiPlaySound_inLobby(int soundId, int a1, Moby* moby);
+void internal_uiPlaySound_inGame(int soundId, int a1, Moby* moby);
 
 int uiGetActive(void)
 {
@@ -58,4 +60,12 @@ UiMenu_t* uiGetPointer(int id)
 UiMenu_t* uiGetActivePointer()
 {
     return *(UiMenu_t**)((u32)UI_DIALOG_A0 + 0x64 + 0xA4);
+}
+
+void uiPlaySound(int soundId, int a1)
+{
+    if (isInGame())
+        internal_uiPlaySound_inGame(soundId, a1, NULL);
+    else if (isInMenus())
+        internal_uiPlaySound_inLobby(soundId, a1, NULL);
 }

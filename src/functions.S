@@ -256,7 +256,8 @@ FUNCTION(internal_uiMsgString_inGame,  0x004E4180)
 FUNCTION(internal_uiMsgString_inLobby,  0x005c9f50)
 FUNCTION(uiShowTimer, 0x005401E8)
 FUNCTION(uiRunCallbacks, 0x0015a050)
-FUNCTION(uiPlaySound, 0x00764920)
+FUNCTION(internal_uiPlaySound_inLobby, 0x0066d468)
+FUNCTION(internal_uiPlaySound_inGame, 0x0058f918)
 
 #--------------------------------------------------------
 #------------------------- TIME -------------------------
