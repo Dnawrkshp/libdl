@@ -269,6 +269,24 @@ int uiShowInputDialog(const char * title, char * value, int maxLength);
 void uiShowPopup(int localPlayerIndex, const char * message);
 
 /*
+ * NAME :    uiShowLowerPopup
+ * 
+ * DESCRIPTION :
+ *       Shows a popup on bottom of the screen with the given msg string text to the given local player.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ *      localPlayerIndex    :               Local player to show popup for.
+ *      msgStringId         :               Message to show.
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
+ */
+void uiShowLowerPopup(int localPlayerIdx, int msgStringId);
+
+/*
  * NAME :    uiShowHelpPopup
  * 
  * DESCRIPTION :
