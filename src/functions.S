@@ -320,23 +320,23 @@ FUNCTION(internal_helpGetString_inGame, 0x004e4180)
 #--------------------------------------------------------
 #------------------------- SIF --------------------------
 #--------------------------------------------------------
-// FUNCTION(SifInitRpc, 0x00129d90)
-// FUNCTION(SifExitRpc, 0x00129f30)
-// FUNCTION(SifRpcGetOtherData, 0x0012a270)
-// FUNCTION(SifBindRpc, 0x0012a538)
-// FUNCTION(SifCallRpc, 0x0012a718)
+FUNCTION(SifInitRpc, 0x00129d90)
+FUNCTION(SifExitRpc, 0x00129f30)
+FUNCTION(SifRpcGetOtherData, 0x0012a270)
+FUNCTION(SifBindRpc, 0x0012a538)
+FUNCTION(SifCallRpc, 0x0012a718)
 
-// FUNCTION(SifCheckStatRpc, 0x0012a918)
-// FUNCTION(SifInitIopHeap, 0x0012c1b8)
-// FUNCTION(SifAllocIopHeap, 0x0012c240)
-// FUNCTION(SifFreeIopHeap, 0x0012C3A8)
-// FUNCTION(SifIopReset, 0x0012cc30)
-// FUNCTION(SifIopSync, 0x0012cdb0)
-// FUNCTION(_SifLoadModuleBuffer, 0x0012CBC0)
+FUNCTION(SifCheckStatRpc, 0x0012a918)
+FUNCTION(SifInitIopHeap, 0x0012c1b8)
+FUNCTION(SifAllocIopHeap, 0x0012c240)
+FUNCTION(SifFreeIopHeap, 0x0012C3A8)
+FUNCTION(SifIopReset, 0x0012cc30)
+FUNCTION(SifIopSync, 0x0012cdb0)
+FUNCTION(_SifLoadModuleBuffer, 0x0012CBC0)
 
-// FUNCTION(SifWriteBackDCache, 0x00129ce0)
-// FUNCTION(SifSetDma, 0x00126f60)
-// FUNCTION(SifDmaStat, 0x00126f40)
+FUNCTION(SifWriteBackDCache, 0x00129ce0)
+FUNCTION(SifSetDma, 0x00126f60)
+FUNCTION(SifDmaStat, 0x00126f40)
 
 #--------------------------------------------------------
 #------------------------- MUSIC ------------------------
