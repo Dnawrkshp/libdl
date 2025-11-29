@@ -48,7 +48,6 @@ int CollisionIsWalkable(int id)
       || id == COLLISION_SURFACE_WALKABLE_3
       || id == COLLISION_SURFACE_WALKABLE_4
       || id == COLLISION_SURFACE_WATER_TRAIL
-      || id == COLLISION_SURFACE_WATER
       ;
 }
 
