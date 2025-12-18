@@ -177,12 +177,12 @@ int isSceneLoadedNotYetInGame(void)
 
 int gameIsAnyStartMenuOpen(void)
 {
-    return GAME_START_MENU_OPEN[0] || GAME_START_MENU_OPEN[15];
+    return GAME_START_MENU_OPEN[0] || GAME_START_MENU_OPEN[21];
 }
 
 int gameIsStartMenuOpen(int localPlayerIndex)
 {
-    return GAME_START_MENU_OPEN[localPlayerIndex * 15];
+    return GAME_START_MENU_OPEN[localPlayerIndex * 21];
 }
 
 int gameHasEnded(void)
