@@ -1,5 +1,6 @@
 #include "graphics.h"
 #include "game.h"
+#include "math.h"
 
 int internal_drawFunc_inGame(u32,const char*,long,u64,u64,u64,float,float,float,float,float,float);
 int internal_drawFunc_inLobby(u32,const char*,long,u64,u64,u64,float,float,float,float,float,float);
@@ -361,4 +362,18 @@ void gfxSetScissor(int xmin, int xmax, int ymin, int ymax)
 {
   if (hasGameCodeSeg()) internal_setScissor_inGame(xmin, xmax, ymin, ymax);
   else if (hasMenuCodeSeg()) internal_setScissor_inLobby(xmin, xmax, ymin, ymax);
+}
+
+//--------------------------------------------------------
+int gfxGetTexWidth(u64 texture)
+{
+  int log = (texture >> 0x1a) & 0xf;
+  return (int)powf(2, log);
+}
+
+//--------------------------------------------------------
+int gfxGetTexHeight(u64 texture)
+{
+  int log = (texture >> 0x1e) & 0xf;
+  return (int)powf(2, log);
 }

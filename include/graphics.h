@@ -229,6 +229,8 @@ void gfxDoGifPaging(void);
 void gfxSetupGifPaging(int);
 u64 gfxGetFrameTex(int id);
 u64 gfxGetEffectTex(int id, int);
+int gfxGetTexWidth(u64 texture);
+int gfxGetTexHeight(u64 texture);
 int gfxConstructEffectTex(int texGsAddr, int palGsAddr, int ulog, int vlog, int format);
 void gfxDrawSprite(float x, float y, float w, float h, int t0, int t1, int texW, int texH, u64 color, u64 texture);
 int gfxLoadPalToGs(void* ptr, int format);
