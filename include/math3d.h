@@ -60,6 +60,8 @@ void vector_projectonplane(VECTOR output, VECTOR input0, VECTOR input1);
 void vector_print(VECTOR input0);
 void vector_fromforwardup(VECTOR output, VECTOR forward, VECTOR up);
 
+void quat_fromangleaxis(VECTOR output, VECTOR axis, float theta);
+
 void matrix_toeuler(MATRIX input0, VECTOR output);
 void matrix_fromrows(MATRIX output, VECTOR input0, VECTOR input1, VECTOR input2, VECTOR input3);
 void matrix_copy(MATRIX output, MATRIX input0);

@@ -475,6 +475,33 @@ void vector_fromforwardup(VECTOR output, VECTOR forward, VECTOR up)
 }
 
 //--------------------------------------------------------
+void quat_fromangleaxis(VECTOR output, VECTOR axis, float theta)
+{
+  float sinTheta = sinf(theta / 2);
+  float cosTheta = cosf(theta / 2);
+  VECTOR trig = {sinTheta, sinTheta, sinTheta, cosTheta};
+
+  asm __volatile__ (
+#if __GNUC__ > 3
+      "lqc2        $vf1, 0x00(%1)      \n" // vf1 = axis
+      "lqc2        $vf2, 0x00(%2)      \n" // vf2 = (sin,sin,sin,cos)
+      "vmul.xyz    $vf1, $vf1, $vf2    \n" // xyz *= sin
+      "vmove.w     $vf1, $vf2          \n"  // w = cos  (copy w component)
+      "sqc2        $vf1, 0x00(%0)      \n" // store output
+#else
+      "lqc2        vf1, 0x00(%1)       \n"
+      "lqc2        vf2, 0x00(%2)       \n"
+      "vmul.xyz    vf1, vf1, vf2       \n"
+      "vmove.w     vf1, vf2            \n"
+      "sqc2        vf1, 0x00(%0)       \n"
+#endif
+      :
+      : "r"(output), "r"(axis), "r"(trig)
+      : "memory"
+  );
+}
+
+//--------------------------------------------------------
 void matrix_copy(MATRIX output, MATRIX input0)
 {
   asm __volatile__ (
