@@ -1,0 +1,1 @@
+docker run --rm -v "$PWD\:/src" dnawrkshp/ps2dev-libdl:latest sh -c "cd src && make"

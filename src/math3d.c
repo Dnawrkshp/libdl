@@ -475,6 +475,37 @@ void vector_fromforwardup(VECTOR output, VECTOR forward, VECTOR up)
 }
 
 //--------------------------------------------------------
+void quat_normalize(VECTOR output, VECTOR input0)
+{
+	asm __volatile__(
+#if __GNUC__ > 3
+			"lqc2         $vf1, 0x00(%1)  	\n"
+			"vmul.xyzw    $vf2, $vf1, $vf1  \n"
+			"vmulax.w     $ACC, $vf0, $vf2  \n"
+			"vmadday.w    $ACC, $vf0, $vf2  \n"
+			"vmaddaz.w    $ACC, $vf0, $vf2  \n"
+			"vmaddw.w     $vf2, $vf0, $vf2  \n"
+			"vrsqrt       $Q, $vf0w, $vf2w  \n"
+			"vwaitq       									\n"
+			"vmulq.xyzw   $vf1, $vf1, $Q  	\n"
+			"sqc2         $vf1, 0x00(%0) 		\n"
+#else
+			"lqc2         vf1, 0x00(%1) \n"
+			"vmul.xyzw    vf2, vf1, vf1 \n"
+			"vmulax.w     ACC, vf0, vf2 \n"
+			"vmadday.w    ACC, vf0, vf2 \n"
+			"vmaddaz.w    ACC, vf0, vf2 \n"
+			"vmaddw.w     vf2, vf0, vf2 \n"
+			"vrsqrt       Q, vf0w, vf2w \n"
+			"vwaitq       							\n"
+			"vmulq.xyzw   vf1, vf1, Q  	\n"
+			"sqc2         vf1, 0x00(%0) \n"
+#endif
+			: : "r"(output), "r"(input0)
+  );
+}
+
+//--------------------------------------------------------
 void quat_fromangleaxis(VECTOR output, VECTOR axis, float theta)
 {
   float sinTheta = sinf(theta / 2);
@@ -486,7 +517,7 @@ void quat_fromangleaxis(VECTOR output, VECTOR axis, float theta)
       "lqc2        $vf1, 0x00(%1)      \n" // vf1 = axis
       "lqc2        $vf2, 0x00(%2)      \n" // vf2 = (sin,sin,sin,cos)
       "vmul.xyz    $vf1, $vf1, $vf2    \n" // xyz *= sin
-      "vmove.w     $vf1, $vf2          \n"  // w = cos  (copy w component)
+      "vmove.w     $vf1, $vf2          \n" // w = cos  (copy w component)
       "sqc2        $vf1, 0x00(%0)      \n" // store output
 #else
       "lqc2        vf1, 0x00(%1)       \n"
@@ -499,6 +530,124 @@ void quat_fromangleaxis(VECTOR output, VECTOR axis, float theta)
       : "r"(output), "r"(axis), "r"(trig)
       : "memory"
   );
+}
+
+//--------------------------------------------------------
+void quat_from_matrix(VECTOR output, const MATRIX input0)
+{
+	// Upper-left 3x3 (row-major)
+	float m00 = input0[0], m01 = input0[1], m02 = input0[2];
+	float m10 = input0[4], m11 = input0[5], m12 = input0[6];
+	float m20 = input0[8], m21 = input0[9], m22 = input0[10];
+
+	float trace = m00 + m11 + m22;
+
+	if (trace > 0.0f)
+	{
+		// s = 4*w
+		float s = sqrtf(trace + 1.0f) * 2.0f;
+		float invS = 1.0f / s;
+		VECTOR numerators = {(m21 - m12), (m02 - m20), (m01 - m10), 0};
+		VECTOR factors = {invS, invS, invS, 0.25f * s};
+
+		asm __volatile__(
+#if __GNUC__ > 3
+				"lqc2        $vf1, 0x00(%1)      \n"
+				"lqc2        $vf2, 0x00(%2)      \n"
+				"vmul.xyz    $vf1, $vf1, $vf2    \n"
+				"vmove.w     $vf1, $vf2          \n"
+				"sqc2        $vf1, 0x00(%0)      \n"
+#else
+				"lqc2        vf1, 0x00(%1)       \n"
+				"lqc2        vf2, 0x00(%2)       \n"
+				"vmul.xyz    vf1, vf1, vf2       \n"
+				"vmove.w     vf1, vf2            \n"
+				"sqc2        vf1, 0x00(%0)       \n"
+#endif
+				:
+				: "r"(output), "r"(numerators), "r"(factors)
+				: "memory");
+	}
+	else if (m00 > m11 && m00 > m22)
+	{
+		// s = 4*x
+		float s = sqrtf(1.0f + m00 - m11 - m22) * 2.0f;
+		float invS = 1.0f / s;
+		VECTOR numerators = {s, (m01 + m10), (m02 + m20), (m12 - m21)};
+		VECTOR factors = {0.25f, invS, invS, invS};
+
+		asm __volatile__(
+#if __GNUC__ > 3
+				"lqc2        $vf1, 0x00(%1)      \n"
+				"lqc2        $vf2, 0x00(%2)      \n"
+				"vmul.xyz    $vf1, $vf1, $vf2    \n"
+				"vmul.w      $vf1, $vf1, $vf2    \n"
+				"sqc2        $vf1, 0x00(%0)      \n"
+#else
+				"lqc2        vf1, 0x00(%1)       \n"
+				"lqc2        vf2, 0x00(%2)       \n"
+				"vmul.xyz    vf1, vf1, vf2       \n"
+				"vmul.w      vf1, vf1, vf2       \n"
+				"sqc2        vf1, 0x00(%0)       \n"
+#endif
+				:
+				: "r"(output), "r"(numerators), "r"(factors)
+				: "memory");
+	}
+	else if (m11 > m22)
+	{
+		// s = 4*y
+		float s = sqrtf(1.0f + m11 - m00 - m22) * 2.0f;
+		float invS = 1.0f / s;
+		VECTOR numerators = {(m01 + m10), s, (m12 + m21), (m20 - m02)};
+		VECTOR factors = {invS, 0.25f, invS, invS};
+
+		asm __volatile__(
+#if __GNUC__ > 3
+				"lqc2        $vf1, 0x00(%1)      \n"
+				"lqc2        $vf2, 0x00(%2)      \n"
+				"vmul.xyz    $vf1, $vf1, $vf2    \n"
+				"vmul.w      $vf1, $vf1, $vf2    \n"
+				"sqc2        $vf1, 0x00(%0)      \n"
+#else
+				"lqc2        vf1, 0x00(%1)       \n"
+				"lqc2        vf2, 0x00(%2)       \n"
+				"vmul.xyz    vf1, vf1, vf2       \n"
+				"vmul.w      vf1, vf1, vf2       \n"
+				"sqc2        vf1, 0x00(%0)       \n"
+#endif
+				:
+				: "r"(output), "r"(numerators), "r"(factors)
+				: "memory");
+	}
+	else
+	{
+		// s = 4*z
+		float s = sqrtf(1.0f + m22 - m00 - m11) * 2.0f;
+		float invS = 1.0f / s;
+		VECTOR numerators = {(m02 + m20), (m12 + m21), s, (m01 - m10)};
+		VECTOR factors = {invS, invS, 0.25f, invS};
+
+		asm __volatile__(
+#if __GNUC__ > 3
+				"lqc2        $vf1, 0x00(%1)      \n"
+				"lqc2        $vf2, 0x00(%2)      \n"
+				"vmul.xyz    $vf1, $vf1, $vf2    \n"
+				"vmul.w      $vf1, $vf1, $vf2    \n"
+				"sqc2        $vf1, 0x00(%0)      \n"
+#else
+				"lqc2        vf1, 0x00(%1)       \n"
+				"lqc2        vf2, 0x00(%2)       \n"
+				"vmul.xyz    vf1, vf1, vf2       \n"
+				"vmul.w      vf1, vf1, vf2       \n"
+				"sqc2        vf1, 0x00(%0)       \n"
+#endif
+				:
+				: "r"(output), "r"(numerators), "r"(factors)
+				: "memory");
+	}
+
+	quat_normalize(output, output);
 }
 
 //--------------------------------------------------------
@@ -543,6 +692,44 @@ void matrix_fromrows(MATRIX output, VECTOR input0, VECTOR input1, VECTOR input2,
     vector_copy((float*)(&output[4]), input1);
     vector_copy((float*)(&output[8]), input2);
     vector_copy((float*)(&output[12]), input3);
+}
+
+//--------------------------------------------------------
+void matrix_from_up_normal_twist(MATRIX output, VECTOR normal, float theta)
+{
+	VECTOR n;
+	VECTOR r, u, w = {0, 0, 0, 0};
+	VECTOR helper = {0, 1, 0, 0};
+	VECTOR helper2 = {0, 0, 1, 0};
+
+	// normalize axis
+	vector_normalize(n, normal);
+
+	// If n is close to +Y/-Y, use Z as helper; else use Y.
+	vector_outerproduct(r, helper, n);
+	if (vector_sqrmag(r) < 0.00001)
+		vector_outerproduct(r, helper2, n);
+
+	// Right-handed basis:
+	// r = cross(helper, n)
+	// u = cross(n, r)
+	vector_normalize(r, r);
+	vector_outerproduct(u, n, r);
+
+	// Apply twist around n by theta: rotate (r,u) in their plane
+	float c = cosf(theta);
+	float s = sinf(theta);
+	VECTOR r2, u2, tmp1, tmp2;
+
+	vector_scale(tmp1, r, c);
+	vector_scale(tmp2, u, s);
+	vector_add(r2, tmp1, tmp2); // r' = r*c + u*s
+
+	vector_scale(tmp1, u, c);
+	vector_scale(tmp2, r, s);
+	vector_add(u2, tmp1, tmp2); // u' = u*c - r*s
+
+	matrix_fromrows(output, r2, u2, n, w);
 }
 
 //--------------------------------------------------------
