@@ -706,7 +706,7 @@ typedef struct Player
     char UNK25[0x08];                                               // 0x2F1C
 
     float MaxHealth;                                                // 0x2F24 
-    struct tNW_Player * pNetPlayer;                                 // 0x2F28                            // 0x2F28
+    struct tNW_Player * pNetPlayer;                                 // 0x2F28
 
     char UNK36[0x84];                                               // 0x2F2C
 
@@ -803,6 +803,22 @@ typedef struct PlayerVTable
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ Player ** playerGetAll(void);
+
+/*
+ * NAME :    playerGetFromIndex
+ * 
+ * DESCRIPTION :
+ *       Returns a pointer to the given player.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
+ */
+__LIBDL_GETTER__ Player * playerGetFromIndex(int idx);
 
 /*
  * NAME :    playerIsValid

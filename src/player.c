@@ -43,6 +43,15 @@ Player ** playerGetAll(void)
 }
 
 //--------------------------------------------------------------------------------
+Player * playerGetFromIndex(int idx)
+{
+    if (idx < 0 || idx >= GAME_MAX_PLAYERS)
+        return NULL;
+
+    return PLAYER_STRUCT_ARRAY[idx];
+}
+
+//--------------------------------------------------------------------------------
 int playerIsValid(Player * player)
 {
     return player && player->PlayerMoby && player->pNetPlayer && playerIsConnected(player);
