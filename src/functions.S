@@ -169,6 +169,7 @@ FUNCTION(mobyStartFlash, 0x00506960)
 FUNCTION(mobyUpdateFlash, 0x00506b88)
 FUNCTION(mobyGetJointMatrix, 0x004f8150)
 FUNCTION(mobySpawnExplosion, 0x003c3b38)
+FUNCTION(mobySpawnSplash, 0x0042e9f0)
 FUNCTION(mobySpawnMinibombs, 0x0040a8c0)
 FUNCTION(mobyGetTargetVars, 0x00506068)
 

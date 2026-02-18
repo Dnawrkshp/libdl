@@ -898,6 +898,9 @@ Moby* mobySpawnExplosion(u128 pos,int bCameraShake,int numMoonRock,int numSliver
               int colorShell,int colorRing,int bDirtyRing,Moby *pDamager,Moby *pIgnore,u128 externalVel,
               float exploScale,float pointLightRadius,float damageHp,float damageRadius);
 
+
+Moby* mobySpawnSplash(u128 position, u128 quat, int life, u32 color, float scale, float height, float radius, float scaleDir, float heightDir, float radiusDir);
+
 void mobySpawnMinibombs(Moby* pParent, int count, VECTOR rootVel, float randSpeed, float damage, int damageFlags, int lifeTimeMin, int lifeTimeMax, int weaponSource);
 struct TargetVars* mobyGetTargetVars(Moby* moby);
 
