@@ -25,4 +25,6 @@ __LIBDL_INLINE__ char * strcmp(const char *str1, const char *str2);
 __LIBDL_INLINE__ char * strncmp(const char *str1, const char *str2, int n);
 __LIBDL_INLINE__ char * strstr(const char *str1, const char *str2);
 
+int safe_strcpy(char *dest, const char *src, int n);
+
 #endif // _LIBDL_STRING_H_
