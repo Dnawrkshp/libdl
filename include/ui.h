@@ -422,6 +422,6 @@ void uiPlaySound(int soundId, int a1);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-int uiPrintCommaNumber(char* buffer, long number, int bShowSign);
+int uiPrintCommaNumber(char* buffer, int size, long number, int bShowSign);
 
 #endif // _LIBDL_UI_H_

@@ -1,5 +1,6 @@
 #include "ui.h"
 #include "game.h"
+#include "string.h"
 
 #define UI_ACTIVE_ID                            (*(int*)0x003434B8)
 #define UI_DIALOG_A0                            ((void*)0x011C7000)
@@ -72,12 +73,25 @@ void uiPlaySound(int soundId, int a1)
         internal_uiPlaySound_inLobby(soundId, a1, NULL);
 }
 
-int uiPrintCommaNumber(char* buffer, long number, int bShowSign)
+int uiPrintCommaNumber(char* buffer, int size, long number, int bShowSign)
 {
+    char tempBuf[64];
+    int len = 0;
+
     if (isInGame())
-        return internal_uiPrintCommaNumber_inGame(buffer, number, bShowSign);
+        len = internal_uiPrintCommaNumber_inGame(tempBuf, number, bShowSign);
     else if (isInMenus())
-        return internal_uiPrintCommaNumber_inLobby(buffer, number, bShowSign);
+        len = internal_uiPrintCommaNumber_inLobby(tempBuf, number, bShowSign);
     
-    return 0;
+    if (len <= 0)
+    {
+      buffer[len] = 0;
+      return 0;
+    }
+
+    // function inserts a space if no sign
+    // we don't want that
+    int skipFirstChar = tempBuf[0] == ' ' ? 1 : 0;
+    safe_strcpy(buffer, tempBuf + skipFirstChar, size);
+    return len - skipFirstChar;
 }
