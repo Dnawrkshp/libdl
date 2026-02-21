@@ -11,6 +11,8 @@ char * internal_uiMsgString_inGame(int textId);
 char * internal_uiMsgString_inLobby(int textId);
 void internal_uiPlaySound_inLobby(int soundId, int a1, Moby* moby);
 void internal_uiPlaySound_inGame(int soundId, int a1, Moby* moby);
+int internal_uiPrintCommaNumber_inGame(char* buffer, long number, int bShowSign);
+int internal_uiPrintCommaNumber_inLobby(char* buffer, long number, int bShowSign);
 
 int uiGetActive(void)
 {
@@ -68,4 +70,14 @@ void uiPlaySound(int soundId, int a1)
         internal_uiPlaySound_inGame(soundId, a1, NULL);
     else if (isInMenus())
         internal_uiPlaySound_inLobby(soundId, a1, NULL);
+}
+
+int uiPrintCommaNumber(char* buffer, long number, int bShowSign)
+{
+    if (isInGame())
+        return internal_uiPrintCommaNumber_inGame(buffer, number, bShowSign);
+    else if (isInMenus())
+        return internal_uiPrintCommaNumber_inLobby(buffer, number, bShowSign);
+    
+    return 0;
 }

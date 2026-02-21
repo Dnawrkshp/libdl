@@ -408,5 +408,20 @@ void uiRunCallbacks(void);
  */
 void uiPlaySound(int soundId, int a1);
 
+/*
+ * NAME :    uiPrintCommaNumber
+ * 
+ * DESCRIPTION :
+ *       Prints the number with commas to the buffer.
+ * 
+ * NOTES :
+ * 
+ * ARGS : 
+ * 
+ * RETURN :
+ * 
+ * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
+ */
+int uiPrintCommaNumber(char* buffer, long number, int bShowSign);
 
 #endif // _LIBDL_UI_H_

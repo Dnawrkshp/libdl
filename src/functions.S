@@ -260,6 +260,8 @@ FUNCTION(uiShowTimer, 0x005401E8)
 FUNCTION(uiRunCallbacks, 0x0015a050)
 FUNCTION(internal_uiPlaySound_inLobby, 0x0066d468)
 FUNCTION(internal_uiPlaySound_inGame, 0x0058f918)
+FUNCTION(internal_uiPrintCommaNumber_inGame, 0x00540f88)
+FUNCTION(internal_uiPrintCommaNumber_inLobby, 0x0061f288)
 
 #--------------------------------------------------------
 #------------------------- TIME -------------------------
