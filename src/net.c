@@ -19,6 +19,8 @@ NET_CALLBACK_DELEGATE callbacks[256] = {};
 int customMsgHandler(void *connection, u64 a1, u64 a2, u8 *data)
 {
   u8 id = data[0];
+  u8 hasSize = data[1] == 1;
+  u16 dataSize = *(u16*)(data + 2);
 
   NET_CALLBACK_DELEGATE callback = NET_GLOBAL_CALLBACKS_PTR[id];
   if (callback)
@@ -26,7 +28,7 @@ int customMsgHandler(void *connection, u64 a1, u64 a2, u8 *data)
   else
     printf("unhandled custom message id:%d\n", id);
 
-  return 4;
+  return 4 + (hasSize ? dataSize : 0);
 }
 
 int mediusMsgHandler(u64 a0, u64 a1, u32 *callback, u64 a3, u64 t0)
@@ -63,6 +65,16 @@ void netInstallCustomMsgHandler(u8 id, NET_CALLBACK_DELEGATE callback)
   NET_GLOBAL_CALLBACKS_PTR[id] = callback;
 }
 
+void netUninstallCustomMsgHandler(u8 id, NET_CALLBACK_DELEGATE callback)
+{
+  // install hook
+  installCustomMsgHook();
+
+  // uninstall callback
+  if (callback == NET_GLOBAL_CALLBACKS_PTR[id])
+    NET_GLOBAL_CALLBACKS_PTR[id] = NULL;
+}
+
 int netSendMediusAppMessage(int transport, void *connection, int clientIndex, int msgClass, int msgId, int msgSize, void *payload)
 {
   if (!connection)
@@ -90,6 +102,8 @@ int netSendCustomAppMessage(int transport, void *connection, int clientIndex, u8
     memcpy(buffer + 4, payload, msgSize);
 
   buffer[0] = customMsgId;
+  buffer[1] = 1; // indicate size is in next 2 bytes, for backwards compatibility
+  *(u16*)(buffer + 2) = (u16)msgSize;
   return netSendMediusAppMessage(transport, connection, clientIndex, NET_CUSTOM_MESSAGE_CLASS, NET_CUSTOM_MESSAGE_ID, msgSize + 4, buffer);
 }
 
@@ -106,6 +120,8 @@ int netBroadcastCustomAppMessage(int transport, void *connection, u8 customMsgId
     memcpy(buffer + 4, payload, msgSize);
 
   buffer[0] = customMsgId;
+  buffer[1] = 1; // indicate size is in next 2 bytes, for backwards compatibility
+  *(u16*)(buffer + 2) = (u16)msgSize;
   return netBroadcastMediusAppMessage(transport, connection, NET_CUSTOM_MESSAGE_ID, msgSize + 4, buffer);
 }
 

@@ -65,6 +65,7 @@ typedef struct inetSifMClientData {
 } inetSifMClientData_t;
 
 void netInstallCustomMsgHandler(u8 id, NET_CALLBACK_DELEGATE callback);
+void netUninstallCustomMsgHandler(u8 id, NET_CALLBACK_DELEGATE callback);
 int netSendMediusAppMessage(int transport, void * connection, int clientIndex, int msgClass, int msgId, int msgSize, void * payload);
 int netSendCustomAppMessage(int transport, void * connection, int clientIndex, u8 customMsgId, int msgSize, void * payload);
 int netBroadcastMediusAppMessage(int transport, void * connection, int msgId, int msgSize, void * payload);
