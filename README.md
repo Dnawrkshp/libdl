@@ -4,11 +4,11 @@ Small C library for developing integrated programs for Ratchet Deadlocked PS2
 
 ## Building
 
-Building libdl requires an installation of the open source PS2SDK. I recommend using a prebuilt docker image.
+libdl targets the legacy EE GCC 3.2.3 toolchain bundled with `ps2dev/ps2dev:v1.2.0`, matching the Dockerfile. Use this pinned image when building; the assembly uses its legacy register syntax.
 
-### Grab the latest ps2dev docker image
+### Grab the pinned ps2dev Docker image
 
-```docker pull ps2dev/ps2dev```
+```docker pull ps2dev/ps2dev:v1.2.0```
 
 ### Clone and enter the repo
 
@@ -16,7 +16,7 @@ Building libdl requires an installation of the open source PS2SDK. I recommend u
 
 ### Launch a new docker container with the current directory mounted
 
-```docker run -it --rm -v "$PWD\:/src" ps2dev/ps2dev```
+```docker run -it --rm -v "$PWD:/src" ps2dev/ps2dev:v1.2.0```
 
 ### Add make
 
@@ -24,7 +24,7 @@ Building libdl requires an installation of the open source PS2SDK. I recommend u
 
 ### Enter mounted directory
 
-```cd src```
+```cd /src```
 
 ### Build
 
