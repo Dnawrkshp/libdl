@@ -3435,7 +3435,7 @@ enum DialogIds
     DIALOG_ID_MERC_YOU_EVER_BEEN_IN_COUNTRY_YOU_KNOW_SEEN = 0x2B68,
 
     // Me? Yeah, before I came here, I saw a little action. It didn't end too well. I got my legs blown off. But I was top of my class in boot camp.
-    DIALOG_ID_BIG_AL_ME_YEAH_BEFORE_I_CAME_HERE_I_SAW = 0x2B69,
+    DIALOG_ID_GREEN_ME_YEAH_BEFORE_I_CAME_HERE_I_SAW = 0x2B69,
 
     // Ooh, nice suit, Ratchet.
     DIALOG_ID_CLANK_OOH_NICE_SUIT_RATCHET = 0x2B6F,
