@@ -14,9 +14,9 @@
 #ifndef _LIBDL_TIME_H_
 #define _LIBDL_TIME_H_
 
-#define TIME_SECOND               (1000)
-#define TIME_MINUTE               (TIME_SECOND * 60)
-#define SYSTEM_TIME_TICKS_PER_MS  (0x24000)
+#define TIME_SECOND (1000)
+#define TIME_MINUTE (TIME_SECOND * 60)
+#define SYSTEM_TIME_TICKS_PER_MS (0x24000)
 
 /*
  * NAME :    timerGetSystemTime

@@ -2,23 +2,23 @@
 #include "utils.h"
 
 //--------------------------------------------------------------------------------
-int isInEEMemory(void* p)
+int isInEEMemory(void *p)
 {
-    u32 upper = (u32)p >> 16;
-    return upper >= 0x0008 && upper < 0x0200;
+  u32 upper = (u32)p >> 16;
+  return upper >= 0x0008 && upper < 0x0200;
 }
 
 //--------------------------------------------------------------------------------
-int isInScratchpadMemory(void* p)
+int isInScratchpadMemory(void *p)
 {
-    u32 upper = (u32)p >> 16;
-    u32 lower = (u32)p & 0xFFFF;
-    return upper == 0x7000 && lower < 0x4000;
+  u32 upper = (u32)p >> 16;
+  u32 lower = (u32)p & 0xFFFF;
+  return upper == 0x7000 && lower < 0x4000;
 }
 
 //--------------------------------------------------------------------------------
-int isInIopMemory(void* p)
+int isInIopMemory(void *p)
 {
-    u32 upper = (u32)p >> 16;
-    return upper >= 0x1C00 && upper < 0x1C20;
+  u32 upper = (u32)p >> 16;
+  return upper >= 0x1C00 && upper < 0x1C20;
 }

@@ -25,7 +25,7 @@
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-#define RADAR_BLIPS_ARRAY_SIZE                  (0x40)
+#define RADAR_BLIPS_ARRAY_SIZE (0x40)
 
 /*
  * NAME :    SpawnPoint
@@ -45,7 +45,7 @@ typedef struct RadarBlip
   float X;
   float Y;
   float Rotation;
-  Moby * Moby;
+  Moby *Moby;
   short Life;
 } RadarBlip;
 
@@ -63,7 +63,7 @@ typedef struct RadarBlip
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-__LIBDL_GETTER__ RadarBlip * radarGetBlips(void);
+__LIBDL_GETTER__ RadarBlip *radarGetBlips(void);
 
 /*
  * NAME :    radarGetBlipIndex
@@ -79,7 +79,7 @@ __LIBDL_GETTER__ RadarBlip * radarGetBlips(void);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-__LIBDL_GETTER__ int radarGetBlipIndex(Moby * moby);
+__LIBDL_GETTER__ int radarGetBlipIndex(Moby *moby);
 
 /*
  * NAME :    radarGetBlipColor

@@ -5,68 +5,69 @@
 /*
  * Player 1's hud.
  */
-#define HUD_P1      ((PlayerHUDFlags*)0x0030D8E0)
+#define HUD_P1 ((PlayerHUDFlags *)0x0030D8E0)
 
 /*
  * Player 2's hud.
  */
-#define HUD_P2      ((PlayerHUDFlags*)0x0030D8F0)
+#define HUD_P2 ((PlayerHUDFlags *)0x0030D8F0)
 
+#define HUD_POPUP_VISIBILITY_FLOAT (0x0030E7E8)
 
-#define HUD_POPUP_VISIBILITY_FLOAT    (0x0030E7E8)
-
-
-void* internal_hudGetCanvas_inGame(u32 canvas);
+void *internal_hudGetCanvas_inGame(u32 canvas);
 u32 internal_hudGetCurrentCanvas_inGame(void);
 void internal_hudSetCurrentCanvas_inGame(u32);
-struct HUDObject* internal_hudCanvasGetObject_inGame(void* canvas, u32 objId);
+struct HUDObject *internal_hudCanvasGetObject_inGame(void *canvas, u32 objId);
 
-
-PlayerHUDFlags * hudGetPlayerFlags(int localPlayerIndex)
+PlayerHUDFlags *hudGetPlayerFlags(int localPlayerIndex)
 {
-    if (localPlayerIndex == 0)
-        return HUD_P1;
-    else if (localPlayerIndex == 1)
-        return HUD_P2;
+  if (localPlayerIndex == 0)
+    return HUD_P1;
+  else if (localPlayerIndex == 1)
+    return HUD_P2;
 
-    return 0;
+  return 0;
 }
 
-void* hudGetCanvas(u32 canvas)
+void *hudGetCanvas(u32 canvas)
 {
-    if (isInGame()) {
-        return internal_hudGetCanvas_inGame(canvas);
-    }
+  if (isInGame())
+  {
+    return internal_hudGetCanvas_inGame(canvas);
+  }
 
-    return NULL;
+  return NULL;
 }
 
 u32 hudGetCurrentCanvas(void)
 {
-    if (isInGame()) {
-        return internal_hudGetCurrentCanvas_inGame();
-    }
+  if (isInGame())
+  {
+    return internal_hudGetCurrentCanvas_inGame();
+  }
 
-    return NULL;
+  return 0;
 }
 
 void hudSetCurrentCanvas(u32 canvas)
 {
-  if (isInGame()) {
+  if (isInGame())
+  {
     internal_hudSetCurrentCanvas_inGame(canvas);
   }
 }
 
-struct HUDObject* hudCanvasGetObject(void* canvas, u32 objId)
+struct HUDObject *hudCanvasGetObject(void *canvas, u32 objId)
 {
-    if (isInGame()) {
-        return internal_hudCanvasGetObject_inGame(canvas, objId);
-    }
+  if (isInGame())
+  {
+    return internal_hudCanvasGetObject_inGame(canvas, objId);
+  }
 
-    return NULL;
+  return NULL;
 }
 
 void hudHidePopup(void)
 {
-  *(u32*)HUD_POPUP_VISIBILITY_FLOAT = 0;
+  *(u32 *)HUD_POPUP_VISIBILITY_FLOAT = 0;
 }

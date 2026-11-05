@@ -1,4 +1,11 @@
 {
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "C_Cpp.clang_format_style": "file",
+  "[makefile]": {
+    "editor.insertSpaces": false
+  },
   "files.associations": {
     "*.cds": "mips",
     "*.txt": "ignore",

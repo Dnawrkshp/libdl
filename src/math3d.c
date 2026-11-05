@@ -3,7 +3,7 @@
 #include "stdio.h"
 #include "game.h"
 #include <tamtypes.h>
-  
+
 /*
 # _____     ___ ____     ___ ____
 #  ____|   |    ____|   |        | |____|
@@ -15,27 +15,27 @@
 */
 
 u128 internal_vectorReflect(u128 input, u128 normal);
-void internal_vector_pack(u128 input, u32* dst);
-u128 internal_vector_unpack(u32* src);
+void internal_vector_pack(u128 input, u32 *dst);
+u128 internal_vector_unpack(u32 *src);
 void internal_matrix_toeuler_inGame(MATRIX m, VECTOR out);
 void internal_matrix_toeuler_inLobby(MATRIX m, VECTOR out);
 
 //--------------------------------------------------------
 void vector_write(VECTOR output, u128 input0)
 {
-    *(u128*)output = input0;
+  *(u128 *)output = input0;
 }
 
 //--------------------------------------------------------
 u128 vector_read(VECTOR input0)
 {
-    return *(u128*)input0;
+  return *(u128 *)input0;
 }
 
 //--------------------------------------------------------
 void vector_reflect(VECTOR output, VECTOR input0, VECTOR normal)
 {
-    vector_write(output, internal_vectorReflect(vector_read(input0), vector_read(normal)));
+  vector_write(output, internal_vectorReflect(vector_read(input0), vector_read(normal)));
 }
 
 //--------------------------------------------------------
@@ -58,7 +58,7 @@ void vector_clampeuler(VECTOR output, VECTOR input0)
 //--------------------------------------------------------
 void vector_apply(VECTOR output, VECTOR input0, MATRIX input1)
 {
-    asm __volatile__ (
+  asm __volatile__(
     // Load the matrix rows and input vector before writing any output.
     "lqc2            vf1,    0x00(%2)                \n"
     "lqc2            vf2,    0x10(%2)                \n"
@@ -72,26 +72,24 @@ void vector_apply(VECTOR output, VECTOR input0, MATRIX input1)
     "vmadday         ACC,    vf2,    vf5             \n"
     "vmaddz          vf6,    vf3,    vf5             \n"
     "sqc2            vf6,    0x00(%0)                \n"
-    : : "r" (output), "r" (input0), "r" (input1)
-    : "memory"
-    );
+    : : "r"(output), "r"(input0), "r"(input1)
+    : "memory");
 }
 
 //--------------------------------------------------------
 void vector_copy(VECTOR output, VECTOR input0)
 {
-    asm __volatile__ (
+  asm __volatile__(
     "lqc2            vf1,    0x00(%1)                \n"
     "sqc2            vf1,    0x00(%0)                \n"
-    : : "r" (output), "r" (input0)
-    : "memory"
-    );
+    : : "r"(output), "r"(input0)
+    : "memory");
 }
 
 //--------------------------------------------------------
 void vector_normalize(VECTOR output, VECTOR input0)
 {
-    asm __volatile__ (
+  asm __volatile__(
     "lqc2            vf1,    0x00(%1)                \n"
 
     // Square XYZ, then reduce their sum into vf2.w; W is excluded.
@@ -108,18 +106,17 @@ void vector_normalize(VECTOR output, VECTOR input0)
     "vwaitq                                          \n"
     "vmulq.xyz       vf1,    vf1,    Q               \n"
     "sqc2            vf1,    0x00(%0)                \n"
-    : : "r" (output), "r" (input0)
-    : "memory"
-    );
+    : : "r"(output), "r"(input0)
+    : "memory");
 }
 
 //--------------------------------------------------------
 float vector_sqrmag(VECTOR input0)
 {
-    float result;
-    int bits;
+  float result;
+  int bits;
 
-    __asm__ __volatile__ (
+  __asm__ __volatile__(
     "lqc2            vf1,    0x00(%2)                \n"
 
     // Broadcast ones for the horizontal sum of the squared XYZ components.
@@ -133,18 +130,17 @@ float vector_sqrmag(VECTOR input0)
     // Return the scalar through a GPR into COP1 without a stack buffer.
     "qmfc2           %1,     vf1                     \n"
     "mtc1            %1,     %0                      \n"
-    : "=f" (result), "=&r" (bits) : "r" (input0) : "memory"
-    );
-    return result;
+    : "=f"(result), "=&r"(bits) : "r"(input0) : "memory");
+  return result;
 }
 
 //--------------------------------------------------------
 float vector_length(VECTOR input0)
 {
-    float result;
-    int bits;
+  float result;
+  int bits;
 
-    __asm__ __volatile__ (
+  __asm__ __volatile__(
     "lqc2            vf1,    0x00(%2)                \n"
 
     // Broadcast ones for the horizontal sum of the squared XYZ components.
@@ -161,18 +157,17 @@ float vector_length(VECTOR input0)
 
     // Take the scalar square root directly in COP1.
     "sqrt.s          %0,     %0                      \n"
-    : "=f" (result), "=&r" (bits) : "r" (input0) : "memory"
-    );
-    return result;
+    : "=f"(result), "=&r"(bits) : "r"(input0) : "memory");
+  return result;
 }
 
 //--------------------------------------------------------
 float vector_distance(VECTOR input0, VECTOR input1)
 {
-    float result;
-    int bits;
+  float result;
+  int bits;
 
-    __asm__ __volatile__ (
+  __asm__ __volatile__(
     // Form the XYZ difference entirely in registers.
     "lqc2            vf1,    0x00(%2)                \n"
     "lqc2            vf2,    0x00(%3)                \n"
@@ -190,18 +185,17 @@ float vector_distance(VECTOR input0, VECTOR input1)
 
     // Take the square root to obtain distance.
     "sqrt.s          %0,     %0                      \n"
-    : "=f" (result), "=&r" (bits) : "r" (input0), "r" (input1) : "memory"
-    );
-    return result;
+    : "=f"(result), "=&r"(bits) : "r"(input0), "r"(input1) : "memory");
+  return result;
 }
 
 //--------------------------------------------------------
 float vector_sqrdistance(VECTOR input0, VECTOR input1)
 {
-    float result;
-    int bits;
+  float result;
+  int bits;
 
-    __asm__ __volatile__ (
+  __asm__ __volatile__(
     // Form the XYZ difference entirely in registers.
     "lqc2            vf1,    0x00(%2)                \n"
     "lqc2            vf2,    0x00(%3)                \n"
@@ -216,19 +210,18 @@ float vector_sqrdistance(VECTOR input0, VECTOR input1)
     // Transfer the scalar to COP1 without storing an intermediate vector.
     "qmfc2           %1,     vf1                     \n"
     "mtc1            %1,     %0                      \n"
-    : "=f" (result), "=&r" (bits) : "r" (input0), "r" (input1) : "memory"
-    );
-    return result;
+    : "=f"(result), "=&r"(bits) : "r"(input0), "r"(input1) : "memory");
+  return result;
 }
 
 //--------------------------------------------------------
 float vector_innerproduct(VECTOR input0, VECTOR input1)
 {
-    float result;
-    int bits;
-    unsigned int magnitude0, magnitude1;
+  float result;
+  int bits;
+  unsigned int magnitude0, magnitude1;
 
-    __asm__ __volatile__ (
+  __asm__ __volatile__(
     // Load both vectors; vf5 supplies ones for the horizontal sums.
     "lqc2            vf1,    0x00(%4)                \n"
     "lqc2            vf2,    0x00(%5)                \n"
@@ -266,44 +259,43 @@ float vector_innerproduct(VECTOR input0, VECTOR input1)
     // Transfer the dot product to COP1 for clamping in C.
     "qmfc2           %1,     vf1                     \n"
     "mtc1            %1,     %0                      \n"
-    : "=f" (result), "=&r" (bits), "=&r" (magnitude0), "=&r" (magnitude1)
-    : "r" (input0), "r" (input1) : "memory"
-    );
+    : "=f"(result), "=&r"(bits), "=&r"(magnitude0), "=&r"(magnitude1)
+    : "r"(input0), "r"(input1) : "memory");
 
-    if ((magnitude0 & 0x7fffffffU) == 0 || (magnitude1 & 0x7fffffffU) == 0) {
-        // Preserve the existing EE divide-by-zero behavior for zero lengths.
-        float m0, m1;
-        __asm__(
-        // Restore both squared lengths as COP1 floats for the original division path.
-        "mtc1            %2,     %0                      \n\t"
-        "mtc1            %3,     %1                      \n\t"
+  if ((magnitude0 & 0x7fffffffU) == 0 || (magnitude1 & 0x7fffffffU) == 0)
+  {
+    // Preserve the existing EE divide-by-zero behavior for zero lengths.
+    float m0, m1;
+    __asm__(
+      // Restore both squared lengths as COP1 floats for the original division path.
+      "mtc1            %2,     %0                      \n\t"
+      "mtc1            %3,     %1                      \n\t"
 
-        // Compute the scalar lengths used by the zero-length fallback.
-        "sqrt.s          %0,     %0                      \n\t"
-        "sqrt.s          %1,     %1                      "
-        : "=&f" (m0), "=&f" (m1) : "r" (magnitude0), "r" (magnitude1)
-        );
-        result = (input0[0] / m0) * (input1[0] / m1)
-               + (input0[1] / m0) * (input1[1] / m1)
-               + (input0[2] / m0) * (input1[2] / m1);
-    }
+      // Compute the scalar lengths used by the zero-length fallback.
+      "sqrt.s          %0,     %0                      \n\t"
+      "sqrt.s          %1,     %1                      "
+      : "=&f"(m0), "=&f"(m1) : "r"(magnitude0), "r"(magnitude1));
+    result = (input0[0] / m0) * (input1[0] / m1) + (input0[1] / m0) * (input1[1] / m1) + (input0[2] / m0) * (input1[2] / m1);
+  }
 
-    if (result < -1.0f) return -1.0f;
-    if (result > 1.0f) return 1.0f;
-    return result;
+  if (result < -1.0f)
+    return -1.0f;
+  if (result > 1.0f)
+    return 1.0f;
+  return result;
 }
 
 //--------------------------------------------------------
 float vector_innerproduct_unscaled(VECTOR input0, VECTOR input1)
 {
-    // Return the inner product.
-    return  (input0[0] * input1[0]) + (input0[1] * input1[1]) + (input0[2] * input1[2]);
+  // Return the inner product.
+  return (input0[0] * input1[0]) + (input0[1] * input1[1]) + (input0[2] * input1[2]);
 }
 
 //--------------------------------------------------------
 void vector_outerproduct(VECTOR output, VECTOR input0, VECTOR input1)
 {
-    asm __volatile__ (
+  asm __volatile__(
     "lqc2            vf1,    0x00(%1)                \n"
     "lqc2            vf2,    0x00(%2)                \n"
 
@@ -314,17 +306,16 @@ void vector_outerproduct(VECTOR output, VECTOR input0, VECTOR input1)
     // Clear W so the result is a 3D direction.
     "vsub.w          vf2,    vf0,    vf0             \n"
     "sqc2            vf2,    0x00(%0)                \n"
-    : : "r" (output), "r" (input0), "r" (input1)
-    : "memory"
-    );
+    : : "r"(output), "r"(input0), "r"(input1)
+    : "memory");
 }
 
 //--------------------------------------------------------
 void vector_lerp(VECTOR output, VECTOR input0, VECTOR input1, float t)
 {
-    int bits;
+  int bits;
 
-    __asm__ __volatile__ (
+  __asm__ __volatile__(
     // Transfer t from COP1 to vf3.x without staging it on the stack.
     "mfc1            %0,     %4                      \n"
     "qmtc2           %0,     vf3                     \n"
@@ -336,40 +327,36 @@ void vector_lerp(VECTOR output, VECTOR input0, VECTOR input1, float t)
     "vmulx.xyz       vf2,    vf2,    vf3x            \n"
     "vadd.xyz        vf1,    vf2,    vf1             \n"
     "sqc2            vf1,    0x00(%1)                \n"
-    : "=&r" (bits)
-    : "r" (output), "r" (input0), "r" (input1), "f" (t) : "memory"
-    );
+    : "=&r"(bits)
+    : "r"(output), "r"(input0), "r"(input1), "f"(t) : "memory");
 }
-
 
 //--------------------------------------------------------
 void vector_subtract(VECTOR output, VECTOR input0, VECTOR input1)
 {
-    asm __volatile__ (
+  asm __volatile__(
     "lqc2            vf1,    0x00(%1)                \n"
     "lqc2            vf2,    0x00(%2)                \n"
 
     // Subtract XYZ while retaining input0.W in the destination register.
     "vsub.xyz        vf1,    vf1,    vf2             \n"
     "sqc2            vf1,    0x00(%0)                \n"
-    : : "r" (output), "r" (input0), "r" (input1)
-    : "memory"
-    );
+    : : "r"(output), "r"(input0), "r"(input1)
+    : "memory");
 }
 
 //--------------------------------------------------------
 void vector_add(VECTOR output, VECTOR input0, VECTOR input1)
 {
-    asm __volatile__ (
+  asm __volatile__(
     "lqc2            vf1,    0x00(%1)                \n"
     "lqc2            vf2,    0x00(%2)                \n"
 
     // Add XYZ while retaining input0.W in the destination register.
     "vadd.xyz        vf1,    vf2,    vf1             \n"
     "sqc2            vf1,    0x00(%0)                \n"
-    : : "r" (output), "r" (input0), "r" (input1)
-    : "memory"
-    );
+    : : "r"(output), "r"(input0), "r"(input1)
+    : "memory");
 }
 
 //--------------------------------------------------------
@@ -378,9 +365,9 @@ void vector_add(VECTOR output, VECTOR input0, VECTOR input1)
 //--------------------------------------------------------
 void vector_scale(VECTOR output, VECTOR input0, float scalar)
 {
-    int bits;
+  int bits;
 
-    __asm__ __volatile__ (
+  __asm__ __volatile__(
     // Transfer the scalar to vf2.x through a GPR; only that lane is used.
     "mfc1            %0,     %3                      \n"
     "qmtc2           %0,     vf2                     \n"
@@ -389,106 +376,100 @@ void vector_scale(VECTOR output, VECTOR input0, float scalar)
     // Scale XYZ while preserving the loaded input W.
     "vmulx.xyz       vf1,    vf1,    vf2x            \n"
     "sqc2            vf1,    0x00(%1)                \n"
-    : "=&r" (bits) : "r" (output), "r" (input0), "f" (scalar) : "memory"
-    );
+    : "=&r"(bits) : "r"(output), "r"(input0), "f"(scalar) : "memory");
 }
 
 //--------------------------------------------------------
 void vector_multiply(VECTOR output, VECTOR input0, VECTOR input1)
 {
-    asm __volatile__ (
+  asm __volatile__(
     "lqc2            vf1,    0x00(%1)                \n"
     "lqc2            vf2,    0x00(%2)                \n"
     "vmul.xyzw       vf1,    vf1,    vf2             \n"
     "sqc2            vf1,    0x00(%0)                \n"
-    : : "r" (output), "r" (input0), "r" (input1)
-    : "memory"
-    );
+    : : "r"(output), "r"(input0), "r"(input1)
+    : "memory");
 }
 
 //--------------------------------------------------------------------------
 void vector_projectonvertical(VECTOR output, VECTOR input0)
 {
-    asm __volatile__ (
+  asm __volatile__(
     "lqc2            vf1,    0x00(%1)                \n"
 
     // Clear the horizontal X/Y components while preserving Z and W.
     "vmove.xy        vf1,    vf0                     \n"
     "sqc2            vf1,    0x00(%0)                \n"
-    : : "r" (output), "r" (input0)
-    : "memory"
-    );
+    : : "r"(output), "r"(input0)
+    : "memory");
 }
 
 //--------------------------------------------------------------------------
 void vector_projectonhorizontal(VECTOR output, VECTOR input0)
 {
-    asm __volatile__ (
+  asm __volatile__(
     "lqc2            vf1,    0x00(%1)                \n"
 
     // Clear the vertical Z component while preserving X, Y, and W.
     "vmove.z         vf1,    vf0                     \n"
     "sqc2            vf1,    0x00(%0)                \n"
-    : : "r" (output), "r" (input0)
-    : "memory"
-    );
+    : : "r"(output), "r"(input0)
+    : "memory");
 }
 
 //--------------------------------------------------------
 void vector_project(VECTOR output, VECTOR input0, VECTOR input1)
 {
-  asm __volatile__ (
-  "vmaxw.xyzw      vf3,    vf0,    vf0w            \n"
-  "lqc2            vf1,    0x00(%1)                \n"
-  "lqc2            vf2,    0x00(%2)                \n"
+  asm __volatile__(
+    "vmaxw.xyzw      vf3,    vf0,    vf0w            \n"
+    "lqc2            vf1,    0x00(%1)                \n"
+    "lqc2            vf2,    0x00(%2)                \n"
 
-  // Reduce the XYZ dot product of the input and projection axis.
-  "vmul.xyz        vf1,    vf1,    vf2             \n"
-  "vadday.x        ACC,    vf1,    vf1y            \n"
-  "vmaddz.x        vf1,    vf3,    vf1z            \n"
+    // Reduce the XYZ dot product of the input and projection axis.
+    "vmul.xyz        vf1,    vf1,    vf2             \n"
+    "vadday.x        ACC,    vf1,    vf1y            \n"
+    "vmaddz.x        vf1,    vf3,    vf1z            \n"
 
-  // Scale the axis by the dot product; this projection assumes a unit axis.
-  "vmulx.xyz       vf2,    vf2,    vf1x            \n"
-  "sqc2            vf2,    0x00(%0)                \n"
-  : : "r" (output), "r" (input0), "r" (input1)
-  : "memory"
-  );
+    // Scale the axis by the dot product; this projection assumes a unit axis.
+    "vmulx.xyz       vf2,    vf2,    vf1x            \n"
+    "sqc2            vf2,    0x00(%0)                \n"
+    : : "r"(output), "r"(input0), "r"(input1)
+    : "memory");
 }
 
 //--------------------------------------------------------
 void vector_projectonplane(VECTOR output, VECTOR input0, VECTOR input1)
 {
-  asm __volatile__ (
-  "vmaxw.xyzw      vf3,    vf0,    vf0w            \n"
-  "lqc2            vf4,    0x00(%1)                \n"
-  "lqc2            vf2,    0x00(%2)                \n"
+  asm __volatile__(
+    "vmaxw.xyzw      vf3,    vf0,    vf0w            \n"
+    "lqc2            vf4,    0x00(%1)                \n"
+    "lqc2            vf2,    0x00(%2)                \n"
 
-  // Reduce the XYZ dot product of the input and plane normal.
-  "vmul.xyz        vf1,    vf4,    vf2             \n"
-  "vadday.x        ACC,    vf1,    vf1y            \n"
-  "vmaddz.x        vf1,    vf3,    vf1z            \n"
+    // Reduce the XYZ dot product of the input and plane normal.
+    "vmul.xyz        vf1,    vf4,    vf2             \n"
+    "vadday.x        ACC,    vf1,    vf1y            \n"
+    "vmaddz.x        vf1,    vf3,    vf1z            \n"
 
-  // Scale the unit normal by the dot, then subtract it from the original XYZ.
-  "vmulx.xyz       vf2,    vf2,    vf1x            \n"
-  "vsub.xyz        vf2,    vf4,    vf2             \n"
-  "sqc2            vf2,    0x00(%0)                \n"
-  : : "r" (output), "r" (input0), "r" (input1)
-  : "memory"
-  );
+    // Scale the unit normal by the dot, then subtract it from the original XYZ.
+    "vmulx.xyz       vf2,    vf2,    vf1x            \n"
+    "vsub.xyz        vf2,    vf4,    vf2             \n"
+    "sqc2            vf2,    0x00(%0)                \n"
+    : : "r"(output), "r"(input0), "r"(input1)
+    : "memory");
 }
 
 //--------------------------------------------------------
 void vector_print(VECTOR input0)
 {
   printf("(%f, %f, %f, %f)",
-    input0[0],
-    input0[1],
-    input0[2],
-    input0[3]);
+         input0[0],
+         input0[1],
+         input0[2],
+         input0[3]);
 }
 
 //--------------------------------------------------------
-void vector_pack(VECTOR input0, u32* dst)
+void vector_pack(VECTOR input0, u32 *dst)
 {
   internal_vector_pack(vector_read(input0), dst);
 }
@@ -513,7 +494,7 @@ void vector_fromforwardup(VECTOR output, VECTOR forward, VECTOR up)
 //--------------------------------------------------------
 void quat_normalize(VECTOR output, VECTOR input0)
 {
-	asm __volatile__(
+  asm __volatile__(
     "lqc2            vf1,    0x00(%1)                \n"
 
     // Reduce all four squared components into vf2.w, including quaternion W.
@@ -530,9 +511,8 @@ void quat_normalize(VECTOR output, VECTOR input0)
     // Normalize all four quaternion components with the same scale.
     "vmulq.xyzw      vf1,    vf1,    Q               \n"
     "sqc2            vf1,    0x00(%0)                \n"
-			: : "r"(output), "r"(input0)
-    : "memory"
-    );
+    : : "r"(output), "r"(input0)
+    : "memory");
 }
 
 //--------------------------------------------------------
@@ -542,54 +522,60 @@ void quat_fromangleaxis(VECTOR output, VECTOR axis, float theta)
   float cosTheta = cosf(theta / 2);
   VECTOR trig = {sinTheta, sinTheta, sinTheta, cosTheta};
 
-  asm __volatile__ (
-  // Load the axis and the sine/cosine of half the rotation angle.
-  "lqc2            vf1,    0x00(%1)                \n"
-  "lqc2            vf2,    0x00(%2)                \n"
+  asm __volatile__(
+    // Load the axis and the sine/cosine of half the rotation angle.
+    "lqc2            vf1,    0x00(%1)                \n"
+    "lqc2            vf2,    0x00(%2)                \n"
 
-  // Scale XYZ by sine and replace W with cosine.
-  "vmul.xyz        vf1,    vf1,    vf2             \n"
-  "vmove.w         vf1,    vf2                     \n"
-  "sqc2            vf1,    0x00(%0)                \n"
-      :
-      : "r"(output), "r"(axis), "r"(trig)
-      : "memory"
-  );
+    // Scale XYZ by sine and replace W with cosine.
+    "vmul.xyz        vf1,    vf1,    vf2             \n"
+    "vmove.w         vf1,    vf2                     \n"
+    "sqc2            vf1,    0x00(%0)                \n"
+    :
+    : "r"(output), "r"(axis), "r"(trig)
+    : "memory");
 }
 
 //--------------------------------------------------------
 void quat_from_matrix(VECTOR output, const MATRIX input0)
 {
-    float m00 = input0[0], m11 = input0[5], m22 = input0[10];
-    float trace = m00 + m11 + m22;
-    float x, y, z, w;
-    int xy, zw, bits;
+  float m00 = input0[0], m11 = input0[5], m22 = input0[10];
+  float trace = m00 + m11 + m22;
+  float x, y, z, w;
+  int xy, zw, bits;
 
-    // The common 1/(2*sqrt(t)) factor cancels in the final normalization.
-    // Keep the original branch conditions and off-diagonal sign convention.
-    if (trace > 0.0f) {
-        x = input0[9] - input0[6];
-        y = input0[2] - input0[8];
-        z = input0[1] - input0[4];
-        w = trace + 1.0f;
-    } else if (m00 > m11 && m00 > m22) {
-        x = 1.0f + m00 - m11 - m22;
-        y = input0[1] + input0[4];
-        z = input0[2] + input0[8];
-        w = input0[6] - input0[9];
-    } else if (m11 > m22) {
-        x = input0[1] + input0[4];
-        y = 1.0f + m11 - m00 - m22;
-        z = input0[6] + input0[9];
-        w = input0[8] - input0[2];
-    } else {
-        x = input0[2] + input0[8];
-        y = input0[6] + input0[9];
-        z = 1.0f + m22 - m00 - m11;
-        w = input0[1] - input0[4];
-    }
+  // The common 1/(2*sqrt(t)) factor cancels in the final normalization.
+  // Keep the original branch conditions and off-diagonal sign convention.
+  if (trace > 0.0f)
+  {
+    x = input0[9] - input0[6];
+    y = input0[2] - input0[8];
+    z = input0[1] - input0[4];
+    w = trace + 1.0f;
+  }
+  else if (m00 > m11 && m00 > m22)
+  {
+    x = 1.0f + m00 - m11 - m22;
+    y = input0[1] + input0[4];
+    z = input0[2] + input0[8];
+    w = input0[6] - input0[9];
+  }
+  else if (m11 > m22)
+  {
+    x = input0[1] + input0[4];
+    y = 1.0f + m11 - m00 - m22;
+    z = input0[6] + input0[9];
+    w = input0[8] - input0[2];
+  }
+  else
+  {
+    x = input0[2] + input0[8];
+    y = input0[6] + input0[9];
+    z = 1.0f + m22 - m00 - m11;
+    w = input0[1] - input0[4];
+  }
 
-    __asm__ __volatile__ (
+  __asm__ __volatile__(
     // Pack the scalar x/y and z/w bit patterns into one 128-bit GPR.
     "mfc1            %0,     %4                      \n"
     "mfc1            %1,     %5                      \n"
@@ -612,41 +598,41 @@ void quat_from_matrix(VECTOR output, const MATRIX input0)
     "vwaitq                                          \n"
     "vmulq.xyzw      vf1,    vf1,    Q               \n"
     "sqc2            vf1,    0x00(%3)                \n"
-    : "=&r" (xy), "=&r" (zw), "=&r" (bits)
-    : "r" (output), "f" (x), "f" (y), "f" (z), "f" (w) : "memory"
-    );
+    : "=&r"(xy), "=&r"(zw), "=&r"(bits)
+    : "r"(output), "f"(x), "f"(y), "f"(z), "f"(w) : "memory");
 }
 
 //--------------------------------------------------------
 void matrix_copy(MATRIX output, MATRIX input0)
 {
-  asm __volatile__ (
-  // Load all four rows before storing, allowing input and output to overlap.
-  "lqc2            vf1,    0x00(%1)                \n"
-  "lqc2            vf2,    0x10(%1)                \n"
-  "lqc2            vf3,    0x20(%1)                \n"
-  "lqc2            vf4,    0x30(%1)                \n"
-  "sqc2            vf1,    0x00(%0)                \n"
-  "sqc2            vf2,    0x10(%0)                \n"
-  "sqc2            vf3,    0x20(%0)                \n"
-  "sqc2            vf4,    0x30(%0)                \n"
-   : : "r" (output), "r" (input0)
-   : "memory"
-  );
+  asm __volatile__(
+    // Load all four rows before storing, allowing input and output to overlap.
+    "lqc2            vf1,    0x00(%1)                \n"
+    "lqc2            vf2,    0x10(%1)                \n"
+    "lqc2            vf3,    0x20(%1)                \n"
+    "lqc2            vf4,    0x30(%1)                \n"
+    "sqc2            vf1,    0x00(%0)                \n"
+    "sqc2            vf2,    0x10(%0)                \n"
+    "sqc2            vf3,    0x20(%0)                \n"
+    "sqc2            vf4,    0x30(%0)                \n"
+    : : "r"(output), "r"(input0)
+    : "memory");
 }
 
 //--------------------------------------------------------
 void matrix_toeuler(MATRIX input0, VECTOR output)
 {
-  if (isInGame()) internal_matrix_toeuler_inGame(input0, output);
-  else if (isInMenus()) internal_matrix_toeuler_inLobby(input0, output);
+  if (isInGame())
+    internal_matrix_toeuler_inGame(input0, output);
+  else if (isInMenus())
+    internal_matrix_toeuler_inLobby(input0, output);
 }
 
 //--------------------------------------------------------
 void matrix_fromrows(MATRIX output, VECTOR input0, VECTOR input1, VECTOR input2, VECTOR input3)
 {
-    // Read every row before writing so the output may overlap the inputs.
-    __asm__ __volatile__ (
+  // Read every row before writing so the output may overlap the inputs.
+  __asm__ __volatile__(
     // Read every source row first, including rows that overlap the destination.
     "lqc2            vf1,    0x00(%1)                \n"
     "lqc2            vf2,    0x00(%2)                \n"
@@ -658,40 +644,39 @@ void matrix_fromrows(MATRIX output, VECTOR input0, VECTOR input1, VECTOR input2,
     "sqc2            vf2,    0x10(%0)                \n"
     "sqc2            vf3,    0x20(%0)                \n"
     "sqc2            vf4,    0x30(%0)                \n"
-    : : "r" (output), "r" (input0), "r" (input1), "r" (input2), "r" (input3)
-    : "memory"
-    );
+    : : "r"(output), "r"(input0), "r"(input1), "r"(input2), "r"(input3)
+    : "memory");
 }
 
 //--------------------------------------------------------
 void matrix_from_up_normal_twist(MATRIX output, VECTOR normal, float theta)
 {
-	VECTOR n;
-	VECTOR r, u;
-	VECTOR helper = {0, 1, 0, 0};
-	VECTOR helper2 = {0, 0, 1, 0};
+  VECTOR n;
+  VECTOR r, u;
+  VECTOR helper = {0, 1, 0, 0};
+  VECTOR helper2 = {0, 0, 1, 0};
 
-	// normalize axis
-	vector_normalize(n, normal);
+  // normalize axis
+  vector_normalize(n, normal);
 
-	// If n is close to +Y/-Y, use Z as helper; else use Y.
-	vector_outerproduct(r, helper, n);
-	if (vector_sqrmag(r) < 0.00001)
-		vector_outerproduct(r, helper2, n);
+  // If n is close to +Y/-Y, use Z as helper; else use Y.
+  vector_outerproduct(r, helper, n);
+  if (vector_sqrmag(r) < 0.00001)
+    vector_outerproduct(r, helper2, n);
 
-	// Right-handed basis:
-	// r = cross(helper, n)
-	// u = cross(n, r)
-	vector_normalize(r, r);
-	vector_outerproduct(u, n, r);
+  // Right-handed basis:
+  // r = cross(helper, n)
+  // u = cross(n, r)
+  vector_normalize(r, r);
+  vector_outerproduct(u, n, r);
 
-	// Apply twist around n by theta: rotate (r,u) in their plane
-	float c = cosf(theta);
-	float s = sinf(theta);
-    int trig, bits;
+  // Apply twist around n by theta: rotate (r,u) in their plane
+  float c = cosf(theta);
+  float s = sinf(theta);
+  int trig, bits;
 
-    // Preserve both tested sums: r' = r*c + u*s; u' = u*c + r*s.
-    __asm__ __volatile__ (
+  // Preserve both tested sums: r' = r*c + u*s; u' = u*c + r*s.
+  __asm__ __volatile__(
     // Pack cos(theta) and sin(theta) into vf4.x and vf4.y.
     "mfc1            %0,     %6                      \n"
     "mfc1            %1,     %7                      \n"
@@ -723,15 +708,14 @@ void matrix_from_up_normal_twist(MATRIX output, VECTOR normal, float theta)
     "sqc2            vf6,    0x10(%2)                \n"
     "sqc2            vf3,    0x20(%2)                \n"
     "sqc2            vf7,    0x30(%2)                \n"
-    : "=&r" (trig), "=&r" (bits)
-    : "r" (output), "r" (r), "r" (u), "r" (n), "f" (c), "f" (s) : "memory"
-    );
+    : "=&r"(trig), "=&r"(bits)
+    : "r"(output), "r"(r), "r"(u), "r"(n), "f"(c), "f"(s) : "memory");
 }
 
 //--------------------------------------------------------
 void matrix_multiply(MATRIX output, MATRIX input0, MATRIX input1)
 {
-    asm __volatile__ (
+  asm __volatile__(
     // Load both matrices completely so either input may alias the output.
     "lqc2            vf1,    0x00(%1)                \n"
     "lqc2            vf2,    0x10(%1)                \n"
@@ -771,16 +755,15 @@ void matrix_multiply(MATRIX output, MATRIX input0, MATRIX input1)
     "sqc2            vf2,    0x10(%0)                \n"
     "sqc2            vf3,    0x20(%0)                \n"
     "sqc2            vf4,    0x30(%0)                \n"
-    : : "r" (output), "r" (input0), "r" (input1)
-    : "memory"
-    );
+    : : "r"(output), "r"(input0), "r"(input1)
+    : "memory");
 }
 
 //--------------------------------------------------------
 void matrix_scale(MATRIX output, MATRIX input0, VECTOR input1)
 {
-    // Right-multiplication by diag(sx, sy, sz, 1): preserve every row's W.
-    __asm__ __volatile__ (
+  // Right-multiplication by diag(sx, sy, sz, 1): preserve every row's W.
+  __asm__ __volatile__(
     // Load scale factors before matrix rows so factors may also alias the output.
     "lqc2            vf5,    0x00(%2)                \n"
     "lqc2            vf1,    0x00(%1)                \n"
@@ -797,34 +780,28 @@ void matrix_scale(MATRIX output, MATRIX input0, VECTOR input1)
     "sqc2            vf2,    0x10(%0)                \n"
     "sqc2            vf3,    0x20(%0)                \n"
     "sqc2            vf4,    0x30(%0)                \n"
-    : : "r" (output), "r" (input0), "r" (input1) : "memory"
-    );
+    : : "r"(output), "r"(input0), "r"(input1) : "memory");
 }
 
 //--------------------------------------------------------
 float matrix_determinant(MATRIX input0)
 {
-    return
-        input0[0] * (input0[5]*input0[10]*input0[15] + input0[6]*input0[11]*input0[13] + input0[7]*input0[9]*input0[14]
-                    -input0[7]*input0[10]*input0[13] - input0[6]*input0[9]*input0[15] - input0[5]*input0[11]*input0[14])
+  return input0[0] * (input0[5] * input0[10] * input0[15] + input0[6] * input0[11] * input0[13] + input0[7] * input0[9] * input0[14] - input0[7] * input0[10] * input0[13] - input0[6] * input0[9] * input0[15] - input0[5] * input0[11] * input0[14])
 
-    -   input0[4] * (input0[1]*input0[10]*input0[15] + input0[2]*input0[11]*input0[13] + input0[3]*input0[9]*input0[14]
-                    -input0[3]*input0[10]*input0[13] - input0[2]*input0[9]*input0[15] - input0[1]*input0[11]*input0[14])
+         - input0[4] * (input0[1] * input0[10] * input0[15] + input0[2] * input0[11] * input0[13] + input0[3] * input0[9] * input0[14] - input0[3] * input0[10] * input0[13] - input0[2] * input0[9] * input0[15] - input0[1] * input0[11] * input0[14])
 
-    +   input0[8] * (input0[1]*input0[6]*input0[15] + input0[2]*input0[7]*input0[13] + input0[3]*input0[5]*input0[14]
-                    -input0[3]*input0[6]*input0[13] - input0[2]*input0[5]*input0[15] - input0[1]*input0[7]*input0[14])
+         + input0[8] * (input0[1] * input0[6] * input0[15] + input0[2] * input0[7] * input0[13] + input0[3] * input0[5] * input0[14] - input0[3] * input0[6] * input0[13] - input0[2] * input0[5] * input0[15] - input0[1] * input0[7] * input0[14])
 
-    -   input0[12] *(input0[1]*input0[6]*input0[11] + input0[2]*input0[7]*input0[9] + input0[3]*input0[5]*input0[10]
-                    -input0[3]*input0[6]*input0[9] - input0[2]*input0[5]*input0[11] - input0[1]*input0[7]*input0[10]);
+         - input0[12] * (input0[1] * input0[6] * input0[11] + input0[2] * input0[7] * input0[9] + input0[3] * input0[5] * input0[10] - input0[3] * input0[6] * input0[9] - input0[2] * input0[5] * input0[11] - input0[1] * input0[7] * input0[10]);
 }
 
 //--------------------------------------------------------
 void matrix_transpose(MATRIX output, MATRIX input0)
 {
-    u128 r0, r1, r2, r3, t0, t1;
+  u128 r0, r1, r2, r3, t0, t1;
 
-    // Transpose bits in GPRs; load all rows first to support in-place use.
-    __asm__ __volatile__ (
+  // Transpose bits in GPRs; load all rows first to support in-place use.
+  __asm__ __volatile__(
     // Load four complete rows as bits; this also permits in-place transposition.
     "lq              %0,     0x00(%7)                \n\t"
     "lq              %1,     0x10(%7)                \n\t"
@@ -850,8 +827,7 @@ void matrix_transpose(MATRIX output, MATRIX input0)
     "sq              %2,     0x10(%6)                \n\t"
     "sq              %4,     0x20(%6)                \n\t"
     "sq              %1,     0x30(%6)                "
-    : "=&r" (r0), "=&r" (r1), "=&r" (r2), "=&r" (r3), "=&r" (t0), "=&r" (t1)
-    : "r" (output), "r" (input0)
-    : "memory"
-    );
+    : "=&r"(r0), "=&r"(r1), "=&r"(r2), "=&r"(r3), "=&r"(t0), "=&r"(t1)
+    : "r"(output), "r"(input0)
+    : "memory");
 }

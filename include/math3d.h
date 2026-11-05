@@ -32,7 +32,7 @@ typedef float MATRIX[16] __attribute__((__aligned__(16)));
 //--------------------------------------------------------
 void vector_write(VECTOR output, u128 input0);
 u128 vector_read(VECTOR input0);
-void vector_pack(VECTOR input0, u32* dst);
+void vector_pack(VECTOR input0, u32 *dst);
 void vector_unpack(VECTOR dst, u32 vector);
 float vector_sqrmag(VECTOR input0);
 float vector_distance(VECTOR input0, VECTOR input1);

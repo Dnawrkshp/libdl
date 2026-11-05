@@ -13,6 +13,6 @@
 #define __LIBDL_GETTER__
 #define __LIBDL_SETTER__
 
-#define SET_NOREORDER       (asm(".set noreorder;"))
+#define SET_NOREORDER (asm(".set noreorder;"))
 
 #endif // _LIBDL_COMMON_H_

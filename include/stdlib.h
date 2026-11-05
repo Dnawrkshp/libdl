@@ -11,9 +11,8 @@
 
 #include "common.h"
 
-
 //--------------------------------------------------------
-void* malloc( unsigned long size );
-void free( void* ptr );
+void *malloc(unsigned long size);
+void free(void *ptr);
 
 #endif // _LIBDL_STDLIB_H_

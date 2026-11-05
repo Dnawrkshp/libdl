@@ -26,8 +26,8 @@
  */
 typedef struct SpawnPoint
 {
-    MATRIX M0;
-    MATRIX M1;
+  MATRIX M0;
+  MATRIX M1;
 } SpawnPoint;
 
 /*
@@ -140,7 +140,7 @@ int spawnPointIsPlayer(int index);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-__LIBDL_GETTER__ SpawnPoint * spawnPointGet(int index);
+__LIBDL_GETTER__ SpawnPoint *spawnPointGet(int index);
 
 /*
  * NAME :    spawnPointSet
@@ -156,7 +156,7 @@ __LIBDL_GETTER__ SpawnPoint * spawnPointGet(int index);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-__LIBDL_SETTER__ void spawnPointSet(SpawnPoint * sp, int index);
+__LIBDL_SETTER__ void spawnPointSet(SpawnPoint *sp, int index);
 
 /*
  * NAME :    spawnPointIsPointInside
@@ -172,6 +172,6 @@ __LIBDL_SETTER__ void spawnPointSet(SpawnPoint * sp, int index);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-int spawnPointIsPointInside(SpawnPoint* sp, VECTOR point, VECTOR outDt);
+int spawnPointIsPointInside(SpawnPoint *sp, VECTOR point, VECTOR outDt);
 
 #endif // _LIBDL_SPAWNPOINT_H_

@@ -39,18 +39,20 @@ typedef struct SoundDef
   int BankIndex;
 } SoundDef;
 
-typedef struct SoundInstance {
+typedef struct SoundInstance
+{
   /*   0 */ short int oClass;
   /*   2 */ short int mClass;
-  /*   4 */ /* function */ void** pUpdate;
-  /*   8 */ void* pVar;
+  /*   4 */ /* function */ void **pUpdate;
+  /*   8 */ void *pVar;
   /*   c */ float range;
   /*  10 */ char cuboid[0x80];
 } SoundInstance;
 
-typedef struct SoundData {
+typedef struct SoundData
+{
   /*   0 */ unsigned int handle;
-  /*   4 */ SoundDef* def;
+  /*   4 */ SoundDef *def;
   /*   8 */ short int index;
   /*   a */ short int def_index;
   /*   c */ short int volumeMod;
@@ -61,10 +63,10 @@ typedef struct SoundData {
   /*  13 */ char unused0;
   /*  14 */ int pitch;
   /*  18 */ int pitchMod;
-  /*  1c */ Moby* pMoby;
+  /*  1c */ Moby *pMoby;
   /*  20 */ VECTOR pos;
   /*  30 */ VECTOR offset;
-  /*  40 */ struct SoundInstance* pAmbient;
+  /*  40 */ struct SoundInstance *pAmbient;
   /*  44 */ int lineEmitter;
   /*  48 */ int oClass;
   /*  4c */ float pan;
@@ -89,7 +91,7 @@ typedef struct SoundData {
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-short soundPlay(SoundDef *, int arg2, Moby * moby, VECTOR arg3, int arg4);
+short soundPlay(SoundDef *, int arg2, Moby *moby, VECTOR arg3, int arg4);
 
 /*
  * NAME :    soundCreateHandle
@@ -137,7 +139,7 @@ short soundKillByHandle(short handle);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-short soundKillById(short soundId, Moby* moby);
+short soundKillById(short soundId, Moby *moby);
 
 /*
  * NAME :    soundGetData
@@ -153,6 +155,6 @@ short soundKillById(short soundId, Moby* moby);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-SoundData* soundGetData(short soundId);
+SoundData *soundGetData(short soundId);
 
 #endif // _LIBDL_SOUND_H_

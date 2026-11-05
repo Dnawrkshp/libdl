@@ -6,6 +6,8 @@
 #include <loadfile.h>
 #include <kernel.h>
 
+int _SifLoadModuleBuffer(void *ptr, u32 arg_len, const char *args, int *mod_res);
+
 /*
 # _____     ___ ____     ___ ____
 #  ____|   |    ____|   |        | |____|
@@ -37,13 +39,13 @@ int SifExecModuleBuffer(void *ptr, u32 size, u32 arg_len, const char *args, int 
   qid = SifSetDma(&dmat, 1);
 
   if (!qid)
-      return -1; // should have a better error here...
+    return -1; // should have a better error here...
 
-  while(SifDmaStat(qid) >= 0);
+  while (SifDmaStat(qid) >= 0)
+    ;
 
   res = _SifLoadModuleBuffer(iop_addr, arg_len, args, mod_res);
   SifFreeIopHeap(iop_addr);
 
   return res;
 }
-

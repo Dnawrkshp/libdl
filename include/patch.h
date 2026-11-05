@@ -27,4 +27,3 @@
 void patchSifRpc(void);
 
 #endif // _LIBDL_PATCH_H_
-

@@ -17,22 +17,22 @@
 #include "common.h"
 
 //--------------------------------------------------------
-#define MATH_PI                         ((float)3.141596)
-#define MATH_TAU                        (MATH_PI * (float)2.0)
-#define MATH_E                          ((float)2.7182818)
-#define MATH_DT                         ((float)0.0166666666)
-#define MATH_RAD2DEG                    ((float)180 / MATH_PI)
-#define MATH_DEG2RAD                    (MATH_PI / (float)180)
+#define MATH_PI ((float)3.141596)
+#define MATH_TAU (MATH_PI * (float)2.0)
+#define MATH_E ((float)2.7182818)
+#define MATH_DT ((float)0.0166666666)
+#define MATH_RAD2DEG ((float)180 / MATH_PI)
+#define MATH_DEG2RAD (MATH_PI / (float)180)
 
 //--------------------------------------------------------
 #ifndef MAX
-#define MAX(a, b)                       (((a) > (b)) ? (a) : (b))
+#define MAX(a, b) (((a) > (b)) ? (a) : (b))
 #endif
 #ifndef MIN
-#define MIN(a, b)                       (((a) < (b)) ? (a) : (b))
+#define MIN(a, b) (((a) < (b)) ? (a) : (b))
 #endif
 #ifndef CLAMP
-#define CLAMP(value, min, max)          MIN(MAX((value), (min)), (max))
+#define CLAMP(value, min, max) MIN(MAX((value), (min)), (max))
 #endif
 
 //--------------------------------------------------------

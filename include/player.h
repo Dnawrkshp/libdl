@@ -28,7 +28,7 @@
 /*
  * Maximum health of player.
  */
-#define PLAYER_MAX_HEALTH                   (50)
+#define PLAYER_MAX_HEALTH (50)
 
 /*
  * NAME :    PlayerCameraType
@@ -43,9 +43,9 @@
  */
 enum PlayerCameraType
 {
-    CAMERA_TYPE_THIRD_PERSON,
-    CAMERA_TYPE_LOCK_STRAFE,
-    CAMERA_TYPE_FIRST_PERSON
+  CAMERA_TYPE_THIRD_PERSON,
+  CAMERA_TYPE_LOCK_STRAFE,
+  CAMERA_TYPE_FIRST_PERSON
 };
 
 /*
@@ -58,7 +58,8 @@ enum PlayerCameraType
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-enum PlayerState {
+enum PlayerState
+{
   PLAYER_STATE_IDLE = 0,
   PLAYER_STATE_LOOK = 1,
   PLAYER_STATE_WALK = 2,
@@ -188,15 +189,16 @@ enum PlayerState {
  */
 typedef struct CameraAngle
 {
-    float Value;
-    float Velocity;
-    float MaxVelocity;
-    float UNK0;
-    float Acceleration;
-    float UNK1[3];
+  float Value;
+  float Velocity;
+  float MaxVelocity;
+  float UNK0;
+  float Acceleration;
+  float UNK1[3];
 } CameraAngle;
 
-struct tNW_PlayerWarpMessage {
+struct tNW_PlayerWarpMessage
+{
   /*   0 */ char netPlayerIndex;
   /*   1 */ char dontKillMeInBaseHack;
   /*   2 */ char resetPadRing;
@@ -207,7 +209,8 @@ struct tNW_PlayerWarpMessage {
   /*  1e */ char isResurrecting;
 };
 
-struct tNW_PlayerData {
+struct tNW_PlayerData
+{
   /*   0 */ VECTOR vPosition;
   /*  10 */ float vRotation[3];
   /*  1c */ int timeStamp;
@@ -233,7 +236,8 @@ struct tNW_PlayerData {
   /*  bc */ unsigned char flags;
 };
 
-struct tNW_PlayerPadInputMessage {
+struct tNW_PlayerPadInputMessage
+{
   /*   0 */ int cameraRot[4];
   /*  10 */ short unsigned int playerPos[3];
   /*  16 */ unsigned char sequenceNum;
@@ -247,19 +251,21 @@ struct tNW_PlayerPadInputMessage {
   /*  18 */ unsigned char pad_data[128];
 };
 
-struct tNW_PlayerPadInputMessageListElem {
+struct tNW_PlayerPadInputMessageListElem
+{
   /*   0 */ struct tNW_PlayerPadInputMessage msg;
-  /*  98 */ struct tNW_PlayerPadInputMessageListElem* pNext;
-  /*  9c */ struct tNW_PlayerPadInputMessageListElem* pPrev;
+  /*  98 */ struct tNW_PlayerPadInputMessageListElem *pNext;
+  /*  9c */ struct tNW_PlayerPadInputMessageListElem *pPrev;
   /*  a0 */ char inUse;
 };
 
 /*
  *
  */
-struct tNW_Player {
+struct tNW_Player
+{
   /*   0 */ int netClientIndex;
-  /*   4 */ struct tNW_PlayerData* pNetPlayerData;
+  /*   4 */ struct tNW_PlayerData *pNetPlayerData;
   /*   8 */ short int bLocal;
   /*   a */ short int bSpawned;
   /*   c */ short int bGiveMeTheDasBoot;
@@ -277,13 +283,12 @@ struct tNW_Player {
   /* aa8 */ char pullBack;
   /* aa9 */ signed char jitterThrottleFrames;
   /* aaa */ char numConseqSkips;
-  /* aac */ struct tNW_PlayerPadInputMessageListElem* pActivePadMsg;
-  /* ab0 */ struct tNW_PlayerPadInputMessageListElem* pPadMsgListTail;
+  /* aac */ struct tNW_PlayerPadInputMessageListElem *pActivePadMsg;
+  /* ab0 */ struct tNW_PlayerPadInputMessageListElem *pPadMsgListTail;
   /* ab4 */ unsigned char padFrame[20];
   /* ac8 */ int homeBaseIndex;
   /* acc */ int homeNodeIndex;
 };
-
 
 /*
  * NAME :    HeroTimers
@@ -293,7 +298,8 @@ struct tNW_Player {
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-typedef struct HeroTimers {
+typedef struct HeroTimers
+{
   /*   0 */ int state;
   /*   4 */ int stateType;
   /*   8 */ int subState;
@@ -369,35 +375,37 @@ typedef struct HeroTimers {
   /*  b2 */ short int invincibilityTimer;
 } HeroTimers;
 
-typedef struct HeroColl { // 0x80
-	/* 0x00 */ VECTOR normal;
-	/* 0x10 */ VECTOR ip;
-	/* 0x20 */ float top;
-	/* 0x24 */ float bot;
-	/* 0x28 */ float ideal_top;
-	/* 0x2c */ float ideal_bot;
-	/* 0x30 */ float idealRadius;
-	/* 0x34 */ float radius;
-	/* 0x38 */ float radiusSpeed;
-	/* 0x3c */ Moby *pContactMoby;
-	/* 0x40 */ Moby *pBumpMoby;
-	/* 0x44 */ float bumpPushSpeed;
-	/* 0x48 */ float distToWall;
-	/* 0x4c */ float wallAng;
-	/* 0x50 */ float wallSlope;
-	/* 0x54 */ char wallIsCrate;
-	/* 0x55 */ char wallIsMoby;
-	/* 0x56 */ char contact;
-	/* 0x57 */ char cpad;
-	/* 0x58 */ float ledgeHeight;
-	/* 0x5c */ float ledgeDist;
-	/* 0x60 */ int atLedge;
-	/* 0x64 */ Moby *pWallJumpMoby;
-	/* 0x68 */ int pad[2];
-	/* 0x70 */ float radiusSqd;
+typedef struct HeroColl
+{ // 0x80
+  /* 0x00 */ VECTOR normal;
+  /* 0x10 */ VECTOR ip;
+  /* 0x20 */ float top;
+  /* 0x24 */ float bot;
+  /* 0x28 */ float ideal_top;
+  /* 0x2c */ float ideal_bot;
+  /* 0x30 */ float idealRadius;
+  /* 0x34 */ float radius;
+  /* 0x38 */ float radiusSpeed;
+  /* 0x3c */ Moby *pContactMoby;
+  /* 0x40 */ Moby *pBumpMoby;
+  /* 0x44 */ float bumpPushSpeed;
+  /* 0x48 */ float distToWall;
+  /* 0x4c */ float wallAng;
+  /* 0x50 */ float wallSlope;
+  /* 0x54 */ char wallIsCrate;
+  /* 0x55 */ char wallIsMoby;
+  /* 0x56 */ char contact;
+  /* 0x57 */ char cpad;
+  /* 0x58 */ float ledgeHeight;
+  /* 0x5c */ float ledgeDist;
+  /* 0x60 */ int atLedge;
+  /* 0x64 */ Moby *pWallJumpMoby;
+  /* 0x68 */ int pad[2];
+  /* 0x70 */ float radiusSqd;
 } HeroColl;
 
-typedef struct HeroGround {
+typedef struct HeroGround
+{
   /*   0 */ VECTOR normal;
   /*  10 */ VECTOR waterNormal;
   /*  20 */ VECTOR gravity;
@@ -416,7 +424,7 @@ typedef struct HeroGround {
   /*  90 */ float waterHeight;
   /*  94 */ float quicksandHeight;
   /*  98 */ int underWater;
-  /*  9c */ Moby* pMoby;
+  /*  9c */ Moby *pMoby;
   /*  a0 */ int onGood;
   /*  a4 */ float speed;
   /*  a8 */ short int magnetic;
@@ -429,7 +437,8 @@ typedef struct HeroGround {
   /*  bc */ int pad[1];
 } HeroGround;
 
-typedef struct HeroTweaker {
+typedef struct HeroTweaker
+{
   /*   0 */ char manip[0x40];
   /*  40 */ VECTOR rot;
   /*  50 */ VECTOR speed;
@@ -444,7 +453,8 @@ typedef struct HeroTweaker {
   /*  ac */ float scale;
 } HeroTweaker;
 
-typedef struct HeroPlayerConstants {
+typedef struct HeroPlayerConstants
+{
   /*   0 */ int mobyNum;
   /*   4 */ float maxWalkSpeed;
   /*   8 */ float kneeHeight;
@@ -473,11 +483,12 @@ typedef struct HeroPlayerConstants {
   /*  64 */ int pad[3];
 } HeroPlayerConstants;
 
-typedef struct Gadget {
+typedef struct Gadget
+{
   /*   0 */ VECTOR jointPos;
   /*  10 */ VECTOR jointRot;
-  /*  20 */ Moby* pMoby;
-  /*  24 */ Moby* pMoby2;
+  /*  20 */ Moby *pMoby;
+  /*  24 */ Moby *pMoby2;
   /*  28 */ int padButtonDown;
   /*  2c */ int alignPad;
   /*  30 */ int padButton;
@@ -508,250 +519,256 @@ typedef struct Gadget {
  */
 typedef struct Player
 {
-    struct Guber Guber;                                             // 0x00
-    char UNK0[0x08];                                                // 0x18
+  struct Guber Guber; // 0x00
+  char UNK0[0x08];    // 0x18
 
-    MATRIX WorldMatrix;                                             // 0x20
-    MATRIX InvWorldMatrix;                                          // 0x60
+  MATRIX WorldMatrix;    // 0x20
+  MATRIX InvWorldMatrix; // 0x60
 
-    VECTOR PlayerPosition;                                          // 0xA0
-    
-    union {
-      VECTOR PlayerRotation;
-      struct {
-        float PlayerRoll;
-        float PlayerPitch;
-        float PlayerYaw;
-      };
+  VECTOR PlayerPosition; // 0xA0
+
+  union
+  {
+    VECTOR PlayerRotation;
+    struct
+    {
+      float PlayerRoll;
+      float PlayerPitch;
+      float PlayerYaw;
     };
-    
-    char UNK2[0x70];                                                // 0xC0
+  };
 
-    VECTOR Velocity;                                                // 0x130
+  char UNK2[0x70]; // 0xC0
 
-    char UNK164[0x90];                                              // 0x140
+  VECTOR Velocity; // 0x130
 
-    HeroColl Coll;                                                  // 0x1D0
+  char UNK164[0x90]; // 0x140
 
-    HeroGround Ground;                                              // 0x250
+  HeroColl Coll; // 0x1D0
 
-    char UNK3[0x60];                                                // 0x310
+  HeroGround Ground; // 0x250
 
-    HeroTimers timers;                                              // 0x370
+  char UNK3[0x60]; // 0x310
 
-    char UNK10[0x3CC];                                              // 0x430
+  HeroTimers timers; // 0x370
 
-    // First instance of weapon held id
-    // This one is zero for any item that isn't a gun
-    // So wrench and swingshot are 0
-    int WeaponHeldGun;                                              // 0x7FC
+  char UNK10[0x3CC]; // 0x430
 
-    char UNK11[0x20];                                               // 0x800
+  // First instance of weapon held id
+  // This one is zero for any item that isn't a gun
+  // So wrench and swingshot are 0
+  int WeaponHeldGun; // 0x7FC
 
-    HeroTweaker Tweakers[18];                                        // 0x820
+  char UNK11[0x20]; // 0x800
 
-    char UNK31[0x4D0];                                               // 0x1480
+  HeroTweaker Tweakers[18]; // 0x820
 
-    VECTOR CameraPos;                                               // 0x1950
-    VECTOR CameraDir;                                               // 0x1960
-    MATRIX CameraMatrix;                                            // 0x1970
+  char UNK31[0x4D0]; // 0x1480
 
-    CameraAngle CameraYaw;                                          // 0x19B0
-    CameraAngle CameraPitch;                                        // 0x19D0
+  VECTOR CameraPos;    // 0x1950
+  VECTOR CameraDir;    // 0x1960
+  MATRIX CameraMatrix; // 0x1970
 
-    char UNK13[0x0C];                                               // 0x19F0
+  CameraAngle CameraYaw;   // 0x19B0
+  CameraAngle CameraPitch; // 0x19D0
 
-    // This is a pointer to the moby that the
-    // player is looking/aiming at
-    Moby * LookAtMoby;                                              // 0x19FC
+  char UNK13[0x0C]; // 0x19F0
 
-    char UNK12[0x20];                                               // 0x1A00
+  // This is a pointer to the moby that the
+  // player is looking/aiming at
+  Moby *LookAtMoby; // 0x19FC
 
-    char UNK14[0x04];                                               // 0x1A20
+  char UNK12[0x20]; // 0x1A00
 
-    float CameraPitchMin;                                           // 0x1A24
-    float CameraPitchMax;                                           // 0x1A28
+  char UNK14[0x04]; // 0x1A20
 
-    Moby * SkinMoby;                                                // 0x1A2C
+  float CameraPitchMin; // 0x1A24
+  float CameraPitchMax; // 0x1A28
 
-    VECTOR CameraOffset;                                            // 0x1A30
+  Moby *SkinMoby; // 0x1A2C
 
-    VECTOR CameraRotOffset;                                         // 0x1A40
+  VECTOR CameraOffset; // 0x1A30
 
-    short CameraType2;                                              // 0x1A50
+  VECTOR CameraRotOffset; // 0x1A40
 
-    char UNK45[0x0E];                                               // 0x1A52
+  short CameraType2; // 0x1A50
 
-    VECTOR CameraForward;                                           // 0x1A60
+  char UNK45[0x0E]; // 0x1A52
 
-    char UNK46[0x2C];                                               // 0x1A70
+  VECTOR CameraForward; // 0x1A60
 
-    int LocalPlayerIndex;                                           // 0x1A9C
+  char UNK46[0x2C]; // 0x1A70
 
-    char UNK16[0x8];                                                // 0x1AA0
+  int LocalPlayerIndex; // 0x1A9C
 
-    int PlayerId;                                                   // 0x1AA8
+  char UNK16[0x8]; // 0x1AA0
 
-    char UNK33[0x34];                                               // 0x1AAC
+  int PlayerId; // 0x1AA8
 
-    int CameraType;                                                 // 0x1AE0
+  char UNK33[0x34]; // 0x1AAC
 
-    char UNK47[0x18];                                               // 0x1AE4
+  int CameraType; // 0x1AE0
 
-    float CameraElevation;                                          // 0x1AFC
+  char UNK47[0x18]; // 0x1AE4
 
-    char UNK17[0x7D0];                                              // 0x1B00
+  float CameraElevation; // 0x1AFC
 
-    Gadget Gadgets[6];                                              // 0x22D0
+  char UNK17[0x7D0]; // 0x1B00
 
-    int WeaponHeldId0;                                              // 0x24B0
+  Gadget Gadgets[6]; // 0x22D0
 
-    char UNK18[0x118];                                              // 0x24B4
+  int WeaponHeldId0; // 0x24B0
 
-    int PlayerState;                                                // 0x25CC
-    int PlayerSubstate;                                             // 0x25D0
-    int PlayerStateType;                                            // 0x25D4
-    int PlayerPreviousState;                                        // 0x25D8
+  char UNK18[0x118]; // 0x24B4
 
-    char UNK19[0x84];                                               // 0x25DC
+  int PlayerState;         // 0x25CC
+  int PlayerSubstate;      // 0x25D0
+  int PlayerStateType;     // 0x25D4
+  int PlayerPreviousState; // 0x25D8
 
-    // These seem to do a variety of things
-    // 0x04: 1 = Disables shooting and cbooting
-    // 0x06: 1 = Equips wrench
-    // 0x0C: 1 = Equips swingshot
-    // 0x0D: Toggles respawn popup if dead, otherwise just fucks camera
-    // 0x12: 1 = Disables moving
-    // 0x2660
-    union {
-        struct {
-            char RaisedGunArm;
-            char InShallowWater;
-            char Invisible;
-            char HideWeapon;
-            char GadgetsOff;
-            char GadgetNotReady;
-            char WrenchOnly;
-            char HoldingDeathAnim;
-            char HideWrench;
-            char SpawnBoltsToMe;
-            char AiFollowingMe;
-            char ForceWrenchSwitch;
-            char ForceSwingSwitch;
-            char IsLocal;
-            char InBaseHack;
-            char ShieldTrigger;
-            char CurSeg;
-            char HandGadgetType;
-            char ExternalUpdate;
-        };
-        char UNKFlags[0x14];                                            
+  char UNK19[0x84]; // 0x25DC
+
+  // These seem to do a variety of things
+  // 0x04: 1 = Disables shooting and cbooting
+  // 0x06: 1 = Equips wrench
+  // 0x0C: 1 = Equips swingshot
+  // 0x0D: Toggles respawn popup if dead, otherwise just fucks camera
+  // 0x12: 1 = Disables moving
+  // 0x2660
+  union
+  {
+    struct
+    {
+      char RaisedGunArm;
+      char InShallowWater;
+      char Invisible;
+      char HideWeapon;
+      char GadgetsOff;
+      char GadgetNotReady;
+      char WrenchOnly;
+      char HoldingDeathAnim;
+      char HideWrench;
+      char SpawnBoltsToMe;
+      char AiFollowingMe;
+      char ForceWrenchSwitch;
+      char ForceSwingSwitch;
+      char IsLocal;
+      char InBaseHack;
+      char ShieldTrigger;
+      char CurSeg;
+      char HandGadgetType;
+      char ExternalUpdate;
     };
+    char UNKFlags[0x14];
+  };
 
-    int ChangeWeaponHeldId;                                         // 0x2674
+  int ChangeWeaponHeldId; // 0x2674
 
-    char UNK20[0x14];                                               // 0x2678
+  char UNK20[0x14]; // 0x2678
 
-    int WeaponHeldId;                                               // 0x268C
+  int WeaponHeldId; // 0x268C
 
-    char UNK27[0x54];                                               // 0x2690
+  char UNK27[0x54]; // 0x2690
 
-    GadgetBox * GadgetBox;                                          // 0x26E4
+  GadgetBox *GadgetBox; // 0x26E4
 
-    char UNK21[0x5E8];                                              // 0x26E8
+  char UNK21[0x5E8]; // 0x26E8
 
-    VECTOR CamPos;                                                  // 0x2CD0
-    VECTOR CamRot;                                                  // 0x2CE0
-    VECTOR CamUMtx[3];                                              // 0x2CF0
+  VECTOR CamPos;     // 0x2CD0
+  VECTOR CamRot;     // 0x2CE0
+  VECTOR CamUMtx[3]; // 0x2CF0
 
-    char UNK29[0x100];                                              // 0x2D20
-    
-    float Health;                                                   // 0x2E20
-    
-    char UNK22[0x58];                                               // 0x2E24
+  char UNK29[0x100]; // 0x2D20
 
-    int LastDamagedMeGadgetId;                                      // 0x2E7C
+  float Health; // 0x2E20
 
-    char UNK123[0x56];                                              // 0x2E80
+  char UNK22[0x58]; // 0x2E24
 
-    char Explode;                                                   // 0x2ED6
+  int LastDamagedMeGadgetId; // 0x2E7C
 
-    char UNK38[0x11];                                               // 0x2ED7
+  char UNK123[0x56]; // 0x2E80
 
-    Moby * HeldMoby;                                                // 0x2EE8
+  char Explode; // 0x2ED6
 
-    HeroPlayerConstants * PlayerConstants;                          // 0x2EEC
+  char UNK38[0x11]; // 0x2ED7
 
-    // Points to the player moby
-    Moby * PlayerMoby;                                              // 0x2EF0
+  Moby *HeldMoby; // 0x2EE8
 
-    Vehicle * Vehicle;                                              // 0x2EF4
+  HeroPlayerConstants *PlayerConstants; // 0x2EEC
 
-    char UNK23[0x04];                                               // 0x2EF8
+  // Points to the player moby
+  Moby *PlayerMoby; // 0x2EF0
 
-    GameCamera * Camera;                                            // 0x2EFC
+  Vehicle *Vehicle; // 0x2EF4
 
-    PadButtonStatus * Paddata;                                      // 0x2F00
+  char UNK23[0x04]; // 0x2EF8
 
-    char UNK24[0x0C];                                               // 0x2F04
+  GameCamera *Camera; // 0x2EFC
 
-    int MpIndex;                                                    // 0x2F10
-    int Team;                                                       // 0x2F14
+  PadButtonStatus *Paddata; // 0x2F00
 
-    // Not super sure what this is
-    // But it seems to only get set when entering/leaving vehicles
-    // And setting it to non-zero stops the game from
-    // letting you get in another vehicle
-    int InVehicle;                                                  // 0x2F18
+  char UNK24[0x0C]; // 0x2F04
 
-    char UNK25[0x08];                                               // 0x2F1C
+  int MpIndex; // 0x2F10
+  int Team;    // 0x2F14
 
-    float MaxHealth;                                                // 0x2F24 
-    struct tNW_Player * pNetPlayer;                                 // 0x2F28
+  // Not super sure what this is
+  // But it seems to only get set when entering/leaving vehicles
+  // And setting it to non-zero stops the game from
+  // letting you get in another vehicle
+  int InVehicle; // 0x2F18
 
-    char UNK36[0x84];                                               // 0x2F2C
+  char UNK25[0x08]; // 0x2F1C
 
-    float DamageMultiplier;                                         // 0x2FB0
-    int ArmorLevel;                                                 // 0x2FB4
+  float MaxHealth;               // 0x2F24
+  struct tNW_Player *pNetPlayer; // 0x2F28
 
-    char UNK26[0x08];                                               // 0x2FB8
+  char UNK36[0x84]; // 0x2F2C
 
-    float Speed;                                                    // 0x2FC0
+  float DamageMultiplier; // 0x2FB0
+  int ArmorLevel;         // 0x2FB4
 
-    char UNK44[0x1C];                                                // 0x2FC4
+  char UNK26[0x08]; // 0x2FB8
 
-    union {
-      struct {
-        char UNK_LOCALHERO[0x200];
-      } LocalHero;
-      struct {
-        GameCamera DummyCamera;
-        struct PAD PAD;
-        char completedEnoughUpdates;
-        char rotOutOfSyncLastUpdate;
-        char padFrameChunksReceived;
-        char posOutOfSyncLastUpdate;
-        char stateAtSyncFrame;
-        VECTOR receivedSyncPos;
-        VECTOR posAtSyncFrame;
-        VECTOR syncPosDifference;
-        VECTOR receivedSyncRot;
-        VECTOR rotAtSyncFrame;
-        float interpVel;
-        float syncRotDifference;
-        int flags;
-        int sequenceIdOfSyncData;
-        enum PlayerState receivedState;
-        VECTOR remoteCorrectionVel;
-        float remoteCorrectionRotVel;
-        char syncFrameOffset;
-      } RemoteHero;
-    };
+  float Speed; // 0x2FC0
+
+  char UNK44[0x1C]; // 0x2FC4
+
+  union
+  {
+    struct
+    {
+      char UNK_LOCALHERO[0x200];
+    } LocalHero;
+    struct
+    {
+      GameCamera DummyCamera;
+      struct PAD PAD;
+      char completedEnoughUpdates;
+      char rotOutOfSyncLastUpdate;
+      char padFrameChunksReceived;
+      char posOutOfSyncLastUpdate;
+      char stateAtSyncFrame;
+      VECTOR receivedSyncPos;
+      VECTOR posAtSyncFrame;
+      VECTOR syncPosDifference;
+      VECTOR receivedSyncRot;
+      VECTOR rotAtSyncFrame;
+      float interpVel;
+      float syncRotDifference;
+      int flags;
+      int sequenceIdOfSyncData;
+      enum PlayerState receivedState;
+      VECTOR remoteCorrectionVel;
+      float remoteCorrectionRotVel;
+      char syncFrameOffset;
+    } RemoteHero;
+  };
 
 } Player;
 
-
-typedef void (*PlayerUpdate_func)(Player * player);
-typedef void (*PlayerUpdateState_func)(Player * player, int stateId, int bTransAnim, int bForce, int bFall);
+typedef void (*PlayerUpdate_func)(Player *player);
+typedef void (*PlayerUpdateState_func)(Player *player, int stateId, int bTransAnim, int bForce, int bFall);
 
 /*
  * NAME :    PlayerVTable
@@ -769,24 +786,23 @@ typedef void (*PlayerUpdateState_func)(Player * player, int stateId, int bTransA
  */
 typedef struct PlayerVTable
 {
-    void * FUNC_00;
-    void * FUNC_04;
-    void * FUNC_08;
-    PlayerUpdate_func Update;
-    void * FUNC_10;
-    void * FUNC_14;
-    void * FUNC_18;
-    void * FUNC_1C;
-    void * FUNC_20;
-    void * FUNC_24;
-    void * FUNC_28;
-    void * FUNC_2C;
-    void * FUNC_30;
-    void * FUNC_34;
-    void * FUNC_38;
-    PlayerUpdateState_func UpdateState;
+  void *FUNC_00;
+  void *FUNC_04;
+  void *FUNC_08;
+  PlayerUpdate_func Update;
+  void *FUNC_10;
+  void *FUNC_14;
+  void *FUNC_18;
+  void *FUNC_1C;
+  void *FUNC_20;
+  void *FUNC_24;
+  void *FUNC_28;
+  void *FUNC_2C;
+  void *FUNC_30;
+  void *FUNC_34;
+  void *FUNC_38;
+  PlayerUpdateState_func UpdateState;
 } PlayerVTable;
-
 
 /*
  * NAME :    playerGetAll
@@ -802,7 +818,7 @@ typedef struct PlayerVTable
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-__LIBDL_GETTER__ Player ** playerGetAll(void);
+__LIBDL_GETTER__ Player **playerGetAll(void);
 
 /*
  * NAME :    playerGetFromIndex
@@ -818,7 +834,7 @@ __LIBDL_GETTER__ Player ** playerGetAll(void);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-__LIBDL_GETTER__ Player * playerGetFromIndex(int idx);
+__LIBDL_GETTER__ Player *playerGetFromIndex(int idx);
 
 /*
  * NAME :    playerIsValid
@@ -834,7 +850,7 @@ __LIBDL_GETTER__ Player * playerGetFromIndex(int idx);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-int playerIsValid(Player * player);
+int playerIsValid(Player *player);
 
 /*
  * NAME :    playerEquipWeapon
@@ -852,7 +868,7 @@ int playerIsValid(Player * player);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-__LIBDL_SETTER__ void playerEquipWeapon(Player * player, int weaponId);
+__LIBDL_SETTER__ void playerEquipWeapon(Player *player, int weaponId);
 
 /*
  * NAME :    playerSetLocalEquipslot
@@ -905,7 +921,7 @@ __LIBDL_GETTER__ int playerGetLocalEquipslot(int localPlayerId, int slot);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-__LIBDL_GETTER__ short playerGetWeaponMaxAmmo(GadgetBox* gBox, int weaponId);
+__LIBDL_GETTER__ short playerGetWeaponMaxAmmo(GadgetBox *gBox, int weaponId);
 
 /*
  * NAME :    playerSetTeam
@@ -923,7 +939,7 @@ __LIBDL_GETTER__ short playerGetWeaponMaxAmmo(GadgetBox* gBox, int weaponId);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-__LIBDL_SETTER__ void playerSetTeam(Player * player, int teamId);
+__LIBDL_SETTER__ void playerSetTeam(Player *player, int teamId);
 
 /*
  * NAME :    playerIsLocal
@@ -940,7 +956,7 @@ __LIBDL_SETTER__ void playerSetTeam(Player * player, int teamId);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-__LIBDL_GETTER__ int playerIsLocal(Player * player);
+__LIBDL_GETTER__ int playerIsLocal(Player *player);
 
 /*
  * NAME :    playerIdIsLocal
@@ -993,7 +1009,7 @@ __LIBDL_GETTER__ int playerGetNumLocals(void);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-void playerGiveWeapon(GadgetBox * gadgetBox, int weaponId, int weaponLevel, int giveMaxAmmo);
+void playerGiveWeapon(GadgetBox *gadgetBox, int weaponId, int weaponLevel, int giveMaxAmmo);
 
 /*
  * NAME :    playerStripWeapons
@@ -1010,7 +1026,7 @@ void playerGiveWeapon(GadgetBox * gadgetBox, int weaponId, int weaponLevel, int 
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-void playerStripWeapons(Player* player);
+void playerStripWeapons(Player *player);
 
 /*
  * NAME :    playerGetWeaponAlphaModCount
@@ -1029,7 +1045,7 @@ void playerStripWeapons(Player* player);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-int playerGetWeaponAlphaModCount(GadgetBox* gadgetBox, int weaponId, int alphaModId);
+int playerGetWeaponAlphaModCount(GadgetBox *gadgetBox, int weaponId, int alphaModId);
 
 /*
  * NAME :    playerRespawn
@@ -1048,7 +1064,7 @@ int playerGetWeaponAlphaModCount(GadgetBox* gadgetBox, int weaponId, int alphaMo
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-void playerRespawn(Player * player);
+void playerRespawn(Player *player);
 
 /*
  * NAME :    playerIncHealth
@@ -1067,7 +1083,7 @@ void playerRespawn(Player * player);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-void playerIncHealth(Player * player, float health);
+void playerIncHealth(Player *player, float health);
 
 /*
  * NAME :    playerDecHealth
@@ -1086,7 +1102,7 @@ void playerIncHealth(Player * player, float health);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-void playerDecHealth(Player * player, float health);
+void playerDecHealth(Player *player, float health);
 
 /*
  * NAME :    playerSetHealth
@@ -1105,7 +1121,7 @@ void playerDecHealth(Player * player, float health);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-void playerSetHealth(Player * player, float health);
+void playerSetHealth(Player *player, float health);
 
 /*
  * NAME :    playerDropFlag
@@ -1123,7 +1139,7 @@ void playerSetHealth(Player * player, float health);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-void playerDropFlag(Player * player, int a1);
+void playerDropFlag(Player *player, int a1);
 
 /*
  * NAME :    playerIsDead
@@ -1141,7 +1157,7 @@ void playerDropFlag(Player * player, int a1);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-int playerIsDead(Player * player);
+int playerIsDead(Player *player);
 
 /*
  * NAME :    playerStateIsDead
@@ -1178,7 +1194,7 @@ int playerStateIsDead(int state);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-__LIBDL_SETTER__ void playerSetPosRot(Player * player, VECTOR p, VECTOR r);
+__LIBDL_SETTER__ void playerSetPosRot(Player *player, VECTOR p, VECTOR r);
 
 /*
  * NAME :    playerGetSpawnpoint
@@ -1198,7 +1214,7 @@ __LIBDL_SETTER__ void playerSetPosRot(Player * player, VECTOR p, VECTOR r);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-__LIBDL_SETTER__ void playerGetSpawnpoint(Player * player, VECTOR outPos, VECTOR outRot, int isFirst);
+__LIBDL_SETTER__ void playerGetSpawnpoint(Player *player, VECTOR outPos, VECTOR outRot, int isFirst);
 
 /*
  * NAME :    playerGetPad
@@ -1215,7 +1231,7 @@ __LIBDL_SETTER__ void playerGetSpawnpoint(Player * player, VECTOR outPos, VECTOR
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-__LIBDL_GETTER__ PadButtonStatus * playerGetPad(Player * player);
+__LIBDL_GETTER__ PadButtonStatus *playerGetPad(Player *player);
 
 /*
  * NAME :    playerPadGetButton
@@ -1234,7 +1250,7 @@ __LIBDL_GETTER__ PadButtonStatus * playerGetPad(Player * player);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-__LIBDL_GETTER__ int playerPadGetButton(Player * player, u16 buttonMask);
+__LIBDL_GETTER__ int playerPadGetButton(Player *player, u16 buttonMask);
 
 /*
  * NAME :    playerPadGetAnyButton
@@ -1253,7 +1269,7 @@ __LIBDL_GETTER__ int playerPadGetButton(Player * player, u16 buttonMask);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-__LIBDL_GETTER__ int playerPadGetAnyButton(Player * player, u16 buttonMask);
+__LIBDL_GETTER__ int playerPadGetAnyButton(Player *player, u16 buttonMask);
 
 /*
  * NAME :    playerPadGetButtonDown
@@ -1272,7 +1288,7 @@ __LIBDL_GETTER__ int playerPadGetAnyButton(Player * player, u16 buttonMask);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-__LIBDL_GETTER__ int playerPadGetButtonDown(Player * player, u16 buttonMask);
+__LIBDL_GETTER__ int playerPadGetButtonDown(Player *player, u16 buttonMask);
 
 /*
  * NAME :    playerPadGetAnyButtonDown
@@ -1291,7 +1307,7 @@ __LIBDL_GETTER__ int playerPadGetButtonDown(Player * player, u16 buttonMask);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-__LIBDL_GETTER__ int playerPadGetAnyButtonDown(Player * player, u16 buttonMask);
+__LIBDL_GETTER__ int playerPadGetAnyButtonDown(Player *player, u16 buttonMask);
 
 /*
  * NAME :    playerPadGetButtonUp
@@ -1310,7 +1326,7 @@ __LIBDL_GETTER__ int playerPadGetAnyButtonDown(Player * player, u16 buttonMask);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-__LIBDL_GETTER__ int playerPadGetButtonUp(Player * player, u16 buttonMask);
+__LIBDL_GETTER__ int playerPadGetButtonUp(Player *player, u16 buttonMask);
 
 /*
  * NAME :    playerPadGetAnyButtonUp
@@ -1329,7 +1345,7 @@ __LIBDL_GETTER__ int playerPadGetButtonUp(Player * player, u16 buttonMask);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-__LIBDL_GETTER__ int playerPadGetAnyButtonUp(Player * player, u16 buttonMask);
+__LIBDL_GETTER__ int playerPadGetAnyButtonUp(Player *player, u16 buttonMask);
 
 /*
  * NAME :    playerGetVTable
@@ -1346,7 +1362,7 @@ __LIBDL_GETTER__ int playerPadGetAnyButtonUp(Player * player, u16 buttonMask);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-__LIBDL_GETTER__ PlayerVTable* playerGetVTable(Player * player);
+__LIBDL_GETTER__ PlayerVTable *playerGetVTable(Player *player);
 
 /*
  * NAME :    playerGetFromUID
@@ -1364,7 +1380,7 @@ __LIBDL_GETTER__ PlayerVTable* playerGetVTable(Player * player);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-Player * playerGetFromUID(int uid);
+Player *playerGetFromUID(int uid);
 
 /*
  * NAME :    playerGetFromSlot
@@ -1381,7 +1397,7 @@ Player * playerGetFromUID(int uid);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-Player * playerGetFromSlot(int slot);
+Player *playerGetFromSlot(int slot);
 
 /*
  * NAME :    playerGetJuggSafeTeam
@@ -1398,7 +1414,7 @@ Player * playerGetFromSlot(int slot);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-int playerGetJuggSafeTeam(Player * player);
+int playerGetJuggSafeTeam(Player *player);
 
 /*
  * NAME :    playerIsConnected
@@ -1415,6 +1431,6 @@ int playerGetJuggSafeTeam(Player * player);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-int playerIsConnected(Player * player);
+int playerIsConnected(Player *player);
 
 #endif // _LIBDL_PLAYER_H_

@@ -16,15 +16,15 @@
 enum CollisionFlags
 {
   COLLISION_FLAG_IGNORE_NONE = 0,
-  COLLISION_FLAG_IGNORE_NONDAMAGEABLE = (1 << 0), // ignore terrain and non-damageable mobys (MOBY_MODE_BIT_CAN_BE_DAMAGED)
+  COLLISION_FLAG_IGNORE_NONDAMAGEABLE = (1 << 0),          // ignore terrain and non-damageable mobys (MOBY_MODE_BIT_CAN_BE_DAMAGED)
   COLLISION_FLAG_IGNORE_MOBY_SPECIAL_COLLIDERS = (1 << 1), // ignore player colliders, moby primitive colliders, and mobys with coll surfaces & 0x10
   COLLISION_FLAG_IGNORE_MOBY_USE_ALT_PRIMITIVE = (1 << 2), // toggles primitive 'type' used in collision testing
-  COLLISION_FLAG_IGNORE_MOBY_NONDAMAGEABLE = (1 << 3), // ignore mobys without MOBY_MODE_BIT_CAN_BE_DAMAGED
-  COLLISION_FLAG_INCLUDE_SURFACE_10 = (1 << 4), // include surfaces with bit 0x10 set
-  COLLISION_FLAG_IGNORE_SURFACE = (1 << 5), // ignore arbitrary surface id if packed into bits 8-11 (only seems to work on 0xE and 0xF)
-  COLLISION_FLAG_IGNORE_SURFACE_80 = (1 << 7), // ignore surfaces with bit 0x80 set
-  COLLISION_FLAG_INCLUDE_BACKFACE = (1 << 12), // include backfacing faces
-  COLLISION_FLAG_IGNORE_MOBY_MESH = (1 << 13), // ignore mobys with mesh colliders
+  COLLISION_FLAG_IGNORE_MOBY_NONDAMAGEABLE = (1 << 3),     // ignore mobys without MOBY_MODE_BIT_CAN_BE_DAMAGED
+  COLLISION_FLAG_INCLUDE_SURFACE_10 = (1 << 4),            // include surfaces with bit 0x10 set
+  COLLISION_FLAG_IGNORE_SURFACE = (1 << 5),                // ignore arbitrary surface id if packed into bits 8-11 (only seems to work on 0xE and 0xF)
+  COLLISION_FLAG_IGNORE_SURFACE_80 = (1 << 7),             // ignore surfaces with bit 0x80 set
+  COLLISION_FLAG_INCLUDE_BACKFACE = (1 << 12),             // include backfacing faces
+  COLLISION_FLAG_IGNORE_MOBY_MESH = (1 << 13),             // ignore mobys with mesh colliders
 };
 
 enum CollisionSurfaceIds
@@ -61,7 +61,7 @@ enum CollisionSurfaceIds
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-float CollMovingSphere(VECTOR from, VECTOR to, float radius, u64 hitFlag, Moby * moby);
+float CollMovingSphere(VECTOR from, VECTOR to, float radius, u64 hitFlag, Moby *moby);
 
 /*
  * NAME :    CollMobysSphere_Fix
@@ -77,8 +77,7 @@ float CollMovingSphere(VECTOR from, VECTOR to, float radius, u64 hitFlag, Moby *
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-int CollMobysSphere_Fix(VECTOR position, u64 hitFlag, Moby * moby, MobyColDamageIn* colDamageIn, float radius);
-
+int CollMobysSphere_Fix(VECTOR position, u64 hitFlag, Moby *moby, MobyColDamageIn *colDamageIn, float radius);
 
 /*
  * NAME :    CollMobysSphere_Fix_GetHitMobies
@@ -94,7 +93,7 @@ int CollMobysSphere_Fix(VECTOR position, u64 hitFlag, Moby * moby, MobyColDamage
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-__LIBDL_GETTER__ Moby** CollMobysSphere_Fix_GetHitMobies(void);
+__LIBDL_GETTER__ Moby **CollMobysSphere_Fix_GetHitMobies(void);
 
 /*
  * NAME :    CollLine_Fix
@@ -110,7 +109,7 @@ __LIBDL_GETTER__ Moby** CollMobysSphere_Fix_GetHitMobies(void);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-int CollLine_Fix(VECTOR from, VECTOR to, u64 hitFlag, Moby * moby, MobyColDamageIn* colDamageIn);
+int CollLine_Fix(VECTOR from, VECTOR to, u64 hitFlag, Moby *moby, MobyColDamageIn *colDamageIn);
 
 /*
  * NAME :    CollLine_Fix_GetHitMoby
@@ -126,7 +125,7 @@ int CollLine_Fix(VECTOR from, VECTOR to, u64 hitFlag, Moby * moby, MobyColDamage
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-__LIBDL_GETTER__ Moby* CollLine_Fix_GetHitMoby(void);
+__LIBDL_GETTER__ Moby *CollLine_Fix_GetHitMoby(void);
 
 /*
  * NAME :    CollLine_Fix_GetHitPosition
@@ -142,7 +141,7 @@ __LIBDL_GETTER__ Moby* CollLine_Fix_GetHitMoby(void);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-__LIBDL_GETTER__ float* CollLine_Fix_GetHitPosition(void);
+__LIBDL_GETTER__ float *CollLine_Fix_GetHitPosition(void);
 
 /*
  * NAME :    CollLine_Fix_GetHitNormal
@@ -158,7 +157,7 @@ __LIBDL_GETTER__ float* CollLine_Fix_GetHitPosition(void);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-__LIBDL_GETTER__ float* CollLine_Fix_GetHitNormal(void);
+__LIBDL_GETTER__ float *CollLine_Fix_GetHitNormal(void);
 
 /*
  * NAME :    CollLine_Fix_GetHitCollisionId
@@ -223,6 +222,5 @@ __LIBDL_GETTER__ int CollisionIsNonWalkable(int id);
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
 __LIBDL_GETTER__ int CollisionIsLethal(int id);
-
 
 #endif // _LIBDL_COLLISION_H_

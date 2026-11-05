@@ -23,16 +23,16 @@ u32 internal_colorLerp_inLobby(u32, u32, float);
  */
 u32 colorLerp(u32 a, u32 b, float t)
 {
-    if (isInGame())
-    {
-        return internal_colorLerp_inGame(a, b, t);
-    }
-    else if (isInMenus())
-    {
-        return internal_colorLerp_inLobby(a, b, t);
-    }
+  if (isInGame())
+  {
+    return internal_colorLerp_inGame(a, b, t);
+  }
+  else if (isInMenus())
+  {
+    return internal_colorLerp_inLobby(a, b, t);
+  }
 
-    return a;
+  return a;
 }
 
 u32 colorScale(u32 color, float scale)
@@ -42,10 +42,14 @@ u32 colorScale(u32 color, float scale)
   int b = scale * ((color >> 16) & 0xff);
   int a = scale * ((color >> 24) & 0xff);
 
-  if (r > 255) r = 255;
-  if (g > 255) g = 255;
-  if (b > 255) b = 255;
-  if (a > 255) a = 255;
+  if (r > 255)
+    r = 255;
+  if (g > 255)
+    g = 255;
+  if (b > 255)
+    b = 255;
+  if (a > 255)
+    a = 255;
 
   return (a << 24) | (b << 16) | (g << 8) | r;
 }

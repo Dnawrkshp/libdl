@@ -16,8 +16,8 @@
 typedef struct AreaHeader
 {
   int Count;
-  int* Splines;
-  int* Cuboids;
+  int *Splines;
+  int *Cuboids;
   int UNK_0C;
   int UNK_10;
   int UNK_14;
@@ -33,8 +33,8 @@ typedef struct AreaDef
   short UNK_14;
   short UNK_16;
   int UNK_18;
-  int* Splines;
-  int* Cuboids;
+  int *Splines;
+  int *Cuboids;
   int UNK_24;
   int UNK_28;
   int UNK_2C;
@@ -45,11 +45,11 @@ typedef struct Area
   VECTOR BSphere;
   short SplineCount;
   short CuboidCount;
-  int* Splines;
-  int* Cuboids;
+  int *Splines;
+  int *Cuboids;
 } Area_t;
 
 int areaGetCount(void);
-int areaGetArea(int areaIndex, Area_t* out);
+int areaGetArea(int areaIndex, Area_t *out);
 
 #endif // _LIBDL_AREA_H_

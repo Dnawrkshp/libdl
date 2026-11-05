@@ -23,7 +23,8 @@
 #include "math3d.h"
 #include "player.h"
 
-struct tDR_Profile {
+struct tDR_Profile
+{
   /*   0 */ float LinearPredictionCutoff;
   /*   4 */ float LinearConvergenceThreshold;
   /*   8 */ float MaxLinearConvergenceDelta;
@@ -36,14 +37,16 @@ struct tDR_Profile {
   /*  24 */ float Decel;
 };
 
-struct tDR_PositionHistory {
+struct tDR_PositionHistory
+{
   /*   0 */ VECTOR Pos[2];
   /*  20 */ int Time[2];
   /*  28 */ int Oldest;
   /*  2c */ int pad[1];
 };
 
-struct tDR_Vars {
+struct tDR_Vars
+{
   /*   0 */ struct tDR_PositionHistory Pos_History;
   /*  30 */ VECTOR Velocity_Tracking;
   /*  40 */ VECTOR Accel_Tracking;
@@ -60,7 +63,7 @@ struct tDR_Vars {
   /*  e4 */ int Time_Converge_Plus_One;
   /*  e8 */ int Time_StartStopping;
   /*  ec */ float Dist_Converge;
-  /*  f0 */ struct tDR_Profile* pProfile;
+  /*  f0 */ struct tDR_Profile *pProfile;
   /*  f4 */ int Time_Start;
   /*  f8 */ int Time_Converge;
   /*  fc */ int Time_Current;
@@ -79,7 +82,8 @@ struct tDR_Vars {
   /* 180 */ VECTOR prevKnownSyncedPos;
 };
 
-struct VehicleInterface {
+struct VehicleInterface
+{
   /*   0 */ int iVehicleType;
   /*   4 */ int bArialVehicle;
   /*   8 */ float fVehicleRadius;
@@ -88,9 +92,9 @@ struct VehicleInterface {
   /*  14 */ float fPlayerRunOverMinSpeed;
   /*  18 */ float fPlayerRunOverKillSpeed;
   /*  1c */ int iShotPrimaryType;
-  /*  20 */ void* SpawnShotPrimary;
+  /*  20 */ void *SpawnShotPrimary;
   /*  24 */ int iShotSecondaryType;
-  /*  28 */ void* SpawnShotSecondary;
+  /*  28 */ void *SpawnShotSecondary;
   /*  2c */ float fVehicleTopHeight;
   /*  30 */ float fPlayerExitRadius;
   /*  34 */ int iSeatSwitchButton;
@@ -100,27 +104,28 @@ struct VehicleInterface {
   /*  44 */ int iPassengerMessage;
   /*  50 */ VECTOR vDriverCameraOfs;
   /*  60 */ struct tDR_Profile DRProfile;
-  /*  88 */ /* function */ void** GetVehicleBase;
-  /*  8c */ /* function */ void** SetAsUnspawned;
-  /*  90 */ /* function */ void** ReinitPhysics;
-  /*  94 */ /* function */ void** UpdatePhysics;
-  /*  98 */ /* function */ void** DamageReact;
-  /*  9c */ /* function */ void** UpdateLocalDriverAttack;
-  /*  a0 */ /* function */ void** UpdatePassenger;
-  /*  a4 */ /* function */ void** UpdateRemoteVehicle;
-  /*  a8 */ /* function */ void** UpdateVisuals;
-  /*  ac */ /* function */ void** GetExitGroundHeight;
-  /*  b0 */ /* function */ void** CheckSpecialEnterRules;
-  /*  b4 */ /* function */ void** CheckSpecialExitRules;
-  /*  b8 */ /* function */ void** GetJustExitedPlayer;
-  /*  bc */ /* function */ void** SetAutoSpawn;
-  /*  c0 */ /* function */ void** GetCamera29Pitch;
-  /*  c4 */ /* function */ void** HandleSpecialDamageRules;
-  /*  c8 */ /* function */ void** IsPlayerLockedIn;
+  /*  88 */ /* function */ void **GetVehicleBase;
+  /*  8c */ /* function */ void **SetAsUnspawned;
+  /*  90 */ /* function */ void **ReinitPhysics;
+  /*  94 */ /* function */ void **UpdatePhysics;
+  /*  98 */ /* function */ void **DamageReact;
+  /*  9c */ /* function */ void **UpdateLocalDriverAttack;
+  /*  a0 */ /* function */ void **UpdatePassenger;
+  /*  a4 */ /* function */ void **UpdateRemoteVehicle;
+  /*  a8 */ /* function */ void **UpdateVisuals;
+  /*  ac */ /* function */ void **GetExitGroundHeight;
+  /*  b0 */ /* function */ void **CheckSpecialEnterRules;
+  /*  b4 */ /* function */ void **CheckSpecialExitRules;
+  /*  b8 */ /* function */ void **GetJustExitedPlayer;
+  /*  bc */ /* function */ void **SetAutoSpawn;
+  /*  c0 */ /* function */ void **GetCamera29Pitch;
+  /*  c4 */ /* function */ void **HandleSpecialDamageRules;
+  /*  c8 */ /* function */ void **IsPlayerLockedIn;
 };
 
-typedef struct VehicleBase {
-    /*   0 */ struct Guber Guber;
+typedef struct VehicleBase
+{
+  /*   0 */ struct Guber Guber;
   /*  20 */ struct tDR_Vars drVars;
   /* 1b0 */ MATRIX invMtx;
   /* 1f0 */ VECTOR netLocalPos;
@@ -135,10 +140,10 @@ typedef struct VehicleBase {
   /* 280 */ VECTOR initRot;
   /* 290 */ VECTOR comeToRestStart;
   /* 2a0 */ VECTOR comeToRestTotal;
-  /* 2b0 */ struct Moby* pMoby;
-  /* 2b4 */ struct Moby* pTarget;
-  /* 2b8 */ struct Player* pDriver;
-  /* 2bc */ struct Player* pPassenger;
+  /* 2b0 */ struct Moby *pMoby;
+  /* 2b4 */ struct Moby *pTarget;
+  /* 2b8 */ struct Player *pDriver;
+  /* 2bc */ struct Player *pPassenger;
   /* 2c0 */ int netUpdatedTimeStamp;
   /* 2c4 */ int netUpdatedPassengerTimeStamp;
   /* 2c8 */ int explodeTime;
@@ -172,11 +177,11 @@ typedef struct VehicleBase {
   /* 318 */ float fDriverAttackDamage;
   /* 31c */ float fPassengerAttackDamage;
   /* 320 */ int timeSinceLastMessage;
-  /* 324 */ struct VehicleInterface* pInterface;
-  /* 328 */ struct Player* pCutSceneDriver;
-  /* 32c */ struct Player* pCutScenePassenger;
-  /* 330 */ struct Moby* pSpawningEffect;
-  /* 334 */ struct Moby* pSpawningPad;
+  /* 324 */ struct VehicleInterface *pInterface;
+  /* 328 */ struct Player *pCutSceneDriver;
+  /* 32c */ struct Player *pCutScenePassenger;
+  /* 330 */ struct Moby *pSpawningEffect;
+  /* 334 */ struct Moby *pSpawningPad;
   /* 338 */ float fRunOverDamageMultiplier;
   /* 33c */ int iPad[1];
 } Vehicle;
@@ -195,7 +200,7 @@ typedef struct VehicleBase {
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-void vehicleRemovePlayer(Vehicle * vehicle, struct Player * player);
+void vehicleRemovePlayer(Vehicle *vehicle, struct Player *player);
 
 /*
  * NAME :    vehicleAddPlayer
@@ -211,6 +216,6 @@ void vehicleRemovePlayer(Vehicle * vehicle, struct Player * player);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-void vehicleAddPlayer(Vehicle * vehicle, struct Player * player);
+void vehicleAddPlayer(Vehicle *vehicle, struct Player *player);
 
 #endif // _LIBDL_VEHICLE_H_

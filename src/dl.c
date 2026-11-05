@@ -1,6 +1,6 @@
 #include "dl.h"
 
-// 
+//
 extern void padUpdate(void);
 extern void playerPadUpdate(void);
 
@@ -20,7 +20,6 @@ extern void playerPadUpdate(void);
  */
 void dlPreUpdate(void)
 {
-
 }
 
 /*

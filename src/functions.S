@@ -1,5 +1,5 @@
 #define FUNCTION(name, address) \
-    .set  push;            \
+  .set  push;            \
   .set  noreorder;          \
   .section  .text.##name,"ax",@progbits; \
   .align 2;                \

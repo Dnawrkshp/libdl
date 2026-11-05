@@ -6,7 +6,7 @@
 #define GET_MEDIUS_APP_HANDLER_HOOK (*(u32 *)0x01EAAB10)
 #define DME_CALLBACK_TABLE ((u32 *)0x00212148)
 #define NET_LOBBY_CONNECTION ((void *)(*(u32 *)0x00169CD4))
-#define NET_DME_CONNECTION   ((void *)(*(u32 *)0x00172168))
+#define NET_DME_CONNECTION ((void *)(*(u32 *)0x00172168))
 #define NET_GLOBAL_CALLBACKS_PTR ((NET_CALLBACK_DELEGATE *)(*(u32 *)0x00211E64))
 #define NET_ERROR (*(int *)0x00172420)
 #define CUSTOM_MESSAGE_MAX_PAYLOAD_SIZE (512)
@@ -20,7 +20,7 @@ int customMsgHandler(void *connection, u64 a1, u64 a2, u8 *data)
 {
   u8 id = data[0];
   u8 hasSize = data[1] == 1;
-  u16 dataSize = *(u16*)(data + 2);
+  u16 dataSize = *(u16 *)(data + 2);
 
   NET_CALLBACK_DELEGATE callback = NET_GLOBAL_CALLBACKS_PTR[id];
   if (callback)
@@ -103,7 +103,7 @@ int netSendCustomAppMessage(int transport, void *connection, int clientIndex, u8
 
   buffer[0] = customMsgId;
   buffer[1] = 1; // indicate size is in next 2 bytes, for backwards compatibility
-  *(u16*)(buffer + 2) = (u16)msgSize;
+  *(u16 *)(buffer + 2) = (u16)msgSize;
   return netSendMediusAppMessage(transport, connection, clientIndex, NET_CUSTOM_MESSAGE_CLASS, NET_CUSTOM_MESSAGE_ID, msgSize + 4, buffer);
 }
 
@@ -121,7 +121,7 @@ int netBroadcastCustomAppMessage(int transport, void *connection, u8 customMsgId
 
   buffer[0] = customMsgId;
   buffer[1] = 1; // indicate size is in next 2 bytes, for backwards compatibility
-  *(u16*)(buffer + 2) = (u16)msgSize;
+  *(u16 *)(buffer + 2) = (u16)msgSize;
   return netBroadcastMediusAppMessage(transport, connection, NET_CUSTOM_MESSAGE_ID, msgSize + 4, buffer);
 }
 

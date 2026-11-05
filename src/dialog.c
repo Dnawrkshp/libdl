@@ -22,12 +22,12 @@ void internal_dialogPlaySound_inLobby(u64, u64);
  */
 void dialogPlaySound(int dialogId, int arg2)
 {
-    if (isInGame())
-    {
-        internal_dialogPlaySound_inGame(dialogId, arg2, 2, 0, 0, 1, 0, 64);
-    }
-    else if (isInMenus())
-    {
-        internal_dialogPlaySound_inLobby(dialogId, arg2);
-    }
+  if (isInGame())
+  {
+    internal_dialogPlaySound_inGame(dialogId, arg2, 2, 0, 0, 1, 0, 64);
+  }
+  else if (isInMenus())
+  {
+    internal_dialogPlaySound_inLobby(dialogId, arg2);
+  }
 }

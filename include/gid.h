@@ -27,10 +27,10 @@
  */
 typedef struct
 {
-    u32 ObjectIndex : 12;
-    u32 ObjectCount : 12;
-    u32 ObjectType : 4;
-    u32 HostId : 4;
+  u32 ObjectIndex : 12;
+  u32 ObjectCount : 12;
+  u32 ObjectType : 4;
+  u32 HostId : 4;
 } Gid;
 
 #endif // _LIBDL_GID_H_

@@ -13,8 +13,8 @@
 #include "moby.h"
 #include "math3d.h"
 
-
-struct CameraFov {
+struct CameraFov
+{
   /*   0 */ float speed;
   /*   4 */ float ideal;
   /*   8 */ float actual;
@@ -29,7 +29,8 @@ struct CameraFov {
   /*  24 */ float pad[3];
 };
 
-struct CameraControlActivation {
+struct CameraControlActivation
+{
   /*   0 */ int activationType;
   /*   4 */ float blendSpeed;
   /*   8 */ char priority;
@@ -39,13 +40,15 @@ struct CameraControlActivation {
   /*   e */ short int orgCam;
 };
 
-struct PolarSm {
+struct PolarSm
+{
   /*   0 */ float azimuth;
   /*   4 */ float elevation;
   /*   8 */ float radius;
 };
 
-struct Polar {
+struct Polar
+{
   /*   0 */ float azimuth;
   /*   4 */ float elevation;
   /*   8 */ float radius;
@@ -53,13 +56,14 @@ struct Polar {
   /*  10 */ float rotZ;
 };
 
-struct UpdateCam {
+struct UpdateCam
+{
   /*   0 */ VECTOR mtx[3];
   /*  30 */ VECTOR pos;
   /*  40 */ VECTOR rot;
   /*  50 */ struct Polar pol;
   /*  64 */ float lPos[3];
-  /*  70 */ void* control;
+  /*  70 */ void *control;
   /*  74 */ struct CameraControlActivation activation;
   /*  84 */ short int importCameraIdx;
   /*  86 */ short int type;
@@ -74,7 +78,8 @@ struct UpdateCam {
   /*  9c */ int pad[2];
 };
 
-struct CameraStatics {
+struct CameraStatics
+{
   /*   0 */ float heroNoJump[3];
   /*   c */ float heroLastZ;
   /*  10 */ float heroLastZSpeed;
@@ -91,7 +96,7 @@ struct CameraStatics {
   /*  a8 */ float heroSpeedUp;
   /*  ac */ float heroLastRotZ[5];
   /*  c0 */ int hotspot;
-  /*  c4 */ Moby* pCamColl;
+  /*  c4 */ Moby *pCamColl;
   /*  c8 */ float fadeSpeed;
   /*  cc */ float fadeIdeal;
   /*  d0 */ int fadeTimer;
@@ -99,11 +104,12 @@ struct CameraStatics {
   /*  d8 */ float flashOutSpeed;
   /*  dc */ float flashIdeal;
   /*  e0 */ int flashTimer;
-  /*  e4 */ Moby* boss;
+  /*  e4 */ Moby *boss;
   /*  e8 */ int bossTimer;
 };
 
-struct CamBlenderPosQuat {
+struct CamBlenderPosQuat
+{
   /*   0 */ float quatInterpFac;
   /*   4 */ float quatInterpAdd;
   /*   8 */ float reqQuatInterpAdd;
@@ -118,7 +124,8 @@ struct CamBlenderPosQuat {
   /*  50 */ VECTOR q;
 };
 
-struct CamBlenderPolarQuat {
+struct CamBlenderPolarQuat
+{
   /*   0 */ struct PolarSm orgPol;
   /*   c */ int interpFrames;
   /*  10 */ float interpMaxInv;
@@ -130,39 +137,45 @@ struct CamBlenderPolarQuat {
   /*  60 */ VECTOR q;
 };
 
-struct CamBlenderData {
+struct CamBlenderData
+{
   /*   0 */ struct CamBlenderPosQuat posData;
   /*  60 */ struct CamBlenderPolarQuat polarData;
 };
 
-struct CamBlender {
+struct CamBlender
+{
   /*   0 */ short int state;
   /*   2 */ char type;
   /*   3 */ char reqType;
   /*  10 */ struct CamBlenderData blendData;
 };
 
-struct CameraWidget {
-  /*   0 */ struct UpdateCam* pCam;
-  /*   4 */ Moby* semaphore;
+struct CameraWidget
+{
+  /*   0 */ struct UpdateCam *pCam;
+  /*   4 */ Moby *semaphore;
   /*   8 */ float closest;
   /*   c */ float interp;
-  /*  10 */ void* preFunc;
+  /*  10 */ void *preFunc;
 };
 
-struct CameraShake {
+struct CameraShake
+{
   /*   0 */ float strength;
   /*   4 */ float adjust;
   /*   8 */ int time;
   /*   c */ int div;
 };
 
-struct CameraExternal {
+struct CameraExternal
+{
   /*   0 */ VECTOR move;
 };
 
 // warning: multiple differing types with the same name, only one recovered
-struct CameraHeroData {
+struct CameraHeroData
+{
   /*   0 */ MATRIX mtx;
   /*  40 */ VECTOR pos;
   /*  50 */ VECTOR rot;
@@ -173,9 +186,9 @@ struct CameraHeroData {
   /*  a0 */ VECTOR sphereCenter;
   /*  b0 */ VECTOR fpsCamMtx[3];
   /*  e0 */ VECTOR fpsCamPos;
-  /*  f0 */ Moby* pMoby;
-  /*  f4 */ Moby* vehicleMoby;
-  /*  f8 */ Moby* groundMoby;
+  /*  f0 */ Moby *pMoby;
+  /*  f4 */ Moby *vehicleMoby;
+  /*  f8 */ Moby *groundMoby;
   /*  fc */ int desiredCam;
   /* 100 */ int state;
   /* 104 */ int stateType;
@@ -200,25 +213,26 @@ struct CameraHeroData {
   /* 131 */ char hotSpotIceWater;
   /* 132 */ char hotSpotWater;
   /* 133 */ char aiFollowingMe;
-  /* 134 */ void* pPad;
-  /* 138 */ Moby* pSwingTargetMoby;
+  /* 134 */ void *pPad;
+  /* 138 */ Moby *pSwingTargetMoby;
   /* 13c */ float swingForwardAng;
   /* 140 */ float swingIdealRadius;
   /* 144 */ int timersLedgeCamAdj;
   /* 148 */ float ledgeWallAngZ;
   /* 14c */ int EOPtime;
-  /* 150 */ void* pPath;
+  /* 150 */ void *pPath;
   /* 154 */ int pad[3];
 };
 
-typedef struct GameCamera {
+typedef struct GameCamera
+{
   /*   0 */ VECTOR pos;
   /*  10 */ VECTOR rot;
   /*  20 */ struct CameraShake shake;
   /*  30 */ struct CameraShake shakeFwd;
   /*  40 */ struct CameraShake shakeTilt;
-  /*  50 */ struct UpdateCam* pCurrentUpdCam;
-  /*  54 */ struct UpdateCam* pLastUpdCam;
+  /*  50 */ struct UpdateCam *pCurrentUpdCam;
+  /*  54 */ struct UpdateCam *pLastUpdCam;
   /*  60 */ struct CameraStatics camStatics;
   /* 150 */ struct CameraHeroData camHeroData;
   /* 2b0 */ struct CamBlender blender;
@@ -232,7 +246,6 @@ typedef struct GameCamera {
   /* 468 */ int disableBlendTimer;
 } GameCamera;
 
-
-GameCamera* cameraGetGameCamera(int cameraIndex);
+GameCamera *cameraGetGameCamera(int cameraIndex);
 
 #endif // _LIBDL_CAMERA_H_

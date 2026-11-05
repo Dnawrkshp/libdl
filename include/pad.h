@@ -27,28 +27,28 @@
 #include <tamtypes.h>
 #include "common.h"
 
-#define PAD_PORT_MAX        2
-#define PAD_SLOT_MAX        4
+#define PAD_PORT_MAX 2
+#define PAD_SLOT_MAX 4
 
-#define PAD_LEFT            0x0080
-#define PAD_DOWN            0x0040
-#define PAD_RIGHT           0x0020
-#define PAD_UP              0x0010
-#define PAD_START           0x0008
-#define PAD_R3              0x0004
-#define PAD_L3              0x0002
-#define PAD_SELECT          0x0001
-#define PAD_SQUARE          0x8000
-#define PAD_CROSS           0x4000
-#define PAD_CIRCLE          0x2000
-#define PAD_TRIANGLE        0x1000
-#define PAD_R1              0x0800
-#define PAD_L1              0x0400
-#define PAD_R2              0x0200
-#define PAD_L2              0x0100
+#define PAD_LEFT 0x0080
+#define PAD_DOWN 0x0040
+#define PAD_RIGHT 0x0020
+#define PAD_UP 0x0010
+#define PAD_START 0x0008
+#define PAD_R3 0x0004
+#define PAD_L3 0x0002
+#define PAD_SELECT 0x0001
+#define PAD_SQUARE 0x8000
+#define PAD_CROSS 0x4000
+#define PAD_CIRCLE 0x2000
+#define PAD_TRIANGLE 0x1000
+#define PAD_R1 0x0800
+#define PAD_L1 0x0400
+#define PAD_R2 0x0200
+#define PAD_L2 0x0100
 
-
-struct PAD {
+struct PAD
+{
   /*   0 */ u128 pad_buf[16];
   /* 100 */ float analog[16];
   /* 140 */ float hudAnalog[16];
@@ -99,45 +99,45 @@ struct PAD {
   /* 560 */ int id;
   /* 564 */ int exid;
   /* 568 */ int lagFrames;
-  /* 56c */ void* RawPadInputCallback;
-  /* 570 */ void* pCallbackData;
+  /* 56c */ void *RawPadInputCallback;
+  /* 570 */ void *pCallbackData;
   /* 574 */ unsigned char rdata[32];
   /* 594 */ int ipad[10];
 };
 
 typedef struct padButtonStatus
 {
-    unsigned char ok;
-    unsigned char mode;
-    unsigned short btns;
-    // joysticks
-    unsigned char rjoy_h;
-    unsigned char rjoy_v;
-    unsigned char ljoy_h;
-    unsigned char ljoy_v;
-    // pressure mode
-    unsigned char right_p;
-    unsigned char left_p;
-    unsigned char up_p;
-    unsigned char down_p;
-    unsigned char triangle_p;
-    unsigned char circle_p;
-    unsigned char cross_p;
-    unsigned char square_p;
-    unsigned char l1_p;
-    unsigned char r1_p;
-    unsigned char l2_p;
-    unsigned char r2_p;
+  unsigned char ok;
+  unsigned char mode;
+  unsigned short btns;
+  // joysticks
+  unsigned char rjoy_h;
+  unsigned char rjoy_v;
+  unsigned char ljoy_h;
+  unsigned char ljoy_v;
+  // pressure mode
+  unsigned char right_p;
+  unsigned char left_p;
+  unsigned char up_p;
+  unsigned char down_p;
+  unsigned char triangle_p;
+  unsigned char circle_p;
+  unsigned char cross_p;
+  unsigned char square_p;
+  unsigned char l1_p;
+  unsigned char r1_p;
+  unsigned char l2_p;
+  unsigned char r2_p;
 } PadButtonStatus;
 
 typedef struct PadHistory
 {
-    u16 btns;
-    u8 rjoy_h;
-    u8 rjoy_v;
-    u8 ljoy_h;
-    u8 ljoy_v;
-    short id;
+  u16 btns;
+  u8 rjoy_h;
+  u8 rjoy_v;
+  u8 ljoy_h;
+  u8 ljoy_v;
+  short id;
 } PadHistory;
 
 /*

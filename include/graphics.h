@@ -14,12 +14,11 @@
 #include "math3d.h"
 #include "moby.h"
 
-
 //--------------------------------------------------------
-#define SCREEN_WIDTH           (512)
-#define SCREEN_HEIGHT          (416)
-#define SCREEN_RATIO           (SCREEN_WIDTH / (float)SCREEN_HEIGHT)
-#define SCREEN_RATIO_INV       (SCREEN_HEIGHT / (float)SCREEN_WIDTH)
+#define SCREEN_WIDTH (512)
+#define SCREEN_HEIGHT (416)
+#define SCREEN_RATIO (SCREEN_WIDTH / (float)SCREEN_HEIGHT)
+#define SCREEN_RATIO_INV (SCREEN_HEIGHT / (float)SCREEN_WIDTH)
 
 //--------------------------------------------------------
 enum TextAlign
@@ -47,7 +46,7 @@ enum FontWindowFlags
 };
 
 //--------------------------------------------------------
-typedef void (*gfxDrawFuncDef)(Moby*);
+typedef void (*gfxDrawFuncDef)(Moby *);
 
 //--------------------------------------------------------
 typedef float POINT[2] __attribute__((__aligned__(8)));
@@ -55,14 +54,15 @@ typedef float POINT[2] __attribute__((__aligned__(8)));
 //--------------------------------------------------------
 typedef struct RECT
 {
-    POINT TopLeft;
-    POINT TopRight;
-    POINT BottomLeft;
-    POINT BottomRight;
+  POINT TopLeft;
+  POINT TopRight;
+  POINT BottomLeft;
+  POINT BottomRight;
 } RECT;
 
 //--------------------------------------------------------
-typedef struct CubicLineEndPoint {
+typedef struct CubicLineEndPoint
+{
   /*   0 */ int iCoreRGBA;
   /*   4 */ int iGlowRGBA;
   /*   8 */ char bFadeEnd;
@@ -127,7 +127,7 @@ struct FontWindow
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-int gfxScreenSpaceText(float x, float y, float scaleX, float scaleY, u32 color, const char * string, int length, int alignment);
+int gfxScreenSpaceText(float x, float y, float scaleX, float scaleY, u32 color, const char *string, int length, int alignment);
 
 /*
  * NAME :    gfxScreenSpaceTextWindow
@@ -143,7 +143,7 @@ int gfxScreenSpaceText(float x, float y, float scaleX, float scaleY, u32 color, 
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-void gfxScreenSpaceTextWindow(struct FontWindow* fontWindow, float scaleX, float scaleY, u32 color, const char * string, int length, u32 shadowColor);
+void gfxScreenSpaceTextWindow(struct FontWindow *fontWindow, float scaleX, float scaleY, u32 color, const char *string, int length, u32 shadowColor);
 
 /*
  * NAME :    gfxScreenSpaceBox
@@ -160,7 +160,7 @@ void gfxScreenSpaceTextWindow(struct FontWindow* fontWindow, float scaleX, float
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-void gfxScreenSpaceQuad(RECT * rect, u32 colorTL, u32 colorTR, u32 colorBL, u32 colorBR);
+void gfxScreenSpaceQuad(RECT *rect, u32 colorTL, u32 colorTR, u32 colorBL, u32 colorBR);
 
 /*
  * NAME :    gfxScreenSpaceBox
@@ -219,11 +219,11 @@ void gfxPixelSpaceBox(float x, float y, float w, float h, u32 color);
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-int gfxWorldSpaceToScreenSpace(VECTOR position, int * x, int * y);
+int gfxWorldSpaceToScreenSpace(VECTOR position, int *x, int *y);
 
-void gfxScreenSpacePIF(RECT * rect);
+void gfxScreenSpacePIF(RECT *rect);
 
-int gfxGetFontWidth(const char * string, int length, float scale);
+int gfxGetFontWidth(const char *string, int length, float scale);
 
 void gfxDoGifPaging(void);
 void gfxSetupGifPaging(int);
@@ -233,15 +233,15 @@ int gfxGetTexWidth(u64 texture);
 int gfxGetTexHeight(u64 texture);
 int gfxConstructEffectTex(int texGsAddr, int palGsAddr, int ulog, int vlog, int format);
 void gfxDrawSprite(float x, float y, float w, float h, int t0, int t1, int texW, int texH, u64 color, u64 texture);
-int gfxLoadPalToGs(void* ptr, int format);
-int gfxLoadTexToGs(void* ptr, int ulog, int vlog, int format);
+int gfxLoadPalToGs(void *ptr, int format);
+int gfxLoadTexToGs(void *ptr, int ulog, int vlog, int format);
 
-void gfxDrawCubicLine(void * fxUtilsInterface, CubicLineEndPoint * points, int numPoints, void * cubicLineStatic, float scale);
-Moby* gfxDrawSimpleTwoPointLightning(void* fxSpawningInterface, VECTOR from, VECTOR to, int life, int numStrands, int bContactBothEnds, void* style, Moby* startMoby, Moby* endMoby, u32 color);
-void gfxDrawQuad(void * fxRegistrySystemInterface, struct QuadDef * quadDef, MATRIX worldMatrix, u32 a3);
+void gfxDrawCubicLine(void *fxUtilsInterface, CubicLineEndPoint *points, int numPoints, void *cubicLineStatic, float scale);
+Moby *gfxDrawSimpleTwoPointLightning(void *fxSpawningInterface, VECTOR from, VECTOR to, int life, int numStrands, int bContactBothEnds, void *style, Moby *startMoby, Moby *endMoby, u32 color);
+void gfxDrawQuad(void *fxRegistrySystemInterface, struct QuadDef *quadDef, MATRIX worldMatrix, u32 a3);
 void gfxDrawBillboardQuad(u128 pos, float size, u32 color, int alpha, float rot, int texId, int mode, float pushToCamera);
-void gfxResetQuad(struct QuadDef * quadDef);
-void gfxRegisterDrawFunction(void ** a0, gfxDrawFuncDef * callback, Moby* moby);
+void gfxResetQuad(struct QuadDef *quadDef);
+void gfxRegisterDrawFunction(void **a0, gfxDrawFuncDef *callback, Moby *moby);
 
 void gfxResetGsRegisters(void);
 void gfxSetScissor(int xmin, int xmax, int ymin, int ymax);

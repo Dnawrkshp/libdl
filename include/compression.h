@@ -26,7 +26,6 @@
  * 
  * AUTHOR :      Daniel "Dnawrkshp" Gerendasy
  */
-int decompressWad(void* src, void* dst);
-
+int decompressWad(void *src, void *dst);
 
 #endif // _LIBDL_COMPRESSION_H_

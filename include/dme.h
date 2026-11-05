@@ -14,8 +14,8 @@
 
 enum DmePacketTypeIds
 {
-    DME_APPMSG_CUSTOM =             0x07,
-    DME_APPMSG_STATEUPDATE =        0x09,
+  DME_APPMSG_CUSTOM = 0x07,
+  DME_APPMSG_STATEUPDATE = 0x09,
 };
 
 #endif // _LIBDL_DME_H_
