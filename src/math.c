@@ -86,6 +86,11 @@ float clamp(float v, float min, float max)
 //--------------------------------------------------------
 float clampAngle(float theta)
 {
+    // wrap if outside single wrap bounds
+    if (theta > MATH_PI*3 || theta < -MATH_PI*3)
+        return theta - MATH_TAU * floorf((theta + MATH_PI) / MATH_TAU);
+
+    // handle cheap single wrap case
     if (theta > MATH_PI)
         theta -= MATH_TAU;
     else if (theta < -MATH_PI)
