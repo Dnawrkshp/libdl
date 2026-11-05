@@ -14,10 +14,10 @@
 
 
 //--------------------------------------------------------
-__LIBDL_INLINE__ int sprintf(char * buffer, const char * format, ...);
-__LIBDL_INLINE__ int snprintf(char * buffer, long n, const char * format, ...);
-__LIBDL_INLINE__ int printf(const char * format, ...);
-__LIBDL_INLINE__ int sscanf(char * buffer, const char * format, ...);
+int sprintf(char * buffer, const char * format, ...);
+int snprintf(char * buffer, long n, const char * format, ...);
+int printf(const char * format, ...);
+int sscanf(char * buffer, const char * format, ...);
 
 
 //--------------------------------------------------------

@@ -25,28 +25,39 @@
 #define MATH_DEG2RAD                    (MATH_PI / (float)180)
 
 //--------------------------------------------------------
-__LIBDL_INLINE__ float cosf(float theta);
-__LIBDL_INLINE__ float sinf(float theta);
-__LIBDL_INLINE__ float acosf(float v);
-__LIBDL_INLINE__ float asinf(float v);
-__LIBDL_INLINE__ float sqrtf(float f);
-__LIBDL_INLINE__ float powf(float base, float exp);
-__LIBDL_INLINE__ float fabsf(float f);
-__LIBDL_INLINE__ float lerpf(float a, float b, float t);
-__LIBDL_INLINE__ float signf(float a);
-__LIBDL_INLINE__ float maxf(float a, float b);
-__LIBDL_INLINE__ float minf(float a, float b);
-__LIBDL_INLINE__ float ceilf(float a);
-__LIBDL_INLINE__ float floorf(float a);
-__LIBDL_INLINE__ float logf(float a);
-__LIBDL_INLINE__ float log10f(float a);
-__LIBDL_INLINE__ float lerpfAngle(float a, float b, float t);
-__LIBDL_INLINE__ float clamp(float v, float min, float max);
-__LIBDL_INLINE__ float clampAngle(float theta);
-__LIBDL_INLINE__ double fmod(double x, double y);
-__LIBDL_INLINE__ double pow(double x, double y);
-__LIBDL_INLINE__ double sqrt(double x);
-__LIBDL_INLINE__ float fastmodf(float x, float y);
-__LIBDL_INLINE__ float atan2f(float y, float x);
+#ifndef MAX
+#define MAX(a, b)                       (((a) > (b)) ? (a) : (b))
+#endif
+#ifndef MIN
+#define MIN(a, b)                       (((a) < (b)) ? (a) : (b))
+#endif
+#ifndef CLAMP
+#define CLAMP(value, min, max)          MIN(MAX((value), (min)), (max))
+#endif
+
+//--------------------------------------------------------
+float cosf(float theta);
+float sinf(float theta);
+float acosf(float v);
+float asinf(float v);
+float sqrtf(float f);
+float powf(float base, float exp);
+float fabsf(float f);
+float lerpf(float a, float b, float t);
+float signf(float a);
+float maxf(float a, float b);
+float minf(float a, float b);
+float ceilf(float a);
+float floorf(float a);
+float logf(float a);
+float log10f(float a);
+float lerpfAngle(float a, float b, float t);
+float clamp(float v, float min, float max);
+float clampAngle(float theta);
+double fmod(double x, double y);
+double pow(double x, double y);
+double sqrt(double x);
+float fastmodf(float x, float y);
+float atan2f(float y, float x);
 
 #endif // _LIBDL_MATH_H_

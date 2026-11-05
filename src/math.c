@@ -1,17 +1,4 @@
 #include "math.h"
-#include "game.h"
-
-//--------------------------------------------------------
-#define MATH_COSF_FUNC                  (0x00135878)
-#define MATH_ASINF_FUNC                 (0x00136278)
-#define MATH_SQRTF_FUNC                 (0x00136C90) 
-#define MATH_POWF_FUNC                  (0x00136788)
-#define MATH_FABS_FUNC                  (0x00135300)
-#define MATH_FABSF_FUNC                 (0x00135960)
-#define MATH_FMOD_FUNC                  (0x00135C18)
-
-float internal_fastmodf_inLobby(float x, float y);
-float internal_fastmodf_inGame(float x, float y);
 
 //--------------------------------------------------------
 // -- https://stackoverflow.com/a/28050328
@@ -129,39 +116,83 @@ float atan2f(float y, float x)
 }
 
 //--------------------------------------------------------
+float fabsf(float f)
+{
+    float result;
+    __asm__("abs.s %0, %1" : "=f" (result) : "f" (f));
+    return result;
+}
+
+//--------------------------------------------------------
+// Native EE semantics: negative inputs produce sqrt(abs(f)); no IEEE NaNs.
 float sqrtf(float f)
 {
-    float t[4];
-    t[0] = f;
+    float result;
+    __asm__("sqrt.s %0, %1" : "=f" (result) : "f" (f));
+    return result;
+}
 
-    asm __volatile__ (
-#if __GNUC__ > 3
-    "lqc2        $vf1, 0x00(%0)      \n"
-    "vsqrt          $Q, $vf1x           \n"
-    "vwaitq                              \n"
-    "vaddq.x        $vf1, $vf0, $Q      \n"
-    "sqc2        $vf1, 0x00(%0)      \n"
-#else
-    "lqc2        vf1, 0x00(%0)      \n"
-    "vsqrt          Q, vf1x             \n"
-    "vwaitq                              \n"
-    "vaddq.x        vf1, vf0, Q         \n"
-    "sqc2        vf1, 0x00(%0)      \n"
-#endif
-    : : "r" (t)
-    : "memory"
-    );
+//--------------------------------------------------------
+float floorf(float a)
+{
+    unsigned int bits;
+    unsigned int magnitude;
+    float truncated;
 
-    return t[0];
+    __asm__("mfc1 %0, %1" : "=r" (bits) : "f" (a));
+    magnitude = bits & 0x7fffffffU;
+    // Preserve signed zero; handle fractions (including subnormals) by bits.
+    if (magnitude < 0x3f800000U) {
+        if (magnitude == 0)
+            return a;
+        return (bits >> 31) ? -1.0f : 0.0f;
+    }
+
+    // All finite floats with |a| >= 2^23 are integral. Also pass through
+    // IEEE infinity/NaN bit patterns without feeding them to a conversion.
+    if (magnitude >= 0x4b000000U)
+        return a;
+
+    // On EE, cvt.w.s always truncates toward zero.
+    __asm__("cvt.w.s %0, %1\n\t"
+            "cvt.s.w %0, %0"
+            : "=&f" (truncated) : "f" (a));
+    return (truncated > a) ? truncated - 1.0f : truncated;
+}
+
+//--------------------------------------------------------
+float ceilf(float a)
+{
+    unsigned int bits;
+    unsigned int magnitude;
+    float truncated;
+
+    __asm__("mfc1 %0, %1" : "=r" (bits) : "f" (a));
+    magnitude = bits & 0x7fffffffU;
+    if (magnitude < 0x3f800000U) {
+        if (magnitude == 0)
+            return a;
+        return (bits >> 31) ? -0.0f : 1.0f;
+    }
+    if (magnitude >= 0x4b000000U)
+        return a;
+
+    __asm__("cvt.w.s %0, %1\n\t"
+            "cvt.s.w %0, %0"
+            : "=&f" (truncated) : "f" (a));
+    return (truncated < a) ? truncated + 1.0f : truncated;
 }
 
 //--------------------------------------------------------
 float fastmodf(float x, float y)
 {
-    if (isInGame())
-        return internal_fastmodf_inGame(x, y);
-    if (isInMenus())
-        return internal_fastmodf_inLobby(x, y);
-    
-    return x;
+    float quotient = x / y;
+    float integral;
+
+    // Match the game's approximate (quotient - trunc(quotient)) * y formula.
+    // COP1 avoids VU0 register transfers, Q waits, and game-state dispatch.
+    __asm__("cvt.w.s %0, %1\n\t"
+            "cvt.s.w %0, %0"
+            : "=&f" (integral) : "f" (quotient));
+    return (quotient - integral) * y;
 }

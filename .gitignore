@@ -69,3 +69,6 @@ lib/
 
 .vscode/
 docker-deploy.sh
+
+# Mac OS
+.DS_Store

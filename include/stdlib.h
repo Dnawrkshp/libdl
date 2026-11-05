@@ -13,7 +13,7 @@
 
 
 //--------------------------------------------------------
-__LIBDL_INLINE__ void* malloc( unsigned long size );
-__LIBDL_INLINE__ void free( void* ptr );
+void* malloc( unsigned long size );
+void free( void* ptr );
 
 #endif // _LIBDL_STDLIB_H_
