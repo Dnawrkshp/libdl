@@ -886,6 +886,14 @@ void mobyStartFlash(Moby *moby, int flashType, u32 color, struct FlashVars *flas
  */
 void mobyBlowCorn(Moby *moby, int bangle, u128 baseVelocity, float minEmitHorizontalSpeed, float maxEmitHorizontalSpeed, float minEmitVerticalSpeed, float maxEmitVerticalSpeed, char sound, float gravity, float rotationalVelocity, int lifetime, int ignoreCpu, int flameMode, int flamePercent, float flameScale, int lightningMode, int lightningStrands, float strandWidthScale, Moby *parent, int flags);
 
+/*
+ * Spawns a debris chunk. chunkType 1 uses live bangle bounds and sphere collision;
+ * chunkType 2 uses corn vertices. bangleIndex is an index, not a mask.
+ * Velocity is per frame and lifetime is in ticks. Native chunks use pvarSize 0x80.
+ * Flag bit 0 disables collision for corn chunks.
+ */
+Moby *mobySpawnChunk(Moby *parent, int chunkType, int oClass, int bangleIndex, u128 position, VECTOR rotation, u128 velocity, char sound, float rotationalVelocity, float gravity, int lifetime, int ignoreCpu, int pvarSize, int flags);
+
 void mobyGetJointMatrix(Moby *moby, int jointIdx, MATRIX out);
 void mobyComputeJointWorldMatrix(Moby *moby, int jointIdx, MATRIX out);
 
