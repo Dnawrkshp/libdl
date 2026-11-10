@@ -784,14 +784,36 @@ void matrix_scale(MATRIX output, MATRIX input0, VECTOR input1)
 }
 
 //--------------------------------------------------------
+void matrix_translate(MATRIX output, MATRIX input0, VECTOR input1)
+{
+  // Translate the last row's XYZ and preserve W.
+  __asm__ __volatile__(
+    ".set push                                      \n"
+    ".set noreorder                                 \n"
+    "lqc2            vf1,    0x30(%1)                \n"
+    "lqc2            vf2,    0x00(%2)                \n"
+    "beq             %0,     %1,     1f              \n"
+    "vadd.xyz        vf1,    vf1,    vf2             \n"
+
+    // Only copy the basis for a separate output; load first to allow overlap.
+    "lqc2            vf3,    0x00(%1)                \n"
+    "lqc2            vf4,    0x10(%1)                \n"
+    "lqc2            vf5,    0x20(%1)                \n"
+    "sqc2            vf3,    0x00(%0)                \n"
+    "sqc2            vf4,    0x10(%0)                \n"
+    "sqc2            vf5,    0x20(%0)                \n"
+    "1:                                             \n"
+    "sqc2            vf1,    0x30(%0)                \n"
+    ".set pop                                       \n"
+    : : "r"(output), "r"(input0), "r"(input1) : "memory");
+}
+
+//--------------------------------------------------------
 float matrix_determinant(MATRIX input0)
 {
   return input0[0] * (input0[5] * input0[10] * input0[15] + input0[6] * input0[11] * input0[13] + input0[7] * input0[9] * input0[14] - input0[7] * input0[10] * input0[13] - input0[6] * input0[9] * input0[15] - input0[5] * input0[11] * input0[14])
-
          - input0[4] * (input0[1] * input0[10] * input0[15] + input0[2] * input0[11] * input0[13] + input0[3] * input0[9] * input0[14] - input0[3] * input0[10] * input0[13] - input0[2] * input0[9] * input0[15] - input0[1] * input0[11] * input0[14])
-
          + input0[8] * (input0[1] * input0[6] * input0[15] + input0[2] * input0[7] * input0[13] + input0[3] * input0[5] * input0[14] - input0[3] * input0[6] * input0[13] - input0[2] * input0[5] * input0[15] - input0[1] * input0[7] * input0[14])
-
          - input0[12] * (input0[1] * input0[6] * input0[11] + input0[2] * input0[7] * input0[9] + input0[3] * input0[5] * input0[10] - input0[3] * input0[6] * input0[9] - input0[2] * input0[5] * input0[11] - input0[1] * input0[7] * input0[10]);
 }
 
