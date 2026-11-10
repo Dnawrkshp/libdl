@@ -809,6 +809,19 @@ void matrix_translate(MATRIX output, MATRIX input0, VECTOR input1)
 }
 
 //--------------------------------------------------------
+void matrix_trs(MATRIX output, VECTOR translation, VECTOR rotation, VECTOR scale)
+{
+  MATRIX transform;
+  matrix_unit(transform);
+  matrix_scale(transform, transform, scale);
+  matrix_rotate_x(transform, transform, rotation[0]);
+  matrix_rotate_y(transform, transform, rotation[1]);
+  matrix_rotate_z(transform, transform, rotation[2]);
+  matrix_translate(transform, transform, translation);
+  matrix_copy(output, transform);
+}
+
+//--------------------------------------------------------
 float matrix_determinant(MATRIX input0)
 {
   return input0[0] * (input0[5] * input0[10] * input0[15] + input0[6] * input0[11] * input0[13] + input0[7] * input0[9] * input0[14] - input0[7] * input0[10] * input0[13] - input0[6] * input0[9] * input0[15] - input0[5] * input0[11] * input0[14])

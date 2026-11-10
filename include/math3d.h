@@ -75,6 +75,7 @@ void matrix_rotate_y(MATRIX output, MATRIX input0, float radians);
 void matrix_rotate_z(MATRIX output, MATRIX input0, float radians);
 void matrix_scale(MATRIX output, MATRIX input0, VECTOR input1);
 void matrix_translate(MATRIX output, MATRIX input0, VECTOR input1);
+void matrix_trs(MATRIX output, VECTOR translation, VECTOR rotation, VECTOR scale);
 void matrix_transpose(MATRIX output, MATRIX input0);
 void matrix_unit(MATRIX output);
 float matrix_determinant(MATRIX input0);
