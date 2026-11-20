@@ -20,6 +20,35 @@
 #include "moby.h"
 #include "gid.h"
 
+// the payload length is six bits even though NetData has 64 bytes
+#define GUBER_EVENT_MAX_PAYLOAD_SIZE (63)
+
+#define GUBER_EVENT_PRIVATE_SIZE_1(type) sizeof(type)
+#define GUBER_EVENT_PRIVATE_SIZE_2(type, ...) (sizeof(type) + GUBER_EVENT_PRIVATE_SIZE_1(__VA_ARGS__))
+#define GUBER_EVENT_PRIVATE_SIZE_3(type, ...) (sizeof(type) + GUBER_EVENT_PRIVATE_SIZE_2(__VA_ARGS__))
+#define GUBER_EVENT_PRIVATE_SIZE_4(type, ...) (sizeof(type) + GUBER_EVENT_PRIVATE_SIZE_3(__VA_ARGS__))
+#define GUBER_EVENT_PRIVATE_SIZE_5(type, ...) (sizeof(type) + GUBER_EVENT_PRIVATE_SIZE_4(__VA_ARGS__))
+#define GUBER_EVENT_PRIVATE_SIZE_6(type, ...) (sizeof(type) + GUBER_EVENT_PRIVATE_SIZE_5(__VA_ARGS__))
+#define GUBER_EVENT_PRIVATE_SIZE_7(type, ...) (sizeof(type) + GUBER_EVENT_PRIVATE_SIZE_6(__VA_ARGS__))
+#define GUBER_EVENT_PRIVATE_SIZE_8(type, ...) (sizeof(type) + GUBER_EVENT_PRIVATE_SIZE_7(__VA_ARGS__))
+#define GUBER_EVENT_PRIVATE_SELECT(_1, _2, _3, _4, _5, _6, _7, _8, name, ...) name
+#define GUBER_EVENT_PRIVATE_SIZE(...) GUBER_EVENT_PRIVATE_SELECT(__VA_ARGS__, \
+  GUBER_EVENT_PRIVATE_SIZE_8, GUBER_EVENT_PRIVATE_SIZE_7, GUBER_EVENT_PRIVATE_SIZE_6, GUBER_EVENT_PRIVATE_SIZE_5, \
+  GUBER_EVENT_PRIVATE_SIZE_4, GUBER_EVENT_PRIVATE_SIZE_3, GUBER_EVENT_PRIVATE_SIZE_2, GUBER_EVENT_PRIVATE_SIZE_1)(__VA_ARGS__)
+#define GUBER_EVENT_PRIVATE_JOIN_IMPL(a, b) a##b
+#define GUBER_EVENT_PRIVATE_JOIN(a, b) GUBER_EVENT_PRIVATE_JOIN_IMPL(a, b)
+
+/*
+ * Compile-time check for one payload type or up to eight types written sequentially.
+ * Multiple types use the sum of their sizes, without padding between writes.
+ * GUBER_EVENT_ASSERT_PAYLOAD_FITS(struct StateUpdate);
+ * GUBER_EVENT_ASSERT_PAYLOAD_FITS(int, short, struct StateUpdate);
+ */
+#define GUBER_EVENT_ASSERT_PAYLOAD_FITS(...) \
+  typedef char GUBER_EVENT_PRIVATE_JOIN(GuberEventPayloadFits_, __LINE__)[ \
+    (GUBER_EVENT_PRIVATE_SIZE(__VA_ARGS__) <= GUBER_EVENT_MAX_PAYLOAD_SIZE && \
+     GUBER_EVENT_PRIVATE_SIZE(__VA_ARGS__) <= sizeof(((GuberEvent*)0)->NetEvent.NetData)) ? 1 : -1]
+
 typedef Moby *(*GuberGetMoby_func)(struct Guber *guber);
 
 /*
