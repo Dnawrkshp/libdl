@@ -166,6 +166,8 @@ void hudSetCurrentCanvas(u32);
 struct HUDObject *hudCanvasGetObject(void *canvas, u32 objId);
 void hudHidePopup(void);
 u32 hudPanelGetElement(void *panel, int element);
+int hudElementSetText(u32 id, const char *text);
+int hudElementGetTextSize(u32 id, float *width, float *height);
 int hudElementGetScale(u32 id, float *sx, float *sy);
 int hudElementSetScale(u32 id, float sx, float sy);
 int hudElementGetPosition(u32 id, float *px, float *py);
